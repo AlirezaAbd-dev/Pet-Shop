@@ -19,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={fonts.classNames + ' bg-nature-500 text-text-500'}
+        className={
+          fonts.variables + ' font-opensans bg-nature-500 text-text-500'
+        }
       >
         <Providers>{children}</Providers>
       </body>

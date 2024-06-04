@@ -1,102 +1,96 @@
 import localFont from 'next/font/local';
 
-const ModamLocalFont = localFont({
+const OpenSansLocalFont = localFont({
   src: [
     {
-      path: './modam/Modam-ExtraLight.ttf',
-      style: 'normal',
-      weight: '200',
-    },
-    {
-      path: './modam/Modam-Light.ttf',
+      path: './Open_Sans/OpenSans-Light.ttf',
       style: 'normal',
       weight: '300',
     },
     {
-      path: './modam/Modam-Regular.ttf',
+      path: './Open_Sans/OpenSans-Regular.ttf',
       style: 'normal',
       weight: '400',
     },
     {
-      path: './modam/Modam-Medium.ttf',
+      path: './Open_Sans/OpenSans-Medium.ttf',
       style: 'normal',
       weight: '500',
     },
     {
-      path: './modam/Modam-SemiBold.ttf',
+      path: './Open_Sans/OpenSans-SemiBold.ttf',
       style: 'normal',
       weight: '600',
     },
     {
-      path: './modam/Modam-Bold.ttf',
+      path: './Open_Sans/OpenSans-Bold.ttf',
       style: 'normal',
       weight: '700',
     },
     {
-      path: './modam/Modam-ExtraBold.ttf',
+      path: './Open_Sans/OpenSans-ExtraBold.ttf',
       style: 'normal',
       weight: '800',
     },
-    {
-      path: './modam/Modam-Black.ttf',
-      style: 'normal',
-      weight: '900',
-    },
   ],
+  variable: '--font-opensans',
 });
-const ModamNumLocalFont = localFont({
+const NunitoLocalFont = localFont({
   src: [
     {
-      path: './modam/ModamFaNum-ExtraLight.ttf',
+      path: './Nunito/Nunito-ExtraLight.ttf',
       style: 'normal',
       weight: '200',
     },
     {
-      path: './modam/ModamFaNum-Light.ttf',
+      path: './Nunito/Nunito-Light.ttf',
       style: 'normal',
       weight: '300',
     },
     {
-      path: './modam/ModamFaNum-Regular.ttf',
+      path: './Nunito/Nunito-Regular.ttf',
       style: 'normal',
       weight: '400',
     },
     {
-      path: './modam/ModamFaNum-Medium.ttf',
+      path: './Nunito/Nunito-Medium.ttf',
       style: 'normal',
       weight: '500',
     },
     {
-      path: './modam/ModamFaNum-SemiBold.ttf',
+      path: './Nunito/Nunito-SemiBold.ttf',
       style: 'normal',
       weight: '600',
     },
     {
-      path: './modam/ModamFaNum-Bold.ttf',
+      path: './Nunito/Nunito-Bold.ttf',
       style: 'normal',
       weight: '700',
     },
     {
-      path: './modam/ModamFaNum-ExtraBold.ttf',
+      path: './Nunito/Nunito-ExtraBold.ttf',
       style: 'normal',
       weight: '800',
     },
     {
-      path: './modam/ModamFaNum-Black.ttf',
+      path: './Nunito/Nunito-Black.ttf',
       style: 'normal',
       weight: '900',
     },
   ],
+  variable: '--font-nunito',
 });
 
-const classNames = `${ModamLocalFont.className} ${ModamNumLocalFont.className}`;
+const classNames = `${OpenSansLocalFont.className} ${NunitoLocalFont.className}`;
+const variables = `${OpenSansLocalFont.variable} ${NunitoLocalFont.variable}`;
 
 const fonts = {
   fonts: {
-    ModamLocalFont: ModamLocalFont,
-    ModamFaNumLocalFont: ModamNumLocalFont,
+    opensans: OpenSansLocalFont,
+    nunito: NunitoLocalFont,
   },
   classNames,
+  variables,
 };
 
 export default fonts;

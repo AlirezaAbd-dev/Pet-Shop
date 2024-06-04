@@ -1,7 +1,3 @@
 export default function Home() {
-  return (
-    <div>
-      hello
-    </div>
-  );
+  return <div className="font-opensans">hello</div>;
 }
