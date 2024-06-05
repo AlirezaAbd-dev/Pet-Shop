@@ -1,3 +1,5 @@
-export default function Home() {
-  return <div className="font-opensans">hello</div>;
+import Home from '@/routes/home';
+
+export default function HomePage() {
+  return <Home />;
 }
