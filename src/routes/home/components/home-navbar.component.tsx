@@ -9,7 +9,7 @@ import SvgSingleUser from '@icons/single-user.svg';
 
 const HomeNavbar = () => {
   return (
-    <nav className="flex justify-between px-5 py-3 border-b border-neutral-800">
+    <nav className="flex justify-between px-5 py-3 border-b border-nature-800">
       <div className="flex gap-3">
         <Icon className="flex justify-center items-center w-8 h-8 bg-nature-600 rounded-lg">
           <SvgMenuBurger className="w-6 h-6" />

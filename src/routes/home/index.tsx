@@ -1,6 +1,8 @@
-import HomeLanding from './components/HomeLanding.component';
-import HomeNavbar from './components/HomeNavbar.component';
-import HomeTopCategories from './components/HomeTopCategories.component';
+import HomeLanding from './components/home-landing.component';
+import HomeNavbar from './components/home-navbar.component';
+import HomeOurPromise from './components/home-our-promise.component';
+import HomeTopCategories from './components/home-top-categories.component';
+import HomeTopSellingProducts from './components/home-top-selling-products.component';
 
 const Home = () => {
   return (
@@ -8,6 +10,8 @@ const Home = () => {
       <HomeNavbar />
       <HomeLanding />
       <HomeTopCategories />
+      <HomeOurPromise />
+      <HomeTopSellingProducts />
     </>
   );
 };
