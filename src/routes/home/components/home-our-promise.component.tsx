@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 
 const HomeOurPromise = () => {
   return (
-    <div className="flex flex-col items-center mt-24 mx-5">
+    <div className="flex flex-col items-center mt-16 mx-5">
       <Icon>
         <SvgOurPromise />
       </Icon>

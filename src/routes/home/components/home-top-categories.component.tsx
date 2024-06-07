@@ -58,9 +58,9 @@ const HomeTopCategories = () => {
         </ul>
       </section>
       <Swiper
-        className="mt-6 mx-auto"
+        className="mt-6 px-4"
         spaceBetween={16}
-        slidesPerView={1.2}
+        slidesPerView={1.1}
         modules={[Pagination]}
         pagination={{
           type: 'bullets',

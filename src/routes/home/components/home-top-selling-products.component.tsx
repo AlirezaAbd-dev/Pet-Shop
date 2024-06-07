@@ -16,7 +16,7 @@ const HomeTopSellingProducts = () => {
         Our Best Selling Products
       </h4>
       <Swiper
-        className="mt-5 w-full"
+        className="mt-5 w-full px-4"
         spaceBetween={16}
         slidesPerView={1.1}
         modules={[Pagination]}
