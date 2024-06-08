@@ -27,6 +27,10 @@ const config = {
         md: '0 8px 16px 0px rgba(200, 200, 200, 0.15)',
         lg: '0 16px 32px 1px rgba(200, 200, 200, 0.18)',
         xl: '0 20px 48px 1px rgba(200, 200, 200, 0.18)',
+        'color-sm': '0px 4px 8px 0px rgba(205, 31, 70, 0.12);',
+        'color-md': '0px 8px 24px 0px rgba(205, 31, 70, 0.18)',
+        'color-lg': '0px 16px 32px 1px rgba(205, 31, 70, 0.18)',
+        'color-xl': '0px 20px 48px 1px rgba(205, 31, 70, 0.18)',
       },
       colors: {
         primary: {

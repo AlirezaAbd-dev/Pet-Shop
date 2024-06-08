@@ -16,17 +16,18 @@ import {
   CATEGORIES_LIST,
   CategoiesListType,
 } from '../constants/home.constants';
+import StandardProductCard from './cards/standard-product-card.component';
 
 const HomeTopCategories = () => {
   const [categoryValue, setCategoryValue] = useState<CategoiesListType>('All');
 
   return (
     <>
-      <section className="mt-12">
-        <h3 className="text-xl font-nunito font-black text-center">
+      <section className="mt-12 md:mt-24">
+        <h3 className="text-xl md:text-4xl font-nunito font-black text-center">
           Top Categories & Food products
         </h3>
-        <ul className="flex justify-center mt-5 gap-4">
+        <ul className="flex justify-center mt-5 md:mt-8 gap-4">
           {CATEGORIES_LIST.map((item) => (
             <li
               key={item.name}
@@ -34,7 +35,7 @@ const HomeTopCategories = () => {
                 setCategoryValue(item.name);
               }}
               className={cn(
-                'flex items-center gap-2 px-4 py-3 rounded-full border border-nature-900 cursor-pointer transition-all delay-75',
+                'flex items-center gap-2 px-4 md:px-6 py-3 md:py-4 rounded-full border border-nature-900 cursor-pointer transition-all delay-75',
                 item.name === categoryValue
                   ? 'border-primary-500 font-extrabold text-primary-500'
                   : '',
@@ -42,14 +43,20 @@ const HomeTopCategories = () => {
             >
               <Icon
                 className={cn(
-                  'flex justify-center items-center rounded-full w-7 h-7 bg-nature-800 transition-all delay-75',
+                  'flex justify-center items-center rounded-full w-7 md:w-10 h-7 md:h-10 md:text-2xl bg-nature-800 transition-all delay-75',
                   item.name === categoryValue ? 'bg-primary-500' : '',
                 )}
               >
                 {item.name === categoryValue ? (
-                  <item.activeIcon className="w-5 h-5" />
+                  <>
+                    <item.activeIcon className="md:hidden w-5 h-5" />
+                    <item.activeDesktopIcon className="hidden md:block" />
+                  </>
                 ) : (
-                  <item.icon className="w-5 h-5" />
+                  <>
+                    <item.icon className="md:hidden w-5 h-5" />
+                    <item.desktopIcon className="hidden md:block" />
+                  </>
                 )}
               </Icon>
               {item.name}
@@ -57,8 +64,14 @@ const HomeTopCategories = () => {
           ))}
         </ul>
       </section>
+      <section className="hidden md:flex gap-6 px-20 mt-10">
+        <StandardProductCard />
+        <StandardProductCard />
+        <StandardProductCard />
+        <StandardProductCard />
+      </section>
       <Swiper
-        className="mt-6 px-4"
+        className="md:hidden mt-6 px-4"
         spaceBetween={16}
         slidesPerView={1.1}
         modules={[Pagination]}
@@ -67,90 +80,18 @@ const HomeTopCategories = () => {
           clickable: true,
         }}
       >
-        <SwiperSlide className="flex flex-col border border-nature-800 rounded-2xl p-4">
-          <div className="relative flex justify-center items-center h-[152px] bg-nature-600 rounded-xl">
-            <Icon className="absolute right-3 top-3 flex justify-center items-center w-8 h-8 rounded-full bg-white">
-              <SvgHeart className="w-6 h-6" />
-            </Icon>
-            <Image
-              src={'/examples/product-image-1.png'}
-              alt="product-1"
-              width={78}
-              height={132}
-            />
-          </div>
-          <div className="mt-4 flex justify-between">
-            <p className="font-bold font-nunito max-w-[152px]">
-              Purina pro plan urinary
-            </p>
-            <Icon className="flex gap-1 text-sm font-bold">
-              <SvgWeight className="w-5 h-5" />
-              25KG
-            </Icon>
-          </div>
-          <p className="text-sm mt-3">
-            Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut scing
-            elit
-          </p>
-          <p className="font-bold text-primary-500 mt-3">$120.00</p>
+        <SwiperSlide>
+          <StandardProductCard />
         </SwiperSlide>
         <SwiperSlide className="flex flex-col border border-nature-800 rounded-2xl p-4">
-          <div className="relative flex justify-center items-center h-[152px] bg-nature-600 rounded-xl">
-            <Icon className="absolute right-3 top-3 flex justify-center items-center w-8 h-8 rounded-full bg-white">
-              <SvgHeart className="w-6 h-6" />
-            </Icon>
-            <Image
-              src={'/examples/product-image-1.png'}
-              alt="product-1"
-              width={78}
-              height={132}
-            />
-          </div>
-          <div className="mt-4 flex justify-between">
-            <p className="font-bold font-nunito max-w-[152px]">
-              Purina pro plan urinary
-            </p>
-            <Icon className="flex gap-1 text-sm font-bold">
-              <SvgWeight className="w-5 h-5" />
-              25KG
-            </Icon>
-          </div>
-          <p className="text-sm mt-3">
-            Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut scing
-            elit
-          </p>
-          <p className="font-bold text-primary-500 mt-3">$120.00</p>
+          <StandardProductCard />
         </SwiperSlide>
         <SwiperSlide className="flex flex-col border border-nature-800 rounded-2xl p-4">
-          <div className="relative flex justify-center items-center h-[152px] bg-nature-600 rounded-xl">
-            <Icon className="absolute right-3 top-3 flex justify-center items-center w-8 h-8 rounded-full bg-white">
-              <SvgHeart className="w-6 h-6" />
-            </Icon>
-            <Image
-              src={'/examples/product-image-1.png'}
-              alt="product-1"
-              width={78}
-              height={132}
-            />
-          </div>
-          <div className="mt-4 flex justify-between">
-            <p className="font-bold font-nunito max-w-[152px]">
-              Purina pro plan urinary
-            </p>
-            <Icon className="flex gap-1 text-sm font-bold">
-              <SvgWeight className="w-5 h-5" />
-              25KG
-            </Icon>
-          </div>
-          <p className="text-sm mt-3">
-            Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut scing
-            elit
-          </p>
-          <p className="font-bold text-primary-500 mt-3">$120.00</p>
+          <StandardProductCard />
         </SwiperSlide>
       </Swiper>
       <div className="flex justify-center">
-        <Button className="mt-6 font-black font-nunito w-[225px] h-[48px]">
+        <Button className="mt-6 md:mt-10 font-black font-nunito w-[225px] h-[48px] md:h-16 md:text-xl shadow-color-md md:shadow-color-xl">
           Show more
         </Button>
       </div>
