@@ -6,19 +6,19 @@
 }
 
 @layer components {
-  .active-underline {
+  .active-dot {
     position: relative;
     will-change: transform;
   }
 
-  .active-underline::after {
+  .active-dot::after {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: calc(50% - 3.5px);
+    bottom: -5px;
     content: '';
-    height: 2px;
-    width: 100%;
-    border-radius: 0 2px;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
     background: currentColor;
   }
 

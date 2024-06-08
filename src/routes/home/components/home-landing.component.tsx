@@ -16,36 +16,39 @@ import SvgStar from '@icons/star.svg';
 const HomeLanding = () => {
   return (
     <main className="px-5 pt-6">
-      <h1 className="font-nunito font-extrabold text-2xl">
-        Welcome to <span className="font-black text-primary-500">USPET </span>
-        store.
-      </h1>
-      <div className="text-lg mt-3">
-        We provide the{' '}
-        <Icon>
-          <SvgMiniPetMobile className="inline" />
-        </Icon>{' '}
-        best products for pets.
-      </div>
-      <div className="flex gap-7 mt-1">
-        <Button className="mt-5 font-black font-nunito w-[158px] h-12 gap-1">
-          <Icon>
-            <SvgPetFingersMobile />
-          </Icon>
-          Show Store
-        </Button>
-        <Icon>
-          <SvgCurvedArrowMobile />
-        </Icon>
-      </div>
       <div className="flex flex-col items-center">
-        <Image
-          src={'/static/landing-pet.png'}
-          alt="landing-image"
-          width={248}
-          height={199}
-          className="mt-4 md:w-[662px] md:h-[531px] z-10"
-        />
+        <div className="flex flex-col">
+          <h1 className="font-nunito font-extrabold text-2xl">
+            Welcome to{' '}
+            <span className="font-black text-primary-500">USPET </span>
+            store.
+          </h1>
+          <div className="text-lg mt-3">
+            We provide the{' '}
+            <Icon>
+              <SvgMiniPetMobile className="inline" />
+            </Icon>{' '}
+            best products for pets.
+          </div>
+          <div className="flex gap-7 mt-1">
+            <Button className="mt-5 font-black font-nunito w-[158px] h-12 gap-1">
+              <Icon>
+                <SvgPetFingersMobile />
+              </Icon>
+              Show Store
+            </Button>
+            <Icon>
+              <SvgCurvedArrowMobile />
+            </Icon>
+          </div>
+          <Image
+            src={'/static/landing-pet.png'}
+            alt="landing-image"
+            width={248}
+            height={199}
+            className="mt-4 md:w-[662px] md:h-[531px] z-10 self-center"
+          />
+        </div>
         <div className="bg-nature-600 rounded-3xl w-full -mt-[30px] mx-5 pt-9 pb-6 px-4">
           <p className="font-nunito font-black text-xl">
             <span className="text-primary-500">Why </span>
