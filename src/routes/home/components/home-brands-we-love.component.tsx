@@ -5,75 +5,48 @@ import React from 'react';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { BRANDS_LIST } from '../constants/home.constants';
+
+const Slide = (props: { url: string }) => {
+  return (
+    <div className="flex items-center h-[50px] md:h-[83] max-h-[50px] md:max-h-[83px]">
+      <Image
+        src={`/static/brands/${props.url}`}
+        width={150}
+        height={83}
+        alt={props.url}
+        className="h-full w-auto"
+      />
+    </div>
+  );
+};
+
 const HomeBrandsWeLove = () => {
   return (
-    <section className="mt-16">
-      <p className="font-black font-nunito text-xl text-center">
+    <section className="mt-16 md:mt-24">
+      <p className="font-black font-nunito text-xl md:text-4xl text-center">
         Brands We Love
       </p>
       <Swiper
         modules={[Autoplay]}
-        className="mt-5"
+        className="mt-5 md:hidden"
         spaceBetween={44}
         autoplay={{ delay: 2000 }}
         loop
         slidesPerView={3}
       >
-        <SwiperSlide className="flex items-center h-[50px] max-h-[50px]">
-          <Image
-            src={'/static/brands/happy-dog.png'}
-            width={50}
-            height={50}
-            alt="happy-dog"
-            className="w-full"
-          />
-        </SwiperSlide>
-        <SwiperSlide className="flex items-center h-[50px] max-h-[50px]">
-          <Image
-            src={'/static/brands/josera.png'}
-            width={50}
-            height={50}
-            alt="josera"
-            className="w-full"
-          />
-        </SwiperSlide>
-        <SwiperSlide className="flex items-center h-[50px] max-h-[50px]">
-          <Image
-            src={'/static/brands/the-honnest-kitchen.png'}
-            width={50}
-            height={50}
-            alt="the-honnest-kitchen"
-            className="w-full"
-          />
-        </SwiperSlide>
-        <SwiperSlide className="flex items-center h-[50px] max-h-[50px]">
-          <Image
-            src={'/static/brands/purina-pro-plan.png'}
-            width={50}
-            height={50}
-            alt="purina-pro-plan"
-            className="w-full"
-          />
-        </SwiperSlide>
-        <SwiperSlide className="flex items-center h-[50px] max-h-[50px]">
-          <Image
-            src={'/static/brands/top-fin.png'}
-            width={50}
-            height={50}
-            alt="top-fin"
-            className="w-full"
-          />
-        </SwiperSlide>
-        <SwiperSlide className="flex items-center h-[50px] max-h-[50px]">
-          <Image
-            src={'/static/brands/royal-canin.png'}
-            width={50}
-            height={50}
-            alt="royal-canin"
-            className="w-full"
-          />
-        </SwiperSlide>
+        {BRANDS_LIST.map((item) => (
+          <SwiperSlide key={item.url}>
+            <Slide url={item.url} />
+          </SwiperSlide>
+        ))}
       </Swiper>
+
+      <div className="hidden md:flex gap-20 justify-between px-20 mt-8">
+        {BRANDS_LIST.map((item) => (
+          <Slide key={item.url} url={item.url} />
+        ))}
+      </div>
     </section>
   );
 };

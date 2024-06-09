@@ -35,3 +35,24 @@ export const CATEGORIES_LIST = [
   },
 ] as const;
 export type CategoiesListType = (typeof CATEGORIES_LIST)[number]['name'];
+
+export const BRANDS_LIST = [
+  {
+    url: 'happy-dog.png',
+  },
+  {
+    url: 'josera.png',
+  },
+  {
+    url: 'the-honnest-kitchen.png',
+  },
+  {
+    url: 'purina-pro-plan.png',
+  },
+  {
+    url: 'top-fin.png',
+  },
+  {
+    url: 'royal-canin.png',
+  },
+];
