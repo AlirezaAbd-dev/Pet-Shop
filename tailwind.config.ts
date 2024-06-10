@@ -117,6 +117,7 @@ const config = {
           800: '#04041a',
           900: '#030314',
         },
+        link: '#004FFE',
       },
 
       // Belongs to shadcn accordion
