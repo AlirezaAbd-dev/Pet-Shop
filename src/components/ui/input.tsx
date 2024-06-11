@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import { buttonVariants } from './button';
 
 const inputVariants = cva(
-  'flex h-[44px] md:h-[54px] w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+  'flex h-[44px] md:h-[48px] w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       variant: {

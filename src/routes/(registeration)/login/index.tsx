@@ -10,19 +10,19 @@ import { Input } from '@/components/ui/input';
 import SvgEyeDesktop from '@icons/eye-desktop.svg';
 import SvgEye from '@icons/eye-mobile.svg';
 
-const Signup = () => {
+const Login = () => {
   return (
     <main className="flex min-h-screen justify-center items-center md:py-24">
-      <section className="flex flex-col items-center px-5 md:w-[486px] md:border md:border-nature-800 md:rounded-2xl md:p-6">
+      <section className="flex flex-col items-center px-5 w-full md:w-[486px] md:border md:border-nature-800 md:rounded-2xl md:p-6">
         <Icon>
           <SvgLogoMobile className="md:hidden" />
           <SvgLogoDesktop className="hidden md:block" />
         </Icon>
 
         <h3 className="mt-6 md:mt-7 md:text-2xl font-nunito font-extrabold">
-          Create your account
+          Sing in to your account
         </h3>
-        <p className="mt-2 md:mt-3 text-sm md:text-lg">Let’s get startred!</p>
+        <p className="mt-2 md:mt-3 text-sm md:text-lg">welcome back!</p>
 
         <Button className="w-full flex gap-2 bg-transparent border border-nature-800 mt-6 md:mt-8 py-[11px] rounded-lg text-sm md:text-base font-normal md:font-normal text-text-500 hover:bg-transparent">
           <Icon>
@@ -41,9 +41,7 @@ const Signup = () => {
         </div>
 
         <form className="w-full flex flex-col mt-6 md:mt-8">
-          <label className="text-sm md:text-base">Full name</label>
-          <Input className="mt-2 md:mt-3" />
-          <label className="text-sm md:text-base mt-4">Email</label>
+          <label className="text-sm md:text-base">Full name or email</label>
           <Input className="mt-2 md:mt-3" />
           <label className="text-sm md:text-base mt-4">Password</label>
           <div className="flex items-center bg-nature-600 rounded-lg mt-2 md:mt-3 pr-3">
@@ -54,31 +52,29 @@ const Signup = () => {
             </Icon>
           </div>
 
-          <div className="flex items-center w-full gap-2 mt-4">
-            <Checkbox id="terms" />
-            <label
-              htmlFor="terms"
-              className="text-xs font-nunito  cursor-pointer"
-            >
-              I agree to the{' '}
-              <span className="underline decoration-text-100">
-                Terms of Service{' '}
-              </span>
-              and the{' '}
-              <span className="underline decoration-text-100">
-                Privacy Policy.
-              </span>
-            </label>
+          <div className="flex items-center justify-between mt-4">
+            <div className="flex items-center gap-2">
+              <Checkbox id="presistance" />
+              <label
+                htmlFor="presistance"
+                className="text-xs md:text-base cursor-pointer"
+              >
+                Stay logged in
+              </label>
+            </div>
+            <p className="text-link text-xs md:text-base">
+              I forgot my password
+            </p>
           </div>
 
           <Button className="mt-6 md:mt-8 font-bold text-sm shadow-color-md md:text-base">
-            Rigester
+            Login
           </Button>
         </form>
         <p className="mt-4 md:mt-6 text-sm md:text-base">
-          Already have an account?{' '}
+          Don’t you have an account?{' '}
           <span className="font-semibold text-link cursor-pointer">
-            Sing in
+            Create account
           </span>
         </p>
       </section>
@@ -86,4 +82,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;
