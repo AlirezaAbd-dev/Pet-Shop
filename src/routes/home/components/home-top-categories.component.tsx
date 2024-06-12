@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import React, { useState } from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,9 +7,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-
-import SvgHeart from '@icons/heart.svg';
-import SvgWeight from '@icons/weight.svg';
 
 import {
   CATEGORIES_LIST,
@@ -70,26 +66,31 @@ const HomeTopCategories = () => {
         <StandardProductCard />
         <StandardProductCard />
       </section>
+
       <Swiper
         className="md:hidden mt-6 px-4"
         spaceBetween={16}
         slidesPerView={1.1}
         modules={[Pagination]}
         pagination={{
-          type: 'bullets',
           clickable: true,
+          el: '.categories-pagination',
+          type: 'bullets',
+          bulletClass: 'swiper-pagination-bullet',
+          bulletActiveClass: 'swiper-pagination-bullet-active',
         }}
       >
         <SwiperSlide>
           <StandardProductCard />
         </SwiperSlide>
-        <SwiperSlide className="flex flex-col border border-nature-800 rounded-2xl p-4">
+        <SwiperSlide>
           <StandardProductCard />
         </SwiperSlide>
-        <SwiperSlide className="flex flex-col border border-nature-800 rounded-2xl p-4">
+        <SwiperSlide>
           <StandardProductCard />
         </SwiperSlide>
       </Swiper>
+      <div className="categories-pagination"></div>
       <div className="flex justify-center">
         <Button className="mt-6 md:mt-10 font-black font-nunito w-[225px] h-[48px] md:h-16 md:text-xl shadow-color-md md:shadow-color-xl">
           Show more

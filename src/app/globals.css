@@ -54,3 +54,31 @@
     }
   }
 }
+
+.swiper-pagination-horizontal {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #cd1f46 !important;
+  opacity: 1 !important;
+  width: 24px !important;
+  border-radius: 50px;
+}
+
+.swiper-pagination-bullet {
+  background-color: #cd1f46;
+  opacity: 0.12;
+  height: 11px;
+  width: 11px;
+}
+
+.white-pagination {
+  background-color: #8d8d9f !important;
+  opacity: 1;
+}
+.white-pagination-active {
+  background-color: white !important;
+}

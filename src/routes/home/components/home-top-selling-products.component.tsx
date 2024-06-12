@@ -27,8 +27,12 @@ const HomeTopSellingProducts = () => {
           slidesPerView={1.1}
           modules={[Pagination]}
           pagination={{
-            type: 'bullets',
             clickable: true,
+            el: '.top-selling-pagination',
+            type: 'bullets',
+            bulletClass: 'swiper-pagination-bullet white-pagination',
+            bulletActiveClass:
+              'swiper-pagination-bullet-active white-pagination-active',
           }}
         >
           <SwiperSlide>
@@ -41,7 +45,7 @@ const HomeTopSellingProducts = () => {
             <TopSellingProductCard />
           </SwiperSlide>
         </Swiper>
-
+        <div className="top-selling-pagination"></div>
         {/* for desktop */}
         <div className="hidden md:flex w-full justify-end gap-6">
           <TopSellingProductCard />

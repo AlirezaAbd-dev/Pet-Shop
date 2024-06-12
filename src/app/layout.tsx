@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import 'swiper/css';
-import 'swiper/css/navigation';
+import 'swiper/swiper-bundle.css';
 
 import fonts from '@/fonts';
 
