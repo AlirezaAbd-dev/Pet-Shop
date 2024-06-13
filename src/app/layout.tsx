@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 
+import { Toaster } from '@/components/ui/toaster';
 import fonts from '@/fonts';
 
 import './globals.css';
@@ -23,6 +24,8 @@ export default function RootLayout({
         className={fonts.variables + ' font-opensans bg-white text-text-500'}
         dir="ltr"
       >
+        <Toaster />
+
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -3,8 +3,12 @@
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import * as React from 'react';
 import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experimental';
+import * as React from 'react';
+
+// app/providers.jsx
+
+// app/providers.jsx
 
 export function Providers(props: { children: React.ReactNode }) {
   const [queryClient] = React.useState(

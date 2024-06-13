@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import React from 'react';
+import { toast } from 'sonner';
 
 import SvgCurvedArrowDesktop from '@/assets/svg/curved-arrow-desktop.svg';
 import SvgCurvedArrowMobile from '@/assets/svg/curved-arrow-mobile.svg';

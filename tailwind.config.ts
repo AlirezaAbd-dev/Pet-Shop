@@ -81,7 +81,7 @@ const config = {
           800: '#83660a',
           900: '#644e08',
         },
-        successs: {
+        success: {
           50: '#e9f9f2',
           100: '#baedd8',
           200: '#99e4c5',
