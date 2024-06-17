@@ -35,7 +35,9 @@ const HomeTips = () => {
         </SwiperSlide>
       </Swiper>
 
-      <div className="tips-pagination"></div>
+      <div className="md:hidden">
+        <div className="tips-pagination"></div>
+      </div>
 
       <div className="hidden md:flex gap-6 mt-8 px-20">
         <TipsCard />

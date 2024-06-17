@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 
+import SvgCheckmarkCircle from '@icons/checkmark-circle-10.svg';
 import SvgEyeDesktop from '@icons/eye-desktop.svg';
 import SvgEye from '@icons/eye-mobile.svg';
 
@@ -53,12 +54,23 @@ const Signup = () => {
               <SvgEyeDesktop className="hidden md:block" />
             </Icon>
           </div>
-
-          <div className="flex items-center w-full gap-2 mt-4">
+          <div className="flex items-center gap-2 mt-3 md:mt-4">
+            <Icon>
+              <SvgCheckmarkCircle />
+            </Icon>
+            At least 8 characters
+          </div>
+          <div className="flex items-center gap-2 mt-2 md:mt-3">
+            <Icon>
+              <SvgCheckmarkCircle />
+            </Icon>
+            Letters and numbers
+          </div>
+          <div className="flex items-center w-full gap-2 mt-6">
             <Checkbox id="terms" />
             <label
               htmlFor="terms"
-              className="text-xs font-nunito  cursor-pointer"
+              className="text-xs md:text-base font-nunito  cursor-pointer"
             >
               I agree to the{' '}
               <span className="underline decoration-text-100">

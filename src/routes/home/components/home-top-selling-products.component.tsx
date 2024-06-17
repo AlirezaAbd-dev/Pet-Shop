@@ -45,7 +45,9 @@ const HomeTopSellingProducts = () => {
             <TopSellingProductCard />
           </SwiperSlide>
         </Swiper>
-        <div className="top-selling-pagination"></div>
+        <div className="md:hidden">
+          <div className="top-selling-pagination"></div>
+        </div>
         {/* for desktop */}
         <div className="hidden md:flex w-full justify-end gap-6">
           <TopSellingProductCard />

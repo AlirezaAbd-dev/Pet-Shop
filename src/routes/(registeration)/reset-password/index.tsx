@@ -6,6 +6,7 @@ import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
+import SvgCheckmarkCircle from '@icons/checkmark-circle-10.svg';
 import SvgEyeDesktop from '@icons/eye-desktop.svg';
 import SvgEye from '@icons/eye-mobile.svg';
 
@@ -33,7 +34,18 @@ const ResetPassword = () => {
               <SvgEyeDesktop className="hidden md:block" />
             </Icon>
           </div>
-          <p className="mt-4">Minimum 8 characters</p>
+          <div className="flex items-center gap-2 mt-4">
+            <Icon>
+              <SvgCheckmarkCircle />
+            </Icon>
+            At least 8 characters
+          </div>
+          <div className="flex items-center gap-2 mt-3">
+            <Icon>
+              <SvgCheckmarkCircle />
+            </Icon>
+            Letters and numbers
+          </div>
           <Button className="font-bold text-sm md:text-base shadow-color-md rounded-xl mt-6 md:mt-8">
             Reset password
           </Button>

@@ -90,7 +90,9 @@ const HomeTopCategories = () => {
           <StandardProductCard />
         </SwiperSlide>
       </Swiper>
-      <div className="categories-pagination"></div>
+      <div className="block md:hidden">
+        <div className="categories-pagination"></div>
+      </div>
       <div className="flex justify-center">
         <Button className="mt-6 md:mt-10 font-black font-nunito w-[225px] h-[48px] md:h-16 md:text-xl shadow-color-md md:shadow-color-xl">
           Show more

@@ -11,7 +11,7 @@ import SvgTelegramDesktop from '@/assets/svg/telegram-circle-desktop.svg';
 import SvgTelegram from '@/assets/svg/telegram-circle.svg';
 import Icon from '@/components/icon';
 
-const HomeFooter = () => {
+const Footer = () => {
   return (
     <footer className="flex flex-col mt-16 md:mt-24 bg-secondary-500 px-5 md:px-20 pt-6 md:pt-9">
       <div className="flex justify-between">
@@ -107,4 +107,4 @@ const HowToContact = () => {
   );
 };
 
-export default HomeFooter;
+export default Footer;

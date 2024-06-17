@@ -1,7 +1,7 @@
 'use client';
 
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { ChevronDown, Plus } from 'lucide-react';
+import { Minus, Plus } from 'lucide-react';
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
@@ -29,14 +29,15 @@ const AccordionTrigger = React.forwardRef<
       <AccordionPrimitive.Trigger
         ref={ref}
         className={cn(
-          'flex flex-1 items-center justify-between gap-6 p-3 font-normal md:text-lg transition-all [&[data-state=open]>span>svg]:rotate-45 bg-nature-600 rounded-xl md:rounded-2xl text-left outline-none',
+          'flex flex-1 items-center justify-between gap-6 p-3 font-normal md:text-lg transition-all [&[data-state=open]>span>.plus]:hidden [&[data-state=closed]>span>.minus]:hidden bg-nature-600 rounded-xl md:rounded-2xl text-left outline-none',
           className,
         )}
         {...props}
       >
         {children}
         <span className="flex justify-center items-center rounded-lg md:rounded-xl bg-primary-500 min-w-8 min-h-8 md:min-w-10 md:min-h-10">
-          <Plus className="h-6 w-6 shrink-0 transition-transform duration-200 text-white" />
+          <Plus className="plus h-6 w-6 shrink-0 transition-transform duration-200 text-white" />
+          <Minus className="minus h-6 w-6 shrink-0 transition-transform duration-200 text-white" />
         </span>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
