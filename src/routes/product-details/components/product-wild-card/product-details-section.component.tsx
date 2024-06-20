@@ -104,7 +104,7 @@ const ProductDetailsSection = () => {
           </span>
         </div>
 
-        <Button className="font-bold text-sm w-full rounded-lg md:h-16 md:rounded-2xl">
+        <Button className="font-bold text-sm w-full rounded-lg md:h-16 md:rounded-2xl shadow-color-md">
           Add to cart
         </Button>
       </div>
