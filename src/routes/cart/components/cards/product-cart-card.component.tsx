@@ -8,7 +8,7 @@ import Icon from '@/components/icon';
 
 const ProductCartCard = () => {
   return (
-    <li className="flex justify-between border border-nature-900 rounded-2xl p-3 md:p-5">
+    <li className="flex justify-between md:items-center border border-nature-900 rounded-2xl p-3 md:p-5">
       <div className="flex gap-3 md:gap-4">
         <div className="flex items-center justify-center w-[53px] h-[53px] md:w-20 md:h-20 bg-nature-700 rounded-xl">
           <Image
@@ -30,7 +30,7 @@ const ProductCartCard = () => {
           </Icon>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row-reverse items-end md:itexms-center md:gap-9">
+      <div className="flex flex-col md:flex-row-reverse items-end md:items-center md:gap-9">
         <div className="md:flex md:flex-col md:justify-center md:h-full text-right">
           <div className="md:flex gap-2 text-xs md:text-xl text-text-300">
             <p className="line-through decoration-text-300">$89.12</p>
@@ -40,7 +40,7 @@ const ProductCartCard = () => {
           </div>
           <p className="font-bold text-sm md:text-2xl mt-1">$ 89.12</p>
         </div>
-        <div className="mt-3">
+        <div className="mt-3 md:mt-0">
           <div className="flex gap-4 md:gap-6 justify-between items-center p-2 py-[5px] md:p-3 border border-nature-900 rounded-lg md:rounded-2xl">
             <span className="flex justify-center items-center w-6 h-6 md:w-11 md:h-11 bg-nature-700 rounded-[4px] md:rounded-lg">
               <Minus className="w-4 md:w-8 text-nature-900" />

@@ -36,7 +36,7 @@ const PROGRESS_ITEMS = [
   },
   {
     id: 3,
-    label: 'Final order',
+    label: 'Order complete',
     mobileIconActive: SvgShoppingBagCheckmarkMobileWhite,
     mobileIcon: SvgShoppingBagCheckmarkMobile,
     desktopIconActive: SvgShoppingBagCheckmarkDesktopWhite,
