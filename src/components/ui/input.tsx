@@ -11,7 +11,7 @@ const inputVariants = cva(
     variants: {
       variant: {
         default:
-          'border-nature-600 bg-nature-600 text-text-500 placeholder:text-[#A0A0A1] rounded-xl disabled:border-[#F7F7F7] disabled:text-[#CACACB]',
+          'border-nature-600 bg-nature-600 text-text-500 placeholder:text-[#A0A0A1] rounded-xl disabled:border-[#F7F7F7] disabled:text-text-200',
         error: 'border-[#FF8787]',
         success: 'border-[#4ACF98]',
         warning: 'border-[#F4D36A]',
