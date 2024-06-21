@@ -36,7 +36,7 @@ const PROGRESS_ITEMS = [
   },
   {
     id: 3,
-    label: 'Order complete',
+    label: 'Final order',
     mobileIconActive: SvgShoppingBagCheckmarkMobileWhite,
     mobileIcon: SvgShoppingBagCheckmarkMobile,
     desktopIconActive: SvgShoppingBagCheckmarkDesktopWhite,
@@ -77,7 +77,7 @@ const ProgressBar = (props: ProgressBarProps) => {
                 </>
               )}
             </Icon>
-            {item.label}
+            <p className="whitespace-nowrap">{item.label}</p>
           </div>
           {index !== PROGRESS_ITEMS.length - 1 && (
             <div
