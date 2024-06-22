@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import Navbar from '@/components/shared/navbar.component';
+import Navbar from '@/components/shared/navbar/navbar.component';
 
 type CoreLayoutProps = {
   children: ReactNode;

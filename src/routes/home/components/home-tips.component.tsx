@@ -39,7 +39,7 @@ const HomeTips = () => {
         <div className="tips-pagination"></div>
       </div>
 
-      <div className="hidden md:flex gap-6 mt-8 px-20">
+      <div className="hidden md:grid md:grid-cols-3 gap-6 mt-8 px-20">
         <TipsCard />
         <TipsCard />
         <TipsCard />

@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import React from 'react';
 
 import SvgLogoDesktop from '@/assets/svg/logo-title-desktop.svg';
 import SvgLogoMobile from '@/assets/svg/logo-title-mobile.svg';
@@ -9,10 +8,10 @@ import { Input } from '@/components/ui/input';
 import SvgArrow from '@icons/arrow.1.svg';
 import SvgMenuBurger from '@icons/menu-burger-square.1.svg';
 import SvgSearch from '@icons/search-loupe-custom.svg';
-import SvgShoppingCardDesktop from '@icons/shopping-card-desktop.svg';
-import SvgShoppingCard from '@icons/shopping-card.svg';
 import SvgSingleUserDesktop from '@icons/single-user-desktop.svg';
 import SvgSingleUser from '@icons/single-user.svg';
+
+import CartHover from './cart-hover.component';
 
 const Navbar = () => {
   return (
@@ -61,12 +60,7 @@ const Navbar = () => {
             <SvgSingleUserDesktop className="hidden md:block w-8 h-8" />
           </Icon>
         </Link>
-        <Link href={'/cart'}>
-          <Icon className="flex justify-center items-center w-8 md:w-14 h-8 md:h-14 cursor-pointer bg-primary-500 rounded-lg md:rounded-2xl text-primary-500">
-            <SvgShoppingCard className="md:hidden w-6 h-6" />
-            <SvgShoppingCardDesktop className="hidden md:block w-8 h-8" />
-          </Icon>
-        </Link>
+        <CartHover />
       </div>
     </nav>
   );

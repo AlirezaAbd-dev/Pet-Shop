@@ -60,7 +60,7 @@ const HomeTopCategories = () => {
           ))}
         </ul>
       </section>
-      <section className="hidden md:flex gap-6 px-20 mt-10">
+      <section className="hidden md:grid md:grid-cols-4 gap-6 px-20 mt-10">
         <StandardProductCard />
         <StandardProductCard />
         <StandardProductCard />
