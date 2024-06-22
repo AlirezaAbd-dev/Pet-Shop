@@ -40,7 +40,7 @@ const ProductDetailsSection = () => {
   );
 
   return (
-    <section className="flex flex-col mt-6 md:mt-0 md:w-full">
+    <section className="flex flex-col mt-6 md:mt-0 md:w-full md:col-span-6">
       <h1 className="font-nunito font-black text-lg md:text-[32px] md:leading-9">
         Royal Canin Urinary
       </h1>

@@ -3,7 +3,7 @@ import ProductDetailsSection from './product-details-section.component';
 
 const ProductWildCard = () => {
   return (
-    <main className="mt-4 md:mt-16 mx-5 md:mx-20 flex flex-col md:flex-row md:gap-14">
+    <main className="mt-4 md:mt-16 mx-5 md:mx-20 flex flex-col md:grid md:grid-cols-12 md:gap-14">
       <ImagesShowcase />
       <ProductDetailsSection />
     </main>

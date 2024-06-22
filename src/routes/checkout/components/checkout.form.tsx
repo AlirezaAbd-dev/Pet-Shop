@@ -5,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 
 const CheckoutForm = () => {
   return (
-    <main className="w-full">
+    <main className="w-full md:col-span-8">
       <h1 className="font-nunito font-black text-lg md:text-2xl">
         Billing Details
       </h1>

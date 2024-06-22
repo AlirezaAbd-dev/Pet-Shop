@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 import SvgLogoDesktop from '@/assets/svg/logo-signup-desktop.svg';
@@ -22,9 +23,11 @@ const ForgotPasswordSent = () => {
           email
         </p>
 
-        <Button className="w-full font-bold text-sm md:text-base shadow-color-md rounded-xl mt-6 md:mt-8">
-          Back to sing in
-        </Button>
+        <Link href="/login" className="w-full">
+          <Button className="w-full font-bold text-sm md:text-base shadow-color-md rounded-xl mt-6 md:mt-8">
+            Back to sing in
+          </Button>
+        </Link>
         <p className="w-full mt-4 md:mt-6 text-sm md:text-base text-center cursor-pointer">
           Resend the message (02:00)
         </p>

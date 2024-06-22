@@ -3,7 +3,7 @@ import React from 'react';
 
 const HomeAchievements = () => {
   return (
-    <section className="px-5 mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 space-x-4 md:space-x-6 space-y-4 md:px-20">
+    <section className="px-5 mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-4 md:px-20">
       <div className="flex flex-col items-center justify-center bg-[#F9F7FF] rounded-2xl p-4 md:h-[298px]">
         <span className="flex justify-center items-center rounded-full bg-white w-[75px] h-[75px] md:w-[98px] md:h-[98px]">
           <Image
@@ -17,7 +17,7 @@ const HomeAchievements = () => {
         <p className="font-nunito font-black md:text-2xl mt-3 md:mt-6">60 +</p>
         <p className="mt-2 text-[15px] md:text-2xl">Professional Vets</p>
       </div>
-      <div className="flex flex-col items-center justify-center bg-[#FFFBF4] rounded-2xl p-4">
+      <div className="flex flex-col items-center justify-center bg-[#FFFBF4] rounded-2xl p-4 md:h-[298px]">
         <span className="flex justify-center items-center rounded-full bg-white w-[75px] h-[75px] md:w-[98px] md:h-[98px]">
           <Image
             src={'/static/achievements/protection.png'}
@@ -32,7 +32,7 @@ const HomeAchievements = () => {
         </p>
         <p className="mt-2 text-[15px] md:text-2xl">Protection</p>
       </div>
-      <div className="flex flex-col items-center justify-center bg-[#F0FFFB] rounded-2xl p-4">
+      <div className="flex flex-col items-center justify-center bg-[#F0FFFB] rounded-2xl p-4 md:h-[298px]">
         <span className="flex justify-center items-center rounded-full bg-white w-[75px] h-[75px] md:w-[98px] md:h-[98px]">
           <Image
             src={'/static/achievements/awards-win.png'}
@@ -45,7 +45,7 @@ const HomeAchievements = () => {
         <p className="font-nunito font-black md:text-2xl mt-3 md:mt-6">80 +</p>
         <p className="mt-2 text-[15px] md:text-2xl">Awards Win</p>
       </div>
-      <div className="flex flex-col items-center justify-center bg-[#FFF7F6] rounded-2xl p-4">
+      <div className="flex flex-col items-center justify-center bg-[#FFF7F6] rounded-2xl p-4 md:h-[298px]">
         <span className="flex justify-center items-center rounded-full bg-white w-[75px] h-[75px] md:w-[98px] md:h-[98px]">
           <Image
             src={'/static/achievements/happy-clients.png'}

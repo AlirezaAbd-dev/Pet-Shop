@@ -1,3 +1,8 @@
+'use client';
+
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
 import SvgGoogleDesktop from '@/assets/svg/google-desktop.svg';
 import SvgGoogleMobile from '@/assets/svg/google-mobile.svg';
 import SvgLogoDesktop from '@/assets/svg/logo-signup-desktop.svg';
@@ -11,6 +16,8 @@ import SvgEyeDesktop from '@icons/eye-desktop.svg';
 import SvgEye from '@icons/eye-mobile.svg';
 
 const Login = () => {
+  const router = useRouter();
+
   return (
     <main className="flex min-h-screen justify-center items-center md:py-24">
       <section className="flex flex-col items-center px-5 w-full md:w-[486px] md:border md:border-nature-800 md:rounded-2xl md:p-6">
@@ -62,20 +69,32 @@ const Login = () => {
                 Stay logged in
               </label>
             </div>
-            <p className="text-link text-xs md:text-base">
+            <Link
+              href={'forgot-password'}
+              className="text-link text-xs md:text-base"
+            >
               I forgot my password
-            </p>
+            </Link>
           </div>
 
-          <Button className="mt-6 md:mt-8 font-bold text-sm shadow-color-md md:text-base">
+          <Button
+            type="button"
+            onClick={() => {
+              router.push('/email-verification');
+            }}
+            className="mt-6 md:mt-8 font-bold text-sm shadow-color-md md:text-base"
+          >
             Login
           </Button>
         </form>
         <p className="mt-4 md:mt-6 text-sm md:text-base">
           Don’t you have an account?{' '}
-          <span className="font-semibold text-link cursor-pointer">
+          <Link
+            href={'/signup'}
+            className="font-semibold text-link cursor-pointer"
+          >
             Create account
-          </span>
+          </Link>
         </p>
       </section>
     </main>

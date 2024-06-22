@@ -10,7 +10,7 @@ import ProductCartCard from './cards/product-cart-card.component';
 
 const ShoppingCart = () => {
   return (
-    <section className="w-full">
+    <section className="w-full md:col-span-8">
       <div className="flex justify-between">
         <p className="font-nunito font-black text-lg md:text-2xl">
           Shopping cart

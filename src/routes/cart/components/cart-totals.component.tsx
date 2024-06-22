@@ -1,10 +1,15 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import { Button } from '@/components/ui/button';
 
 const CartTotals = () => {
+  const router = useRouter();
+
   return (
-    <section className="flex flex-col md:w-[411px] border border-nature-900 md:mt-14 p-3 md:p-5 rounded-xl md:rounded-2xl">
+    <section className="flex flex-col md:w-full border border-nature-900 md:col-span-4 md:mt-14 p-3 md:p-5 rounded-xl md:rounded-2xl">
       <h3 className="font-nunito font-black text-lg md:text-2xl">
         Cart Totals
       </h3>
@@ -21,7 +26,12 @@ const CartTotals = () => {
         <p>Total:</p>
         <p>$ 54.12</p>
       </div>
-      <Button className="mt-4 md:mt-6 font-bold text-sm rounded-lg md:rounded-2xl md:h-[56px]">
+      <Button
+        onClick={() => {
+          router.push('/cart/checkout');
+        }}
+        className="mt-4 md:mt-6 font-bold text-sm rounded-lg md:rounded-2xl md:h-[56px]"
+      >
         Proceed to checkout
       </Button>
     </section>

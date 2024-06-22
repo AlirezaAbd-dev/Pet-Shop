@@ -13,15 +13,16 @@ import {
 
 const HomeFAQ = () => {
   return (
-    <section className="mt-16 md:px-20 md:flex md:gap-16 md:mt-24">
-      <div className="md:pt-11">
+    <section className="mt-16 md:px-20 md:grid md:grid-cols-12 md:mt-24">
+      <div className="md:pt-11 md:col-span-6">
         <p className="px-7 font-black font-nunito text-xl md:text-4xl text-center md:text-left">
           the best product for{' '}
           <Icon>
             <SvgMiniPetMobile className="inline md:hidden" />
             <SvgMiniPetDesktop className="hidden md:inline" />
           </Icon>{' '}
-          your furry freinds
+          your <br />
+          furry freinds
         </p>
         <Accordion
           type="single"
@@ -74,8 +75,8 @@ const HomeFAQ = () => {
           </AccordionItem>
         </Accordion>
       </div>
-
-      <div className="flex justify-center pt-6 md:pt-0">
+      <div className="hidden md:block md:col-span-1"></div>
+      <div className="flex justify-center pt-6 md:pt-0 md:col-span-5">
         <Image
           src={'/static/kity-hurt.png'}
           alt="kity-hurt"

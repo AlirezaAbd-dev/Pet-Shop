@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 import SvgLogoDesktop from '@/assets/svg/logo-title-desktop.svg';
@@ -25,9 +26,11 @@ const Navbar = () => {
           <SvgLogoDesktop className="hidden md:block" />
         </Icon>
         <ul className="hidden md:flex items-center pl-8 gap-7">
-          <li className="flex items-center gap-1 cursor-pointer font-bold text-lg text-primary-500 active-dot">
-            Home
-          </li>
+          <Link href={'/'}>
+            <li className="flex items-center gap-1 cursor-pointer font-bold text-lg text-primary-500 active-dot">
+              Home
+            </li>
+          </Link>
           <li className="flex items-center gap-1 cursor-pointer font-bold text-lg">
             Shop{' '}
             <Icon>
@@ -52,14 +55,18 @@ const Navbar = () => {
             className="bg-transparent placeholder:text-text-200 font-nunito border-none text-base"
           />
         </div>
-        <Icon className="flex justify-center items-center w-8 md:w-14 h-8 md:h-14 cursor-pointer bg-secondary-500 rounded-lg md:rounded-2xl text-white">
-          <SvgSingleUser className="md:hidden w-6 h-6" />
-          <SvgSingleUserDesktop className="hidden md:block w-8 h-8" />
-        </Icon>
-        <Icon className="flex justify-center items-center w-8 md:w-14 h-8 md:h-14 cursor-pointer bg-primary-500 rounded-lg md:rounded-2xl text-primary-500">
-          <SvgShoppingCard className="md:hidden w-6 h-6" />
-          <SvgShoppingCardDesktop className="hidden md:block w-8 h-8" />
-        </Icon>
+        <Link href={'/login'}>
+          <Icon className="flex justify-center items-center w-8 md:w-14 h-8 md:h-14 cursor-pointer bg-secondary-500 rounded-lg md:rounded-2xl text-white">
+            <SvgSingleUser className="md:hidden w-6 h-6" />
+            <SvgSingleUserDesktop className="hidden md:block w-8 h-8" />
+          </Icon>
+        </Link>
+        <Link href={'/cart'}>
+          <Icon className="flex justify-center items-center w-8 md:w-14 h-8 md:h-14 cursor-pointer bg-primary-500 rounded-lg md:rounded-2xl text-primary-500">
+            <SvgShoppingCard className="md:hidden w-6 h-6" />
+            <SvgShoppingCardDesktop className="hidden md:block w-8 h-8" />
+          </Icon>
+        </Link>
       </div>
     </nav>
   );

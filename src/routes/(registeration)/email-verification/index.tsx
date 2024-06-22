@@ -1,3 +1,6 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import SvgLogoDesktop from '@/assets/svg/logo-signup-desktop.svg';
@@ -7,6 +10,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
 const EmailVerification = () => {
+  const router = useRouter();
+
   return (
     <main className="flex justify-center items-center min-h-screen px-5 md:p-24">
       <section className="flex flex-col items-center md:w-[486px] md:border md:border-nature-800 md:rounded-2xl md:p-6">
@@ -27,14 +32,25 @@ const EmailVerification = () => {
             Email verification code
           </label>
           <Input className="mt-2 md:mt-3" />
-          <Button className="font-bold text-sm md:text-base shadow-color-md rounded-xl mt-6 md:mt-8">
+          <Button
+            type="button"
+            onClick={() => {
+              router.push('/');
+            }}
+            className="font-bold text-sm md:text-base shadow-color-md rounded-xl mt-6 md:mt-8"
+          >
             Confirm
           </Button>
         </form>
         <p className="w-full mt-4 md:mt-6 text-sm md:text-base text-center cursor-pointer">
           Resend the Code (02:00)
         </p>
-        <p className="w-full mt-4 md:mt-6 text-sm md:text-base text-center cursor-pointer">
+        <p
+          onClick={() => {
+            router.back();
+          }}
+          className="w-full mt-4 md:mt-6 text-sm md:text-base text-center cursor-pointer"
+        >
           Back
         </p>
       </section>

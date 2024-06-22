@@ -1,3 +1,6 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import SvgLogoDesktop from '@/assets/svg/logo-signup-desktop.svg';
@@ -7,6 +10,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
 const ForgotPassword = () => {
+  const router = useRouter();
+
   return (
     <main className="flex justify-center items-center min-h-screen px-5 md:p-24">
       <section className="flex flex-col items-center md:w-[486px] md:border md:border-nature-800 md:rounded-2xl md:p-6">
@@ -25,7 +30,13 @@ const ForgotPassword = () => {
         <form className="w-full flex flex-col mt-6 md:mt-8">
           <label className="text-sm md:text-base">Email address</label>
           <Input className="mt-2 md:mt-3" />
-          <Button className="font-bold text-sm md:text-base shadow-color-md rounded-xl mt-6 md:mt-8">
+          <Button
+            onClick={() => {
+              router.push('/forgot-password/sent');
+            }}
+            type="button"
+            className="font-bold text-sm md:text-base shadow-color-md rounded-xl mt-6 md:mt-8"
+          >
             Send email
           </Button>
         </form>

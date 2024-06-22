@@ -24,13 +24,14 @@ const HomeLanding = () => {
               <span className="font-black text-primary-500">USPET </span>
               store.
             </h1>
-            <div className="text-lg mt-3 md:mt-8 md:text-[40px] leading-10">
+            <div className="text-lg mt-3 md:mt-8 md:text-[40px] md:leading-10">
               We provide the{' '}
               <Icon>
                 <SvgMiniPetMobile className="inline md:hidden" />
                 <SvgMiniPetDesktop className="hidden md:inline" />
               </Icon>{' '}
-              best products for pets.
+              best products <br />
+              for pets.
             </div>
             <div className="flex gap-7 md:gap-8 mt-1 md:mt-4">
               <Button className="mt-5 md:mt-4 font-black font-nunito md:text-xl w-[158px] md:w-[225px] h-12 md:h-16 gap-1 md:gap-2 shadow-color-md md:shadow-color-xl">

@@ -5,7 +5,7 @@ import React from 'react';
 
 const ImagesShowcase = () => {
   return (
-    <section className="flex gap-4 md:gap-14">
+    <section className="flex gap-4 md:gap-14 md:col-span-6">
       <ul className="flex flex-col gap-2 md:gap-6">
         <li className="flex justify-center items-center w-[68px] h-[56px] md:w-[110px] md:h-[111px] rounded-lg border border-primary-500">
           <Image
@@ -44,7 +44,7 @@ const ImagesShowcase = () => {
           />
         </li>
       </ul>
-      <div className="md:relative flex justify-center items-center w-full md:h-[600px] md:w-[474px] bg-nature-600 rounded-2xl">
+      <div className="md:relative flex justify-center items-center w-full md:h-[600px] bg-nature-600 rounded-2xl">
         <Image
           src={'/examples/single-product-image-1.png'}
           alt="example"

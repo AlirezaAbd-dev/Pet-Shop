@@ -6,6 +6,7 @@ import SvgWhatsupDesktop from '@/assets/svg/Whatsup-desktop.svg';
 import SvgWhatsup from '@/assets/svg/Whatsup.svg';
 import SvgEmailDesktop from '@/assets/svg/email-letter-mail-medium-desktop.svg';
 import SvgEmail from '@/assets/svg/email-letter-mail-medium.svg';
+import SvgFooterDogMobile from '@/assets/svg/footer-dog-mobile.svg';
 import SvgFooterlogo from '@/assets/svg/footer-logo.svg';
 import SvgTelegramDesktop from '@/assets/svg/telegram-circle-desktop.svg';
 import SvgTelegram from '@/assets/svg/telegram-circle.svg';
@@ -59,16 +60,19 @@ const Footer = () => {
       <Image
         src={'/static/footer-dog-mobile.png'}
         alt="footer-dog"
+        quality={100}
         width={316}
-        height={190}
+        height={191}
         className="mt-14 md:hidden"
       />
+
       <Image
         src={'/static/footer-dog-desktop.png'}
         alt="footer-dog"
+        quality={100}
         width={1280}
         height={521}
-        className="hidden md:block"
+        className="hidden md:block self-center"
       />
     </footer>
   );
