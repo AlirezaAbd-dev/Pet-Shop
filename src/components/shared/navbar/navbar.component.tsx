@@ -11,7 +11,7 @@ import SvgSearch from '@icons/search-loupe-custom.svg';
 import SvgSingleUserDesktop from '@icons/single-user-desktop.svg';
 import SvgSingleUser from '@icons/single-user.svg';
 
-import CartHover from './cart-hover.component';
+import CartButton from './cart-hover.component';
 
 const Navbar = () => {
   return (
@@ -60,7 +60,8 @@ const Navbar = () => {
             <SvgSingleUserDesktop className="hidden md:block w-8 h-8" />
           </Icon>
         </Link>
-        <CartHover />
+
+        <CartButton />
       </div>
     </nav>
   );
