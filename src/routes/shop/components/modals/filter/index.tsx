@@ -1,7 +1,7 @@
 'use client';
 
 import { X } from 'lucide-react';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
@@ -12,6 +12,12 @@ import Filters from '../../filters/filters.component';
 const FilterModal = () => {
   const isModalOpen = useFilterModalStore((s) => s.isModalOpen);
   const setIsModalOpen = useFilterModalStore((s) => s.setIsModalOpen);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setIsModalOpen(false);
+    });
+  }, []);
 
   return (
     <Dialog open={isModalOpen}>

@@ -12,18 +12,18 @@ const BrandFilter = () => {
     <AccordionItemFilter value="brand">
       <AccordionTriggerFilter>Brand</AccordionTriggerFilter>
       <AccordionContentFilter className="flex flex-col gap-4 p-1 pb-4 text-sm md:text-base">
-        <div className="flex items-center gap-3">
-          <Checkbox variant={'dark'} />
+        <label htmlFor="Acana" className="flex items-center gap-3">
+          <Checkbox id="Acana" variant={'dark'} />
           Acana
-        </div>
-        <div className="flex items-center gap-3">
-          <Checkbox variant={'dark'} />
+        </label>
+        <label htmlFor="Capstar" className="flex items-center gap-3">
+          <Checkbox id="Capstar" variant={'dark'} />
           Capstar
-        </div>
-        <div className="flex items-center gap-3">
-          <Checkbox variant={'dark'} />
+        </label>
+        <label htmlFor="Higgins" className="flex items-center gap-3">
+          <Checkbox id="Higgins" variant={'dark'} />
           Higgins
-        </div>
+        </label>
       </AccordionContentFilter>
     </AccordionItemFilter>
   );

@@ -12,42 +12,48 @@ const CategoryFilter = () => {
     <AccordionItemFilter value="category">
       <AccordionTriggerFilter>Category</AccordionTriggerFilter>
       <AccordionContentFilter className="flex flex-col gap-4 p-1 pb-4 text-sm md:text-base">
-        <div className="flex items-center gap-3">
-          <Checkbox variant={'dark'} />
+        <label htmlFor="Toys" className="flex items-center gap-3">
+          <Checkbox id="Toys" variant={'dark'} />
           Toys
-        </div>
-        <div className="flex items-center gap-3">
-          <Checkbox variant={'dark'} />
+        </label>
+        <label htmlFor="Resting places" className="flex items-center gap-3">
+          <Checkbox id="Resting places" variant={'dark'} />
           Resting places
-        </div>
-        <div className="flex items-center gap-3">
-          <Checkbox variant={'dark'} />
+        </label>
+        <label htmlFor="At home" className="flex items-center gap-3">
+          <Checkbox id="At home" variant={'dark'} />
           At home
-        </div>
-        <div className="flex items-center gap-3">
-          <Checkbox variant={'dark'} />
+        </label>
+        <label htmlFor="On tour" className="flex items-center gap-3">
+          <Checkbox id="On tour" variant={'dark'} />
           On tour
-        </div>
-        <div className="flex items-center gap-3">
-          <Checkbox variant={'dark'} />
+        </label>
+        <label htmlFor="Food" className="flex items-center gap-3">
+          <Checkbox id="Food" variant={'dark'} />
           Food
-        </div>
-        <div className="flex items-center gap-3">
-          <Checkbox variant={'dark'} />
+        </label>
+        <label htmlFor="Training and sport" className="flex items-center gap-3">
+          <Checkbox id="Training and sport" variant={'dark'} />
           Training and sport
-        </div>
-        <div className="flex items-center gap-3">
-          <Checkbox variant={'dark'} />
+        </label>
+        <label htmlFor="Resting places" className="flex items-center gap-3">
+          <Checkbox id="Resting places" variant={'dark'} />
           Resting places
-        </div>
-        <div className="flex items-center gap-3">
-          <Checkbox variant={'dark'} />
+        </label>
+        <label
+          htmlFor="Health/care and hygiene/vet"
+          className="flex items-center gap-3"
+        >
+          <Checkbox id="Health/care and hygiene/vet" variant={'dark'} />
           Health/care and hygiene/vet
-        </div>
-        <div className="flex items-center gap-3">
-          <Checkbox variant={'dark'} />
+        </label>
+        <label
+          htmlFor="Snack and supplementary food"
+          className="flex items-center gap-3"
+        >
+          <Checkbox id="Snack and supplementary food" variant={'dark'} />
           Snack and supplementary food
-        </div>
+        </label>
       </AccordionContentFilter>
     </AccordionItemFilter>
   );

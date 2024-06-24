@@ -30,7 +30,7 @@ const ShopProducts = () => {
         </p>
       </section>
       <section className="md:hidden flex items-center mt-4 gap-4">
-        <div className="flex items-center gap-1 md:gap-2 w-full h-11 md:h-12 bg-nature-600 rounded-2xl px-3">
+        <div className="flex items-center gap-1 md:gap-2 flex-1 h-11 md:h-12 bg-nature-600 rounded-2xl px-3">
           <Icon className="text-text-200">
             <SvgSearch className="hidden md:block w-8 h-8" />
             <SvgSearchMobile className="md:hidden w-6 h-6" />
