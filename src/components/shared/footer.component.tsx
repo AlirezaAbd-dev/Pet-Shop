@@ -1,13 +1,14 @@
 import Image from 'next/image';
 import React from 'react';
 
-import SvgPhoneCall from '@/assets/svg/Phone-Call.svg';
+import SvgPhoneCallMobile from '@/assets/svg/Phone-Call.svg';
 import SvgWhatsupDesktop from '@/assets/svg/Whatsup-desktop.svg';
 import SvgWhatsup from '@/assets/svg/Whatsup.svg';
 import SvgEmailDesktop from '@/assets/svg/email-letter-mail-medium-desktop.svg';
 import SvgEmail from '@/assets/svg/email-letter-mail-medium.svg';
 import SvgFooterDogMobile from '@/assets/svg/footer-dog-mobile.svg';
 import SvgFooterlogo from '@/assets/svg/footer-logo.svg';
+import SvgPhoneCallDesktop from '@/assets/svg/phone-call-desktop.svg';
 import SvgTelegramDesktop from '@/assets/svg/telegram-circle-desktop.svg';
 import SvgTelegram from '@/assets/svg/telegram-circle.svg';
 import Icon from '@/components/icon';
@@ -73,7 +74,8 @@ const HowToContact = () => {
     <>
       <span className="flex justify-center items-center md:gap-2 w-12 h-12 md:w-[213px] md:h-[67px] border border-white rounded-full">
         <Icon>
-          <SvgPhoneCall />
+          <SvgPhoneCallMobile className="md:hidden" />
+          <SvgPhoneCallDesktop className="hidden md:block" />
         </Icon>
         <p className="hidden md:inline text-white font-nunito font-bold">
           +1-245-234-211

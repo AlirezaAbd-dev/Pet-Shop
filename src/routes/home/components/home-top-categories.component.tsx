@@ -32,7 +32,7 @@ const HomeTopCategories = () => {
                 setCategoryValue(item.name);
               }}
               className={cn(
-                'flex items-center gap-2 px-4 md:px-6 py-3 md:py-4 rounded-full border border-nature-900 cursor-pointer transition-all delay-75',
+                'flex items-center justify-center gap-2 px-4 md:px-6 py-3 md:py-4 w-[99px] md:w-[144px] rounded-full border border-nature-900 cursor-pointer',
                 item.name === categoryValue
                   ? 'border-primary-500 font-extrabold text-primary-500'
                   : '',
@@ -40,7 +40,7 @@ const HomeTopCategories = () => {
             >
               <Icon
                 className={cn(
-                  'flex justify-center items-center rounded-full w-7 md:w-10 h-7 md:h-10 md:text-2xl bg-nature-800 transition-all delay-75',
+                  'flex justify-center items-center rounded-full w-7 md:w-10 h-7 md:h-10 md:text-2xl bg-nature-800',
                   item.name === categoryValue ? 'bg-primary-500' : '',
                 )}
               >

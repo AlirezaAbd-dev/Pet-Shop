@@ -15,7 +15,7 @@ const TipsCard = (props: TipCardProps) => {
       <img
         src={`/static/${props.image}`}
         alt="tip-cat"
-        className="w-full md:rounded-2xl h-[180px] object-center"
+        className="w-full md:rounded-2xl h-[180px] md:h-[210px] object-center"
       />
       <span className="flex gap-1 mt-3 bg-primary-50/5 text-primary-500 px-2 py-1 rounded-[50px] md:font-semibold">
         <Icon>

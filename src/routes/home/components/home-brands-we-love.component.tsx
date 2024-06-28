@@ -1,8 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import React from 'react';
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, FreeMode } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { BRANDS_LIST } from '../constants/home.constants';
@@ -26,12 +25,13 @@ const HomeBrandsWeLove = () => {
         Brands We Love
       </p>
       <Swiper
-        modules={[Autoplay]}
+        modules={[Autoplay, FreeMode]}
         className="mt-5 md:hidden"
         autoplay={{ delay: 2000 }}
         loop
+        freeMode
         spaceBetween={44}
-        slidesPerView={2.5}
+        slidesPerView={2.2}
       >
         {BRANDS_LIST.map((item) => (
           <SwiperSlide key={item.url}>

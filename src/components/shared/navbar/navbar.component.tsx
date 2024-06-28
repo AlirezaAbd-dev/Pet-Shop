@@ -20,10 +20,10 @@ const Navbar = () => {
         <Icon className="md:hidden flex justify-center items-center w-8 h-8 bg-nature-600 rounded-lg">
           <SvgMenuBurger className="w-6 h-6" />
         </Icon>
-        <Icon>
+        <Link href={'/'}>
           <SvgLogoMobile className="md:hidden" />
           <SvgLogoDesktop className="hidden md:block" />
-        </Icon>
+        </Link>
         <ul className="hidden md:flex items-center pl-8 gap-7">
           <Link href={'/'}>
             <li className="flex items-center gap-1 cursor-pointer font-bold text-lg text-primary-500 active-dot">

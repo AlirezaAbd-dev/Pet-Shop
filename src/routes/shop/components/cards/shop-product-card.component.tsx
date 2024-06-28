@@ -28,7 +28,7 @@ const ShopProductCard = () => {
         />
       </div>
       <div>
-        <div className="mt-0 md:mt-4 flex justify-between">
+        <div className="mt-0 md:mt-4 flex justify-between items-start">
           <p className="font-bold font-nunito text-sm md:text-xl max-w-[120px]">
             Purina pro plan urinary
           </p>

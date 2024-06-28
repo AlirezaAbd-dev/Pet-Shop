@@ -97,7 +97,11 @@ const CartButton = () => {
           pathname.startsWith('/cart') ? 'md:hidden' : '',
         )}
       >
-        <HoverCard open={isHoverOpen} onOpenChange={setIsHoverOpen}>
+        <HoverCard
+          openDelay={100}
+          open={isHoverOpen}
+          onOpenChange={setIsHoverOpen}
+        >
           {/* for desktop */}
           <HoverCardTrigger>
             <Trigger />
