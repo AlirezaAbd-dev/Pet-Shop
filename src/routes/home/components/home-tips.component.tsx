@@ -25,13 +25,13 @@ const HomeTips = () => {
         }}
       >
         <SwiperSlide>
-          <TipsCard />
+          <TipsCard image="tip-cat3.png" />
         </SwiperSlide>
         <SwiperSlide>
-          <TipsCard />
+          <TipsCard image="tip-cat2.png" />
         </SwiperSlide>
         <SwiperSlide>
-          <TipsCard />
+          <TipsCard image="tip-cat.png" />
         </SwiperSlide>
       </Swiper>
 
@@ -40,9 +40,9 @@ const HomeTips = () => {
       </div>
 
       <div className="hidden md:grid md:grid-cols-3 gap-6 mt-8 px-20">
-        <TipsCard />
-        <TipsCard />
-        <TipsCard />
+        <TipsCard image="tip-cat3.png" />
+        <TipsCard image="tip-cat2.png" />
+        <TipsCard image="tip-cat.png" />
       </div>
     </section>
   );

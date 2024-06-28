@@ -22,7 +22,7 @@ const EmailVerification = () => {
         <h3 className="mt-6 md:mt-7 font-nunito font-extrabold md:text-2xl">
           Email verification
         </h3>
-        <p className="mt-2 md:mt-3 text-sm md:text-base text-center">
+        <p className="mt-2 md:mt-3 text-sm md:text-base text-center leading-7 md:leading-8">
           Please enter the 4-digit verification code that was sent to
           milad138001@gmail.com
         </p>

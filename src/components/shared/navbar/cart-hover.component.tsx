@@ -58,7 +58,10 @@ const Content = () => {
             <Button className="w-full rounded-xl">Checkout</Button>
           </Link>
           <Link href={'/cart'} className="w-full">
-            <Button variant={'outline'} className="w-full rounded-xl">
+            <Button
+              variant={'outline'}
+              className="w-full rounded-xl font-normal md:font-normal"
+            >
               View cart
             </Button>
           </Link>

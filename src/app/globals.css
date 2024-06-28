@@ -23,7 +23,7 @@
   .active-dot::after {
     position: absolute;
     right: calc(50% - 3.5px);
-    bottom: -5px;
+    bottom: -9px;
     content: '';
     height: 7px;
     width: 7px;

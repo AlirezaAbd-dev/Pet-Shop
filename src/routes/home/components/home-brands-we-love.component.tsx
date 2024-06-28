@@ -9,11 +9,9 @@ import { BRANDS_LIST } from '../constants/home.constants';
 
 const Slide = (props: { url: string }) => {
   return (
-    <div className="flex items-center h-[50px] md:h-[83] max-h-[50px] md:max-h-[83px]">
-      <Image
+    <div className="flex items-center justify-center h-[50px] md:h-[83] max-h-[50px] md:max-h-[83px]">
+      <img
         src={`/static/brands/${props.url}`}
-        width={150}
-        height={83}
         alt={props.url}
         className="h-full w-auto"
       />
@@ -30,10 +28,10 @@ const HomeBrandsWeLove = () => {
       <Swiper
         modules={[Autoplay]}
         className="mt-5 md:hidden"
-        spaceBetween={44}
         autoplay={{ delay: 2000 }}
         loop
-        slidesPerView={3}
+        spaceBetween={44}
+        slidesPerView={2.5}
       >
         {BRANDS_LIST.map((item) => (
           <SwiperSlide key={item.url}>

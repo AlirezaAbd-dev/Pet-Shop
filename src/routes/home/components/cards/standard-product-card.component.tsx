@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 import Icon from '@/components/icon';
@@ -10,7 +11,10 @@ import SvgWeight from '@icons/weight.svg';
 
 const StandardProductCard = () => {
   return (
-    <div className="flex flex-col border border-nature-800 rounded-2xl p-4">
+    <Link
+      href="/product/pet"
+      className="flex flex-col border border-nature-800 rounded-2xl p-4"
+    >
       <div className="relative flex justify-center items-center h-[152px] bg-nature-600 rounded-xl">
         <Icon className="absolute right-3 top-3 flex justify-center items-center w-8 h-8 md:w-9 md:h-9 cursor-pointer rounded-full bg-white">
           <SvgHeart className="md:hidden w-6 h-6" />
@@ -23,7 +27,7 @@ const StandardProductCard = () => {
           height={132}
         />
       </div>
-      <div className="mt-4 flex justify-between">
+      <div className="mt-4 flex items-start justify-between">
         <p className="font-bold font-nunito md:text-xl max-w-[152px]">
           Purina pro plan urinary
         </p>
@@ -33,11 +37,11 @@ const StandardProductCard = () => {
           25KG
         </Icon>
       </div>
-      <p className="text-sm md:text-base mt-3">
+      <p className="text-sm md:text-base mt-3 leading-[26px] md:leading-7">
         Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut scing elit
       </p>
       <p className="font-bold text-xl text-primary-500 mt-3 md:mt-4">$120.00</p>
-    </div>
+    </Link>
   );
 };
 

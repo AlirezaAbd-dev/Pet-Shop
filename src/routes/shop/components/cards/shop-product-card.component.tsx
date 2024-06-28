@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 import Icon from '@/components/icon';
@@ -10,7 +11,10 @@ import SvgWeight from '@icons/weight-extra-small.svg';
 
 const ShopProductCard = () => {
   return (
-    <div className="flex md:flex-col gap-4 md:gap-0 border border-nature-800 rounded-2xl p-3 md:p-4">
+    <Link
+      href={'/product/pet'}
+      className="flex md:flex-col gap-4 md:gap-0 border border-nature-800 rounded-2xl p-3 md:p-4"
+    >
       <div className="relative flex justify-center items-start md:items-center h-auto md:h-[152px] bg-inherit md:bg-nature-600 rounded-xl">
         <Icon className="hidden md:flex absolute right-3 top-3 justify-center items-center w-8 h-8 md:w-9 md:h-9 cursor-pointer rounded-full bg-white">
           <SvgHeart className="md:hidden w-6 h-6" />
@@ -42,7 +46,7 @@ const ShopProductCard = () => {
           $120.00
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -18,8 +18,8 @@ const HomeFAQ = () => {
         <p className="px-7 font-black font-nunito text-xl md:text-4xl text-center md:text-left">
           the best product for{' '}
           <Icon>
-            <SvgMiniPetMobile className="inline md:hidden" />
-            <SvgMiniPetDesktop className="hidden md:inline" />
+            <SvgMiniPetMobile className="inline md:hidden -mt-3" />
+            <SvgMiniPetDesktop className="hidden md:inline -mt-4" />
           </Icon>{' '}
           your <br />
           furry freinds

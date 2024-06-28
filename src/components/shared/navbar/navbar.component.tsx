@@ -30,22 +30,22 @@ const Navbar = () => {
               Home
             </li>
           </Link>
-          <li className="flex items-center gap-1 cursor-pointer font-bold text-lg">
+          <li className="flex items-center gap-1 cursor-pointer text-lg">
             Shop{' '}
             <Icon>
               <SvgArrow className="w-5 h-5 rotate-180" />
             </Icon>
           </li>
-          <li className="flex items-center gap-1 cursor-pointer font-bold text-lg">
+          <li className="flex items-center gap-1 cursor-pointer text-lg">
             About us
           </li>
-          <li className="flex items-center gap-1 cursor-pointer font-bold text-lg">
+          <li className="flex items-center gap-1 cursor-pointer text-lg">
             Contact us
           </li>
         </ul>
       </div>
       <div className="flex gap-2 md:gap-4">
-        <div className="hidden md:flex items-center gap-2 w-[291px] h-[54px] bg-nature-600 rounded-2xl px-3">
+        <div className="hidden md:flex items-center w-[291px] h-[54px] bg-nature-600 rounded-2xl px-3">
           <Icon className="text-text-200">
             <SvgSearch className="w-8 h-8" />
           </Icon>

@@ -38,16 +38,16 @@ const ProductCartCard = () => {
               25%
             </span>
           </div>
-          <p className="font-bold text-sm md:text-2xl mt-1">$ 89.12</p>
+          <p className="font-bold text-sm md:text-2xl mt-1 md:mt-3">$ 89.12</p>
         </div>
         <div className="mt-3 md:mt-0">
-          <div className="flex gap-4 md:gap-6 justify-between items-center p-2 py-[5px] md:p-3 border border-nature-900 rounded-lg md:rounded-2xl">
-            <span className="flex justify-center items-center w-6 h-6 md:w-11 md:h-11 bg-nature-700 rounded-[4px] md:rounded-lg">
-              <Minus className="w-4 md:w-8 text-nature-900" />
+          <div className="flex gap-3 md:gap-6 justify-between items-center px-2 py-[5px] md:p-3 border border-nature-900 rounded-lg md:rounded-2xl">
+            <span className="flex justify-center items-center w-6 h-6 md:w-8 md:h-8 bg-nature-700 rounded-[4px] md:rounded-lg">
+              <Minus className="w-4 md:w-5 text-nature-900" />
             </span>
-            <p className="text-lg md:text-[32px]">1</p>
-            <span className="flex justify-center items-center w-6 h-6 md:w-11 md:h-11 bg-nature-700 rounded-[4px] md:rounded-lg">
-              <Plus className="w-4 h-4 md:w-8 md:h-8 text-text-400" />
+            <p className="text-lg md:text-[24px]">1</p>
+            <span className="flex justify-center items-center w-6 h-6 md:w-8 md:h-8 bg-nature-700 rounded-[4px] md:rounded-lg">
+              <Plus className="w-4 h-4 md:w-5 md:h-5 text-text-400" />
             </span>
           </div>
         </div>

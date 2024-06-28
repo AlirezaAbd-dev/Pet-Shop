@@ -5,15 +5,17 @@ import Icon from '@/components/icon';
 
 import SvgCalendarDates from '@icons/calendar-dates.svg';
 
-const TipsCard = () => {
+type TipCardProps = {
+  image: string;
+};
+
+const TipsCard = (props: TipCardProps) => {
   return (
     <div className="flex flex-col items-start rounded-2xl md:rounded-3xl border border-nature-800 p-4">
-      <Image
-        src="/static/tip-cat.png"
+      <img
+        src={`/static/${props.image}`}
         alt="tip-cat"
-        width={288}
-        height={180}
-        className="w-full md:rounded-2xl"
+        className="w-full md:rounded-2xl h-[180px] object-center"
       />
       <span className="flex gap-1 mt-3 bg-primary-50/5 text-primary-500 px-2 py-1 rounded-[50px] md:font-semibold">
         <Icon>

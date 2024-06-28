@@ -57,21 +57,11 @@ const Footer = () => {
         <HowToContact />
       </div>
 
-      <Image
-        src={'/static/footer-dog-mobile.png'}
-        alt="footer-dog"
-        quality={100}
-        width={316}
-        height={191}
-        className="mt-14 md:hidden"
-      />
+      <SvgFooterDogMobile className="mt-14 md:hidden" />
 
-      <Image
+      <img
         src={'/static/footer-dog-desktop.png'}
         alt="footer-dog"
-        quality={100}
-        width={1280}
-        height={521}
         className="hidden md:block self-center"
       />
     </footer>
