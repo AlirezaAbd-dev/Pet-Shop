@@ -12,7 +12,7 @@ const Slide = (props: { url: string }) => {
       <img
         src={`/static/brands/${props.url}`}
         alt={props.url}
-        className="h-full w-auto"
+        className="h-full"
       />
     </div>
   );
