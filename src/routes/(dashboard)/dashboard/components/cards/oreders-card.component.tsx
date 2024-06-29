@@ -51,7 +51,7 @@ const OrdersCard = (props: OrdersCardProps) => {
             </span>
           </p>
         </div>
-        <SvgArrowGray32 />
+        <SvgArrowGray32 className="hidden md:block" />
       </div>
       <div className="flex items-center justify-between mt-6">
         <div className="flex flex-wrap gap-5 md:gap-11">
