@@ -32,16 +32,16 @@ const OrdersCard = (props: OrdersCardProps) => {
     <li className="w-full bg-nature-600 rounded-xl p-4 md:pr-2">
       <div className="w-full flex md:justify-between md:items-center">
         <div className="w-full grid gap-y-[22px] md:gap-x-8 grid-cols-2 place-content-between md:flex md:place-content-start md:grid-cols-4">
-          <p className="text-sm text-text-400">
+          <p className="text-sm md:text-lg text-text-400">
             Date: <span className="font-bold text-text-500">2024/02/26</span>
           </p>
-          <p className="text-sm text-text-400">
+          <p className="text-sm md:text-lg text-text-400">
             Order ID: <span className="font-bold text-text-500 "> #125692</span>
           </p>
-          <p className="text-sm text-text-400">
+          <p className="text-sm md:text-lg text-text-400">
             Price: <span className="font-bold text-text-500"> $29.00</span>
           </p>
-          <p className="text-sm text-text-400">
+          <p className="text-sm md:text-lg text-text-400">
             State:{' '}
             <span
               className={`font-bold ${STATUSES.find((s) => s.name === props.status)?.colorClassName}`}
