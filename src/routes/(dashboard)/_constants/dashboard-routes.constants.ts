@@ -33,3 +33,23 @@ export const DASHBOARD_ROUTES = [
     link: '/dashboard/profile',
   },
 ];
+export const STATUSES = [
+  {
+    name: 'In progress',
+    colorClassName: 'text-warning-500',
+  },
+  {
+    name: 'Cancelled',
+    colorClassName: 'text-error-500',
+  },
+  {
+    name: 'Paid',
+    colorClassName: 'text-success-500',
+  },
+  {
+    name: 'Delivered',
+    colorClassName: 'text-link',
+  },
+] as const;
+
+export type OrderStatus = (typeof STATUSES)[number]['name'];

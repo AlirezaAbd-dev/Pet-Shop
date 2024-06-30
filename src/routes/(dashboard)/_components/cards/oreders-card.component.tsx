@@ -1,30 +1,17 @@
+import Link from 'next/link';
 import React from 'react';
 
 import SvgArrow20 from '@/assets/svg/Arrow-gray-20.svg';
 import SvgArrowGray32 from '@/assets/svg/Arrow-gray-32.svg';
 import Icon from '@/components/icon';
 
-const STATUSES = [
-  {
-    name: 'In progress',
-    colorClassName: 'text-warning-500',
-  },
-  {
-    name: 'Cancelled',
-    colorClassName: 'text-error-500',
-  },
-  {
-    name: 'Paid',
-    colorClassName: 'text-success-500',
-  },
-  {
-    name: 'Delivered',
-    colorClassName: 'text-link',
-  },
-] as const;
+import {
+  OrderStatus,
+  STATUSES,
+} from '../../_constants/dashboard-routes.constants';
 
-type OrdersCardProps = {
-  status: (typeof STATUSES)[number]['name'];
+export type OrdersCardProps = {
+  status: OrderStatus;
 };
 
 const OrdersCard = (props: OrdersCardProps) => {
@@ -51,7 +38,9 @@ const OrdersCard = (props: OrdersCardProps) => {
             </span>
           </p>
         </div>
-        <SvgArrowGray32 className="hidden md:block" />
+        <Link href={'/dashboard/orders/pet'}>
+          <SvgArrowGray32 className="hidden md:block" />
+        </Link>
       </div>
       <div className="flex items-center justify-between mt-6">
         <div className="flex flex-wrap gap-5 md:gap-11">
@@ -76,10 +65,13 @@ const OrdersCard = (props: OrdersCardProps) => {
             className="w-[31px] h-[52px] md:h-[82px] md:w-auto"
           />
         </div>
-        <Icon className="flex items-center text-sm text-text-300 md:hidden">
+        <Link
+          href={'/dashboard/orders/pet'}
+          className="flex items-center text-sm text-text-300 md:hidden"
+        >
           view
           <SvgArrow20 />
-        </Icon>
+        </Link>
       </div>
     </li>
   );
