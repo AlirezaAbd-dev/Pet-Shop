@@ -30,6 +30,7 @@
     border-radius: 50%;
     background: currentColor;
   }
+
   .dashboard-active {
     position: relative;
     will-change: transform;
@@ -44,6 +45,41 @@
     width: 6px;
     border-radius: 0px 30px 30px 0px;
     background: currentColor;
+  }
+
+  .underline-active {
+    position: relative;
+    will-change: transform;
+  }
+
+  .underline-active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    border-radius: 4px 4px 0px 0px;
+    background: #cd1f46;
+    animation-name: underline-animation;
+    animation-duration: 0.6s;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .underline-active::after {
+      height: 4px;
+    }
+  }
+
+  @keyframes underline-animation {
+    from {
+      left: 50%;
+      width: 0;
+    }
+    to {
+      left: 0;
+      width: 100%;
+    }
   }
 
   .loader {

@@ -8,7 +8,7 @@ import SvgShoppingCartDesktop from '@/assets/svg/shopping-bag-list-desktop.svg';
 import SvgShoppingCartMobile from '@/assets/svg/shopping-bag-list-mobile.svg';
 import Icon from '@/components/icon';
 
-import OrdersCard from './cards/oreders-card.component';
+import OrdersCard from '../../_components/cards/oreders-card.component';
 
 const LastOrders = () => {
   return (

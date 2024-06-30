@@ -3,7 +3,7 @@ import SvgGridLayoutRed24 from '@/assets/svg/grid-layout-red-24.svg';
 import SvgHeart24 from '@/assets/svg/heart-24.svg';
 import SvgHeartRed24 from '@/assets/svg/heart-red-24.svg';
 import SvgListDoListCheckmark24 from '@/assets/svg/list-do-list-checkmark-24.svg';
-import SvgListDoListCheckmarkRed24 from '@/assets/svg/list-do-list-checkmark-24.svg';
+import SvgListDoListCheckmarkRed24 from '@/assets/svg/list-do-list-checkmark-red-24.svg';
 import SvgSingleUser24 from '@/assets/svg/single-user-24.svg';
 import SvgSingleUserRed24 from '@/assets/svg/single-user-red-24.svg';
 
@@ -12,7 +12,7 @@ export const DASHBOARD_ROUTES = [
     name: 'Dashboard',
     icon: SvgGridLayout24,
     activeIcon: SvgGridLayoutRed24,
-    link: '/dashboard',
+    link: '/dashboard/main',
   },
   {
     name: 'Orders',
