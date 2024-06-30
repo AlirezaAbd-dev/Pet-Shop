@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 import SvgArrow24 from '@/assets/svg/Arrow-24.svg';
@@ -21,11 +22,14 @@ const LastOrders = () => {
           </Icon>
           Your last order
         </div>
-        <div className="flex items-center text-sm md:text-base font-nunito text-link">
+        <Link
+          href={'/dashboard/orders'}
+          className="flex items-center text-sm md:text-base font-nunito text-link"
+        >
           All order
           <SvgArrow24 className="md:hidden" />
           <SvgArrow32 className="hidden md:block" />
-        </div>
+        </Link>
       </div>
       <ul className="flex flex-col gap-5 mt-6 md:mt-8">
         <OrdersCard status="In progress" />
