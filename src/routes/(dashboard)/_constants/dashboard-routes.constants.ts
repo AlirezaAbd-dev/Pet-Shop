@@ -33,6 +33,9 @@ export const DASHBOARD_ROUTES = [
     link: '/dashboard/profile',
   },
 ];
+
+export const DASHBOARD_ROUTES_MINI = DASHBOARD_ROUTES.toSpliced(0, 1);
+
 export const STATUSES = [
   {
     name: 'In progress',

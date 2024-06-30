@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode } from 'react';
 
 import Navbar from '@/components/shared/navbar/navbar.component';
@@ -11,7 +13,7 @@ const layout = ({ children }: { children: ReactNode }) => {
         <div className="col-span-3 hidden md:flex md:flex-col">
           <DashboardSidebarLayout />
         </div>
-        <div className="col-span-9">{children}</div>
+        <div className="col-span-9 mb-6">{children}</div>
       </div>
     </>
   );
