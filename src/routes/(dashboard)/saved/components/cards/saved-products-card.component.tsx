@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -6,11 +8,16 @@ import SvgLongArrowRed20 from '@/assets/svg/long-arrow-red-20.svg';
 import SvgPolygon56 from '@/assets/svg/polygon-56.svg';
 import Icon from '@/components/icon';
 import { cn } from '@/lib/utils';
+import { useDashboardModalsStore } from '@/routes/(dashboard)/_store/dashboard-modals.store';
 
 import SvgWeightDesktop from '@icons/weight-desktop.svg';
 import SvgWeight from '@icons/weight.svg';
 
 const SavedProductCard = () => {
+  const setIsDeleteSavedProductModalOpen = useDashboardModalsStore(
+    (s) => s.setIsDeleteSavedProductModalOpen,
+  );
+
   const discount: number = 25;
 
   return (
@@ -33,7 +40,10 @@ const SavedProductCard = () => {
             {discount}%
           </p>
         </Icon>
-        <Icon className="absolute right-0 top-0 flex justify-center items-center cursor-pointer">
+        <Icon
+          onClick={() => setIsDeleteSavedProductModalOpen(true)}
+          className="absolute right-0 top-0 flex justify-center items-center cursor-pointer"
+        >
           <SvgDeleteRed24 />
         </Icon>
         <Image

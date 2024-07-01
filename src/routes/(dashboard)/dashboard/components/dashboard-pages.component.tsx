@@ -7,8 +7,12 @@ import SvgArrowGray20 from '@/assets/svg/Arrow-gray-20.svg';
 import SvgLogoutRed20 from '@/assets/svg/login-logout-red-20.svg';
 
 import { DASHBOARD_ROUTES_MINI } from '../../_constants/dashboard-routes.constants';
+import { useDashboardModalsStore } from '../../_store/dashboard-modals.store';
 
 const DashboardPages = () => {
+  const setIsLogoutModalOpen = useDashboardModalsStore(
+    (s) => s.setIsLogoutModalOpen,
+  );
   return (
     <section className="mt-5 md:hidden">
       <ul>
@@ -23,7 +27,10 @@ const DashboardPages = () => {
             </li>
           </Link>
         ))}
-        <li className="flex justify-between items-center py-3">
+        <li
+          className="flex justify-between items-center py-3"
+          onClick={() => setIsLogoutModalOpen(true)}
+        >
           <div className="flex items-center gap-2">
             <SvgLogoutRed20 />
             <p className="text-sm text-error-500">Logout</p>

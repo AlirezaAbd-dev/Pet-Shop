@@ -1,3 +1,6 @@
+'use client';
+
+import { Pen, PenBox } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 
@@ -8,9 +11,22 @@ import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
+import { useDashboardModalsStore } from '../_store/dashboard-modals.store';
+import ChangePasswordModal from './components/modals/change-password.modal';
+import EditEmailModal from './components/modals/edit-email/edit-email.modal';
+
 const Profile = () => {
+  const setIsEditEmailModalOpen = useDashboardModalsStore(
+    (s) => s.setIsEditEmailModalOpen,
+  );
+  const setIsChangePasswordModalOpen = useDashboardModalsStore(
+    (s) => s.setIsChangePasswordModalOpen,
+  );
+
   return (
     <>
+      <EditEmailModal />
+      <ChangePasswordModal />
       <Link
         href={'/dashboard/main'}
         className="md:hidden flex gap-1 items-center "
@@ -40,7 +56,13 @@ const Profile = () => {
           </div>
           <div>
             <label className="text-sm md:text-base">Email</label>
-            <Input className="mt-3" value={'milad138001@gmail.com'} />
+            <div className="flex items-center mt-3 gap-3 rounded-xl bg-nature-600 pr-4">
+              <Input readOnly value={'milad138001@gmail.com'} />
+              <PenBox
+                onClick={() => setIsEditEmailModalOpen(true)}
+                className="text-secondary-300 w-5 h-5 cursor-pointer"
+              />
+            </div>
           </div>
           <div>
             <label className="text-sm md:text-base">Phone</label>
@@ -48,7 +70,15 @@ const Profile = () => {
           </div>
           <div>
             <label className="text-sm md:text-base">Password</label>
-            <Input className="mt-3" value={'********'} />
+            <div className="flex items-center mt-3 gap-3 rounded-xl bg-nature-600 pr-4">
+              <Input readOnly value={'********'} />
+              <PenBox
+                onClick={() => {
+                  setIsChangePasswordModalOpen(true);
+                }}
+                className="text-secondary-300 w-5 h-5 cursor-pointer"
+              />
+            </div>
           </div>
         </div>
         <div className="mt-6 md:mt-8 border-b border-nature-900 mx-4 md:mx-6"></div>

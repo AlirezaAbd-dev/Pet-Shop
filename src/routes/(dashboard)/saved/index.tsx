@@ -7,10 +7,12 @@ import SvgLongArrow20 from '@/assets/svg/long-arrow-20.svg';
 import Icon from '@/components/icon';
 
 import SavedProductCard from './components/cards/saved-products-card.component';
+import DeleteSavedProductModal from './components/modals/delete-saved-product.modal';
 
 const Saved = () => {
   return (
     <>
+      <DeleteSavedProductModal />
       <Link
         href={'/dashboard/main'}
         className="md:hidden flex gap-1 items-center "

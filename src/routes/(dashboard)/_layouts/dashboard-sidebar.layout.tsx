@@ -9,9 +9,14 @@ import SvgPenEditDesktop from '@/assets/svg/pen-edit-desktop.svg';
 import { cn } from '@/lib/utils';
 
 import { DASHBOARD_ROUTES } from '../_constants/dashboard-routes.constants';
+import { useDashboardModalsStore } from '../_store/dashboard-modals.store';
 
 const DashboardSidebarLayout = () => {
   const pathname = usePathname();
+
+  const setIsLogoutModalOpen = useDashboardModalsStore(
+    (s) => s.setIsLogoutModalOpen,
+  );
 
   return (
     <section className="flex flex-col justify-between rounded-2xl min-h-[750px] border border-nature-900 py-6">
@@ -51,6 +56,7 @@ const DashboardSidebarLayout = () => {
 
       <div
         className={'flex items-center gap-2 px-6 text-error-500 cursor-pointer'}
+        onClick={() => setIsLogoutModalOpen(true)}
       >
         <SvgLogout />
         Logout

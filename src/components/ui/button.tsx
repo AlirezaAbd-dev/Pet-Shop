@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import LoadingSpinner from './loading-spinner';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-2xl text-base md:text-lg font-medium md:font-bold ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-2xl text-base md:text-lg outline-none md:outline-none font-medium md:font-bold transition-colors disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
@@ -15,6 +15,8 @@ const buttonVariants = cva(
           'bg-primary-500 text-white hover:bg-primary-500/90 dark:bg-primary-50 dark:text-primary-500 dark:hover:bg-primary-50/90',
         outline:
           'border border-primary-500 bg-transparent hover:bg-primary-50/5 text-primary-500 hover:text-primary-700 dark:border-primary-800',
+        'outline-gray':
+          'border border-text-200 bg-transparent hover:bg-text-200/5 text-text-500 hover:text-text-700 outline-none',
         secondary:
           'bg-secondary-500 text-secondary-50 hover:bg-secondary-500/80',
         text: 'hover:bg-primary-100 hover:text-primary-900 dark:hover:bg-primary-800 dark:hover:text-primary-50',

@@ -3,11 +3,13 @@
 import { ReactNode } from 'react';
 
 import Navbar from '@/components/shared/navbar/navbar.component';
+import DashboardLogoutModal from '@/routes/(dashboard)/_components/modals/dashboard-logout.modal';
 import DashboardSidebarLayout from '@/routes/(dashboard)/_layouts/dashboard-sidebar.layout';
 
 const layout = ({ children }: { children: ReactNode }) => {
   return (
     <>
+      <DashboardLogoutModal />
       <Navbar />
       <div className="md:grid md:grid-cols-12 md:gap-6 md:mt-8 mt-6 md:pb-6 px-5 md:px-20">
         <div className="col-span-3 hidden md:flex md:flex-col">
