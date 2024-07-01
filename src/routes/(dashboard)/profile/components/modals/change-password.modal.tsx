@@ -21,7 +21,10 @@ const ChangePasswordModal = () => {
   );
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-      <DialogContent className="w-[90%] md:max-w-[458px] bg-white flex flex-col items-center p-0">
+      <DialogContent
+        aria-describedby="change password"
+        className="w-[90%] md:max-w-[458px] bg-white flex flex-col items-center p-0"
+      >
         <div className="w-full flex justify-between items-center bg-nature-800 p-4 rounded-t-2xl">
           <p className="font-nunito font-bold">Edit password</p>
           <X

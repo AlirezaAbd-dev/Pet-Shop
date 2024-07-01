@@ -19,7 +19,10 @@ const DeleteSavedProductModal = () => {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-      <DialogContent className="w-[90%] md:max-w-[352px] bg-white p-4 flex flex-col items-center">
+      <DialogContent
+        aria-describedby="delete saved products"
+        className="w-[90%] md:max-w-[352px] bg-white p-4 flex flex-col items-center"
+      >
         <Icon className="flex items-center justify-center w-[54px] h-[54px] md:w-[65px] md:h-[65px] rounded-xl bg-error-50 text-error-50">
           <SvgDelete28 className="md:hidden" />
           <SvgDelete32 className="md:block hidden" />
