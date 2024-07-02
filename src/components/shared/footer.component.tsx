@@ -1,6 +1,3 @@
-import Image from 'next/image';
-import React from 'react';
-
 import SvgPhoneCallMobile from '@/assets/svg/Phone-Call.svg';
 import SvgWhatsupDesktop from '@/assets/svg/Whatsup-desktop.svg';
 import SvgWhatsup from '@/assets/svg/Whatsup.svg';
@@ -88,10 +85,10 @@ const HowToContact = () => {
         </Icon>
       </span>
       <span className="flex justify-center items-center w-12 h-12 md:w-[67px] md:h-[67px] border border-white rounded-full">
-        <Icon>
+        <span>
           <SvgTelegram className="md:hidden" />
           <SvgTelegramDesktop className="hidden md:block" />
-        </Icon>
+        </span>
       </span>
       <span className="flex justify-center items-center w-12 h-12 md:w-[67px] md:h-[67px] border border-white rounded-full">
         <Icon>
