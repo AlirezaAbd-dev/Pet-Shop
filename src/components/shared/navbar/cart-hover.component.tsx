@@ -99,6 +99,7 @@ const CartButton = () => {
       >
         <HoverCard
           openDelay={100}
+          closeDelay={100}
           open={isHoverOpen}
           onOpenChange={setIsHoverOpen}
         >

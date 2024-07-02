@@ -28,7 +28,7 @@ const ChangePasswordModal = () => {
         <div className="w-full flex justify-between items-center bg-nature-800 p-4 rounded-t-2xl">
           <p className="font-nunito font-bold">Edit password</p>
           <X
-            className="text-secondary-300 w-[16px] h-[16px] cursor-pointer"
+            className="text-secondary-300 w-[16px] h-[16px] md:w-[20px] md:h-[20px] cursor-pointer"
             onClick={() => {
               setIsModalOpen(false);
             }}
@@ -53,13 +53,13 @@ const ChangePasswordModal = () => {
             </Icon>
           </div>
 
-          <div className="flex items-center gap-2 mt-4 text-sm md:text-base">
+          <div className="flex items-center gap-2 mt-4 text-sm">
             <Icon>
               <SvgCheckmarkCircle />
             </Icon>
             At least 8 characters
           </div>
-          <div className="flex items-center gap-2 mt-3 text-sm md:text-base">
+          <div className="flex items-center gap-2 mt-3 text-sm">
             <Icon>
               <SvgCheckmarkCircle />
             </Icon>

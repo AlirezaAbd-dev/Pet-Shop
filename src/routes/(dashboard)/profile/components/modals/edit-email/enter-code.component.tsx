@@ -21,7 +21,7 @@ const EnterCode = (props: Props) => {
           <p className="font-nunito font-bold">Edit email</p>
         </div>
         <X
-          className="text-secondary-300 w-[16px] h-[16px] cursor-pointer"
+          className="text-secondary-300 w-[16px] h-[16px] md:w-[20px] md:h-[20px] cursor-pointer"
           onClick={() => {
             setModalMode('enter email');
             setIsModalOpen(false);
