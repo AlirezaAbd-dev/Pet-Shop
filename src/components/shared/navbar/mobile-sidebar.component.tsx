@@ -25,9 +25,14 @@ const MobileSidebar = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    window.addEventListener('resize', () => {
+    const event = () => {
       setIsSheetOpen(false);
-    });
+    };
+    window.addEventListener('resize', event);
+
+    return () => {
+      window.removeEventListener('resize', event);
+    };
   }, []);
 
   return (
