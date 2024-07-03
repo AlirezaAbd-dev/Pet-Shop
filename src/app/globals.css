@@ -142,3 +142,7 @@
 .white-pagination-active {
   background-color: white !important;
 }
+
+.rectangle {
+  border-radius: 54% 46% 41% 59% / 59% 47% 53% 41%;
+}

@@ -1,41 +1,49 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import SvgLogoDesktop from '@/assets/svg/logo-title-desktop.svg';
 import SvgLogoMobile from '@/assets/svg/logo-title-mobile.svg';
 import Icon from '@/components/icon';
 import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 
-import SvgArrow from '@icons/arrow.1.svg';
-import SvgMenuBurger from '@icons/menu-burger-square.1.svg';
 import SvgSearch from '@icons/search-loupe-custom.svg';
 import SvgSingleUserDesktop from '@icons/single-user-desktop.svg';
 import SvgSingleUser from '@icons/single-user.svg';
 
 import CartButton from './cart-hover.component';
+import MobileSidebar from './mobile-sidebar.component';
+import ShopHover from './shop-hover.component';
 
 const Navbar = () => {
+  const pathname = usePathname();
+
   return (
     <nav className="flex justify-between md:items-center px-5 md:px-20 py-3 md:py-5 border-b border-nature-800">
       <div className="flex gap-3">
-        <Icon className="md:hidden flex justify-center items-center w-8 h-8 bg-nature-600 rounded-lg">
-          <SvgMenuBurger className="w-6 h-6" />
-        </Icon>
+        {/* Drawer */}
+        <MobileSidebar />
+        {/* End Drawer */}
         <Link href={'/'}>
           <SvgLogoMobile className="md:hidden" />
           <SvgLogoDesktop className="hidden md:block" />
         </Link>
         <ul className="hidden md:flex items-center pl-8 gap-7">
           <Link href={'/'}>
-            <li className="flex items-center gap-1 cursor-pointer font-bold text-lg text-primary-500 active-dot">
+            <li
+              className={cn(
+                'flex items-center gap-1 cursor-pointer  text-lg',
+                pathname === '/' ? 'font-bold text-primary-500 active-dot' : '',
+              )}
+            >
               Home
             </li>
           </Link>
-          <li className="flex items-center gap-1 cursor-pointer text-lg">
-            Shop{' '}
-            <Icon>
-              <SvgArrow className="w-5 h-5 rotate-180" />
-            </Icon>
-          </li>
+          {/* Shop hover card */}
+          <ShopHover />
+          {/* End Shop hover card */}
           <li className="flex items-center gap-1 cursor-pointer text-lg">
             About us
           </li>
@@ -61,7 +69,9 @@ const Navbar = () => {
           </Icon>
         </Link>
 
+        {/* Mini cart */}
         <CartButton />
+        {/* End Mini Cart */}
       </div>
     </nav>
   );
