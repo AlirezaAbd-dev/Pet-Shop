@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/accordion-filter';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import UseWindowSize from '@/hooks/use-window-size.hook';
 import { cn } from '@/lib/utils';
 
 import SvgMenuBurger from '@icons/menu-burger-square.1.svg';
@@ -24,16 +25,13 @@ const MobileSidebar = () => {
 
   const pathname = usePathname();
 
-  useEffect(() => {
-    const event = () => {
-      setIsSheetOpen(false);
-    };
-    window.addEventListener('resize', event);
+  const { width } = UseWindowSize();
 
-    return () => {
-      window.removeEventListener('resize', event);
-    };
-  }, []);
+  useEffect(() => {
+    if (width && width > 765) {
+      setIsSheetOpen(false);
+    }
+  }, [width]);
 
   return (
     <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
@@ -51,6 +49,7 @@ const MobileSidebar = () => {
           </Icon>
           <Input
             placeholder="Search product..."
+            autoFocus={false}
             className="bg-transparent placeholder:text-text-200 font-nunito border-none text-xs pl-1"
           />
         </div>
