@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-console.log(process.env.NEXT_PUBLIC_BASE_URL);
-export const axiosProtected = axios.create({
+export const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
-  withCredentials: true,
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': '*',

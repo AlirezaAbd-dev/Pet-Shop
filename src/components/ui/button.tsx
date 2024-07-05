@@ -19,6 +19,8 @@ const buttonVariants = cva(
           'border border-text-200 bg-transparent hover:bg-text-200/5 text-text-500 hover:text-text-700 outline-none',
         secondary:
           'bg-secondary-500 text-secondary-50 hover:bg-secondary-500/80',
+        disabled:
+          'bg-white border border-nature-900 text-nature-900 cursor-now-allowed shadow-md',
         text: 'hover:bg-primary-100 hover:text-primary-900 dark:hover:bg-primary-800 dark:hover:text-primary-50',
         link: 'text-primary-900 underline-offset-4 hover:underline dark:text-primary-50',
       },
