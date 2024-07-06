@@ -1,14 +1,10 @@
-import React from 'react';
+'use client';
 
 import SvgLogoDesktop from '@/assets/svg/logo-signup-desktop.svg';
 import SvgLogoMobile from '@/assets/svg/logo-singup-mobile.svg';
 import Icon from '@/components/icon';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 
-import SvgCheckmarkCircle from '@icons/checkmark-circle-10.svg';
-import SvgEyeDesktop from '@icons/eye-desktop.svg';
-import SvgEye from '@icons/eye-mobile.svg';
+import ResetPasswordForm from './reset-password.form';
 
 const ResetPassword = () => {
   return (
@@ -25,31 +21,7 @@ const ResetPassword = () => {
           Enter your new password
         </p>
 
-        <form className="w-full flex flex-col mt-6 md:mt-8">
-          <label className="text-sm md:text-base mt-4">New password</label>
-          <div className="flex items-center bg-nature-600 rounded-lg mt-2 md:mt-3 pr-3">
-            <Input className="flex-1" />
-            <Icon>
-              <SvgEye className="md:hidden w-6 h-6" />
-              <SvgEyeDesktop className="hidden md:block" />
-            </Icon>
-          </div>
-          <div className="flex items-center gap-2 mt-4">
-            <Icon>
-              <SvgCheckmarkCircle />
-            </Icon>
-            At least 8 characters
-          </div>
-          <div className="flex items-center gap-2 mt-3">
-            <Icon>
-              <SvgCheckmarkCircle />
-            </Icon>
-            Letters and numbers
-          </div>
-          <Button className="font-bold text-sm md:text-base shadow-color-md rounded-xl mt-6 md:mt-8">
-            Reset password
-          </Button>
-        </form>
+        <ResetPasswordForm />
       </section>
     </main>
   );
