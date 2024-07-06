@@ -6,6 +6,6 @@ export const emailValidation = z.string().email();
 
 export const loginValidation = z.object({
   username: z.string(),
-  password: passwordValidation,
+  password: z.string().min(8),
 });
 export type LoginValidationType = z.infer<typeof loginValidation>;
