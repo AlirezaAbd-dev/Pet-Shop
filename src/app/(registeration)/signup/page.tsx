@@ -2,7 +2,7 @@
 
 import { useRegisterStore } from '@/routes/(registeration)/_store/register.store';
 import EmailVerification from '@/routes/(registeration)/email-verification';
-import Signup from '@/routes/(registeration)/signup';
+import Signup from '@/routes/(registeration)/signup/pages/signup';
 
 const SignupPage = () => {
   const page = useRegisterStore((s) => s.signupPage);

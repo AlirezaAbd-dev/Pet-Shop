@@ -161,8 +161,8 @@ const SignupForm = () => {
       <Button
         variant={isFormValid && termsWatch === true ? 'default' : 'disabled'}
         disabled={!isFormValid || !termsWatch || isPending}
-        className="mt-6 md:mt-8 font-bold text-sm shadow-color-md md:text-base"
         isLoading={isPending}
+        className="mt-6 md:mt-8 font-bold text-sm shadow-color-md md:text-base"
       >
         Rigester
       </Button>

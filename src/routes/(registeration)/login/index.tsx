@@ -9,11 +9,8 @@ import SvgLogoDesktop from '@/assets/svg/logo-signup-desktop.svg';
 import SvgLogoMobile from '@/assets/svg/logo-singup-mobile.svg';
 import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Input } from '@/components/ui/input';
 
-import SvgEyeDesktop from '@icons/eye-desktop.svg';
-import SvgEye from '@icons/eye-mobile.svg';
+import LoginForm from './login.form';
 
 const Login = () => {
   const router = useRouter();
@@ -27,7 +24,7 @@ const Login = () => {
         </Icon>
 
         <h3 className="mt-6 md:mt-7 md:text-2xl font-nunito font-extrabold">
-          Sing in to your account
+          Sign in to your account
         </h3>
         <p className="mt-2 md:mt-3 text-sm md:text-lg">welcome back!</p>
 
@@ -47,46 +44,7 @@ const Login = () => {
           <div className="w-full border-t border-nature-800"></div>
         </div>
 
-        <form className="w-full flex flex-col mt-6 md:mt-8">
-          <label className="text-sm md:text-base">Full name or email</label>
-          <Input className="mt-2 md:mt-3" />
-          <label className="text-sm md:text-base mt-4">Password</label>
-          <div className="flex items-center bg-nature-600 rounded-lg mt-2 md:mt-3 pr-3">
-            <Input className="flex-1" />
-            <Icon>
-              <SvgEye className="md:hidden w-6 h-6" />
-              <SvgEyeDesktop className="hidden md:block" />
-            </Icon>
-          </div>
-
-          <div className="flex items-center justify-between mt-4">
-            <div className="flex items-center gap-2">
-              <Checkbox id="presistance" />
-              <label
-                htmlFor="presistance"
-                className="text-xs md:text-base cursor-pointer"
-              >
-                Stay logged in
-              </label>
-            </div>
-            <Link
-              href={'forgot-password'}
-              className="text-link text-xs md:text-base"
-            >
-              I forgot my password
-            </Link>
-          </div>
-
-          <Button
-            type="button"
-            onClick={() => {
-              router.push('/email-verification');
-            }}
-            className="mt-6 md:mt-8 font-bold text-sm shadow-color-md md:text-base"
-          >
-            Login
-          </Button>
-        </form>
+        <LoginForm />
         <p className="mt-4 md:mt-6 text-sm md:text-base">
           Don’t you have an account?{' '}
           <Link

@@ -1,3 +1,6 @@
 export const registerQueryKeys = {
   SIGNUP: 'signup',
+  LOGIN: 'login',
+  EMAIL_VERIFICATION: 'email-verification',
+  RESEND_CODE: 'resend-code',
 };
