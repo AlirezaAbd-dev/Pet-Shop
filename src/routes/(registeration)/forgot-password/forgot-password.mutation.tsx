@@ -1,19 +1,26 @@
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError, AxiosResponse } from 'axios';
+import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
 import { axiosInstance } from '@/lib/constants/axios';
-import { registerQueryKeys } from '@/routes/(registeration)/_constants/query-keys.constants';
 
-const useResendCode = () => {
+import { registerQueryKeys } from '../_constants/query-keys.constants';
+
+const useForgotPasswordMutation = () => {
+  const router = useRouter();
+
   const mutation = useMutation<
     AxiosResponse,
     AxiosError<any>,
     { email: string }
   >({
-    mutationKey: [registerQueryKeys.RESEND_CODE],
+    mutationKey: [registerQueryKeys.FORGOT_PASSWORD],
     mutationFn: (data) =>
-      axiosInstance.post('accounts/auth/registration/resend-email', data),
+      axiosInstance.post('accounts/auth/password/reset/', data),
+    onSuccess() {
+      router.push('/forgot-password/sent/');
+    },
     onError(error) {
       toast.error(error.response?.data.message);
     },
@@ -22,4 +29,4 @@ const useResendCode = () => {
   return mutation;
 };
 
-export default useResendCode;
+export default useForgotPasswordMutation;

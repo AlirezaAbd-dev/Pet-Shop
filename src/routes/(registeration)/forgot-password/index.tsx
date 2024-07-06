@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
@@ -8,6 +9,8 @@ import SvgLogoMobile from '@/assets/svg/logo-singup-mobile.svg';
 import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+
+import ForgotPasswordForm from './forgot-password.form';
 
 const ForgotPassword = () => {
   const router = useRouter();
@@ -27,22 +30,13 @@ const ForgotPassword = () => {
           your password.
         </p>
 
-        <form className="w-full flex flex-col mt-6 md:mt-8">
-          <label className="text-sm md:text-base">Email address</label>
-          <Input className="mt-2 md:mt-3" />
-          <Button
-            onClick={() => {
-              router.push('/forgot-password/sent');
-            }}
-            type="button"
-            className="font-bold text-sm md:text-base shadow-color-md rounded-xl mt-6 md:mt-8"
-          >
-            Send email
-          </Button>
-        </form>
-        <p className="w-full mt-4 md:mt-6 text-sm md:text-base text-center cursor-pointer">
+        <ForgotPasswordForm />
+        <Link
+          href={'/login'}
+          className="w-full mt-4 md:mt-6 text-sm md:text-base text-center cursor-pointer"
+        >
           Back
-        </p>
+        </Link>
       </section>
     </main>
   );

@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import SvgLogoDesktop from '@/assets/svg/logo-signup-desktop.svg';
@@ -8,8 +7,8 @@ import SvgLogoMobile from '@/assets/svg/logo-singup-mobile.svg';
 import Icon from '@/components/icon';
 import { cn } from '@/lib/utils';
 import convertSecondsToMinutes from '@/lib/utils/convertSecondsToMinutes';
+import { useRegisterStore } from '@/routes/(registeration)/_store/register.store';
 
-import { useRegisterStore } from '../_store/register.store';
 import EmailVerificationForm from './email-verification.form';
 import useResendCode from './resend-code.mutation';
 
@@ -17,10 +16,9 @@ const EmailVerification = () => {
   const [timer, setTimer] = useState(120);
 
   const email = useRegisterStore((s) => s.signupEmail);
+  const setSignupPage = useRegisterStore((s) => s.setSignupPage);
 
   const { mutate, isPending, isSuccess } = useResendCode();
-
-  const router = useRouter();
 
   useEffect(() => {
     if (!isPending && isSuccess) {
@@ -62,7 +60,7 @@ const EmailVerification = () => {
         <p
           className={cn(
             'w-full mt-4 md:mt-6 text-sm md:text-base text-center cursor-pointer',
-            isPending ? 'animate-ping' : '',
+            isPending ? 'animate-pulse' : '',
           )}
           onClick={() => {
             if (timer === 0 && email && !isPending) {
@@ -70,11 +68,12 @@ const EmailVerification = () => {
             }
           }}
         >
-          Resend the Code ({convertSecondsToMinutes(timer)})
+          Resend the Code{' '}
+          {!!timer && '(' + convertSecondsToMinutes(timer) + ')'}
         </p>
         <p
           onClick={() => {
-            router.back();
+            setSignupPage('signup');
           }}
           className="w-full mt-4 md:mt-6 text-sm md:text-base text-center cursor-pointer"
         >

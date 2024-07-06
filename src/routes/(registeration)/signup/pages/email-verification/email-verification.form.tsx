@@ -4,8 +4,8 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useRegisterStore } from '@/routes/(registeration)/_store/register.store';
 
-import { useRegisterStore } from '../_store/register.store';
 import useEmailVerificationMutation from './email-verification.mutation';
 import {
   EmailVerificationValidation,
