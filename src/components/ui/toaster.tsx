@@ -16,7 +16,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
     <Sonner
       theme={'light'}
       className="toaster group"
-      position="top-center"
+      position="top-left"
       icons={{
         success: (
           <Icon>
@@ -34,7 +34,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
       toastOptions={{
         classNames: {
           toast:
-            'group toast group-[.toaster]:h-[44px] group-[.toaster]:md:h-[52px] group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg group-[.toaster]:justify-center group-[.toaster]:gap-2 group-[.toaster]:md:gap-3 group-[.toaster]:w-[320px] group-[.toaster]:md:w-[486px] group-[.toaster]:font-normal group-[.toaster]:text-sm group-[.toaster]:md:text-base',
+            'group toast group-[.toaster]:py-3 group-[.toaster]:md:py-4 group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg group-[.toaster]:justify-center group-[.toaster]:gap-2 group-[.toaster]:md:gap-3 group-[.toaster]:w-[320px] group-[.toaster]:md:w-[486px] group-[.toaster]:font-normal group-[.toaster]:text-sm group-[.toaster]:md:text-base',
           success:
             'group-[.toaster]:bg-success-50 group-[.toaster]:text-success-500',
           error: 'group-[.toaster]:bg-error-50 group-[.toaster]:text-error-500',

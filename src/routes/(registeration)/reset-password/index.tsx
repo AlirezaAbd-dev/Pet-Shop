@@ -1,5 +1,7 @@
 'use client';
 
+import { Suspense } from 'react';
+
 import SvgLogoDesktop from '@/assets/svg/logo-signup-desktop.svg';
 import SvgLogoMobile from '@/assets/svg/logo-singup-mobile.svg';
 import Icon from '@/components/icon';
@@ -21,7 +23,9 @@ const ResetPassword = () => {
           Enter your new password
         </p>
 
-        <ResetPasswordForm />
+        <Suspense>
+          <ResetPasswordForm />
+        </Suspense>
       </section>
     </main>
   );

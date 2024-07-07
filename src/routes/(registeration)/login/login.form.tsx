@@ -97,7 +97,7 @@ const LoginForm = () => {
       </div>
 
       <Button
-        variant={isFormValid === true ? 'default' : 'disabled'}
+        variant={!isFormValid || isPending ? 'disabled' : 'default'}
         disabled={!isFormValid || isPending}
         isLoading={isPending}
         className="mt-6 md:mt-8 font-bold text-sm shadow-color-md md:text-base"

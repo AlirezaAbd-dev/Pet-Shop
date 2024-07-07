@@ -1,16 +1,9 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { toast } from 'sonner';
 
-import SvgGoogleDesktop from '@/assets/svg/google-desktop.svg';
-import SvgGoogleMobile from '@/assets/svg/google-mobile.svg';
-import SvgLogoDesktop from '@/assets/svg/logo-signup-desktop.svg';
-import SvgLogoMobile from '@/assets/svg/logo-singup-mobile.svg';
 import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -159,7 +152,9 @@ const SignupForm = () => {
       </div>
 
       <Button
-        variant={isFormValid && termsWatch === true ? 'default' : 'disabled'}
+        variant={
+          !isFormValid || !termsWatch || isPending ? 'disabled' : 'default'
+        }
         disabled={!isFormValid || !termsWatch || isPending}
         isLoading={isPending}
         className="mt-6 md:mt-8 font-bold text-sm shadow-color-md md:text-base"
