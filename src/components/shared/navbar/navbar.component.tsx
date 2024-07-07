@@ -22,9 +22,10 @@ import MobileSidebar from './mobile-sidebar.component';
 import ShopHover from './shop-hover.component';
 
 const Navbar = () => {
+  useProfileQuery();
+
   const pathname = usePathname();
   const router = useRouter();
-  useProfileQuery();
 
   const profile = useAuthStore((s) => s.profile);
 

@@ -13,7 +13,7 @@ const useResendCode = () => {
   >({
     mutationKey: [registerQueryKeys.RESEND_CODE],
     mutationFn: (data) =>
-      axiosInstance.post('accounts/auth/registration/resend-email', data),
+      axiosInstance.post('/accounts/auth/registration/resend-email', data),
     onError(error) {
       toast.error(error.response?.data.message);
     },

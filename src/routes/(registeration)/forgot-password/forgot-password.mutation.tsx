@@ -17,7 +17,7 @@ const useForgotPasswordMutation = () => {
   >({
     mutationKey: [registerQueryKeys.FORGOT_PASSWORD],
     mutationFn: (data) =>
-      axiosInstance.post('accounts/auth/password/reset/', data),
+      axiosInstance.post('/accounts/auth/password/reset/', data),
     onSuccess() {
       router.push('/forgot-password/sent/');
     },

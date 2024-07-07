@@ -19,7 +19,7 @@ const useSignupMutation = () => {
   >({
     mutationKey: [registerQueryKeys.SIGNUP],
     mutationFn: (data) =>
-      axiosInstance.post('accounts/auth/registration/', {
+      axiosInstance.post('/accounts/auth/registration/', {
         full_name: data.fullname,
         email: data.email,
         password1: data.password,

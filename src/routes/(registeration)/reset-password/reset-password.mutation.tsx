@@ -17,7 +17,7 @@ const useResetPasswordMutation = () => {
   >({
     mutationKey: [registerQueryKeys.RESET_PASSWORD],
     mutationFn: (data) =>
-      axiosInstance.post('accounts/auth/password/reset/confirm/', data),
+      axiosInstance.post('/accounts/auth/password/reset/confirm/', data),
     onSuccess() {
       toast.success('new password successfully replaced');
       router.replace('/login');

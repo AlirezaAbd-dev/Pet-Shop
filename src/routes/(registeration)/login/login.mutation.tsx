@@ -20,7 +20,7 @@ const useLoginMutation = () => {
     { email?: string; username?: string; password: string }
   >({
     mutationKey: [registerQueryKeys.LOGIN],
-    mutationFn: (data) => axiosInstance.post('accounts/auth/login/', data),
+    mutationFn: (data) => axiosInstance.post('/accounts/auth/login/', data),
     onSuccess(data) {
       setAccessToken(data.data.access);
       localStorage.setItem('refresh-token', data.data.refresh);

@@ -5,7 +5,7 @@ import { useAuthStore } from '@/store/auth.store';
 
 import useRefreshTokenMutation from './react-query/mutations/refresh-token.mutation';
 
-export const axiosProtected = axios.create({
+const axiosProtected = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
 });
 

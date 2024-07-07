@@ -22,7 +22,7 @@ const useProfileQuery = () => {
 
   const query = useQuery<AxiosResponse<ProfileType>, AxiosError<any>>({
     queryKey: [queryKeys.PROFILE],
-    queryFn: () => axiosProtected.get('accounts/users/profile/'),
+    queryFn: () => axiosProtected.get('/accounts/users/profile/'),
     retry: 1,
   });
 

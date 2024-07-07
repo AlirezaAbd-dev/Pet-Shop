@@ -16,7 +16,7 @@ const useEmailVerificationMutation = () => {
   >({
     mutationKey: [registerQueryKeys.EMAIL_VERIFICATION],
     mutationFn: (data) =>
-      axiosInstance.post('accounts/auth/registration/verify-email/', data),
+      axiosInstance.post('/accounts/auth/registration/verify-email/', data),
     onSuccess(data) {
       router.push('/login');
     },
