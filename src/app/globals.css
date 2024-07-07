@@ -156,3 +156,22 @@
 .rectangle {
   border-radius: 54% 46% 41% 59% / 59% 47% 53% 41%;
 }
+
+/* Loading Progressbar */
+.progress-bar-value {
+  animation: indeterminateAnimation 1s infinite linear;
+  transform-origin: 0% 50%;
+}
+
+@keyframes indeterminateAnimation {
+  0% {
+    transform: translateX(0) scaleX(0);
+  }
+  40% {
+    transform: translateX(0) scaleX(0.4);
+  }
+  100% {
+    transform: translateX(100%) scaleX(0.5);
+  }
+}
+/* END Loading Progressbar */

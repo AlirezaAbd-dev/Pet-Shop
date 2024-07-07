@@ -5,11 +5,14 @@ import React from 'react';
 import { toast } from 'sonner';
 
 import { axiosInstance } from '@/lib/constants/axios';
+import { useAuthStore } from '@/store/auth.store';
 
 import { registerQueryKeys } from '../_constants/query-keys.constants';
 
 const useLoginMutation = () => {
   const router = useRouter();
+
+  const setAccessToken = useAuthStore((s) => s.setAccessToken);
 
   const mutation = useMutation<
     AxiosResponse<{ refresh: string; access: string }>,
@@ -19,6 +22,7 @@ const useLoginMutation = () => {
     mutationKey: [registerQueryKeys.LOGIN],
     mutationFn: (data) => axiosInstance.post('accounts/auth/login/', data),
     onSuccess(data) {
+      setAccessToken(data.data.access);
       localStorage.setItem('refresh-token', data.data.refresh);
       router.push('/');
     },

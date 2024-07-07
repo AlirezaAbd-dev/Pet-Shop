@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 
+import { Progress } from '@/components/ui/progress';
 import { Toaster } from '@/components/ui/toaster';
 import fonts from '@/fonts';
 

@@ -1,13 +1,17 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
+import SvgArrowWhite16 from '@/assets/svg/Arrow-white-16.svg';
+import SvgArrowWhite24 from '@/assets/svg/Arrow-white-24.svg';
 import SvgLogoDesktop from '@/assets/svg/logo-title-desktop.svg';
 import SvgLogoMobile from '@/assets/svg/logo-title-mobile.svg';
 import Icon from '@/components/icon';
 import { Input } from '@/components/ui/input';
+import useProfileQuery from '@/hooks/react-query/queries/profile.query';
 import { cn } from '@/lib/utils';
+import { useAuthStore } from '@/store/auth.store';
 
 import SvgSearch from '@icons/search-loupe-custom.svg';
 import SvgSingleUserDesktop from '@icons/single-user-desktop.svg';
@@ -19,6 +23,10 @@ import ShopHover from './shop-hover.component';
 
 const Navbar = () => {
   const pathname = usePathname();
+  const router = useRouter();
+  useProfileQuery();
+
+  const profile = useAuthStore((s) => s.profile);
 
   return (
     <nav className="flex justify-between md:items-center px-5 md:px-20 py-3 md:py-5 border-b border-nature-800">
@@ -62,12 +70,29 @@ const Navbar = () => {
             className="bg-transparent placeholder:text-text-200 font-nunito border-none text-base"
           />
         </div>
-        <Link href={'/login'}>
-          <Icon className="flex justify-center items-center w-8 md:w-14 h-8 md:h-14 cursor-pointer bg-secondary-500 rounded-lg md:rounded-2xl text-white">
-            <SvgSingleUser className="md:hidden w-6 h-6" />
-            <SvgSingleUserDesktop className="hidden md:block w-8 h-8" />
-          </Icon>
-        </Link>
+        <Icon
+          onClick={() => {
+            if (profile) {
+              router.push('/dashboard/main');
+            } else {
+              router.push('/login');
+            }
+          }}
+          className={cn(
+            'flex justify-center items-center w-8 md:w-14 h-8 md:h-14 cursor-pointer bg-secondary-500 rounded-lg md:rounded-2xl text-white',
+            profile ? 'w-auto md:w-auto md:px-4 md:gap-2 gap-0 px-2' : '',
+          )}
+        >
+          <SvgSingleUser className="md:hidden w-6 h-6" />
+          <SvgSingleUserDesktop className="hidden md:block w-8 h-8" />
+          {profile && (
+            <>
+              <p className="hidden md:block">{profile?.full_name}</p>
+              <SvgArrowWhite24 className="hidden md:block" />
+              <SvgArrowWhite16 className="md:hidden" />
+            </>
+          )}
+        </Icon>
 
         {/* Mini cart */}
         <CartButton />

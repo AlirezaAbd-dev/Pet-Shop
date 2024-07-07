@@ -1,7 +1,4 @@
-'use client';
-
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 import SvgGoogleDesktop from '@/assets/svg/google-desktop.svg';
 import SvgGoogleMobile from '@/assets/svg/google-mobile.svg';
@@ -13,8 +10,6 @@ import { Button } from '@/components/ui/button';
 import LoginForm from './login.form';
 
 const Login = () => {
-  const router = useRouter();
-
   return (
     <main className="flex min-h-screen justify-center items-center md:py-24">
       <section className="flex flex-col items-center px-5 w-full md:w-[486px] md:border md:border-nature-800 md:rounded-2xl md:p-6">
