@@ -1,7 +1,7 @@
 export const COUNTER_VARIANTS = {
   lg: {
     container:
-      'flex gap-4 md:gap-6 justify-between items-center p-2 py-[10px] px-3 border border-nature-900 rounded-lg md:rounded-2xl',
+      'flex gap-4 md:gap-6 justify-between items-center p-2 md:py-[10px] px-3 border border-nature-900 rounded-lg md:rounded-2xl',
     counterButtons:
       'flex justify-center items-center w-7 h-7 md:w-11 md:h-11 bg-nature-700 rounded-[4px] cursor-pointer md:rounded-lg',
     icons: 'w-5 text-text-400',
