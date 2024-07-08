@@ -20,6 +20,8 @@ import { cn } from '@/lib/utils';
 import SvgHeartDesktop from '@icons/heart-desktop.svg';
 import SvgHeartSmall from '@icons/heart-small.svg';
 
+import Counter from './counter.component';
+
 // temporarly
 const WEIGHTS = [
   {
@@ -38,6 +40,7 @@ const ProductDetailsSection = () => {
   const [selectedWeight, setSelectedWeight] = useState<WeightType>(
     WEIGHTS[0].weight,
   );
+  const [counterValue, setCounterValue] = useState(0);
 
   return (
     <section className="flex flex-col mt-6 md:mt-0 md:w-full md:col-span-6">
@@ -94,15 +97,7 @@ const ProductDetailsSection = () => {
 
       <div className="flex gap-4 mt-6 md:mt-10">
         {/* cart counter */}
-        <div className="flex gap-4 md:gap-6 justify-between items-center p-2 py-[10px] px-3 border border-nature-900 rounded-lg md:rounded-2xl">
-          <span className="flex justify-center items-center w-7 h-7 md:w-11 md:h-11 bg-nature-700 rounded-[4px] md:rounded-lg">
-            <Minus className="w-5 text-nature-900" />
-          </span>
-          <p className="text-xl md:text-[32px]">1</p>
-          <span className="flex justify-center items-center w-7 h-7 md:w-11 md:h-11 bg-nature-700 rounded-[4px] md:rounded-lg">
-            <Plus className="w-5 h-5 text-text-400" />
-          </span>
-        </div>
+        <Counter value={counterValue} onChange={setCounterValue} maximum={10} />
 
         <Button className="font-bold text-sm w-full rounded-lg md:h-16 md:rounded-2xl shadow-color-md">
           Add to cart

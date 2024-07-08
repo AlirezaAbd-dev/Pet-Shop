@@ -1,11 +1,14 @@
 import { Minus, Plus } from 'lucide-react';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 
 import SvgWeight from '@/assets/svg/weight-gray-mobile.svg';
 import Icon from '@/components/icon';
+import Counter from '@/routes/product-details/components/product-wild-card/counter.component';
 
 const NavbarProductCard = () => {
+  const [counterValue, setCounterValue] = useState(1);
+
   return (
     <li className="w-full flex justify-between pb-5 md:pb-6 border-b border-nature-900">
       <div className="w-full flex gap-3 md:gap-4">
@@ -36,15 +39,14 @@ const NavbarProductCard = () => {
           </p>
         </div>
         {/* counter */}
-        <div className="flex gap-4 mt-3 md:gap-4  justify-between items-center md:p-1 py-1 px-2 border border-nature-900 rounded-lg">
-          <span className="flex justify-center items-center w-6 h-6 md:w-7 md:h-7 bg-nature-700 rounded-[4px] md:rounded-lg">
-            <Minus className="w-4 md:w-5 text-nature-900" />
-          </span>
-          <p className="text-lg md:text-xl">1</p>
-          <span className="flex justify-center items-center w-6 h-6 md:w-7 md:h-7 bg-nature-700 rounded-[4px] md:rounded-lg">
-            <Plus className="w-4 h-4 md:w-5 md:h-5 text-text-400" />
-          </span>
-        </div>
+        <Counter
+          value={counterValue}
+          onChange={setCounterValue}
+          minimum={1}
+          onMinimumType="delete"
+          maximum={10}
+          size="sm"
+        />
       </div>
     </li>
   );

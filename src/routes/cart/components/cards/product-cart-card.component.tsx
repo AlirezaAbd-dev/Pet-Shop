@@ -1,12 +1,16 @@
-import { Minus, Plus } from 'lucide-react';
+'use client';
+
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 
 import SvgWeightDesktop from '@/assets/svg/weight-gray-desktop.svg';
 import SvgWeightMobile from '@/assets/svg/weight-gray-mobile.svg';
 import Icon from '@/components/icon';
+import Counter from '@/routes/product-details/components/product-wild-card/counter.component';
 
 const ProductCartCard = () => {
+  const [counterValue, setCounterValue] = useState(1);
+
   return (
     <li className="flex justify-between md:items-center border border-nature-900 rounded-2xl p-3 md:p-5">
       <div className="flex gap-3 md:gap-4">
@@ -41,15 +45,15 @@ const ProductCartCard = () => {
           <p className="font-bold text-sm md:text-2xl mt-1 md:mt-3">$ 89.12</p>
         </div>
         <div className="mt-3 md:mt-0">
-          <div className="flex gap-3 md:gap-6 justify-between items-center px-2 py-[5px] md:p-3 border border-nature-900 rounded-lg md:rounded-2xl">
-            <span className="flex justify-center items-center w-6 h-6 md:w-8 md:h-8 bg-nature-700 rounded-[4px] md:rounded-lg">
-              <Minus className="w-4 md:w-5 text-nature-900" />
-            </span>
-            <p className="text-lg md:text-[24px]">1</p>
-            <span className="flex justify-center items-center w-6 h-6 md:w-8 md:h-8 bg-nature-700 rounded-[4px] md:rounded-lg">
-              <Plus className="w-4 h-4 md:w-5 md:h-5 text-text-400" />
-            </span>
-          </div>
+          {/* Counter */}
+          <Counter
+            value={counterValue}
+            onChange={setCounterValue}
+            maximum={10}
+            minimum={1}
+            onMinimumType="delete"
+            size="md"
+          />
         </div>
       </div>
     </li>

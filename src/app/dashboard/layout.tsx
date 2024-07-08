@@ -1,12 +1,30 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { useRouter } from 'next/navigation';
+import { ReactNode, useEffect } from 'react';
 
 import Navbar from '@/components/shared/navbar/navbar.component';
+import useProfileQuery from '@/hooks/react-query/queries/profile.query';
 import DashboardLogoutModal from '@/routes/(dashboard)/_components/modals/dashboard-logout.modal';
 import DashboardSidebarLayout from '@/routes/(dashboard)/_layouts/dashboard-sidebar.layout';
 
-const layout = ({ children }: { children: ReactNode }) => {
+import Loading from '../loading';
+
+const Layout = ({ children }: { children: ReactNode }) => {
+  const router = useRouter();
+
+  const { data, isPending } = useProfileQuery();
+
+  useEffect(() => {
+    if (!isPending && !data?.data) {
+      router.replace('/login');
+    }
+  }, [data, isPending]);
+
+  if (isPending) {
+    return <Loading />;
+  }
+
   return (
     <>
       <DashboardLogoutModal />
@@ -21,4 +39,4 @@ const layout = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default layout;
+export default Layout;
