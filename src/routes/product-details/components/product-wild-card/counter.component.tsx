@@ -40,21 +40,39 @@ const Counter = ({
     }
   }
 
+  function onDelete() {
+    props.onChange?.(0);
+  }
+
   return (
     <div className={COUNTER_VARIANTS[size].container}>
-      <span onClick={onMinus} className={COUNTER_VARIANTS[size].counterButtons}>
-        {props.value - counterMultiplier < minimum &&
-          onMinimumType === 'delete' && (
-            <Trash2 className={COUNTER_VARIANTS[size].delete} />
-          )}
+      {props.value - counterMultiplier < minimum &&
+        onMinimumType === 'delete' && (
+          <span
+            onClick={onDelete}
+            className={COUNTER_VARIANTS[size].counterButtons}
+          >
+            {props.value - counterMultiplier < minimum &&
+              onMinimumType === 'delete' && (
+                <Trash2 className={COUNTER_VARIANTS[size].delete} />
+              )}
+          </span>
+        )}
+
+      <span
+        onClick={onMinus}
+        className={cn(
+          COUNTER_VARIANTS[size].counterButtons,
+          props.value - counterMultiplier < minimum &&
+            onMinimumType === 'delete'
+            ? 'hidden'
+            : '',
+        )}
+      >
         <Minus
           className={cn(
             COUNTER_VARIANTS[size].icons,
             props.value - counterMultiplier < minimum ? 'text-nature-900' : '',
-            props.value - counterMultiplier < minimum &&
-              onMinimumType === 'delete'
-              ? 'hidden'
-              : '',
           )}
         />
       </span>

@@ -1,7 +1,7 @@
 'use client';
 
-import { Minus, Plus } from 'lucide-react';
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 
 import SvgWeightDesktopActive from '@/assets/svg/weight-active-desktop.svg';
 import SvgWeightDesktop from '@/assets/svg/weight-desktop.svg';
@@ -16,11 +16,13 @@ import {
 } from '@/components/ui/accordion-1';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useCartStore } from '@/store/cart.store';
 
 import SvgHeartDesktop from '@icons/heart-desktop.svg';
 import SvgHeartSmall from '@icons/heart-small.svg';
 
 import Counter from './counter.component';
+import { ProductWildCardProps } from './product-wild-card.component';
 
 // temporarly
 const WEIGHTS = [
@@ -36,20 +38,45 @@ const WEIGHTS = [
 ] as const;
 type WeightType = (typeof WEIGHTS)[number]['weight'];
 
-const ProductDetailsSection = () => {
+type ProductDetailsSectionProps = ProductWildCardProps;
+
+const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
   const [selectedWeight, setSelectedWeight] = useState<WeightType>(
     WEIGHTS[0].weight,
   );
-  const [counterValue, setCounterValue] = useState(0);
+
+  const cart = useCartStore((s) => s.cart);
+  const onChangeCart = useCartStore((s) => s.onChangeCart);
+  console.log(cart);
+  const currentCount =
+    cart.find((c) => c.id === props.id && c.weight === selectedWeight)?.count ||
+    0;
+
+  const [counterValue, setCounterValue] = useState(currentCount);
+
+  useEffect(() => {
+    setCounterValue(currentCount);
+  }, [selectedWeight, cart]);
+
+  function addToCart() {
+    onChangeCart({
+      image: '/examples/single-product-image-1.png',
+      count: counterValue,
+      weight: selectedWeight,
+      id: props.id,
+      price: props.price,
+      priceWithDiscount: props.priceWithDiscount,
+      title: props.title,
+    });
+    toast.success(`${props.title} successfully added to cart`);
+  }
 
   return (
     <section className="flex flex-col mt-6 md:mt-0 md:w-full md:col-span-6">
       <h1 className="font-nunito font-black text-lg md:text-[32px] md:leading-9">
-        Royal Canin Urinary
+        {props.title}
       </h1>
-      <p className="text-sm mt-1 md:mt-3 md:text-lg">
-        Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut scing elit
-      </p>
+      <p className="text-sm mt-1 md:mt-3 md:text-lg">{props.description}</p>
       <p className="mt-4 md:mt-9 font-nunito font-bold text-sm md:text-lg">
         Select weight
       </p>
@@ -84,10 +111,14 @@ const ProductDetailsSection = () => {
       </ul>
       <div className="flex justify-between mt-6 md:mt-8">
         <div className="flex items-center gap-3">
-          <p className="text-xl md:text-[32px] font-bold">$54.12</p>
-          <p className="text-text-300 line-through decoration-text-300 md:text-xl">
-            $89.12
+          <p className="text-xl md:text-[32px] font-bold">
+            ${props.priceWithDiscount.toFixed(2)}
           </p>
+          {props.price > props.priceWithDiscount && (
+            <p className="text-text-300 line-through decoration-text-300 md:text-xl">
+              ${props.price.toFixed(2)}
+            </p>
+          )}
         </div>
         <Icon className="p-1.5 md:p-[10px] bg-nature-700 rounded-lg">
           <SvgHeartSmall className="md:hidden" />
@@ -99,7 +130,12 @@ const ProductDetailsSection = () => {
         {/* cart counter */}
         <Counter value={counterValue} onChange={setCounterValue} maximum={10} />
 
-        <Button className="font-bold text-sm w-full rounded-lg md:h-16 md:rounded-2xl shadow-color-md">
+        <Button
+          onClick={addToCart}
+          disabled={counterValue === 0}
+          variant={counterValue === 0 ? 'disabled' : 'default'}
+          className="font-bold text-sm w-full rounded-lg md:h-16 md:rounded-2xl shadow-color-md"
+        >
           Add to cart
         </Button>
       </div>

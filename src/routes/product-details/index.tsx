@@ -17,7 +17,14 @@ const ProductDetails = (props: { product: Product }) => {
   return (
     <>
       <ProductBreadcrumb />
-      <ProductWildCard />
+      <ProductWildCard
+        title={data.name}
+        description={data.description}
+        id={data.id}
+        inventory={data.inventory}
+        price={data.price}
+        priceWithDiscount={data.price_after_promotion}
+      />
 
       <ShopSpecifications className="mt-10 md:mt-24 px-5 md:px-20" />
       <RelatedProducts />
