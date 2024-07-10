@@ -4,10 +4,13 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import { Button } from '@/components/ui/button';
+import useProfileQuery from '@/hooks/react-query/queries/profile.query';
 import { calculatePrice } from '@/lib/utils/calculatePrice';
 import { useCartStore } from '@/store/cart.store';
 
 const CartTotals = () => {
+  const { data, isPending } = useProfileQuery();
+
   const router = useRouter();
   const cart = useCartStore((s) => s.cart);
 
@@ -36,8 +39,12 @@ const CartTotals = () => {
       </div>
       <Button
         onClick={() => {
-          router.push('/cart/checkout');
+          if (data?.data) router.push('/cart/checkout');
+          else router.push('/login');
         }}
+        isLoading={isPending}
+        disabled={isPending}
+        variant={isPending ? 'disabled' : 'default'}
         className="mt-4 md:mt-6 font-bold text-sm rounded-lg md:rounded-2xl md:h-[56px]"
       >
         Proceed to checkout

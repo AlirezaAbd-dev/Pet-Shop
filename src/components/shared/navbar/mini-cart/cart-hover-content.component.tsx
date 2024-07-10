@@ -1,12 +1,18 @@
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
+import useProfileQuery from '@/hooks/react-query/queries/profile.query';
 import { calculatePrice } from '@/lib/utils/calculatePrice';
 import { useCartStore } from '@/store/cart.store';
 
 import NavbarProductCard from '../navbar-product-card.component';
 
 const CartHoverContent = () => {
+  const router = useRouter();
+
+  const { data, isPending } = useProfileQuery();
+
   const cart = useCartStore((s) => s.cart);
 
   const { finalPrice, discountPercent, totalDiscount, totalPrice } =
@@ -35,9 +41,18 @@ const CartHoverContent = () => {
           <p className="">$ {totalPrice.toFixed(2)}</p>
         </div>
         <div className="flex gap-4 mt-5 md:mt-6">
-          <Link href={'/cart/checkout'} className="w-full">
-            <Button className="w-full rounded-xl">Checkout</Button>
-          </Link>
+          <Button
+            isLoading={isPending}
+            disabled={isPending}
+            variant={isPending ? 'disabled' : 'default'}
+            onClick={() => {
+              if (data?.data) router.push('/cart/checkout');
+              else router.push('/login');
+            }}
+            className="w-full rounded-xl"
+          >
+            Checkout
+          </Button>
           <Link href={'/cart'} className="w-full">
             <Button
               variant={'outline'}

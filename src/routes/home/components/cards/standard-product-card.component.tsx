@@ -12,7 +12,7 @@ import SvgWeight from '@icons/weight.svg';
 const StandardProductCard = () => {
   return (
     <Link
-      href="/product/pet"
+      href="/product/2"
       className="flex flex-col border border-nature-800 rounded-2xl p-4"
     >
       <div className="relative flex justify-center items-center h-[152px] bg-nature-600 rounded-xl">
