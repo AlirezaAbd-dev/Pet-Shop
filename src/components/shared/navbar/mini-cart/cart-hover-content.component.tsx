@@ -1,12 +1,16 @@
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
+import { calculatePrice } from '@/lib/utils/calculatePrice';
 import { useCartStore } from '@/store/cart.store';
 
 import NavbarProductCard from '../navbar-product-card.component';
 
 const CartHoverContent = () => {
   const cart = useCartStore((s) => s.cart);
+
+  const { finalPrice, discountPercent, totalDiscount, totalPrice } =
+    calculatePrice(cart);
 
   return (
     <>
@@ -17,16 +21,18 @@ const CartHoverContent = () => {
       </ul>
       <div className="flex justify-between mt-4 md:mt-6 text-sm md:text-base md:px-4 px-5">
         <p>Discount:</p>
-        <p className="text-error-500">$ 17.12 (25%)</p>
+        <p className="text-error-500">
+          $ {totalDiscount.toFixed(2)} ({discountPercent}%)
+        </p>
       </div>
       <div className="flex justify-between mt-2 md:mt-4 text-sm md:text-base md:px-4 px-5">
         <p>Total:</p>
-        <p className="">$ 54.12</p>
+        <p className="">$ {finalPrice.toFixed(2)}</p>
       </div>
       <div className="mt-6 md:px-4 px-5 py-4 bg-nature-600 border-t border-nature-800">
         <div className="flex justify-between font-extrabold text-sm md:text-base">
           <p>Subtotal:</p>
-          <p className="">$ 54.12</p>
+          <p className="">$ {totalPrice.toFixed(2)}</p>
         </div>
         <div className="flex gap-4 mt-5 md:mt-6">
           <Link href={'/cart/checkout'} className="w-full">

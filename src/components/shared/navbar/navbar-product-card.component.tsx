@@ -1,5 +1,6 @@
 import { Minus, Plus } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 import SvgWeight from '@/assets/svg/weight-gray-mobile.svg';
@@ -23,7 +24,10 @@ const NavbarProductCard = (props: NavbarProductCardProps) => {
 
   return (
     <li className="w-full flex justify-between pb-5 md:pb-6 border-b border-nature-900">
-      <div className="w-full flex gap-3 md:gap-4">
+      <Link
+        href={`/product/${props.id}`}
+        className="w-full flex gap-3 md:gap-4"
+      >
         <div className="flex justify-center items-center w-[53px] h-[53px] md:w-[83px] md:h-[83px] bg-nature-700 rounded-xl">
           <Image
             src={props.image}
@@ -42,15 +46,15 @@ const NavbarProductCard = (props: NavbarProductCardProps) => {
             {props.weight}KG
           </Icon>
         </div>
-      </div>
+      </Link>
       <div className="flex flex-col items-end">
         <div className="flex items-center gap-1 md:gap-2">
           <p className="font-bold text-sm md:text-lg">
-            ${props.priceWithDiscount}
+            ${props.priceWithDiscount.toFixed(2)}
           </p>
           {props.price > props.priceWithDiscount && (
             <p className="line-through decoration-text-300 text-text-300 text-xs md:text-base">
-              ${props.priceWithDiscount}
+              ${props.price.toFixed(2)}
             </p>
           )}
         </div>
