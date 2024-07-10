@@ -3,12 +3,13 @@ import { persist } from 'zustand/middleware';
 
 import { Prettify } from '@/lib/types/utils';
 
-type CartProduct = Prettify<{
+export type CartProduct = Prettify<{
   id: number;
   title: string;
   image: string;
   price: number;
   priceWithDiscount: number;
+  inventory: number;
   weight: string;
   count: number;
 }>;
@@ -36,6 +37,7 @@ export const useCartStore = create<UseCartStoreType>()(
 
         if (cartProduct.count === 0) {
           currentCart.splice(findProductIndex, 1);
+          console.log(currentCart);
           return set({ cart: currentCart });
         }
 

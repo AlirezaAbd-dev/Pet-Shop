@@ -13,7 +13,6 @@ import useSingleProductQuery from './queries/single-product.query';
 
 const ProductDetails = (props: { product: Product }) => {
   const { data } = useSingleProductQuery(props.product);
-  console.log(data);
   return (
     <>
       <ProductBreadcrumb />

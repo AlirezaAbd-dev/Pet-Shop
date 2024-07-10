@@ -17,7 +17,7 @@ import SvgSearch from '@icons/search-loupe-custom.svg';
 import SvgSingleUserDesktop from '@icons/single-user-desktop.svg';
 import SvgSingleUser from '@icons/single-user.svg';
 
-import CartButton from './cart-hover.component';
+import CartButton from './mini-cart/cart-hover.component';
 import MobileSidebar from './mobile-sidebar.component';
 import ShopHover from './shop-hover.component';
 

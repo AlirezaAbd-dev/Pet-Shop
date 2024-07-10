@@ -47,7 +47,6 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
 
   const cart = useCartStore((s) => s.cart);
   const onChangeCart = useCartStore((s) => s.onChangeCart);
-  console.log(cart);
   const currentCount =
     cart.find((c) => c.id === props.id && c.weight === selectedWeight)?.count ||
     0;
@@ -67,6 +66,7 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
       price: props.price,
       priceWithDiscount: props.priceWithDiscount,
       title: props.title,
+      inventory: props.inventory,
     });
     toast.success(`${props.title} successfully added to cart`);
   }
@@ -128,7 +128,11 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
 
       <div className="flex gap-4 mt-6 md:mt-10">
         {/* cart counter */}
-        <Counter value={counterValue} onChange={setCounterValue} maximum={10} />
+        <Counter
+          value={counterValue}
+          onChange={setCounterValue}
+          maximum={props.inventory}
+        />
 
         <Button
           onClick={addToCart}
