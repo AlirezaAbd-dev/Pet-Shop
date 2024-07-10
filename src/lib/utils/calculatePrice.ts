@@ -6,11 +6,11 @@ export function calculatePercent(total: number, available: number) {
 
 export function calculatePrice(cart: CartProduct[]) {
   const totalPrice = cart.reduce((acc, item) => {
-    return acc + item.price;
+    return acc + item.price * item.count;
   }, 0);
 
   const finalPrice = cart.reduce((acc, item) => {
-    return acc + item.priceWithDiscount;
+    return acc + item.priceWithDiscount * item.count;
   }, 0);
 
   const totalDiscount = totalPrice - finalPrice;
