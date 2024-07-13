@@ -8,12 +8,13 @@ export type ProductWildCardProps = {
   price: number;
   priceWithDiscount: number;
   inventory: number;
+  images: string[];
 };
 
 const ProductWildCard = (props: ProductWildCardProps) => {
   return (
     <main className="mt-4 md:mt-16 mx-5 md:mx-20 flex flex-col md:grid md:grid-cols-12 md:gap-14">
-      <ImagesShowcase />
+      <ImagesShowcase images={props.images} />
       <ProductDetailsSection {...props} />
     </main>
   );

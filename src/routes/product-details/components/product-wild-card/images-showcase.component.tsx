@@ -7,52 +7,29 @@ import SvgPolygon from '@/assets/svg/polygon-1.svg';
 import Icon from '@/components/icon';
 import { cn } from '@/lib/utils';
 
-const FAKE_IMAGES = [
-  {
-    id: 1,
-    image: '/examples/single-product-image-1.png',
-  },
-  {
-    id: 2,
-    image: '/examples/single-product-image-1.png',
-  },
-  {
-    id: 3,
-    image: '/examples/single-product-image-1.png',
-  },
-  {
-    id: 4,
-    image: '/examples/single-product-image-1.png',
-  },
-  {
-    id: 5,
-    image: '/examples/single-product-image-1.png',
-  },
-  {
-    id: 6,
-    image: '/examples/single-product-image-1.png',
-  },
-];
+type ImageShowcaseProps = {
+  images: string[];
+};
 
-const ImagesShowcase = () => {
-  const [selectedImage, setSelectedImage] = useState(FAKE_IMAGES[0].id);
+const ImagesShowcase = (props: ImageShowcaseProps) => {
+  const [selectedImage, setSelectedImage] = useState(props.images[0]);
 
   const discount: number = 25;
 
   return (
     <section className="flex gap-3 md:gap-0 md:col-span-6">
       <ul className="flex flex-col pr-5 md:pr-14 gap-2 md:gap-6 max-h-[248px] md:max-h-[600px] overflow-y-auto no-scrollbar">
-        {FAKE_IMAGES.map((i) => (
+        {props.images.map((i) => (
           <li
-            key={i.id}
-            onClick={() => setSelectedImage(i.id)}
+            key={i}
+            onClick={() => setSelectedImage(i)}
             className={cn(
               'flex justify-center items-center w-[68px] min-h-[56px] md:w-[110px] md:min-h-[111px] rounded-lg cursor-pointer border border-nature-900',
-              selectedImage === i.id ? 'border-primary-500' : '',
+              selectedImage === i ? 'border-primary-500' : '',
             )}
           >
             <Image
-              src={i.image}
+              src={i}
               alt="example"
               width={39}
               height={85}
@@ -76,11 +53,12 @@ const ImagesShowcase = () => {
           </p>
         </Icon>
         <Image
-          src={FAKE_IMAGES.find((i) => i.id === selectedImage)?.image as string}
+          src={selectedImage}
           alt="example"
+          quality={100}
           width={224}
           height={488}
-          className="w-[92px] h-[200px] md:w-[224px] md:h-[488px]"
+          className="w-[92px] h-[200px] md:w-auto md:h-[488px]"
         />
       </div>
     </section>

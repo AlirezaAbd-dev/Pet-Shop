@@ -13,6 +13,7 @@ import useSingleProductQuery from './queries/single-product.query';
 
 const ProductDetails = (props: { product: Product }) => {
   const { data } = useSingleProductQuery(props.product);
+
   return (
     <>
       <ProductBreadcrumb />
@@ -23,6 +24,7 @@ const ProductDetails = (props: { product: Product }) => {
         inventory={data.inventory}
         price={data.price}
         priceWithDiscount={data.price_after_promotion}
+        images={data.image_urls}
       />
 
       <ShopSpecifications className="mt-10 md:mt-24 px-5 md:px-20" />
