@@ -31,9 +31,10 @@ const ImagesShowcase = (props: ImageShowcaseProps) => {
             <Image
               src={i}
               alt="example"
+              quality={100}
               width={39}
               height={85}
-              className="w-[19px] h-[41px] md:w-[39px] md:h-[85px]"
+              className="h-[41px] w-auto md:h-[85px]"
             />
           </li>
         ))}
@@ -58,7 +59,7 @@ const ImagesShowcase = (props: ImageShowcaseProps) => {
           quality={100}
           width={224}
           height={488}
-          className="w-[92px] h-[200px] md:w-auto md:h-[488px]"
+          className="h-[200px] w-auto md:h-[488px]"
         />
       </div>
     </section>
