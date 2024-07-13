@@ -16,6 +16,7 @@ export type ProfileType = {
 };
 
 const useProfileQuery = () => {
+  const setIsLoading = useAuthStore((s) => s.setIsLoading);
   const setProfile = useAuthStore((s) => s.setProfile);
 
   const axiosProtected = useAxiosProtected();
@@ -28,7 +29,10 @@ const useProfileQuery = () => {
 
   useEffect(() => {
     if (!query.isPending && query.isSuccess) {
+      setIsLoading(false);
       setProfile(query.data.data);
+    } else if (!query.isPending && query.error) {
+      setIsLoading(false);
     }
   }, [query]);
 

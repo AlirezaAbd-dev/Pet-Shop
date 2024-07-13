@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
-import useProfileQuery from '@/hooks/react-query/queries/profile.query';
 import { calculatePrice } from '@/lib/utils/calculatePrice';
+import { useAuthStore } from '@/store/auth.store';
 import { useCartStore } from '@/store/cart.store';
 
 import NavbarProductCard from '../navbar-product-card.component';
@@ -11,8 +11,8 @@ import NavbarProductCard from '../navbar-product-card.component';
 const CartHoverContent = () => {
   const router = useRouter();
 
-  const { data, isPending } = useProfileQuery();
-
+  const profile = useAuthStore((s) => s.profile);
+  const isLoading = useAuthStore((s) => s.isLoading);
   const cart = useCartStore((s) => s.cart);
 
   const { finalPrice, discountPercent, totalDiscount, totalPrice } =
@@ -42,11 +42,11 @@ const CartHoverContent = () => {
         </div>
         <div className="flex gap-4 mt-5 md:mt-6">
           <Button
-            isLoading={isPending}
-            disabled={isPending}
-            variant={isPending ? 'disabled' : 'default'}
+            isLoading={isLoading}
+            disabled={isLoading}
+            variant={isLoading ? 'disabled' : 'default'}
             onClick={() => {
-              if (data?.data) router.push('/cart/checkout');
+              if (profile) router.push('/cart/checkout');
               else router.push('/login');
             }}
             className="w-full rounded-xl"
