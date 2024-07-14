@@ -10,8 +10,8 @@ export type CartProduct = Prettify<{
   price: number;
   priceWithDiscount: number;
   inventory: number;
-  weight: string;
   count: number;
+  weight: number;
 }>;
 
 type UseCartStoreType = {
@@ -31,7 +31,7 @@ export const useCartStore = create<UseCartStoreType>()(
         const currentCart = [...get().cart];
 
         const findProductIndex = currentCart.findIndex(
-          (c) => c.id === cartProduct.id && c.weight === cartProduct.weight,
+          (c) => c.id === cartProduct.id,
         );
 
         if (findProductIndex === -1) {
@@ -41,7 +41,6 @@ export const useCartStore = create<UseCartStoreType>()(
 
         if (cartProduct.count === 0) {
           currentCart.splice(findProductIndex, 1);
-          console.log(currentCart);
           return set({ cart: currentCart });
         }
 

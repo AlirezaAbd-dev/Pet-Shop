@@ -36,37 +36,30 @@ const WEIGHTS = [
     weight: '750',
   },
 ] as const;
-type WeightType = (typeof WEIGHTS)[number]['weight'];
 
 type ProductDetailsSectionProps = ProductWildCardProps;
 
 const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
-  const [selectedWeight, setSelectedWeight] = useState<WeightType>(
-    WEIGHTS[0].weight,
-  );
-
   const cart = useCartStore((s) => s.cart);
   const onChangeCart = useCartStore((s) => s.onChangeCart);
-  const currentCount =
-    cart.find((c) => c.id === props.id && c.weight === selectedWeight)?.count ||
-    0;
+  const currentCount = cart.find((c) => c.id === props.id)?.count || 0;
 
   const [counterValue, setCounterValue] = useState(currentCount);
 
   useEffect(() => {
     setCounterValue(currentCount);
-  }, [selectedWeight, cart]);
+  }, [cart]);
 
   function addToCart() {
     onChangeCart({
       image: '/examples/single-product-image-1.png',
       count: counterValue,
-      weight: selectedWeight,
       id: props.id,
       price: props.price,
       priceWithDiscount: props.priceWithDiscount,
       title: props.title,
       inventory: props.inventory,
+      weight: props.weight,
     });
     toast.success(`${props.title} successfully added to cart`);
   }
@@ -84,16 +77,20 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
         {WEIGHTS.map((item) => (
           <li
             key={item.weight}
-            onClick={() => setSelectedWeight(item.weight)}
+            onClick={() => {
+              if (+item.weight / props.weight <= props.inventory)
+                setCounterValue(+item.weight / props.weight);
+              else toast.error('Insufficient inventory');
+            }}
             className={cn(
               'flex items-center gap-2 text-sm md:text-base border border-nature-900 rounded-xl px-4 py-3 cursor-pointer',
-              selectedWeight === item.weight
+              counterValue * props.weight === +item.weight
                 ? 'bg-primary-50 bg-opacity-5 font-semibold text-primary-500 border-primary-500'
                 : '',
             )}
           >
             <Icon>
-              {selectedWeight === item.weight ? (
+              {counterValue * props.weight === +item.weight ? (
                 <>
                   <SvgWeightSmallActive className="md:hidden" />
                   <SvgWeightDesktopActive className="hidden md:block" />

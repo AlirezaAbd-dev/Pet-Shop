@@ -9,6 +9,7 @@ export type ProductWildCardProps = {
   priceWithDiscount: number;
   inventory: number;
   images: string[];
+  weight: number;
 };
 
 const ProductWildCard = (props: ProductWildCardProps) => {

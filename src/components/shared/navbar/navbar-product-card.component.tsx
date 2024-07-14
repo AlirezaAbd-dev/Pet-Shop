@@ -43,7 +43,7 @@ const NavbarProductCard = (props: NavbarProductCardProps) => {
           </p>
           <Icon className="flex items-center gap-2 mt-2 text-sm md:text-base text-text-300">
             <SvgWeight />
-            {props.weight}KG
+            {props.weight * props.count}KG
           </Icon>
         </div>
       </Link>

@@ -25,6 +25,7 @@ const ProductDetails = (props: { product: Product }) => {
         price={data.price}
         priceWithDiscount={data.price_after_promotion}
         images={data.image_urls}
+        weight={data.weight}
       />
 
       <ShopSpecifications className="mt-10 md:mt-24 px-5 md:px-20" />

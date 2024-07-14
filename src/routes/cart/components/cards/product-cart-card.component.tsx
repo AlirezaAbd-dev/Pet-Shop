@@ -41,7 +41,7 @@ const ProductCartCard = (props: ProductCartCardProps) => {
           <Icon className="flex gap-2 mt-2 text-text-300 text-sm md:text-lg">
             <SvgWeightMobile className="md:hidden" />
             <SvgWeightDesktop className="hidden md:block" />
-            {props.weight}KG
+            {props.weight * props.count}KG
           </Icon>
         </div>
       </Link>

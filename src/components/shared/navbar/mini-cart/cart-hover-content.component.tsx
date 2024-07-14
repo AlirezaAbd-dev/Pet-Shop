@@ -22,7 +22,7 @@ const CartHoverContent = () => {
     <>
       <ul className="w-full max-h-[300px] overflow-y-auto no-scrollbar flex flex-col md:px-4 px-5 md:pt-4 pt-5 gap-5 md:gap-6">
         {cart.map((item) => (
-          <NavbarProductCard key={item.id + item.weight} {...item} />
+          <NavbarProductCard key={item.id} {...item} />
         ))}
       </ul>
       <div className="flex justify-between mt-4 md:mt-6 text-sm md:text-base md:px-4 px-5">

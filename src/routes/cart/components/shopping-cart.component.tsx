@@ -25,7 +25,7 @@ const ShoppingCart = () => {
       </div>
       <ul className="flex flex-col gap-4 md:gap-6 mt-6">
         {cart.map((item) => (
-          <ProductCartCard key={item.id + item.weight} {...item} />
+          <ProductCartCard key={item.id} {...item} />
         ))}
       </ul>
     </section>

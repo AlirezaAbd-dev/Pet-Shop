@@ -22,6 +22,7 @@ export type Product = {
   price_after_promotion: number;
   total_discount: number;
   image_urls: string[];
+  weight: number;
 };
 
 export const dynamic = 'force-dynamic';
