@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 
 type ImageShowcaseProps = {
   images: string[];
+  discount: number;
 };
 
 const ImagesShowcase = (props: ImageShowcaseProps) => {
@@ -37,17 +38,22 @@ const ImagesShowcase = (props: ImageShowcaseProps) => {
         ))}
       </ul>
       <div className="md:relative flex justify-center items-center w-full md:h-[600px] bg-nature-600 rounded-2xl">
-        <Icon className="hidden md:block absolute -top-16 -right-12">
+        <Icon
+          className={cn(
+            'hidden md:block absolute -top-16 -right-12',
+            props.discount === 0 ? 'md:hidden' : '',
+          )}
+        >
           <SvgPolygon className="relative" />
           <p
             className={cn(
               'absolute top-12 right-[50px] text-white font-nunito font-black text-xl',
-              discount < 10 ? 'right-[55px]' : '',
-              discount > 10 && discount < 100 ? 'right-[50px]' : '',
-              discount === 100 ? 'right-[46px]' : '',
+              props.discount < 10 ? 'right-[55px]' : '',
+              props.discount > 10 && props.discount < 100 ? 'right-[50px]' : '',
+              props.discount === 100 ? 'right-[46px]' : '',
             )}
           >
-            {discount}%
+            {props.discount}%
           </p>
         </Icon>
         <img

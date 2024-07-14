@@ -28,6 +28,7 @@ export type Product = {
 };
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 const page = async (props: { params: { productId: string } }) => {
   const data = await getSingleProduct(props.params.productId);
