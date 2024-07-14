@@ -9,6 +9,7 @@ import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
+import { FAKE_PRODUCTS } from '../constants/fake-products.constants';
 import {
   CATEGORIES_LIST,
   CategoiesListType,
@@ -61,12 +62,17 @@ const HomeTopCategories = () => {
           ))}
         </ul>
       </section>
-      <section className="hidden md:grid md:grid-cols-4 gap-6 px-20 mt-10">
-        <StandardProductCard />
-        <StandardProductCard />
-        <StandardProductCard />
-        <StandardProductCard />
-      </section>
+      <Swiper
+        className="hidden md:block px-20 mt-10"
+        spaceBetween={24}
+        slidesPerView={4}
+      >
+        {FAKE_PRODUCTS.map((item) => (
+          <SwiperSlide key={item.id}>
+            <StandardProductCard {...item} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
       <Swiper
         className="md:hidden mt-6 px-4"
@@ -81,15 +87,11 @@ const HomeTopCategories = () => {
           bulletActiveClass: 'swiper-pagination-bullet-active',
         }}
       >
-        <SwiperSlide>
-          <StandardProductCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <StandardProductCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <StandardProductCard />
-        </SwiperSlide>
+        {FAKE_PRODUCTS.map((item) => (
+          <SwiperSlide key={item.id}>
+            <StandardProductCard {...item} />
+          </SwiperSlide>
+        ))}
       </Swiper>
       <div className="block md:hidden">
         <div className="categories-pagination"></div>

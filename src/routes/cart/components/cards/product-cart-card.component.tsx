@@ -26,12 +26,10 @@ const ProductCartCard = (props: ProductCartCardProps) => {
     <li className="flex justify-between md:items-center border border-nature-900 rounded-2xl p-3 md:p-5">
       <Link href={`/product/${props.id}`} className="flex gap-3 md:gap-4">
         <div className="flex items-center justify-center w-[53px] h-[53px] md:w-20 md:h-20 bg-nature-700 rounded-xl">
-          <Image
+          <img
             src={props.image}
-            width={30}
-            height={64}
             alt="product-1"
-            className="w-[19px] h-[40px] md:w-[30px] md:h-[64px]"
+            className="w-auto h-[40px] md:h-[64px]"
           />
         </div>
         <div>

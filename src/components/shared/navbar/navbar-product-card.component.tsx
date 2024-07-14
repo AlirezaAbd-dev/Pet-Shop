@@ -29,12 +29,10 @@ const NavbarProductCard = (props: NavbarProductCardProps) => {
         className="w-full flex gap-3 md:gap-4"
       >
         <div className="flex justify-center items-center w-[53px] h-[53px] md:w-[83px] md:h-[83px] bg-nature-700 rounded-xl">
-          <Image
+          <img
             src={props.image}
-            width={30}
-            height={64}
             alt="product-image-1"
-            className="w-[19px] h-[40px] md:w-[30px] md:h-[64px]"
+            className="w-auto h-[40px] md:h-[64px]"
           />
         </div>
         <div>

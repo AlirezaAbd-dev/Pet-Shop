@@ -13,12 +13,14 @@ export type Product = {
   created_date: string;
   updated_date: string;
   published_date: string;
-  active_promotions: {
-    discount: number;
-    valid_from: string;
-    valid_to: string;
-    description: string;
-  }[];
+  active_promotions:
+    | null
+    | {
+        discount: number;
+        valid_from: string;
+        valid_to: string;
+        description: string;
+      }[];
   price_after_promotion: number;
   total_discount: number;
   image_urls: string[];

@@ -28,12 +28,9 @@ const ImagesShowcase = (props: ImageShowcaseProps) => {
               selectedImage === i ? 'border-primary-500' : '',
             )}
           >
-            <Image
+            <img
               src={i}
               alt="example"
-              quality={100}
-              width={39}
-              height={85}
               className="h-[41px] w-auto md:h-[85px]"
             />
           </li>
@@ -53,12 +50,9 @@ const ImagesShowcase = (props: ImageShowcaseProps) => {
             {discount}%
           </p>
         </Icon>
-        <Image
+        <img
           src={selectedImage}
           alt="example"
-          quality={100}
-          width={224}
-          height={488}
           className="h-[200px] w-auto md:h-[488px]"
         />
       </div>

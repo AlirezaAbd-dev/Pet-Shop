@@ -52,7 +52,7 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
 
   function addToCart() {
     onChangeCart({
-      image: '/examples/single-product-image-1.png',
+      image: props.images[0],
       count: counterValue,
       id: props.id,
       price: props.price,

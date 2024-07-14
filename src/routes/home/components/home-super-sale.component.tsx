@@ -8,6 +8,7 @@ import type { Swiper as SwiperType } from 'swiper/types';
 
 import { Button } from '@/components/ui/button';
 
+import { FAKE_PRODUCTS } from '../constants/fake-products.constants';
 import StandardProductCard from './cards/standard-product-card.component';
 
 const HomeSuperSale = () => {
@@ -45,13 +46,13 @@ const HomeSuperSale = () => {
           slidesPerView={1.1}
         >
           <SwiperSlide>
-            <StandardProductCard />
+            <StandardProductCard {...FAKE_PRODUCTS[0]} />
           </SwiperSlide>
           <SwiperSlide>
-            <StandardProductCard />
+            <StandardProductCard {...FAKE_PRODUCTS[0]} />
           </SwiperSlide>
           <SwiperSlide>
-            <StandardProductCard />
+            <StandardProductCard {...FAKE_PRODUCTS[0]} />
           </SwiperSlide>
         </Swiper>
 
@@ -71,22 +72,22 @@ const HomeSuperSale = () => {
           }}
         >
           <SwiperSlide>
-            <StandardProductCard />
+            <StandardProductCard {...FAKE_PRODUCTS[0]} />
           </SwiperSlide>
           <SwiperSlide>
-            <StandardProductCard />
+            <StandardProductCard {...FAKE_PRODUCTS[0]} />
           </SwiperSlide>
           <SwiperSlide>
-            <StandardProductCard />
+            <StandardProductCard {...FAKE_PRODUCTS[0]} />
           </SwiperSlide>
           <SwiperSlide>
-            <StandardProductCard />
+            <StandardProductCard {...FAKE_PRODUCTS[0]} />
           </SwiperSlide>
           <SwiperSlide>
-            <StandardProductCard />
+            <StandardProductCard {...FAKE_PRODUCTS[0]} />
           </SwiperSlide>
           <SwiperSlide>
-            <StandardProductCard />
+            <StandardProductCard {...FAKE_PRODUCTS[0]} />
           </SwiperSlide>
         </Swiper>
       </div>
