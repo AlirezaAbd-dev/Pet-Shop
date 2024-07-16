@@ -10,6 +10,7 @@ import SvgLogoMobile from '@/assets/svg/logo-title-mobile.svg';
 import Icon from '@/components/icon';
 import { Input } from '@/components/ui/input';
 import useProfileQuery from '@/hooks/react-query/queries/profile.query';
+import useSyncCartQuery from '@/hooks/react-query/queries/sync-cart.query';
 import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/store/auth.store';
 
@@ -23,6 +24,7 @@ import ShopHover from './shop-hover.component';
 
 const Navbar = () => {
   useProfileQuery();
+  useSyncCartQuery();
 
   const pathname = usePathname();
   const router = useRouter();

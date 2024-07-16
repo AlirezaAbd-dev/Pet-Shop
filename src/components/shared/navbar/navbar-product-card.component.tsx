@@ -1,19 +1,25 @@
-import { Minus, Plus } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 import SvgWeight from '@/assets/svg/weight-gray-mobile.svg';
 import Icon from '@/components/icon';
+import LoadingSpinner from '@/components/ui/loading-spinner';
 import Counter from '@/routes/product-details/components/product-wild-card/counter.component';
+import useAddProductToCartMutation from '@/routes/product-details/queries/add-product-to-cart.mutation';
+import { useAuthStore } from '@/store/auth.store';
 import { CartProduct, useCartStore } from '@/store/cart.store';
 
 type NavbarProductCardProps = CartProduct;
 
 const NavbarProductCard = (props: NavbarProductCardProps) => {
+  const profile = useAuthStore((s) => s.profile);
+  const isProfileLoading = useAuthStore((s) => s.isLoading);
+
   const [counterValue, setCounterValue] = useState(props.count);
 
   const onChangeCart = useCartStore((s) => s.onChangeCart);
+
+  const { mutateAsync } = useAddProductToCartMutation();
 
   useEffect(() => {
     onChangeCart({
@@ -21,6 +27,13 @@ const NavbarProductCard = (props: NavbarProductCardProps) => {
       count: counterValue,
     });
   }, [counterValue]);
+
+  async function onChangeHandler(count: number) {
+    setCounterValue(count);
+    if (profile) {
+      await mutateAsync({ product_id: props.id, quantity: count });
+    }
+  }
 
   return (
     <li className="w-full flex justify-between pb-5 md:pb-6 border-b border-nature-900">
@@ -57,14 +70,18 @@ const NavbarProductCard = (props: NavbarProductCardProps) => {
           )}
         </div>
         {/* counter */}
-        <Counter
-          value={counterValue}
-          onChange={setCounterValue}
-          minimum={1}
-          onMinimumType="delete"
-          maximum={props.inventory}
-          size="sm"
-        />
+        {isProfileLoading ? (
+          <LoadingSpinner className="md:scale-100 scale-50" />
+        ) : (
+          <Counter
+            value={counterValue}
+            onChange={onChangeHandler}
+            minimum={1}
+            onMinimumType="delete"
+            maximum={props.inventory}
+            size="sm"
+          />
+        )}
       </div>
     </li>
   );

@@ -1,14 +1,16 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 import SvgWeightDesktop from '@/assets/svg/weight-gray-desktop.svg';
 import SvgWeightMobile from '@/assets/svg/weight-gray-mobile.svg';
 import Icon from '@/components/icon';
+import LoadingSpinner from '@/components/ui/loading-spinner';
 import { calculatePercent } from '@/lib/utils/calculatePrice';
 import Counter from '@/routes/product-details/components/product-wild-card/counter.component';
+import useAddProductToCartMutation from '@/routes/product-details/queries/add-product-to-cart.mutation';
+import { useAuthStore } from '@/store/auth.store';
 import { CartProduct, useCartStore } from '@/store/cart.store';
 
 type ProductCartCardProps = CartProduct;
@@ -16,11 +18,22 @@ type ProductCartCardProps = CartProduct;
 const ProductCartCard = (props: ProductCartCardProps) => {
   const [counterValue, setCounterValue] = useState(props.count);
 
+  const profile = useAuthStore((s) => s.profile);
+  const isProfileLoading = useAuthStore((s) => s.isLoading);
   const onCartChange = useCartStore((s) => s.onChangeCart);
+
+  const { mutateAsync } = useAddProductToCartMutation();
 
   useEffect(() => {
     onCartChange({ ...props, count: counterValue });
   }, [counterValue]);
+
+  async function onChangeHandler(count: number) {
+    setCounterValue(count);
+    if (profile) {
+      await mutateAsync({ product_id: props.id, quantity: count });
+    }
+  }
 
   return (
     <li className="flex justify-between md:items-center border border-nature-900 rounded-2xl p-3 md:p-5">
@@ -61,14 +74,18 @@ const ProductCartCard = (props: ProductCartCardProps) => {
         </div>
         <div className="mt-3 md:mt-0">
           {/* Counter */}
-          <Counter
-            value={counterValue}
-            onChange={setCounterValue}
-            maximum={props.inventory}
-            minimum={1}
-            onMinimumType="delete"
-            size="md"
-          />
+          {isProfileLoading ? (
+            <LoadingSpinner className="md:scale-100 scale-50" />
+          ) : (
+            <Counter
+              value={counterValue}
+              onChange={onChangeHandler}
+              maximum={props.inventory}
+              minimum={1}
+              onMinimumType="delete"
+              size="md"
+            />
+          )}
         </div>
       </div>
     </li>

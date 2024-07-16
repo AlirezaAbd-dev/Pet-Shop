@@ -16,11 +16,13 @@ import {
 } from '@/components/ui/accordion-1';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useAuthStore } from '@/store/auth.store';
 import { useCartStore } from '@/store/cart.store';
 
 import SvgHeartDesktop from '@icons/heart-desktop.svg';
 import SvgHeartSmall from '@icons/heart-small.svg';
 
+import useAddProductToCartMutation from '../../queries/add-product-to-cart.mutation';
 import Counter from './counter.component';
 import { ProductWildCardProps } from './product-wild-card.component';
 
@@ -40,17 +42,25 @@ const WEIGHTS = [
 type ProductDetailsSectionProps = ProductWildCardProps;
 
 const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
+  const profile = useAuthStore((s) => s.profile);
+  const isProfileLoading = useAuthStore((s) => s.isLoading);
+
   const cart = useCartStore((s) => s.cart);
   const onChangeCart = useCartStore((s) => s.onChangeCart);
   const currentCount = cart.find((c) => c.id === props.id)?.count || 0;
 
   const [counterValue, setCounterValue] = useState(currentCount);
 
+  const { mutateAsync } = useAddProductToCartMutation();
+
   useEffect(() => {
     setCounterValue(currentCount);
   }, [cart]);
 
-  function addToCart() {
+  async function addToCart() {
+    if (profile) {
+      await mutateAsync({ product_id: props.id, quantity: counterValue });
+    }
     onChangeCart({
       image: props.images[0],
       count: counterValue,
@@ -133,8 +143,11 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
 
         <Button
           onClick={addToCart}
-          disabled={counterValue === 0}
-          variant={counterValue === 0 ? 'disabled' : 'default'}
+          disabled={counterValue === 0 || isProfileLoading}
+          variant={
+            counterValue === 0 || isProfileLoading ? 'disabled' : 'default'
+          }
+          isLoading={isProfileLoading}
           className="font-bold text-sm w-full rounded-lg md:h-16 md:rounded-2xl shadow-color-md"
         >
           Add to cart
