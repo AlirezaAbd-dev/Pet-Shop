@@ -16,7 +16,7 @@ const useAddProductToCartMutation = () => {
     mutationKey: [queryKeys.ADD_PRODUCT_TO_CART],
     mutationFn: (data) =>
       axiosProtected[data.quantity > 0 ? 'post' : 'delete'](
-        '/shop/api/v1/cart/',
+        `/shop/api/v1/cart/${data.quantity === 0 ? `delete/${data.product_id}/` : ''}`,
         {
           products: [
             {

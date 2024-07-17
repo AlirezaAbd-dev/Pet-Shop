@@ -16,6 +16,7 @@ export type CartProduct = Prettify<{
 
 type UseCartStoreType = {
   cart: CartProduct[];
+  setCart: (cart: CartProduct[]) => void;
   onChangeCart: (cartProduct: CartProduct) => void;
   clearCart: () => void;
 };
@@ -26,6 +27,9 @@ export const useCartStore = create<UseCartStoreType>()(
       cart: [],
       clearCart() {
         set({ cart: [] });
+      },
+      setCart(cart) {
+        set({ cart });
       },
       onChangeCart(cartProduct) {
         const currentCart = [...get().cart];
