@@ -1,19 +1,36 @@
-import React from 'react';
+'use client';
+
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 import Footer from '@/components/shared/footer.component';
+import LoadingSpinner from '@/components/ui/loading-spinner';
+import useProfileQuery from '@/hooks/react-query/queries/profile.query';
 
 import ProgressBar from '../cart/components/progressbar.component';
-import CheckoutForm from './components/checkout.form';
-import OrderDetails from './components/order-details.component';
+import CheckoutMainForm from './components/checkout-main.form';
+import useAdressesQuery from './queries/addresses.query';
 
 const Checkout = () => {
+  const router = useRouter();
+
+  const { isPending, error } = useProfileQuery();
+  const { data, isPending: isAddressesPending } = useAdressesQuery();
+
+  useEffect(() => {
+    if (!isPending && error) {
+      router.replace('/login');
+    }
+  }, [isPending, error]);
+
+  if (isPending || isAddressesPending) {
+    return <LoadingSpinner className="mt-10 md:mt-16" />;
+  }
+
   return (
     <>
       <ProgressBar active={2} />
-      <main className="flex flex-col gap-6  md:grid md:grid-cols-12 px-5 md:px-20 mt-10 md:mt-16">
-        <CheckoutForm />
-        <OrderDetails />
-      </main>
+      <CheckoutMainForm address={data || []} />
       <Footer />
     </>
   );

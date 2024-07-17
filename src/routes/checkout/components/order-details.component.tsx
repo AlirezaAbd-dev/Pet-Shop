@@ -6,8 +6,6 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 
 const OrderDetails = () => {
-  const router = useRouter();
-
   return (
     <section className="flex flex-col border border-nature-900 rounded-xl md:rounded-2xl p-3 md:p-5 md:col-span-4 md:h-min md:mt-14">
       <h3 className="font-nunito font-black text-lg md:text-2xl">Your Order</h3>
@@ -54,9 +52,7 @@ const OrderDetails = () => {
         <p className="text-sm md:text-base font-extrabold">$ 54.12</p>
       </div>
       <Button
-        onClick={() => {
-          router.push('/cart/order-complete');
-        }}
+        type="submit"
         className="mt-6 rounded-lg md:rounded-2xl md:text-base"
       >
         Proceed to checkout
