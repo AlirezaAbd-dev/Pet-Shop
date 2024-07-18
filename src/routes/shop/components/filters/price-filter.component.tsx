@@ -25,7 +25,7 @@ const PriceFilter = () => {
         <SliderDoubleRange
           min={1}
           max={1000}
-          defaultValue={[price.min, price.max]}
+          value={[price.min, price.max]}
           onValueChange={(values) => {
             onPriceChange(values);
           }}
