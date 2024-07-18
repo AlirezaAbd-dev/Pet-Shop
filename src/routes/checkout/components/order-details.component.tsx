@@ -1,58 +1,75 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Button } from '@/components/ui/button';
+import { calculatePrice } from '@/lib/utils/calculatePrice';
+import { useCartStore } from '@/store/cart.store';
 
-const OrderDetails = () => {
+type OrderDetailsProps = {
+  isLoading: boolean;
+};
+
+const OrderDetails = (props: OrderDetailsProps) => {
+  const router = useRouter();
+  const cart = useCartStore((s) => s.cart);
+
+  useEffect(() => {
+    if (cart.length === 0 || !cart) {
+      router.replace('/cart');
+    }
+  }, [cart]);
+
+  const { discountPercent, finalPrice, totalDiscount, totalPrice } =
+    calculatePrice(cart);
+
   return (
     <section className="flex flex-col border border-nature-900 rounded-xl md:rounded-2xl p-3 md:p-5 md:col-span-4 md:h-min md:mt-14">
       <h3 className="font-nunito font-black text-lg md:text-2xl">Your Order</h3>
 
       <p className="font-nunito font-bold text-sm md:text-lg mt-4 md:mt-6">
-        Products (2)
+        Products ({cart.length})
       </p>
       <ul className="flex flex-col">
-        <li className="flex justify-between py-3 md:py-4 border-b border-nature-900">
-          <div>
-            <p className="font-nunito text-sm md:text-base">
-              Royal Canin Urinary
+        {cart.map((item) => (
+          <li
+            key={item.id}
+            className="flex justify-between py-3 md:py-4 border-b border-nature-900"
+          >
+            <div>
+              <p className="font-nunito text-sm md:text-base">{item.title}</p>
+              <p className="mt-2 text-sm md:text-base text-text-300">
+                {item.weight}KG / Number {item.count}
+              </p>
+            </div>
+            <p className="text-sm md:text-base">
+              ${item.priceWithDiscount * item.count}
             </p>
-            <p className="mt-2 text-sm md:text-base text-text-300">
-              50KG / Number 5
-            </p>
-          </div>
-          <p className="text-sm md:text-base">$54.12</p>
-        </li>
-        <li className="flex justify-between py-3 md:py-4 border-b border-nature-900">
-          <div>
-            <p className="font-nunito text-sm md:text-base">
-              Royal Canin Urinary
-            </p>
-            <p className="mt-2 text-sm md:text-base text-text-300">
-              50KG / Number 5
-            </p>
-          </div>
-          <p className="text-sm md:text-base">$54.12</p>
-        </li>
+          </li>
+        ))}
       </ul>
       <div className="flex justify-between mt-3 md:mt-4">
         <p className="font-nunito text-sm md:text-base">Subtotal:</p>
-        <p className="text-sm md:text-base">$ 71.12</p>
+        <p className="text-sm md:text-base">$ {totalPrice}</p>
       </div>
       <div className="flex justify-between mt-3 md:mt-4">
         <p className="font-nunito text-sm md:text-base">Discount:</p>
-        <p className="text-sm md:text-base text-error-500">$ 17.12 (25%)</p>
+        <p className="text-sm md:text-base text-error-500">
+          $ {totalDiscount} ({discountPercent}%)
+        </p>
       </div>
       <div className="flex justify-between mt-3 md:mt-4">
         <p className="font-nunito text-sm md:text-base font-extrabold">
           Total:
         </p>
-        <p className="text-sm md:text-base font-extrabold">$ 54.12</p>
+        <p className="text-sm md:text-base font-extrabold">$ {finalPrice}</p>
       </div>
       <Button
         type="submit"
+        variant={props.isLoading ? 'disabled' : 'default'}
+        disabled={props.isLoading}
+        isLoading={props.isLoading}
         className="mt-6 rounded-lg md:rounded-2xl md:text-base"
       >
         Proceed to checkout

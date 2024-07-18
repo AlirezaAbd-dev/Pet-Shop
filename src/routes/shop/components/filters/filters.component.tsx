@@ -1,13 +1,4 @@
-import React from 'react';
-
-import {
-  AccordionContentFilter,
-  AccordionFilter,
-  AccordionItemFilter,
-  AccordionTriggerFilter,
-} from '@/components/ui/accordion-filter';
-import { SliderDoubleRange } from '@/components/ui/slider-double-range';
-import { Switch } from '@/components/ui/switch';
+import { AccordionFilter } from '@/components/ui/accordion-filter';
 
 import AvailableFilter from './available-filter.component';
 import BrandFilter from './brand-filter.component';

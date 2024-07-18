@@ -44,7 +44,6 @@ const useSyncCartQuery = () => {
 
   useEffect(() => {
     if (!query.isPending && query.isSuccess) {
-      console.log(query.data);
       setCart(
         query.data.cart_items.map((item) => ({
           count: item.quantity,

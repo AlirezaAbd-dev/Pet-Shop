@@ -1,13 +1,28 @@
-import React from 'react';
+'use client';
 
+import React, { useEffect } from 'react';
+
+import { Brand, Category } from '@/app/(core)/shop/page';
 import Footer from '@/components/shared/footer.component';
 
 import FilterModal from './components/modals/filter';
 import ShopBreadcrumb from './components/shop-breadcrumb.component';
 import ShopFilter from './components/shop-filter.component';
 import ShopProducts from './components/shop-products.component';
+import { useFiltersStore } from './store/filters.store';
 
-const Shop = () => {
+type ShopProps = {
+  brands: Brand[];
+  categories: Category[];
+};
+
+const Shop = (props: ShopProps) => {
+  const setFilters = useFiltersStore((s) => s.setFilters);
+
+  useEffect(() => {
+    setFilters(props);
+  }, []);
+
   return (
     <>
       <FilterModal />

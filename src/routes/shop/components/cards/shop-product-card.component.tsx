@@ -2,49 +2,80 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
+import { Product } from '@/app/(core)/product/[productId]/page';
+import SvgPolygon56 from '@/assets/svg/polygon-56.svg';
 import Icon from '@/components/icon';
+import { cn } from '@/lib/utils';
 
 import SvgHeartDesktop from '@icons/heart-desktop.svg';
 import SvgHeart from '@icons/heart.svg';
 import SvgWeightDesktop from '@icons/weight-desktop.svg';
 import SvgWeight from '@icons/weight-extra-small.svg';
 
-const ShopProductCard = () => {
+type ShopProductCardProps = Product;
+
+const ShopProductCard = (props: ShopProductCardProps) => {
   return (
     <Link
-      href={'/product/1'}
+      href={`/product/${props.id}`}
       className="flex md:flex-col gap-4 md:gap-0 border border-nature-800 rounded-2xl p-3 md:p-4"
     >
       <div className="relative flex justify-center items-start md:items-center h-auto md:h-[152px] bg-inherit md:bg-nature-600 rounded-xl">
+        <Icon
+          className={cn(
+            'absolute -top-[20px] -left-[28px] hidden md:block',
+            props.total_discount === 0 ? 'md:hidden' : '',
+          )}
+        >
+          <SvgPolygon56 />
+          <p
+            className={cn(
+              'absolute  font-nunito font-black text-sm text-white',
+              props.total_discount > 0 && props.total_discount < 10
+                ? 'top-[32px] left-[34px]'
+                : '',
+              props.total_discount > 9 && props.total_discount < 100
+                ? 'top-[32px] left-[30px]'
+                : '',
+              props.total_discount === 100 ? 'top-[32px] left-[25px]' : '',
+            )}
+          >
+            {props.total_discount}%
+          </p>
+        </Icon>
         <Icon className="hidden md:flex absolute right-3 top-3 justify-center items-center w-8 h-8 md:w-9 md:h-9 cursor-pointer rounded-full bg-white">
           <SvgHeart className="md:hidden w-6 h-6" />
           <SvgHeartDesktop className="hidden md:block" />
         </Icon>
-        <Image
-          src={'/examples/product-image-1.png'}
+        <img
+          src={props.image_urls[0]}
           alt="product-1"
-          width={78}
-          height={132}
+          className="md:h-[132px] w-[78px] md:w-auto"
         />
       </div>
-      <div>
+      <div className="w-full">
         <div className="mt-0 md:mt-4 flex justify-between items-start">
-          <p className="font-bold font-nunito text-sm md:text-xl max-w-[120px]">
-            Purina pro plan urinary
+          <p className="font-bold font-nunito text-sm md:text-xl max-w-[150px]">
+            {props.name}
           </p>
           <Icon className="flex md:items-center gap-1 text-xs md:text-base md:font-bold">
             <SvgWeight className="md:hidden w-5 h-5" />
             <SvgWeightDesktop className="hidden md:block" />
-            25KG
+            {props.weight}KG
           </Icon>
         </div>
-        <p className="text-xs md:text-base mt-2 md:mt-3">
-          Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut scing
-          elit
-        </p>
-        <p className="font-bold text-sm md:text-xl text-primary-500 mt-3 md:mt-4">
-          $120.00
-        </p>
+        <p className="text-xs md:text-base mt-2 md:mt-3">{props.description}</p>
+
+        <div className="flex gap-2 items-center mt-3 md:mt-4">
+          <p className="font-bold text-sm md:text-xl text-primary-500">
+            ${props.price_after_promotion.toFixed(2)}
+          </p>
+          {props.total_discount > 0 && (
+            <p className="text-text-300 line-through decoration-text-300 text-xs md:text-base">
+              ${props.price.toFixed(2)}
+            </p>
+          )}
+        </div>
       </div>
     </Link>
   );

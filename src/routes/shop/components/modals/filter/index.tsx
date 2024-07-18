@@ -6,12 +6,15 @@ import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { useFilterModalStore } from '@/routes/shop/store/filter-moda.store';
+import { useFiltersStore } from '@/routes/shop/store/filters.store';
 
 import Filters from '../../filters/filters.component';
 
 const FilterModal = () => {
   const isModalOpen = useFilterModalStore((s) => s.isModalOpen);
   const setIsModalOpen = useFilterModalStore((s) => s.setIsModalOpen);
+
+  const resetFilter = useFiltersStore((s) => s.resetFilter);
 
   useEffect(() => {
     window.addEventListener('resize', () => {
@@ -49,6 +52,7 @@ const FilterModal = () => {
           <Button
             className="w-full rounded-lg text-sm font-semibold"
             variant={'outline'}
+            onClick={() => resetFilter()}
           >
             Remove filter
           </Button>

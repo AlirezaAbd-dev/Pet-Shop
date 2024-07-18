@@ -18,7 +18,7 @@ const Checkout = () => {
   const { data, isPending: isAddressesPending } = useAdressesQuery();
 
   useEffect(() => {
-    if (!isPending && error) {
+    if (!isPending && error && error.status === 401) {
       router.replace('/login');
     }
   }, [isPending, error]);

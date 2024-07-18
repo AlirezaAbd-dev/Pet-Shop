@@ -1,12 +1,26 @@
-import React from 'react';
+'use client';
+
+import { useSearchParams } from 'next/navigation';
+import React, { useEffect } from 'react';
 
 import SvgCopyPaste from '@/assets/svg/copy-paste-select-add-plus-red.svg';
 import SvgOrderCompletePetDesktop from '@/assets/svg/order-complete-pet-desktop.svg';
 import SvgOrderCompletePetMobile from '@/assets/svg/order-complete-pet-mobile.svg';
 import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
+import { useCartStore } from '@/store/cart.store';
 
 const OrderCompleteDetails = () => {
+  const searchParams = useSearchParams();
+
+  const clearCart = useCartStore((s) => s.clearCart);
+
+  const orderId = searchParams.get('order-id');
+
+  useEffect(() => {
+    clearCart();
+  }, []);
+
   return (
     <section className="flex flex-col items-center mt-10 md:mt-16 px-5">
       <Icon>
@@ -27,7 +41,7 @@ const OrderCompleteDetails = () => {
           className="md:w-full flex bg-primary-50/5 text-primary-500 gap-2 hover:bg-opacity-10 hover:text-primary-500"
         >
           <SvgCopyPaste />
-          Order ID: #127812
+          Order ID: #{orderId}
         </Button>
       </div>
     </section>

@@ -6,6 +6,9 @@ const queryKeys = {
   ADD_PRODUCT_TO_CART: 'add-product-to-cart',
   SYNC_CART: 'sync-cart',
   ADDRESSES: 'addresses',
+  EDIT_ADDRESS: 'edit-address',
+  CREATE_ORDER: 'create-order',
+  FILTERS: 'filters',
 };
 
 export default queryKeys;

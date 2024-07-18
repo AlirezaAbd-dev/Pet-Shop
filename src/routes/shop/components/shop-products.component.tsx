@@ -2,16 +2,28 @@
 
 import Icon from '@/components/icon';
 import { Input } from '@/components/ui/input';
+import LoadingSpinner from '@/components/ui/loading-spinner';
+import { cn } from '@/lib/utils';
 
 import SvgFilterMobile from '@icons/filter-sort-menu-mobile.svg';
 import SvgSearchMobile from '@icons/search-loupe-custom-mobile.svg';
 import SvgSearch from '@icons/search-loupe-custom.svg';
 
+import useFiltersQuery from '../filters.query';
+import { SORT_FILTERS } from '../shop.constants';
 import { useFilterModalStore } from '../store/filter-moda.store';
+import { useFiltersStore } from '../store/filters.store';
 import ShopProductCard from './cards/shop-product-card.component';
 
 const ShopProducts = () => {
+  const { data, isPending } = useFiltersQuery();
+
   const setIsModalOpen = useFilterModalStore((s) => s.setIsModalOpen);
+
+  const search = useFiltersStore((s) => s.search);
+  const setSearch = useFiltersStore((s) => s.setSearch);
+  const sortBy = useFiltersStore((s) => s.sortBy);
+  const setSortBy = useFiltersStore((s) => s.setSortBy);
 
   return (
     <main className="md:col-span-9">
@@ -22,11 +34,23 @@ const ShopProducts = () => {
             <SvgFilterMobile />
             Sort by:
           </Icon>
-          <p className="text-xl text-text-400 cursor-pointer">cheapest</p>
-          <p className="text-xl text-text-400 cursor-pointer">expensive</p>
+          {SORT_FILTERS.map((item) => (
+            <p
+              key={item.name}
+              className={cn(
+                'text-xl text-text-400 cursor-pointer select-none',
+                sortBy === item.value ? 'underline' : '',
+              )}
+              onClick={() => {
+                setSortBy(item.value);
+              }}
+            >
+              {item.name}
+            </p>
+          ))}
         </div>
         <p className="md:text-base text-xs text-text-400">
-          Showing 12 of 28 results
+          Showing {data?.length || 0} of {data?.length || 0} results
         </p>
       </section>
       <section className="md:hidden flex items-center mt-4 gap-4">
@@ -36,6 +60,10 @@ const ShopProducts = () => {
             <SvgSearchMobile className="md:hidden w-6 h-6" />
           </Icon>
           <Input
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
             placeholder="Search product..."
             className="bg-transparent placeholder:text-text-200 font-nunito border-none text-base"
           />
@@ -50,14 +78,19 @@ const ShopProducts = () => {
         </Icon>
       </section>
 
-      <section className="flex flex-col gap-4 md:gap-x-6 md:gap-y-8 md:grid md:grid-cols-3 mt-6">
-        <ShopProductCard />
-        <ShopProductCard />
-        <ShopProductCard />
-        <ShopProductCard />
-        <ShopProductCard />
-        <ShopProductCard />
-      </section>
+      {isPending && <LoadingSpinner className="mt-6" />}
+
+      {!isPending && data && data.length === 0 && (
+        <p className="mt-10 text-center text-lg">Nothing to show</p>
+      )}
+
+      {!isPending && data && data?.length > 0 && (
+        <section className="flex flex-col gap-4 md:gap-x-6 md:gap-y-8 md:grid md:grid-cols-3 mt-6">
+          {data.map((item) => (
+            <ShopProductCard key={item.id} {...item} />
+          ))}
+        </section>
+      )}
     </main>
   );
 };

@@ -11,6 +11,7 @@ export type AddressResponse = {
   city: string;
   street: string;
   post_code: string;
+  phone_number: string;
 };
 
 const useAdressesQuery = () => {
