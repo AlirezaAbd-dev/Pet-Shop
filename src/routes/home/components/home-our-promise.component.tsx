@@ -28,13 +28,18 @@ const HomeOurPromise = () => {
           Show more
         </Button>
       </div>
-      <Image
-        src={'/static/our-promise-cat-and-dog.png'}
-        alt="our-promise"
-        width={573}
-        height={546}
-        className="mt-4 w-[277px] h-[261px] md:w-[573px] md:h-[546px]"
-      />
+      <div className="flex gap-3 md:gap-6 mt-4 items-center">
+        <img
+          src={'/static/our-promise-left-image.png'}
+          alt="our-promise"
+          className="mt-4 w-[148px] h-auto md:w-[324px]"
+        />
+        <img
+          src={'/static/our-promise-right-image.png'}
+          alt="our-promise"
+          className="mt-4 w-[117px] h-auto md:w-[258px]"
+        />
+      </div>
     </div>
   );
 };

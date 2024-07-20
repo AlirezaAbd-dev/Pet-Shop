@@ -6,12 +6,12 @@ import Shop from '@/routes/shop';
 export type Brand = {
   id: number;
   name: string;
-  logo: string | null;
+  logo: string;
 };
 export type Category = {
   id: number;
   name: string;
-  image: string | null;
+  image: string;
   is_top: boolean;
 };
 

@@ -6,14 +6,17 @@ import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper/types';
 
+import { Product } from '@/app/(core)/product/[productId]/page';
 import { Button } from '@/components/ui/button';
 
 import { FAKE_PRODUCTS } from '../constants/fake-products.constants';
 import StandardProductCard from './cards/standard-product-card.component';
 
-const HomeSuperSale = () => {
-  //   const prevRef = useRef(null);
-  //   const nextRef = useRef(null);
+type HomeSuperSaleProps = {
+  products: Product[];
+};
+
+const HomeSuperSale = (props: HomeSuperSaleProps) => {
   const swiperRef = useRef<SwiperType>();
 
   return (
@@ -45,15 +48,11 @@ const HomeSuperSale = () => {
           spaceBetween={16}
           slidesPerView={1.1}
         >
-          <SwiperSlide>
-            <StandardProductCard {...FAKE_PRODUCTS[0]} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <StandardProductCard {...FAKE_PRODUCTS[0]} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <StandardProductCard {...FAKE_PRODUCTS[0]} />
-          </SwiperSlide>
+          {props.products.map((item) => (
+            <SwiperSlide key={item.id}>
+              <StandardProductCard {...item} />
+            </SwiperSlide>
+          ))}
         </Swiper>
 
         {/* desktop */}
@@ -71,32 +70,22 @@ const HomeSuperSale = () => {
             swiperRef.current = swiper;
           }}
         >
-          <SwiperSlide>
-            <StandardProductCard {...FAKE_PRODUCTS[0]} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <StandardProductCard {...FAKE_PRODUCTS[0]} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <StandardProductCard {...FAKE_PRODUCTS[0]} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <StandardProductCard {...FAKE_PRODUCTS[0]} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <StandardProductCard {...FAKE_PRODUCTS[0]} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <StandardProductCard {...FAKE_PRODUCTS[0]} />
-          </SwiperSlide>
+          {props.products.map((item) => (
+            <SwiperSlide key={item.id}>
+              <StandardProductCard {...item} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
 
       <div className="md:col-span-3 md:-order-1 px-5 md:px-0">
         {/* mobile */}
         <div className="md:hidden w-[315px] h-[314px] relative">
-          <div className="w-[315px] h-[211px] px-4 pt-[147px] pb-4 left-0 top-[103px] absolute bg-slate-900 justify-center items-center inline-flex">
-            <Button className="w-full h-12 rounded-none font-extrabold">
+          <div className="w-[315px] h-[211px] px-4 pt-[147px] pb-4 left-0 top-[103px] absolute bg-primary-500 justify-center items-center inline-flex">
+            <Button
+              variant={'secondary'}
+              className="w-full h-12 rounded-none font-extrabold"
+            >
               Show more
             </Button>
           </div>
@@ -108,10 +97,13 @@ const HomeSuperSale = () => {
 
         {/* desktop */}
         <div className="hidden md:block w-[301px] h-[461px] relative">
-          <div className="w-[301px] h-[365px] left-0 top-[96px] absolute bg-slate-900" />
+          <div className="w-[301px] h-[365px] left-0 top-[96px] absolute bg-primary-500" />
           <div className="w-[276px] left-[12px] top-[-18px] absolute flex-col justify-center items-center inline-flex">
             <img className="w-[276px] h-[409px]" src="/static/super-sale.png" />
-            <Button className="w-full h-[54px] rounded-none md:text-xl font-extrabold">
+            <Button
+              variant={'secondary'}
+              className="w-full h-[54px] rounded-none md:text-xl font-extrabold"
+            >
               Show more
             </Button>
           </div>

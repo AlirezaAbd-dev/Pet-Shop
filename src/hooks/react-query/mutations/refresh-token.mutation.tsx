@@ -13,7 +13,7 @@ const useRefreshTokenMutation = () => {
     mutationKey: [queryKeys.REFRESH_TOKEN],
     mutationFn: (data) =>
       axiosInstance.post('accounts/auth/token/refresh/', data),
-    retry: 1,
+    retry: 0,
   });
 
   return mutation;

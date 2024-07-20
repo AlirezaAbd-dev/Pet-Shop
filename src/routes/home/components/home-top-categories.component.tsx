@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { Product } from '@/app/(core)/product/[productId]/page';
 import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -16,7 +17,11 @@ import {
 } from '../constants/home.constants';
 import StandardProductCard from './cards/standard-product-card.component';
 
-const HomeTopCategories = () => {
+type HomeTopCategoriesProps = {
+  products: Product[];
+};
+
+const HomeTopCategories = (props: HomeTopCategoriesProps) => {
   const [categoryValue, setCategoryValue] = useState<CategoiesListType>('All');
 
   return (
@@ -67,7 +72,7 @@ const HomeTopCategories = () => {
         spaceBetween={24}
         slidesPerView={4}
       >
-        {FAKE_PRODUCTS.map((item) => (
+        {props.products.map((item) => (
           <SwiperSlide key={item.id}>
             <StandardProductCard {...item} />
           </SwiperSlide>
@@ -87,7 +92,7 @@ const HomeTopCategories = () => {
           bulletActiveClass: 'swiper-pagination-bullet-active',
         }}
       >
-        {FAKE_PRODUCTS.map((item) => (
+        {props.products.map((item) => (
           <SwiperSlide key={item.id}>
             <StandardProductCard {...item} />
           </SwiperSlide>

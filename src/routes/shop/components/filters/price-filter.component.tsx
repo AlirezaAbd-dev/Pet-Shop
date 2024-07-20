@@ -1,5 +1,4 @@
-import { debounce } from 'lodash';
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
   AccordionContentFilter,
@@ -14,9 +13,18 @@ const PriceFilter = () => {
   const price = useFiltersStore((s) => s.price);
   const setPrice = useFiltersStore((s) => s.setPrice);
 
-  const onPriceChange = debounce((values: number[]) => {
-    setPrice({ min: values[0], max: values[1] });
-  }, 100);
+  const [minPrice, setMinPrice] = useState(price.min);
+  const [maxPrice, setMaxPrice] = useState(price.max);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setPrice({ min: minPrice, max: maxPrice });
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [minPrice, maxPrice]);
 
   return (
     <AccordionItemFilter value="price">
@@ -25,15 +33,16 @@ const PriceFilter = () => {
         <SliderDoubleRange
           min={1}
           max={1000}
-          value={[price.min, price.max]}
+          value={[minPrice, maxPrice]}
           onValueChange={(values) => {
-            onPriceChange(values);
+            setMinPrice(values[0]);
+            setMaxPrice(values[1]);
           }}
           className="mt-2"
         />
         <div className="flex justify-between mt-3">
-          <p>${price.min.toFixed(2)}</p>
-          <p>${price.max.toFixed(2)}</p>
+          <p>${minPrice.toFixed(2)}</p>
+          <p>${maxPrice.toFixed(2)}</p>
         </div>
       </AccordionContentFilter>
     </AccordionItemFilter>

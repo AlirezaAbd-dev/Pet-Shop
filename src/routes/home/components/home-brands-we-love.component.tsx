@@ -4,6 +4,8 @@ import React from 'react';
 import { Autoplay, FreeMode } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { Brand } from '@/app/(core)/shop/page';
+
 import { BRANDS_LIST } from '../constants/home.constants';
 
 const Slide = (props: { url: string }) => {
@@ -18,7 +20,9 @@ const Slide = (props: { url: string }) => {
   );
 };
 
-const HomeBrandsWeLove = () => {
+type HomeBrandsWeLoveProps = { brands: Brand[] };
+
+const HomeBrandsWeLove = (props: HomeBrandsWeLoveProps) => {
   return (
     <section className="mt-16 md:mt-24">
       <p className="font-black font-nunito text-xl md:text-4xl text-center">
@@ -33,16 +37,16 @@ const HomeBrandsWeLove = () => {
         spaceBetween={44}
         slidesPerView={2.2}
       >
-        {BRANDS_LIST.map((item) => (
-          <SwiperSlide key={item.url}>
-            <Slide url={item.url} />
+        {props.brands.map((item) => (
+          <SwiperSlide key={item.id}>
+            <Slide url={item.logo} />
           </SwiperSlide>
         ))}
       </Swiper>
 
       <div className="hidden md:flex gap-20 justify-between px-20 mt-8">
-        {BRANDS_LIST.map((item) => (
-          <Slide key={item.url} url={item.url} />
+        {props.brands.map((item) => (
+          <Slide key={item.id} url={item.logo} />
         ))}
       </div>
     </section>
