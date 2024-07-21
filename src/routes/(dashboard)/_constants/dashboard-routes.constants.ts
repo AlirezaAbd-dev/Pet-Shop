@@ -7,6 +7,8 @@ import SvgListDoListCheckmarkRed24 from '@/assets/svg/list-do-list-checkmark-red
 import SvgSingleUser24 from '@/assets/svg/single-user-24.svg';
 import SvgSingleUserRed24 from '@/assets/svg/single-user-red-24.svg';
 
+import { OrderStatus } from '../orders/constants/orders.constants';
+
 export const DASHBOARD_ROUTES = [
   {
     name: 'Dashboard',
@@ -36,9 +38,12 @@ export const DASHBOARD_ROUTES = [
 
 export const DASHBOARD_ROUTES_MINI = DASHBOARD_ROUTES.toSpliced(0, 1);
 
-export const STATUSES = [
+export const STATUSES: {
+  name: Capitalize<OrderStatus>;
+  colorClassName: string;
+}[] = [
   {
-    name: 'In progress',
+    name: 'Shipped',
     colorClassName: 'text-warning-500',
   },
   {
@@ -46,13 +51,11 @@ export const STATUSES = [
     colorClassName: 'text-error-500',
   },
   {
-    name: 'Paid',
+    name: 'Pending',
     colorClassName: 'text-success-500',
   },
   {
     name: 'Delivered',
     colorClassName: 'text-link',
   },
-] as const;
-
-export type OrderStatus = (typeof STATUSES)[number]['name'];
+];
