@@ -23,7 +23,7 @@ import MobileSidebar from './mobile-sidebar.component';
 import ShopHover from './shop-hover.component';
 
 const Navbar = () => {
-  useProfileQuery();
+  useProfileQuery('/');
   useSyncCartQuery();
 
   const pathname = usePathname();

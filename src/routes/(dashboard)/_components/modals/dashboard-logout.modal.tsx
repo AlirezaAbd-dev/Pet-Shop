@@ -6,9 +6,12 @@ import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 
+import useLogout from '../../_layouts/dashboard-sidebar/logout.mutation';
 import { useDashboardModalsStore } from '../../_store/dashboard-modals.store';
 
 const DashboardLogoutModal = () => {
+  const { mutate, isPending } = useLogout();
+
   const isModalOpen = useDashboardModalsStore((s) => s.isLogoutModalOpen);
   const setIsModalOpen = useDashboardModalsStore((s) => s.setIsLogoutModalOpen);
 
@@ -33,7 +36,15 @@ const DashboardLogoutModal = () => {
           >
             No
           </Button>
-          <Button className="w-full rounded-xl text-sm md:text-base md:h-11">
+          <Button
+            onClick={() => {
+              mutate();
+            }}
+            isLoading={isPending}
+            disabled={isPending}
+            variant={isPending ? 'disabled' : 'default'}
+            className="w-full rounded-xl text-sm md:text-base md:h-11"
+          >
             Yes
           </Button>
         </div>

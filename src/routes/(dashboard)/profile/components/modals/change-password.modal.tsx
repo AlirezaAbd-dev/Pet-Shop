@@ -1,16 +1,24 @@
 'use client';
 
+import { zodResolver } from '@hookform/resolvers/zod';
 import { X } from 'lucide-react';
+import { Controller, useForm } from 'react-hook-form';
 
 import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 import { useDashboardModalsStore } from '@/routes/(dashboard)/_store/dashboard-modals.store';
+import { passwordRegex } from '@/routes/(registeration)/signup/pages/signup/signup.validation';
 
 import SvgCheckmarkCircle from '@icons/checkmark-circle-10.svg';
-import SvgEyeDesktop from '@icons/eye-desktop.svg';
-import SvgEye from '@icons/eye-mobile.svg';
+
+import {
+  ChangePasswordValidationType,
+  changePasswordValidation,
+} from '../../change-password.validation';
+import useEditPasswordMutation from '../../edit-password.mutation';
 
 const ChangePasswordModal = () => {
   const isModalOpen = useDashboardModalsStore(
@@ -19,6 +27,25 @@ const ChangePasswordModal = () => {
   const setIsModalOpen = useDashboardModalsStore(
     (s) => s.setIsChangePasswordModalOpen,
   );
+
+  const { mutate, isPending } = useEditPasswordMutation();
+
+  const { control, handleSubmit, formState, watch } =
+    useForm<ChangePasswordValidationType>({
+      resolver: zodResolver(changePasswordValidation),
+    });
+
+  function submitHandler(values: ChangePasswordValidationType) {
+    mutate({
+      old_password: values.oldPassword,
+      new_password: values.newPassword,
+    });
+  }
+
+  const passwordWatch = watch('newPassword');
+  const passwordTest = passwordRegex.test(passwordWatch);
+  const isFormValid = formState.isValid;
+
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DialogContent
@@ -34,42 +61,76 @@ const ChangePasswordModal = () => {
             }}
           />
         </div>
-        <div className="w-full px-3 md:px-4 py-4">
+        <form
+          onSubmit={handleSubmit(submitHandler)}
+          className="w-full px-3 md:px-4 py-4"
+        >
           <p className="text-sm md:text-base">Current password*</p>
-          <div className="flex items-center bg-nature-600 rounded-lg mt-3 pr-3">
-            <Input />
-            <Icon>
-              <SvgEye className="md:hidden w-6 h-6" />
-              <SvgEyeDesktop className="hidden md:block" />
-            </Icon>
-          </div>
+          <Controller
+            control={control}
+            name="oldPassword"
+            render={({ field, fieldState }) => (
+              <Input
+                className="mt-3"
+                {...field}
+                errorText={fieldState.error?.message}
+              />
+            )}
+          />
 
           <p className="text-sm md:text-base mt-5 md:mt-6">New password*</p>
-          <div className="flex items-center bg-nature-600 rounded-lg mt-3 pr-3">
-            <Input />
-            <Icon>
-              <SvgEye className="md:hidden w-6 h-6" />
-              <SvgEyeDesktop className="hidden md:block" />
-            </Icon>
-          </div>
+          <Controller
+            control={control}
+            name="newPassword"
+            render={({ field, fieldState }) => (
+              <Input
+                className="mt-3"
+                {...field}
+                errorText={fieldState.error?.message}
+              />
+            )}
+          />
 
-          <div className="flex items-center gap-2 mt-4 text-sm">
-            <Icon>
+          <div
+            className={cn(
+              'flex items-center gap-2 mt-3 md:mt-4',
+              passwordWatch?.length >= 8 ? 'text-success-500' : '',
+            )}
+          >
+            <Icon
+              className={passwordWatch?.length >= 8 ? 'stroke-success-500' : ''}
+            >
               <SvgCheckmarkCircle />
             </Icon>
             At least 8 characters
           </div>
-          <div className="flex items-center gap-2 mt-3 text-sm">
-            <Icon>
+          <div
+            className={cn(
+              'flex items-center gap-2 mt-2 md:mt-3',
+              passwordWatch && passwordTest ? 'text-success-500' : '',
+            )}
+          >
+            <Icon
+              className={
+                passwordWatch && passwordTest ? 'stroke-success-500' : ''
+              }
+            >
               <SvgCheckmarkCircle />
             </Icon>
             Letters and numbers
           </div>
 
-          <Button className="mt-6 w-full rounded-lg text-sm font-bold md:h-11 md:text-base">
+          <Button
+            variant={
+              isFormValid === false || isPending ? 'disabled' : 'default'
+            }
+            disabled={!isFormValid || isPending}
+            isLoading={isPending}
+            className="mt-6 w-full rounded-lg text-sm font-bold md:h-11 md:text-base"
+          >
             Confirmation
           </Button>
-        </div>
+        </form>
       </DialogContent>
     </Dialog>
   );

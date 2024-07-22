@@ -9,6 +9,7 @@ const queryKeys = {
   EDIT_ADDRESS: 'edit-address',
   CREATE_ORDER: 'create-order',
   FILTERS: 'filters',
+  LOGOUT: 'logout',
 };
 
 export default queryKeys;

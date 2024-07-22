@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { AxiosError, AxiosResponse } from 'axios';
+import { error } from 'console';
+import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react';
 
 import useAxiosProtected from '@/hooks/use-axios-protected.hook';
@@ -15,7 +17,9 @@ export type ProfileType = {
   password: string;
 };
 
-const useProfileQuery = () => {
+const useProfileQuery = (action?: string) => {
+  const router = useRouter();
+
   const setIsLoading = useAuthStore((s) => s.setIsLoading);
   const setProfile = useAuthStore((s) => s.setProfile);
 
@@ -32,9 +36,12 @@ const useProfileQuery = () => {
       setIsLoading(false);
       setProfile(query.data.data);
     } else if (!query.isPending && query.error) {
+      if (action && query.error.status === 401) {
+        router.replace(action);
+      }
       setIsLoading(false);
     }
-  }, [query]);
+  }, [query.isPending, query.data, query.isSuccess, query.error]);
 
   return query;
 };

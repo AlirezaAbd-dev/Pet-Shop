@@ -64,6 +64,8 @@ const EditProfileForm = (props: EditProfileFormProps) => {
         street: values.street,
         ...(!!props.addresses[0] ? { id: props.addresses[0].id } : {}),
       });
+
+      toast.success('profile and address successfully changed');
     } catch (err: any) {
       toast.error(err.response.data.message);
     }

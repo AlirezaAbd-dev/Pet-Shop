@@ -6,7 +6,7 @@ import { ReactNode, useEffect } from 'react';
 import Navbar from '@/components/shared/navbar/navbar.component';
 import useProfileQuery from '@/hooks/react-query/queries/profile.query';
 import DashboardLogoutModal from '@/routes/(dashboard)/_components/modals/dashboard-logout.modal';
-import DashboardSidebarLayout from '@/routes/(dashboard)/_layouts/dashboard-sidebar.layout';
+import DashboardSidebarLayout from '@/routes/(dashboard)/_layouts/dashboard-sidebar/dashboard-sidebar.layout';
 
 import Loading from '../loading';
 

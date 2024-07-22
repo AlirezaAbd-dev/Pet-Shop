@@ -2,14 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
 
 import SvgLogout from '@/assets/svg/login-logout-red-20.svg';
 import SvgPenEditDesktop from '@/assets/svg/pen-edit-desktop.svg';
 import { cn } from '@/lib/utils';
 
-import { DASHBOARD_ROUTES } from '../_constants/dashboard-routes.constants';
-import { useDashboardModalsStore } from '../_store/dashboard-modals.store';
+import { DASHBOARD_ROUTES } from '../../_constants/dashboard-routes.constants';
+import { useDashboardModalsStore } from '../../_store/dashboard-modals.store';
 
 const DashboardSidebarLayout = () => {
   const pathname = usePathname();
