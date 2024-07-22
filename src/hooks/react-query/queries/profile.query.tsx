@@ -41,7 +41,7 @@ const useProfileQuery = (action?: string) => {
       }
       setIsLoading(false);
     }
-  }, [query.isPending, query.data, query.isSuccess, query.error]);
+  }, [query.isPending, query.data, query.isSuccess, query.error, action]);
 
   return query;
 };
