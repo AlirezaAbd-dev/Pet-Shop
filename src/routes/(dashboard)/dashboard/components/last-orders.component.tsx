@@ -1,17 +1,17 @@
 import Link from 'next/link';
-import React from 'react';
 
 import SvgArrow24 from '@/assets/svg/Arrow-24.svg';
 import SvgArrow32 from '@/assets/svg/Arrow-32.svg';
-import SvgArrow20 from '@/assets/svg/Arrow-gray-20.svg';
-import SvgArrowGray32 from '@/assets/svg/Arrow-gray-32.svg';
 import SvgShoppingCartDesktop from '@/assets/svg/shopping-bag-list-desktop.svg';
 import SvgShoppingCartMobile from '@/assets/svg/shopping-bag-list-mobile.svg';
 import Icon from '@/components/icon';
 
 import OrdersCard from '../../_components/cards/oreders-card.component';
+import { Orders } from '../../orders/orders.types';
 
-const LastOrders = () => {
+type LastOrderProps = { lastOrder: Orders };
+
+const LastOrders = (props: LastOrderProps) => {
   return (
     <section className="mt-8 md:mt-6 border border-nature-900 rounded-2xl p-4">
       <div className="flex justify-between items-center">
@@ -32,10 +32,20 @@ const LastOrders = () => {
         </Link>
       </div>
       <ul className="flex flex-col gap-5 mt-6 md:mt-8">
-        <OrdersCard status="In progress" />
-        <OrdersCard status="Cancelled" />
-        <OrdersCard status="Paid" />
-        <OrdersCard status="Delivered" />
+        {!props.lastOrder && (
+          <p className="font-semibold text-center mt-20">
+            you don&apos;t have any order yet
+          </p>
+        )}
+        {props.lastOrder && (
+          <OrdersCard
+            date={props.lastOrder.created_at}
+            orderId={props.lastOrder.id}
+            orderItem={props.lastOrder.order_items}
+            price={props.lastOrder.total_price}
+            status={props.lastOrder.status}
+          />
+        )}
       </ul>
     </section>
   );

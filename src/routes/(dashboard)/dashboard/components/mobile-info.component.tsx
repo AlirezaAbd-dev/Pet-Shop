@@ -1,15 +1,23 @@
+import Link from 'next/link';
 import React from 'react';
 
 import SvgPenEditMobile from '@/assets/svg/pen-edit-mobile.svg';
 
-const MobileInfo = () => {
+type MobileInfoProps = {
+  fullName: string;
+  email: string;
+};
+
+const MobileInfo = (props: MobileInfoProps) => {
   return (
     <section className="md:hidden flex justify-between items-center">
       <div>
-        <p className="font-nunito font-bold">Milad saeedi</p>
-        <p className="mt-2">milad138001@gmail.com</p>
+        <p className="font-nunito font-bold">{props.fullName}</p>
+        <p className="mt-2">{props.email}</p>
       </div>
-      <SvgPenEditMobile />
+      <Link href={'/dashboard/profile'}>
+        <SvgPenEditMobile />
+      </Link>
     </section>
   );
 };

@@ -4,7 +4,7 @@ import { OrderStatus } from './constants/orders.constants';
 
 export interface Orders {
   id: number;
-  user: number;
+  user_full_name: string;
   created_at: string;
   updated_at: string;
   status: OrderStatus;

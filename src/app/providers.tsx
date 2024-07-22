@@ -10,20 +10,23 @@ import * as React from 'react';
 
 // app/providers.jsx
 
+// app/providers.jsx
+
+// app/providers.jsx
+
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 1000,
+    },
+  },
+});
+
 export function Providers(props: { children: React.ReactNode }) {
-  const [queryClient] = React.useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            staleTime: 5 * 1000,
-          },
-        },
-      }),
-  );
+  const [queryClientInstance] = React.useState(() => queryClient);
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClientInstance}>
       <ReactQueryStreamedHydration>
         {props.children}
       </ReactQueryStreamedHydration>

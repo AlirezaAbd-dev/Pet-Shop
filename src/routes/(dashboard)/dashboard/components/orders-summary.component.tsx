@@ -5,7 +5,13 @@ import SvgDiceThree from '@/assets/svg/dice-three-mobile.svg';
 import SvgDoneChecked from '@/assets/svg/done-check-mobile.svg';
 import Icon from '@/components/icon';
 
-const OrdersSummary = () => {
+import { OrderSummaryType } from '../dashboard.query';
+
+type OrderSummaryProps = {
+  summary: OrderSummaryType;
+};
+
+const OrdersSummary = (props: OrderSummaryProps) => {
   return (
     <section className="flex justify-between md:justify-start md:gap-6 mt-8 md:mt-0">
       <div className="md:w-full flex flex-col md:flex-row md:py-3 md:px-4 items-center gap-3 md:border border-nature-900 md:rounded-2xl">
@@ -14,7 +20,8 @@ const OrdersSummary = () => {
         </Icon>
         <div>
           <p className="text-center md:text-left text-sm md:text-base">
-            1 Order
+            {(props.summary?.pending || 0) + (props.summary?.shipped || 0)}{' '}
+            Order
           </p>
           <p className="text-center md:text-left text-sm md:text-base font-bold mt-2">
             In Progress
@@ -27,7 +34,7 @@ const OrdersSummary = () => {
         </Icon>
         <div>
           <p className="text-center md:text-left text-sm md:text-base">
-            2 Order
+            {props.summary?.delivered || 0} Order
           </p>
           <p className="text-center md:text-left text-sm md:text-base font-bold mt-2">
             Delivered
@@ -40,7 +47,7 @@ const OrdersSummary = () => {
         </Icon>
         <div>
           <p className="text-center md:text-left text-sm md:text-base">
-            0 Order
+            {props.summary?.cancelled || 0} Order
           </p>
           <p className="text-center md:text-left text-sm md:text-base font-bold mt-2">
             Canceled

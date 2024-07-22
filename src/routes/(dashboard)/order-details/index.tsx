@@ -78,7 +78,9 @@ const OrderDetails = () => {
           <div className="flex flex-col md:flex-row gap-4 md:gap-8 md:mt-4 mt-6 px-4 md:px-6">
             <p className="text-sm inline md:text-base text-text-400 whitespace-nowrap">
               Full name:{' '}
-              <span className="font-bold text-text-500">{order.user}</span>
+              <span className="font-bold text-text-500">
+                {order.user_full_name}
+              </span>
             </p>
             <p className="text-sm inline md:text-base text-text-400 whitespace-nowrap">
               Phone:{' '}

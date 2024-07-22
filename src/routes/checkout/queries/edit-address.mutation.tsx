@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError, AxiosResponse } from 'axios';
 
+import { queryClient } from '@/app/providers';
 import useAxiosProtected from '@/hooks/use-axios-protected.hook';
 import queryKeys from '@/lib/constants/query-keys.constants';
 
@@ -33,6 +34,9 @@ const useEditAddressMutation = () => {
           street: data.street,
         },
       ),
+    onSuccess() {
+      queryClient.invalidateQueries({ queryKey: [queryKeys.ADDRESSES] });
+    },
   });
 
   return mutation;
