@@ -11,6 +11,7 @@ import Icon from '@/components/icon';
 import { Input } from '@/components/ui/input';
 import useProfileQuery from '@/hooks/react-query/queries/profile.query';
 import useSyncCartQuery from '@/hooks/react-query/queries/sync-cart.query';
+import useWishlistQuery from '@/hooks/react-query/queries/whishlist.query';
 import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/store/auth.store';
 

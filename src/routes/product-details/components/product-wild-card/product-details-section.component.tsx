@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
+import SvgHeartRed20 from '@/assets/svg/heart-red-20.svg';
+import SvgHeartRed28 from '@/assets/svg/heart-red-28.svg';
 import SvgWeightDesktopActive from '@/assets/svg/weight-active-desktop.svg';
 import SvgWeightDesktop from '@/assets/svg/weight-desktop.svg';
 import SvgWeightSmallActive from '@/assets/svg/weight-small-active.svg';
@@ -15,6 +17,7 @@ import {
   AccordionTrigger1,
 } from '@/components/ui/accordion-1';
 import { Button } from '@/components/ui/button';
+import useWishlistQuery from '@/hooks/react-query/queries/wishlist.query';
 import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/store/auth.store';
 import { useCartStore } from '@/store/cart.store';
@@ -24,6 +27,7 @@ import SvgHeartSmall from '@icons/heart-small.svg';
 
 import useAddProductToCartMutation from '../../queries/add-product-to-cart.mutation';
 import Counter from './counter.component';
+import Like from './like-component';
 import { ProductWildCardProps } from './product-wild-card.component';
 
 // temporarly
@@ -42,6 +46,8 @@ const WEIGHTS = [
 type ProductDetailsSectionProps = ProductWildCardProps;
 
 const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
+  const { data: wishlist, isPending: isWishlistPending } = useWishlistQuery();
+
   const profile = useAuthStore((s) => s.profile);
   const isProfileLoading = useAuthStore((s) => s.isLoading);
 
@@ -73,6 +79,10 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
     });
     toast.success(`${props.title} successfully added to cart`);
   }
+
+  const isLiked = !isWishlistPending
+    ? wishlist?.products.includes(props.id)
+    : undefined;
 
   return (
     <section className="flex flex-col mt-6 md:mt-0 md:w-full md:col-span-6">
@@ -127,10 +137,7 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
             </p>
           )}
         </div>
-        <Icon className="p-1.5 md:p-[10px] bg-nature-700 rounded-lg">
-          <SvgHeartSmall className="md:hidden" />
-          <SvgHeartDesktop className="hidden md:block" />
-        </Icon>
+        <Like productId={props.id} />
       </div>
 
       <div className="flex gap-4 mt-6 md:mt-10">

@@ -10,6 +10,8 @@ const queryKeys = {
   CREATE_ORDER: 'create-order',
   FILTERS: 'filters',
   LOGOUT: 'logout',
+  WHISHLISTS: 'wishlists',
+  LIKE: 'like',
 };
 
 export default queryKeys;
