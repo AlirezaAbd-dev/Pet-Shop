@@ -19,6 +19,7 @@ const useLikeMutation = () => {
     mutationFn: (data) =>
       axiosProtected[data.mode === 'like' ? 'post' : 'delete'](
         `/shop/api/v1/wishlists/${data.mode === 'unlike' ? data.id + '/' : ''}`,
+        { products: [data.id] },
       ),
     async onMutate(variables) {
       await queryClient.cancelQueries({ queryKey: [queryKeys.WHISHLISTS] });

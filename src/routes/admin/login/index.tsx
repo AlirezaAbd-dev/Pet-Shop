@@ -1,0 +1,36 @@
+import React from 'react';
+
+import SvgLogoDesktop from '@/assets/svg/logo-signup-desktop.svg';
+import Icon from '@/components/icon';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+
+const AdminLogin = () => {
+  return (
+    <main className="flex min-h-screen justify-center items-center md:py-24">
+      <section className="flex flex-col items-center p-8 w-full md:w-[494px] md:border md:border-nature-800 md:rounded-2xl">
+        <Icon>
+          <SvgLogoDesktop className="md:block" />
+        </Icon>
+
+        <h3 className="mt-6 md:text-2xl font-nunito font-bold">
+          Log in to the admin panel
+        </h3>
+
+        <form className="w-full mt-12">
+          <p className="text-sm md:text-base">Full name</p>
+          <Input className="mt-3" />
+
+          <p className="text-sm md:text-base mt-4">Password</p>
+          <Input className="mt-3" />
+
+          <Button className="mt-9 w-full rounded-xl md:font-bold md:text-base">
+            Register
+          </Button>
+        </form>
+      </section>
+    </main>
+  );
+};
+
+export default AdminLogin;

@@ -43,10 +43,6 @@ const StandardProductCard = (props: StandardProductCardProps) => {
             {props.total_discount}%
           </p>
         </Icon>
-        <Icon className="absolute right-3 top-3 flex justify-center items-center w-8 h-8 md:w-9 md:h-9 cursor-pointer rounded-full bg-white">
-          <SvgHeart className="md:hidden w-6 h-6" />
-          <SvgHeartDesktop className="hidden md:block" />
-        </Icon>
         <img
           src={props.image_urls[0]}
           alt={props.name}

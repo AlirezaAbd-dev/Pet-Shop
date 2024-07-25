@@ -1,14 +1,10 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
 import { Product } from '@/app/(core)/product/[productId]/page';
 import SvgPolygon56 from '@/assets/svg/polygon-56.svg';
 import Icon from '@/components/icon';
 import { cn } from '@/lib/utils';
 
-import SvgHeartDesktop from '@icons/heart-desktop.svg';
-import SvgHeart from '@icons/heart.svg';
 import SvgWeightDesktop from '@icons/weight-desktop.svg';
 import SvgWeight from '@icons/weight-extra-small.svg';
 
@@ -43,10 +39,7 @@ const ShopProductCard = (props: ShopProductCardProps) => {
             {props.total_discount}%
           </p>
         </Icon>
-        <Icon className="hidden md:flex absolute right-3 top-3 justify-center items-center w-8 h-8 md:w-9 md:h-9 cursor-pointer rounded-full bg-white">
-          <SvgHeart className="md:hidden w-6 h-6" />
-          <SvgHeartDesktop className="hidden md:block" />
-        </Icon>
+
         <img
           src={props.image_urls[0]}
           alt="product-1"
