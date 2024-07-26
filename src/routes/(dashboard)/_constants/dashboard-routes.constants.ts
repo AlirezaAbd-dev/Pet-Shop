@@ -41,21 +41,26 @@ export const DASHBOARD_ROUTES_MINI = DASHBOARD_ROUTES.toSpliced(0, 1);
 export const STATUSES: {
   name: Capitalize<OrderStatus>;
   colorClassName: string;
+  bgClassName: string;
 }[] = [
   {
     name: 'Shipped',
     colorClassName: 'text-warning-500',
+    bgClassName: 'bg-warning-500/5',
   },
   {
     name: 'Cancelled',
     colorClassName: 'text-error-500',
+    bgClassName: 'bg-error-500/5',
   },
   {
     name: 'Pending',
     colorClassName: 'text-success-500',
+    bgClassName: 'bg-success-500/5',
   },
   {
     name: 'Delivered',
     colorClassName: 'text-link',
+    bgClassName: 'bg-link/5',
   },
 ];
