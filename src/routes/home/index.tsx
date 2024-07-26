@@ -14,6 +14,8 @@ import HomeTips from './components/home-tips.component';
 import HomeTopCategories from './components/home-top-categories.component';
 import HomeTopSellingProducts from './components/home-top-selling-products.component';
 
+export const dynamic = 'force-dynamic';
+
 const Home = async () => {
   const [bestSelling, brands, categories, onSales, topCategories, pets] =
     await getHomePageData();
@@ -67,8 +69,9 @@ async function getHomePageData() {
     throw new Error('Something went wrong!');
   }
 
-  const fulfilledResults = results.filter((r) => r.status === 'fulfilled');
-
+  const fulfilledResults = results.filter(
+    (r): r is PromiseFulfilledResult<any> => r.status === 'fulfilled',
+  );
   return [
     fulfilledResults[0].value,
     fulfilledResults[1].value,
