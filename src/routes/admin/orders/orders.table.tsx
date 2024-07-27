@@ -1,3 +1,6 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import {
@@ -14,6 +17,8 @@ import { OrderStatus } from '@/routes/(dashboard)/orders/constants/orders.consta
 type OrderTableProps = {};
 const status: OrderStatus = 'pending';
 const OrdersTable = (props: OrderTableProps) => {
+  const router = useRouter();
+
   const findStatus = STATUSES.find((s) => s.name.toLowerCase() === status);
 
   return (
@@ -28,7 +33,12 @@ const OrdersTable = (props: OrderTableProps) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow className="cursor-pointer">
+        <TableRow
+          className="cursor-pointer"
+          onClick={() => {
+            router.push('/panel/admin/orders/id');
+          }}
+        >
           <TableCell>Annette Black</TableCell>
           <TableCell>Google</TableCell>
           <TableCell>$42,000</TableCell>
@@ -41,7 +51,12 @@ const OrdersTable = (props: OrderTableProps) => {
             </span>
           </TableCell>
         </TableRow>
-        <TableRow className="cursor-pointer">
+        <TableRow
+          className="cursor-pointer"
+          onClick={() => {
+            router.push('/panel/admin/orders/id');
+          }}
+        >
           <TableCell>Annette Black</TableCell>
           <TableCell>Google</TableCell>
           <TableCell>$42,000</TableCell>
@@ -54,7 +69,12 @@ const OrdersTable = (props: OrderTableProps) => {
             </span>
           </TableCell>
         </TableRow>
-        <TableRow className="cursor-pointer">
+        <TableRow
+          className="cursor-pointer"
+          onClick={() => {
+            router.push('/panel/admin/orders/id');
+          }}
+        >
           <TableCell>Annette Black</TableCell>
           <TableCell>Google</TableCell>
           <TableCell>$42,000</TableCell>

@@ -1,3 +1,6 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import {
@@ -12,6 +15,8 @@ import {
 type CustomersTableProps = {};
 
 const CustomersTable = (props: CustomersTableProps) => {
+  const router = useRouter();
+
   return (
     <Table>
       <TableHeader className="bg-nature-700">
@@ -23,19 +28,34 @@ const CustomersTable = (props: CustomersTableProps) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow className="cursor-pointer">
+        <TableRow
+          className="cursor-pointer"
+          onClick={() => {
+            router.push('/panel/admin/customers/id');
+          }}
+        >
           <TableCell>Annette Black</TableCell>
           <TableCell>09304673884</TableCell>
           <TableCell>milad138001@gmail.com</TableCell>
           <TableCell>Iran</TableCell>
         </TableRow>
-        <TableRow className="cursor-pointer">
+        <TableRow
+          className="cursor-pointer"
+          onClick={() => {
+            router.push('/panel/admin/customers/id');
+          }}
+        >
           <TableCell>Annette Black</TableCell>
           <TableCell>09304673884</TableCell>
           <TableCell>milad138001@gmail.com</TableCell>
           <TableCell>Iran</TableCell>
         </TableRow>
-        <TableRow className="cursor-pointer">
+        <TableRow
+          className="cursor-pointer"
+          onClick={() => {
+            router.push('/panel/admin/customers/id');
+          }}
+        >
           <TableCell>Annette Black</TableCell>
           <TableCell>09304673884</TableCell>
           <TableCell>milad138001@gmail.com</TableCell>
