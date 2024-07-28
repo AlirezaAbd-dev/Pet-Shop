@@ -9,12 +9,14 @@ import queryKeys from '@/lib/constants/query-keys.constants';
 import { useAuthStore } from '@/store/auth.store';
 
 export type ProfileType = {
+  id: number;
   profile_pic: string;
   phone_number: string;
   email: string;
   username: string;
   full_name: string;
   password: string;
+  role: string;
 };
 
 const useProfileQuery = (action?: string) => {

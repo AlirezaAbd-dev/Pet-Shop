@@ -1,83 +1,86 @@
+'use client';
+
 import React from 'react';
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
+import LoadingSpinner from '@/components/ui/loading-spinner';
 
 import OrdersTable from '../orders/orders.table';
+import useAdminUserDetailQuery from './admin-user-details.query';
 
 const AdminCustomerDetails = () => {
-  return (
-    <main className="mt-6">
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbLink href="/panel/admin/customers">
-            Customer managment
-          </BreadcrumbLink>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem className="text-text-500">
-            Details User
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+  const { data, isPending } = useAdminUserDetailQuery();
 
-      <section className="mt-8 bg-white p-6">
-        <div className="flex justify-between">
-          <p className="flex gap-3">
-            Username
-            <span className="font-bold">Milad saeedi</span>
-          </p>
-          <p className="flex gap-3">
-            Phone
-            <span className="font-bold">09304673884</span>
-          </p>
-          <p className="flex gap-3">
-            Email
-            <span className="font-bold">milad138001@gmail.com</span>
-          </p>
-          <p className="flex gap-3">
-            Password
-            <span className="font-bold">MMilad!234</span>
-          </p>
-        </div>
+  if (isPending) return <LoadingSpinner className="mt-20" />;
 
-        <p className="flex gap-3 mt-8">
-          Street address
-          <span className="font-bold">
-            Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut scing
-            elit
-          </span>
-        </p>
+  if (!isPending && data)
+    return (
+      <main className="mt-6">
+        <section className="mt-8 bg-white p-6">
+          <div className="flex justify-between">
+            <p className="flex gap-3">
+              Username
+              <span className="font-bold">{data.profile.full_name}</span>
+            </p>
+            <p className="flex gap-3">
+              Phone
+              <span className="font-bold">
+                {data.addresses[0]?.phone_number || '_'}
+              </span>
+            </p>
+            <p className="flex gap-3">
+              Email
+              <span className="font-bold">{data.profile.email}</span>
+            </p>
+            <p className="flex gap-3">
+              Password
+              <span className="font-bold">*********</span>
+            </p>
+          </div>
 
-        <div className="flex justify-between mt-4">
-          <p className="flex gap-3">
-            Country / Region
-            <span className="font-bold">Iran</span>
+          <p className="flex gap-3 mt-8">
+            Street address
+            <span className="font-bold">
+              {data.addresses[0]?.street || '_'}
+            </span>
           </p>
-          <p className="flex gap-3">
-            Town / City
-            <span className="font-bold">Azadi 5</span>
-          </p>
-          <p className="flex gap-3">
-            Postcode
-            <span className="font-bold">677123411</span>
-          </p>
-          <p className="flex gap-3">
-            County
-            <span className="font-bold">_</span>
-          </p>
-        </div>
-      </section>
 
-      <section className="mt-8 bg-white rounded-xl border border-nature-800 overflow-hidden">
-        <OrdersTable />
-      </section>
-    </main>
-  );
+          <div className="flex justify-between mt-4">
+            <p className="flex gap-3">
+              Country / Region
+              <span className="font-bold">
+                {data.addresses[0]?.country || '_'}
+              </span>
+            </p>
+            <p className="flex gap-3">
+              Town / City
+              <span className="font-bold">
+                {data.addresses[0]?.city || '_'}
+              </span>
+            </p>
+            <p className="flex gap-3">
+              Postcode
+              <span className="font-bold">{data.addresses[0]?.post_code}</span>
+            </p>
+            <p className="flex gap-3">
+              County
+              <span className="font-bold">{data.addresses[0]?.county}</span>
+            </p>
+          </div>
+        </section>
+
+        <section className="mt-8 bg-white rounded-xl border border-nature-800 overflow-hidden">
+          <OrdersTable
+            orders={data.orders.map((o) => ({
+              date: o.created_at,
+              orderId: o.id,
+              price: o.total_price,
+              state: o.status,
+              username: o.user_full_name,
+            }))}
+          />
+        </section>
+      </main>
+    );
 };
 
 export default AdminCustomerDetails;

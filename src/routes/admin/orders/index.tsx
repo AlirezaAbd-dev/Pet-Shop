@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useTransition } from 'react';
 
 import SvgSearch18 from '@/assets/svg/search-18.svg';
 import { Combobox } from '@/components/ui/combobox';
@@ -24,6 +24,8 @@ const AdminOrders = () => {
   const [statusFilter, setStatusFilter] =
     useState<OrderStatusTabsType>('Delivered');
 
+  const [_isPending, startTransition] = useTransition();
+
   const { data, isPending } = useAdminOrdersQuery();
 
   if (isPending) return <LoadingSpinner className="mt-20" />;
@@ -42,7 +44,11 @@ const AdminOrders = () => {
             <SvgSearch18 />
             <Input
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) =>
+                startTransition(() => {
+                  setSearch(e.target.value);
+                })
+              }
               className="bg-transparent border-none md:p-0 md:h-8 w-full"
               placeholder="Type to Search"
             />
@@ -61,7 +67,15 @@ const AdminOrders = () => {
         </section>
 
         <section className="mt-8 bg-white border border-[#E7E7E7] rounded-lg">
-          <OrdersTable orders={filteredOrders} />
+          <OrdersTable
+            orders={filteredOrders.map((o) => ({
+              date: o.created_at,
+              orderId: o.id,
+              price: o.total_price,
+              state: o.status,
+              username: o.user_full_name,
+            }))}
+          />
         </section>
       </main>
     );

@@ -17,7 +17,13 @@ import { OrderStatus } from '@/routes/(dashboard)/orders/constants/orders.consta
 import { AdminOrderResponse } from './admin-orders.query';
 
 type OrderTableProps = {
-  orders: AdminOrderResponse[];
+  orders: {
+    username: string;
+    orderId: number;
+    price: string;
+    date: string;
+    state: OrderStatus;
+  }[];
 };
 const status: OrderStatus = 'pending';
 const OrdersTable = (props: OrderTableProps) => {
@@ -39,17 +45,17 @@ const OrdersTable = (props: OrderTableProps) => {
       <TableBody>
         {props.orders.map((o) => (
           <TableRow
-            key={o.id}
+            key={o.orderId}
             className="cursor-pointer"
             onClick={() => {
-              router.push(`/panel/admin/orders/${o.id}`);
+              router.push(`/panel/admin/orders/${o.orderId}`);
             }}
           >
-            <TableCell>{o.user_full_name}</TableCell>
-            <TableCell>{o.id}</TableCell>
-            <TableCell>${o.total_price}</TableCell>
+            <TableCell>{o.username}</TableCell>
+            <TableCell>{o.orderId}</TableCell>
+            <TableCell>${o.price}</TableCell>
             <TableCell>
-              {new Date(o.created_at).toLocaleDateString('en-us', {
+              {new Date(o.date).toLocaleDateString('en-us', {
                 dateStyle: 'medium',
               })}
             </TableCell>
@@ -57,7 +63,7 @@ const OrdersTable = (props: OrderTableProps) => {
               <span
                 className={`font-bold px-3 py-[1px] rounded-[20px] ${findStatus?.colorClassName} ${findStatus?.bgClassName}`}
               >
-                {o.status}
+                {o.state}
               </span>
             </TableCell>
           </TableRow>

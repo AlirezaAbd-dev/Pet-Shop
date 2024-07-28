@@ -15,7 +15,7 @@ const useLoginMutation = ({ isPanel = false }: { isPanel?: boolean }) => {
   const setAccessToken = useAuthStore((s) => s.setAccessToken);
 
   const mutation = useMutation<
-    AxiosResponse<{ refresh: string; access: string }>,
+    AxiosResponse<{ refresh: string; access: string; role: string }>,
     AxiosError<any>,
     { email?: string; username?: string; password: string }
   >({
@@ -27,7 +27,10 @@ const useLoginMutation = ({ isPanel = false }: { isPanel?: boolean }) => {
       if (!isPanel) {
         router.push('/');
       } else {
-        router.push('/panel/admin/dashboard');
+        if (data.data.role === 'admin') router.push('/panel/admin/dashboard');
+        else {
+          toast.error('Unauthorized');
+        }
       }
     },
     onError(error) {

@@ -1,18 +1,25 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 
 import SvgLogoDesktop from '@/assets/svg/logo-signup-desktop.svg';
 import Icon from '@/components/icon';
+import useProfileQuery from '@/hooks/react-query/queries/profile.query';
 import { cn } from '@/lib/utils';
 
 import { ADMIN_PAGES } from '../_constants/admin-pages.constants';
 
 const AdminDashboardLayout = (props: { children: ReactNode }) => {
   const router = useRouter();
-
+  const { data, isPending } = useProfileQuery();
   const pathname = usePathname();
+
+  useEffect(() => {
+    if (!isPending && data && data.data.role !== 'admin') {
+      router.replace('/panel/login');
+    }
+  }, [data, isPending]);
 
   return (
     <main className="flex">
