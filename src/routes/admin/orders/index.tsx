@@ -1,12 +1,17 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import SvgSearch18 from '@/assets/svg/search-18.svg';
 import { Combobox } from '@/components/ui/combobox';
 import { Input } from '@/components/ui/input';
-import { ORDER_STATUS_TABS } from '@/routes/(dashboard)/orders/constants/orders.constants';
+import LoadingSpinner from '@/components/ui/loading-spinner';
+import {
+  ORDER_STATUS_TABS,
+  OrderStatusTabsType,
+} from '@/routes/(dashboard)/orders/constants/orders.constants';
 
+import useAdminOrdersQuery from './admin-orders.query';
 import OrdersTable from './orders.table';
 
 const STATUSES = ORDER_STATUS_TABS.map((o) => ({
@@ -15,26 +20,52 @@ const STATUSES = ORDER_STATUS_TABS.map((o) => ({
 }));
 
 const AdminOrders = () => {
-  return (
-    <main className="mt-8">
-      <section className="flex justify-between">
-        <div className="px-3 py-2 flex gap-2 items-center rounded-xl border border-nature-900 w-[400px]">
-          <SvgSearch18 />
-          <Input
-            className="bg-transparent border-none md:p-0 md:h-8 w-full"
-            placeholder="Type to Search"
-          />
-        </div>
-        <div className="w-[173px]">
-          <Combobox data={STATUSES} defaultValue="Delivered" name="statuses" />
-        </div>
-      </section>
+  const [search, setSearch] = useState('');
+  const [statusFilter, setStatusFilter] =
+    useState<OrderStatusTabsType>('Delivered');
 
-      <section className="mt-8 bg-white border border-[#E7E7E7] rounded-lg">
-        <OrdersTable />
-      </section>
-    </main>
-  );
+  const { data, isPending } = useAdminOrdersQuery();
+
+  if (isPending) return <LoadingSpinner className="mt-20" />;
+
+  if (!isPending && data) {
+    const filteredOrders = data.filter(
+      (d) =>
+        d.user_full_name?.includes(search) &&
+        d.status === statusFilter.toLowerCase(),
+    );
+
+    return (
+      <main className="mt-8">
+        <section className="flex justify-between">
+          <div className="px-3 py-2 flex gap-2 items-center rounded-xl border border-nature-900 w-[400px]">
+            <SvgSearch18 />
+            <Input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="bg-transparent border-none md:p-0 md:h-8 w-full"
+              placeholder="Type to Search"
+            />
+          </div>
+          <div className="w-[173px]">
+            <Combobox
+              noneEmpty={true}
+              data={STATUSES}
+              defaultValue={statusFilter}
+              onSelect={(_name, value) => {
+                setStatusFilter(value);
+              }}
+              name="statuses"
+            />
+          </div>
+        </section>
+
+        <section className="mt-8 bg-white border border-[#E7E7E7] rounded-lg">
+          <OrdersTable orders={filteredOrders} />
+        </section>
+      </main>
+    );
+  }
 };
 
 export default AdminOrders;

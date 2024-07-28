@@ -5,6 +5,8 @@ import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
+import AdminLoginForm from './admin-login.form';
+
 const AdminLogin = () => {
   return (
     <main className="flex min-h-screen justify-center items-center md:py-24">
@@ -17,17 +19,7 @@ const AdminLogin = () => {
           Log in to the admin panel
         </h3>
 
-        <form className="w-full mt-12">
-          <p className="text-sm md:text-base">Full name</p>
-          <Input className="mt-3" />
-
-          <p className="text-sm md:text-base mt-4">Password</p>
-          <Input className="mt-3" />
-
-          <Button className="mt-9 w-full rounded-xl md:font-bold md:text-base">
-            Register
-          </Button>
-        </form>
+        <AdminLoginForm />
       </section>
     </main>
   );

@@ -9,7 +9,7 @@ import { useAuthStore } from '@/store/auth.store';
 
 import { registerQueryKeys } from '../_constants/query-keys.constants';
 
-const useLoginMutation = () => {
+const useLoginMutation = ({ isPanel = false }: { isPanel?: boolean }) => {
   const router = useRouter();
 
   const setAccessToken = useAuthStore((s) => s.setAccessToken);
@@ -24,7 +24,11 @@ const useLoginMutation = () => {
     onSuccess(data) {
       setAccessToken(data.data.access);
       localStorage.setItem('refresh-token', data.data.refresh);
-      router.push('/');
+      if (!isPanel) {
+        router.push('/');
+      } else {
+        router.push('/panel/admin/dashboard');
+      }
     },
     onError(error) {
       if (error.response?.data.message) {

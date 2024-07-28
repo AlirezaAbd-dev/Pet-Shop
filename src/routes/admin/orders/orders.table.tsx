@@ -14,7 +14,11 @@ import {
 import { STATUSES } from '@/routes/(dashboard)/_constants/dashboard-routes.constants';
 import { OrderStatus } from '@/routes/(dashboard)/orders/constants/orders.constants';
 
-type OrderTableProps = {};
+import { AdminOrderResponse } from './admin-orders.query';
+
+type OrderTableProps = {
+  orders: AdminOrderResponse[];
+};
 const status: OrderStatus = 'pending';
 const OrdersTable = (props: OrderTableProps) => {
   const router = useRouter();
@@ -33,60 +37,31 @@ const OrdersTable = (props: OrderTableProps) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow
-          className="cursor-pointer"
-          onClick={() => {
-            router.push('/panel/admin/orders/id');
-          }}
-        >
-          <TableCell>Annette Black</TableCell>
-          <TableCell>Google</TableCell>
-          <TableCell>$42,000</TableCell>
-          <TableCell>12 Jan 2023</TableCell>
-          <TableCell>
-            <span
-              className={`font-bold px-3 py-[1px] rounded-[20px] ${findStatus?.colorClassName} ${findStatus?.bgClassName}`}
-            >
-              {status}
-            </span>
-          </TableCell>
-        </TableRow>
-        <TableRow
-          className="cursor-pointer"
-          onClick={() => {
-            router.push('/panel/admin/orders/id');
-          }}
-        >
-          <TableCell>Annette Black</TableCell>
-          <TableCell>Google</TableCell>
-          <TableCell>$42,000</TableCell>
-          <TableCell>12 Jan 2023</TableCell>
-          <TableCell>
-            <span
-              className={`font-bold px-3 py-[1px] rounded-[20px] ${findStatus?.colorClassName} ${findStatus?.bgClassName}`}
-            >
-              {status}
-            </span>
-          </TableCell>
-        </TableRow>
-        <TableRow
-          className="cursor-pointer"
-          onClick={() => {
-            router.push('/panel/admin/orders/id');
-          }}
-        >
-          <TableCell>Annette Black</TableCell>
-          <TableCell>Google</TableCell>
-          <TableCell>$42,000</TableCell>
-          <TableCell>12 Jan 2023</TableCell>
-          <TableCell>
-            <span
-              className={`font-bold px-3 py-[1px] rounded-[20px] ${findStatus?.colorClassName} ${findStatus?.bgClassName}`}
-            >
-              {status}
-            </span>
-          </TableCell>
-        </TableRow>
+        {props.orders.map((o) => (
+          <TableRow
+            key={o.id}
+            className="cursor-pointer"
+            onClick={() => {
+              router.push(`/panel/admin/orders/${o.id}`);
+            }}
+          >
+            <TableCell>{o.user_full_name}</TableCell>
+            <TableCell>{o.id}</TableCell>
+            <TableCell>${o.total_price}</TableCell>
+            <TableCell>
+              {new Date(o.created_at).toLocaleDateString('en-us', {
+                dateStyle: 'medium',
+              })}
+            </TableCell>
+            <TableCell>
+              <span
+                className={`font-bold px-3 py-[1px] rounded-[20px] ${findStatus?.colorClassName} ${findStatus?.bgClassName}`}
+              >
+                {o.status}
+              </span>
+            </TableCell>
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   );

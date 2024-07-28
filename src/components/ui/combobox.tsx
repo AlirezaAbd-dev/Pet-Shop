@@ -1,6 +1,5 @@
 'use client';
 
-import SvgArrowDropDown from '@material-symbols/svg-400/rounded/arrow_drop_down.svg';
 import { NoInfer } from '@tanstack/react-query';
 import { Check, ChevronDown } from 'lucide-react';
 import * as React from 'react';
@@ -8,10 +7,7 @@ import * as React from 'react';
 import { Prettify } from '@/lib/types/utils';
 import { cn } from '@/lib/utils';
 
-import Icon from '../icon';
 import { Button } from './button';
-import { Command, CommandEmpty, CommandGroup, CommandItem } from './command';
-import { Input } from './input';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
 type ComboboxProps<TValue extends string, TLiteral extends boolean> = Prettify<
