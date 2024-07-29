@@ -1,10 +1,5 @@
 'use client';
 
-import React from 'react';
-
-import SvgDelete32 from '@/assets/svg/Trash, Delete, Bin32.svg';
-import SvgEye32 from '@/assets/svg/eye32.svg';
-import SvgFileBlankListBlue32 from '@/assets/svg/file-blank-list-blue32.svg';
 import { Button } from '@/components/ui/button';
 import { Combobox } from '@/components/ui/combobox';
 import LoadingSpinner from '@/components/ui/loading-spinner';
@@ -12,7 +7,8 @@ import { Slider } from '@/components/ui/slider';
 import { OrderStatus } from '@/routes/(dashboard)/orders/constants/orders.constants';
 
 import useAdminOrderDetailsQuery from './admin-order-details.query';
-import OrderDetailsBreadcrumb from './components/orderDetailsBreadcrumb.component';
+import OrderDetailsBreadcrumb from './components/order-details-breadcrumb.component';
+import OrderDetailsUploadImage from './components/order-details-upload-image.components';
 
 const STATUS_SLIDER: { status: OrderStatus; color: string; value: number }[] = [
   {
@@ -152,22 +148,7 @@ const AdminOrderDetails = () => {
           </ul>
         </section>
 
-        <section className="mt-8 bg-white border border-[#004FFE] border-dashed rounded-2xl py-6 flex flex-col items-center">
-          <span className="w-[62px] h-[62px] flex items-center justify-center bg-[#004FFE] bg-opacity-5 rounded-xl">
-            <SvgFileBlankListBlue32 />
-          </span>
-          <p className="font-bold text-xl mt-4">upload file</p>
-          <p className="mt-4">
-            Upload the payment receipt sent by the customer
-          </p>
-        </section>
-        <section className="mt-6 flex justify-between items-center">
-          <p className="text-lg font-semibold ">Name File</p>
-          <div className="flex gap-3 items-center">
-            <SvgEye32 />
-            <SvgDelete32 />
-          </div>
-        </section>
+        <OrderDetailsUploadImage />
       </main>
     );
   }

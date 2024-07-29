@@ -1,9 +1,15 @@
-export const ADMIN_COMMENT_TABS = [
+import { CommentStatus } from './admin-comments.query';
+
+export const ADMIN_COMMENT_TABS: {
+  name: string;
+  value: CommentStatus | 'all';
+}[] = [
   {
     name: 'All comment',
+    value: 'all',
   },
-  { name: 'Confirmed' },
-  { name: 'Awaiting confirmation' },
+  { name: 'Confirmed', value: 'accepted' },
+  { name: 'Awaiting confirmation', value: 'pending' },
 ] as const;
 
-export type AdminCommentTabsType = (typeof ADMIN_COMMENT_TABS)[number]['name'];
+export type AdminCommentTabsType = (typeof ADMIN_COMMENT_TABS)[number]['value'];

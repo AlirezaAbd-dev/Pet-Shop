@@ -14,22 +14,30 @@ import {
 
 const AdminComments = () => {
   const [tabsValue, setTabValue] = useState<AdminCommentTabsType>(
-    ADMIN_COMMENT_TABS[0].name,
+    ADMIN_COMMENT_TABS[0].value,
   );
   const { data, isPending } = useAdminCommentsQuery();
 
   if (isPending) return <LoadingSpinner className="mt-20" />;
 
   if (!isPending && data) {
+    const comments = data.filter((c) => {
+      if (tabsValue === 'all') return c.status !== 'decline';
+      else {
+        return c.status === tabsValue;
+      }
+    });
     return (
       <main className="mt-9">
         <section className="flex gap-4">
           {ADMIN_COMMENT_TABS.map((item) => (
             <Button
-              key={item.name}
-              variant={item.name !== tabsValue ? 'primary-deactive' : 'default'}
+              key={item.value}
+              variant={
+                item.value !== tabsValue ? 'primary-deactive' : 'default'
+              }
               onClick={() => {
-                setTabValue(item.name);
+                setTabValue(item.value);
               }}
               className="w-full h-11 md:text-base"
             >
@@ -38,10 +46,23 @@ const AdminComments = () => {
           ))}
         </section>
         <ul className="mt-9 flex flex-col gap-9">
-          <AdminCommentCard />
-          <AdminCommentCard />
-          <AdminCommentCard />
-          <AdminCommentCard />
+          {comments.length === 0 && (
+            <p className="text-center text-lg font-semibold text-secondary-300">
+              Nothing to show
+            </p>
+          )}
+          {comments.map((c) => (
+            <AdminCommentCard
+              key={c.id}
+              id={c.id}
+              content={c.comment}
+              productsName={c.product_name}
+              status={c.status}
+              username={c.reviewer}
+              email="milad138001@gmail.com"
+              phone="09304673884"
+            />
+          ))}
         </ul>
       </main>
     );
