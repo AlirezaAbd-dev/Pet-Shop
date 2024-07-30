@@ -6,11 +6,11 @@ import { Button } from '@/components/ui/button';
 import LoadingSpinner from '@/components/ui/loading-spinner';
 
 import AdminCommentCard from './admin-comment-card.component';
-import useAdminCommentsQuery from './admin-comments.query';
 import {
   ADMIN_COMMENT_TABS,
   AdminCommentTabsType,
 } from './comment.tabs.constants';
+import useAdminCommentsQuery from './queries/admin-comments.query';
 
 const AdminComments = () => {
   const [tabsValue, setTabValue] = useState<AdminCommentTabsType>(
@@ -22,7 +22,8 @@ const AdminComments = () => {
 
   if (!isPending && data) {
     const comments = data.filter((c) => {
-      if (tabsValue === 'all') return c.status !== 'decline';
+      // if (tabsValue === 'all') return c.status !== 'decline';
+      if (tabsValue === 'all') return true;
       else {
         return c.status === tabsValue;
       }
@@ -59,8 +60,9 @@ const AdminComments = () => {
               productsName={c.product_name}
               status={c.status}
               username={c.reviewer}
-              email="milad138001@gmail.com"
-              phone="09304673884"
+              email={c.user_email}
+              phone={c.user_phone_number}
+              response={c.response}
             />
           ))}
         </ul>

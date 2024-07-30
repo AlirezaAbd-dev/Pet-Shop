@@ -5,23 +5,34 @@ import SvgDelete32 from '@/assets/svg/Trash, Delete, Bin32.svg';
 import SvgEye32 from '@/assets/svg/eye32.svg';
 import SvgFileBlankListBlue32 from '@/assets/svg/file-blank-list-blue32.svg';
 
+import useUploadOrderFactorMutation from '../queries/upload-order-factor-mutation';
+
 const OrderDetailsUploadImage = () => {
   const [uploadedFiles, setUploadedFiles] = useState<
     (File & { preview: string })[]
   >([]);
 
+  const { mutateAsync, isPending } = useUploadOrderFactorMutation();
+
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
-      'image/*': ['.png', '.jpg', '.jpeg'],
+      'image/*': [],
     },
-    onDrop: (acceptedFiles) => {
-      setUploadedFiles(
-        acceptedFiles.map((file) =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          }),
-        ),
-      );
+    onDrop: async (acceptedFiles) => {
+      const formData = new FormData();
+      formData.append('receipt', acceptedFiles[0]);
+
+      const response = await mutateAsync(formData);
+
+      console.log(response);
+
+      // setUploadedFiles(
+      //   acceptedFiles.map((file) =>
+      //     Object.assign(file, {
+      //       preview: URL.createObjectURL(file),
+      //     }),
+      //   ),
+      // );
     },
   });
 
@@ -34,7 +45,7 @@ const OrderDetailsUploadImage = () => {
     <>
       <section
         {...getRootProps()}
-        className="mt-8 bg-white border border-[#004FFE] border-dashed rounded-2xl py-6 flex flex-col items-center"
+        className="mt-8 bg-white border border-[#004FFE] border-dashed rounded-2xl py-6 flex flex-col items-center cursor-pointer"
       >
         <input {...getInputProps()} />
         <span className="w-[62px] h-[62px] flex items-center justify-center bg-[#004FFE] bg-opacity-5 rounded-xl">

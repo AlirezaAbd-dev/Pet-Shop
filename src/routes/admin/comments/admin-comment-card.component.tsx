@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
 
-import useAdminCommentStatusMutation from './admin-comment-status.mutation';
-import { CommentStatus } from './admin-comments.query';
+import useAdminCommentStatusMutation from './queries/admin-comment-status.mutation';
+import { CommentStatus } from './queries/admin-comments.query';
 
 type AdminCommentCardProps = {
   id: number;
@@ -13,13 +14,20 @@ type AdminCommentCardProps = {
   username: string;
   content: string;
   status: CommentStatus;
+  response?: string;
 };
 
 const AdminCommentCard = (props: AdminCommentCardProps) => {
+  const [responseValue, setResponseValue] = useState(props.response || '');
+
   const { mutate, isPending } = useAdminCommentStatusMutation();
 
   function onChangeStatus(status: CommentStatus) {
     mutate({ id: props.id, status });
+  }
+
+  function onAddResponse() {
+    mutate({ id: props.id, response: responseValue });
   }
 
   return (
@@ -69,6 +77,32 @@ const AdminCommentCard = (props: AdminCommentCardProps) => {
           </Button>
         )}
       </div>
+
+      {props.status === 'accepted' && (
+        <>
+          <Textarea
+            value={responseValue}
+            onChange={(e) => {
+              setResponseValue(e.target.value);
+            }}
+            className="mt-8 h-[136px]"
+          />
+          <Button
+            isLoading={isPending}
+            disabled={isPending}
+            variant={isPending ? 'disabled' : 'confirm'}
+            onClick={onAddResponse}
+            className="mt-4 rounded-lg w-[142px] md:text-sm"
+          >
+            Confirmation
+          </Button>
+        </>
+      )}
+
+      {/* <div className="w-full border-t border-[#E0E0E0] mt-6"></div>
+      <p className="mt-6 font-semibold">
+        Response: <span className="font-normal">{props.response}</span>
+      </p> */}
     </li>
   );
 };

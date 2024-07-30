@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import useAxiosProtected from '@/hooks/use-axios-protected.hook';
 
-import { adminQueryKeys } from '../_constants/admin-query-keys.constants';
+import { adminQueryKeys } from '../../_constants/admin-query-keys.constants';
 
 export type CommentStatus = 'pending' | 'accepted' | 'decline';
 
@@ -15,7 +15,9 @@ export type AdminComment = {
   created_date: string;
   reviewer: string;
   status: CommentStatus;
-  response: string;
+  response?: string;
+  user_email: string;
+  user_phone_number: string;
 };
 
 const useAdminCommentsQuery = () => {

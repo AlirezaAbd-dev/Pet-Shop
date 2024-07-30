@@ -25,11 +25,8 @@ type OrderTableProps = {
     state: OrderStatus;
   }[];
 };
-const status: OrderStatus = 'pending';
 const OrdersTable = (props: OrderTableProps) => {
   const router = useRouter();
-
-  const findStatus = STATUSES.find((s) => s.name.toLowerCase() === status);
 
   return (
     <Table>
@@ -43,31 +40,36 @@ const OrdersTable = (props: OrderTableProps) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {props.orders.map((o) => (
-          <TableRow
-            key={o.orderId}
-            className="cursor-pointer"
-            onClick={() => {
-              router.push(`/panel/admin/orders/${o.orderId}`);
-            }}
-          >
-            <TableCell>{o.username}</TableCell>
-            <TableCell>{o.orderId}</TableCell>
-            <TableCell>${o.price}</TableCell>
-            <TableCell>
-              {new Date(o.date).toLocaleDateString('en-us', {
-                dateStyle: 'medium',
-              })}
-            </TableCell>
-            <TableCell>
-              <span
-                className={`font-bold px-3 py-[1px] rounded-[20px] ${findStatus?.colorClassName} ${findStatus?.bgClassName}`}
-              >
-                {o.state}
-              </span>
-            </TableCell>
-          </TableRow>
-        ))}
+        {props.orders.map((o) => {
+          const findStatus = STATUSES.find(
+            (s) => s.name.toLowerCase() === o.state.toLowerCase(),
+          );
+          return (
+            <TableRow
+              key={o.orderId}
+              className="cursor-pointer"
+              onClick={() => {
+                router.push(`/panel/admin/orders/${o.orderId}`);
+              }}
+            >
+              <TableCell>{o.username}</TableCell>
+              <TableCell>{o.orderId}</TableCell>
+              <TableCell>${o.price}</TableCell>
+              <TableCell>
+                {new Date(o.date).toLocaleDateString('en-us', {
+                  dateStyle: 'medium',
+                })}
+              </TableCell>
+              <TableCell>
+                <span
+                  className={`font-bold px-3 py-[1px] rounded-[20px] ${findStatus?.colorClassName} ${findStatus?.bgClassName}`}
+                >
+                  {o.state}
+                </span>
+              </TableCell>
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );

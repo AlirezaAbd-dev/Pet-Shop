@@ -21,8 +21,7 @@ const STATUSES = ORDER_STATUS_TABS.map((o) => ({
 
 const AdminOrders = () => {
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] =
-    useState<OrderStatusTabsType>('Delivered');
+  const [statusFilter, setStatusFilter] = useState<OrderStatusTabsType>();
 
   const [_isPending, startTransition] = useTransition();
 
@@ -31,11 +30,16 @@ const AdminOrders = () => {
   if (isPending) return <LoadingSpinner className="mt-20" />;
 
   if (!isPending && data) {
-    const filteredOrders = data.filter(
-      (d) =>
-        d.user_full_name?.includes(search) &&
-        d.status === statusFilter.toLowerCase(),
-    );
+    const filteredOrders = data.filter((d) => {
+      if (statusFilter)
+        return (
+          d.user_full_name?.includes(search) &&
+          d.status === statusFilter.toLowerCase()
+        );
+      else {
+        return true;
+      }
+    });
 
     return (
       <main className="mt-8">
@@ -55,7 +59,6 @@ const AdminOrders = () => {
           </div>
           <div className="w-[173px]">
             <Combobox
-              noneEmpty={true}
               data={STATUSES}
               defaultValue={statusFilter}
               onSelect={(_name, value) => {

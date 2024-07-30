@@ -38,7 +38,8 @@ const useProfileQuery = (action?: string) => {
       setIsLoading(false);
       setProfile(query.data.data);
     } else if (!query.isPending && query.error) {
-      if (action && query.error.status === 401) {
+      console.log(query.error);
+      if (action && query.error.response?.status === 401) {
         router.replace(action);
       }
       setIsLoading(false);

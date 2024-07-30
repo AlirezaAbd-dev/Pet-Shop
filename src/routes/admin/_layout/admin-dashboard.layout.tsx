@@ -12,7 +12,7 @@ import { ADMIN_PAGES } from '../_constants/admin-pages.constants';
 
 const AdminDashboardLayout = (props: { children: ReactNode }) => {
   const router = useRouter();
-  const { data, isPending } = useProfileQuery();
+  const { data, isPending } = useProfileQuery('/panel/login');
   const pathname = usePathname();
 
   useEffect(() => {
