@@ -7,4 +7,5 @@ export const adminQueryKeys = {
   EDIT_COMMENT_STATUS: 'admin-edit-comment-status',
   EDIT_ORDER_STATUS: 'admin-edit-order-status',
   UPLOAD_FACTOR: 'admin-upload-factor',
+  CATEGORIES: 'admin-categories',
 };

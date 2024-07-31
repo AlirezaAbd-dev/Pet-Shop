@@ -125,7 +125,7 @@ const AdminOrderDetails = () => {
           </ul>
         </section>
 
-        <OrderDetailsUploadImage />
+        <OrderDetailsUploadImage receipt={data.receipt} id={data.id} />
       </main>
     );
   }

@@ -3,4 +3,6 @@ export const ADMIN_PAGES = [
   { name: 'Order management', path: '/panel/admin/orders' },
   { name: 'Customer management', path: '/panel/admin/customers' },
   { name: 'Customer comment', path: '/panel/admin/comments' },
+  { name: 'Create category', path: '/panel/admin/categories' },
+  { name: 'List of product', path: '/panel/admin/products' },
 ] as const;

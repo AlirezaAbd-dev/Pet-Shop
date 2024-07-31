@@ -19,6 +19,7 @@ export interface AdminOrderResponse {
   user: number;
   order_address: AddressResponse;
   order_items: OrderItem[];
+  receipt: null | string;
 }
 
 const useAdminOrdersQuery = () => {

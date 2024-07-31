@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 import SvgDelete32 from '@/assets/svg/Trash, Delete, Bin32.svg';
@@ -7,11 +6,12 @@ import SvgFileBlankListBlue32 from '@/assets/svg/file-blank-list-blue32.svg';
 
 import useUploadOrderFactorMutation from '../queries/upload-order-factor-mutation';
 
-const OrderDetailsUploadImage = () => {
-  const [uploadedFiles, setUploadedFiles] = useState<
-    (File & { preview: string })[]
-  >([]);
+type Props = {
+  id: number;
+  receipt: string | null;
+};
 
+const OrderDetailsUploadImage = (props: Props) => {
   const { mutateAsync, isPending } = useUploadOrderFactorMutation();
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -22,24 +22,9 @@ const OrderDetailsUploadImage = () => {
       const formData = new FormData();
       formData.append('receipt', acceptedFiles[0]);
 
-      const response = await mutateAsync(formData);
-
-      console.log(response);
-
-      // setUploadedFiles(
-      //   acceptedFiles.map((file) =>
-      //     Object.assign(file, {
-      //       preview: URL.createObjectURL(file),
-      //     }),
-      //   ),
-      // );
+      await mutateAsync(formData);
     },
   });
-
-  useEffect(() => {
-    return () =>
-      uploadedFiles.forEach((file) => URL.revokeObjectURL(file.preview));
-  }, []);
 
   return (
     <>
@@ -54,22 +39,17 @@ const OrderDetailsUploadImage = () => {
         <p className="font-bold text-xl mt-4">upload file</p>
         <p className="mt-4">Upload the payment receipt sent by the customer</p>
       </section>
-      <section className="mt-6 flex justify-between items-center">
-        <p className="text-lg font-semibold ">Name File</p>
-        <div className="flex gap-3 items-center">
-          <SvgEye32 />
-          <SvgDelete32 />
-        </div>
-      </section>
-      {uploadedFiles.map((f) => (
-        <img
-          key={f.name}
-          src={f.preview}
-          onLoad={() => {
-            URL.revokeObjectURL(f.preview);
-          }}
-        />
-      ))}
+      {props.receipt && (
+        <section className="mt-6 flex justify-between items-center">
+          <p className="text-lg font-semibold ">Name File</p>
+          <div className="flex gap-3 items-center">
+            <a download={`order-factor-#${props.id}`} href={props.receipt}>
+              <SvgEye32 className="cursor-pointer" />
+            </a>
+            <SvgDelete32 className="cursor-pointer" />
+          </div>
+        </section>
+      )}
     </>
   );
 };
