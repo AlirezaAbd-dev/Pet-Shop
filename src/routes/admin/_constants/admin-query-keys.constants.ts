@@ -8,4 +8,7 @@ export const adminQueryKeys = {
   EDIT_ORDER_STATUS: 'admin-edit-order-status',
   UPLOAD_FACTOR: 'admin-upload-factor',
   CATEGORIES: 'admin-categories',
+  ADD_CATEGORY: 'admin-add-category',
+  EDIT_CATEGORY: 'admin-edit-category',
+  DELETE_CATEGORY: 'admin-delete-category',
 };

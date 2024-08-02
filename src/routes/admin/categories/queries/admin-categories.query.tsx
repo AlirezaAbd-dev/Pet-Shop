@@ -4,7 +4,7 @@ import React from 'react';
 import { Category } from '@/app/(core)/shop/page';
 import useAxiosProtected from '@/hooks/use-axios-protected.hook';
 
-import { adminQueryKeys } from '../_constants/admin-query-keys.constants';
+import { adminQueryKeys } from '../../_constants/admin-query-keys.constants';
 
 const useAdminCategoriesQuery = () => {
   const axiosProtected = useAxiosProtected();
