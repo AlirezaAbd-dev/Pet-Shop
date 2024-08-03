@@ -9,7 +9,7 @@ import SvgPhoneCall40 from '@/assets/svg/phone-call-40.svg';
 
 const ContactUsInfo = () => {
   return (
-    <main className="mt-8 flex flex-col md:flex-row md:justify-between gap-8 px-5 md:mt-24">
+    <main className="mt-8 flex flex-col md:flex-row md:justify-between gap-8 px-5 md:px-20 md:mt-24">
       <section>
         <span className="w-12 h-12 md:w-[64px] md:h-[64px] rounded-lg bg-secondary-500/5 flex justify-center items-center">
           <SvgMail32 className="md:hidden" />
