@@ -23,7 +23,7 @@ import MobileSidebar from './mobile-sidebar.component';
 import ShopHover from './shop-hover.component';
 
 const Navbar = () => {
-  useProfileQuery('/');
+  useProfileQuery();
   useSyncCartQuery();
 
   const pathname = usePathname();
@@ -55,12 +55,30 @@ const Navbar = () => {
           {/* Shop hover card */}
           <ShopHover />
           {/* End Shop hover card */}
-          <li className="flex items-center gap-1 cursor-pointer text-lg">
-            About us
-          </li>
-          <li className="flex items-center gap-1 cursor-pointer text-lg">
-            Contact us
-          </li>
+          <Link href={'/about-us'}>
+            <li
+              className={cn(
+                'flex items-center gap-1 cursor-pointer  text-lg',
+                pathname === '/about-us'
+                  ? 'font-bold text-primary-500 active-dot'
+                  : '',
+              )}
+            >
+              About us
+            </li>
+          </Link>
+          <Link href={'/contact-us'}>
+            <li
+              className={cn(
+                'flex items-center gap-1 cursor-pointer  text-lg',
+                pathname === '/contact-us'
+                  ? 'font-bold text-primary-500 active-dot'
+                  : '',
+              )}
+            >
+              Contact us
+            </li>
+          </Link>
         </ul>
       </div>
       <div className="flex gap-2 md:gap-4">

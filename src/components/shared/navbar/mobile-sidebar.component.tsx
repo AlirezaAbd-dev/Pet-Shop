@@ -121,7 +121,7 @@ const MobileSidebar = () => {
                 pathname === '/contact-us' ? 'font-bold text-primary-500' : '',
               )}
             >
-              Contact-us
+              Contact us
             </li>
           </Link>
         </ul>
