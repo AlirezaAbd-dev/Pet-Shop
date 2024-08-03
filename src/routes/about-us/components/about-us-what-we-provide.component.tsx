@@ -44,7 +44,8 @@ const AboutUsWhatWeProvide = () => {
           </div>
           <div className="p-4 md:px-6 md:py-8">
             <p className="font-nunito font-black text-lg md:text-2xl text-white">
-              Buy One, Get One 50% Off
+              Buy One, Get One
+              <br className="hidden md:block" /> 50% Off
             </p>
             <p className="mt-2 md:mt-3 text-sm md:text-lg text-white leading-6 md:max-w-[360px]">
               Blandit maecenas vitae sollicitudin aenean hendrerit tortor nisi
