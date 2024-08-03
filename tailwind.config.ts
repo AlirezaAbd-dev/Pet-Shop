@@ -135,6 +135,18 @@ const config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      backgroundImage: {
+        'about-us-hero-mobile': "url('/static/about-us-mobile.png')",
+        'about-us-hero-desktop': "url('/static/about-us-desktop.png')",
+        'about-us-paws-orange-mobile':
+          "url('/static/about-us-paws-orange-mobile.png')",
+        'about-us-paws-purple-mobile':
+          "url('/static/about-us-paws-purple-mobile.png')",
+        'about-us-paws-orange-desktop':
+          "url('/static/about-us-paws-orange-desktop.png')",
+        'about-us-paws-purple-desktop':
+          "url('/static/about-us-paws-purple-desktop.png')",
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
