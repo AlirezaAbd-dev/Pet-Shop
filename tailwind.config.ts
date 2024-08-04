@@ -146,6 +146,8 @@ const config = {
           "url('/static/about-us-paws-orange-desktop.png')",
         'about-us-paws-purple-desktop':
           "url('/static/about-us-paws-purple-desktop.png')",
+        'blog-hero': "url('/static/blog-hero.png')",
+        'blog-hero-mobile': "url('/static/blog-hero-mobile.png')",
       },
     },
   },
