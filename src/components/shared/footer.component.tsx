@@ -4,6 +4,7 @@ import SvgWhatsup from '@/assets/svg/Whatsup.svg';
 import SvgEmailDesktop from '@/assets/svg/email-letter-mail-medium-desktop.svg';
 import SvgEmail from '@/assets/svg/email-letter-mail-medium.svg';
 import SvgFooterDogMobile from '@/assets/svg/footer-dog-mobile.svg';
+import SvgFooterlogoMobile from '@/assets/svg/footer-logo-mobile.svg';
 import SvgFooterlogo from '@/assets/svg/footer-logo.svg';
 import SvgPhoneCallDesktop from '@/assets/svg/phone-call-desktop.svg';
 import SvgTelegramDesktop from '@/assets/svg/telegram-circle-desktop.svg';
@@ -15,7 +16,8 @@ const Footer = () => {
     <footer className="flex flex-col mt-16 md:mt-24 bg-secondary-500 px-5 md:px-20 pt-6 md:pt-9">
       <div className="flex justify-between">
         <Icon>
-          <SvgFooterlogo />
+          <SvgFooterlogo className="hidden md:block" />
+          <SvgFooterlogoMobile className="md:hidden" />
         </Icon>
         <div className="hidden md:flex gap-6">
           <HowToContact />
@@ -55,7 +57,7 @@ const Footer = () => {
         <HowToContact />
       </div>
 
-      <SvgFooterDogMobile className="mt-14 md:hidden" />
+      <SvgFooterDogMobile className="mt-14 md:hidden self-center" />
 
       <img
         src={'/static/footer-dog-desktop.png'}

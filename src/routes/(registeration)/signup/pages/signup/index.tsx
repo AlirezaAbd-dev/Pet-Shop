@@ -11,7 +11,7 @@ import SignupForm from './signup-form';
 
 const Signup = () => {
   return (
-    <main className="flex min-h-screen justify-center items-center md:py-24">
+    <main className="flex min-h-screen justify-center items-center md:py-24 py-7">
       <section className="flex flex-col items-center px-5 md:w-[486px] md:border md:border-nature-800 md:rounded-2xl md:p-6">
         <Icon>
           <SvgLogoMobile className="md:hidden" />

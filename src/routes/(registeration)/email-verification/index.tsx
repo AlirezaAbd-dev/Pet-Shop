@@ -43,7 +43,7 @@ const EmailVerification = () => {
   }, [timer]);
 
   return (
-    <main className="flex justify-center items-center min-h-screen px-5 md:p-24">
+    <main className="flex justify-center items-center min-h-screen px-5 md:p-24 py-7">
       <section className="flex flex-col items-center md:w-[486px] md:border md:border-nature-800 md:rounded-2xl md:p-6">
         <Icon>
           <SvgLogoMobile className="md:hidden" />

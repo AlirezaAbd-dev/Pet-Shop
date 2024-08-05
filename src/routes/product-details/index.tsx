@@ -6,7 +6,9 @@ import { Product } from '@/app/(core)/product/[productId]/page';
 import ShopSpecifications from '@/components/shared/shop-specifications.component';
 
 import Footer from '../../components/shared/footer.component';
+import AddCommentModal from './components/add-comment/add-comment.modal';
 import ProductBreadcrumb from './components/product-breadcrumb.component';
+import ProductComments from './components/product-comments.component';
 import ProductWildCard from './components/product-wild-card/product-wild-card.component';
 import RelatedProducts from './components/product-wild-card/related-products.component';
 import useSingleProductQuery from './queries/single-product.query';
@@ -16,6 +18,7 @@ const ProductDetails = (props: { product: Product }) => {
 
   return (
     <>
+      <AddCommentModal />
       <ProductBreadcrumb />
       <ProductWildCard
         title={data.name}
@@ -27,9 +30,10 @@ const ProductDetails = (props: { product: Product }) => {
         images={data.image_urls}
         weight={data.weight}
         totalDiscount={data.total_discount}
+        activePromotions={data.active_promotions}
       />
-
       <ShopSpecifications className="mt-10 md:mt-24 px-5 md:px-20" />
+      <ProductComments />
       <RelatedProducts />
       <Footer />
     </>

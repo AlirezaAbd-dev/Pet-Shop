@@ -1,7 +1,6 @@
 'use client';
 
-import Image from 'next/image';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import SvgPolygon from '@/assets/svg/polygon-1.svg';
 import Icon from '@/components/icon';
@@ -10,15 +9,19 @@ import { cn } from '@/lib/utils';
 type ImageShowcaseProps = {
   images: string[];
   discount: number;
+  hasActivePromotion: boolean;
 };
 
 const ImagesShowcase = (props: ImageShowcaseProps) => {
   const [selectedImage, setSelectedImage] = useState(props.images[0]);
 
-  const discount: number = 25;
-
   return (
-    <section className="flex gap-3 md:gap-0 md:col-span-6">
+    <section
+      className={cn(
+        'flex gap-3 md:gap-0 md:col-span-6 mt-6',
+        props.hasActivePromotion ? 'md:mt-[73px]' : '',
+      )}
+    >
       <ul className="flex flex-col pr-5 md:pr-14 gap-2 md:gap-6 max-h-[248px] md:max-h-[600px] overflow-y-auto no-scrollbar">
         {props.images.map((i) => (
           <li
@@ -40,7 +43,7 @@ const ImagesShowcase = (props: ImageShowcaseProps) => {
       <div className="md:relative flex justify-center items-center w-full md:h-[600px] bg-nature-600 rounded-2xl">
         <Icon
           className={cn(
-            'hidden md:block absolute -top-16 -right-12',
+            'hidden md:block absolute -top-12 -left-12',
             props.discount === 0 ? 'md:hidden' : '',
           )}
         >

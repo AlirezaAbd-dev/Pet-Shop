@@ -3,8 +3,6 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
-import SvgHeartRed20 from '@/assets/svg/heart-red-20.svg';
-import SvgHeartRed28 from '@/assets/svg/heart-red-28.svg';
 import SvgWeightDesktopActive from '@/assets/svg/weight-active-desktop.svg';
 import SvgWeightDesktop from '@/assets/svg/weight-desktop.svg';
 import SvgWeightSmallActive from '@/assets/svg/weight-small-active.svg';
@@ -22,12 +20,10 @@ import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/store/auth.store';
 import { useCartStore } from '@/store/cart.store';
 
-import SvgHeartDesktop from '@icons/heart-desktop.svg';
-import SvgHeartSmall from '@icons/heart-small.svg';
-
 import useAddProductToCartMutation from '../../queries/add-product-to-cart.mutation';
 import Counter from './counter.component';
 import Like from './like-component';
+import OfferCard from './offer-card.component';
 import { ProductWildCardProps } from './product-wild-card.component';
 
 // temporarly
@@ -86,7 +82,12 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
 
   return (
     <section className="flex flex-col mt-6 md:mt-0 md:w-full md:col-span-6">
-      <h1 className="font-nunito font-black text-lg md:text-[32px] md:leading-9">
+      {!!props.activePromotions && (
+        <div className="hidden md:block">
+          <OfferCard />
+        </div>
+      )}
+      <h1 className="font-nunito font-black text-lg md:text-[32px] md:leading-9 md:mt-6">
         {props.title}
       </h1>
       <p className="text-sm mt-1 md:mt-3 md:text-lg">{props.description}</p>

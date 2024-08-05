@@ -38,7 +38,7 @@ const Navbar = () => {
         <MobileSidebar />
         {/* End Drawer */}
         <Link href={'/'}>
-          <SvgLogoMobile className="md:hidden" />
+          <SvgLogoMobile className="md:hidden mt-1" />
           <SvgLogoDesktop className="hidden md:block" />
         </Link>
         <ul className="hidden md:flex items-center pl-8 gap-7">

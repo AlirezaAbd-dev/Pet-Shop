@@ -12,6 +12,8 @@ const queryKeys = {
   LOGOUT: 'logout',
   WHISHLISTS: 'wishlists',
   LIKE: 'like',
+  COMMENTS: 'comments',
+  ADD_COMMENT: 'add-comment',
 };
 
 export default queryKeys;

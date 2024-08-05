@@ -22,7 +22,7 @@ import {
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const { mutate, isPending } = useLoginMutation();
+  const { mutate, isPending } = useLoginMutation({});
 
   const { control, handleSubmit, formState } = useForm<LoginValidationType>({
     resolver: zodResolver(loginValidation),

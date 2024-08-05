@@ -19,15 +19,17 @@ const HomeLanding = () => {
       <div className="flex flex-col items-center">
         <div className="flex flex-col md:flex-row md:justify-between w-full">
           <div className="flex flex-col md:mt-16">
-            <h1 className="font-nunito font-extrabold text-2xl md:text-5xl">
+            <h1 className="font-nunito font-extrabold text-lg md:text-[44px] md:leading-[50px]">
               Welcome to{' '}
-              <span className="font-black text-primary-500">USPET </span>
+              <span className="font-black text-primary-500">
+                USPET SUPPLIES{' '}
+              </span>
               store.
             </h1>
-            <div className="text-lg mt-3 md:mt-8 md:text-[40px] md:leading-10">
+            <div className="mt-3 md:mt-8 md:text-[40px] md:leading-10">
               We provide the{' '}
               <Icon>
-                <SvgMiniPetMobile className="inline md:hidden" />
+                <SvgMiniPetMobile className="inline md:hidden -mt-2 md:mt-0 " />
                 <SvgMiniPetDesktop className="hidden md:inline" />
               </Icon>{' '}
               best products <br />
