@@ -23,7 +23,7 @@ const Like = (props: LikeProps) => {
   const { mutate } = useLikeMutation();
 
   const isLiked = !isWishlistPending
-    ? wishlist?.products.includes(props.productId)
+    ? !!wishlist?.products.find((p) => p.id === props.productId)
     : undefined;
 
   return (

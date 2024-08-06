@@ -11,4 +11,5 @@ export const adminQueryKeys = {
   ADD_CATEGORY: 'admin-add-category',
   EDIT_CATEGORY: 'admin-edit-category',
   DELETE_CATEGORY: 'admin-delete-category',
+  PRODUCTS: 'admin-products',
 };

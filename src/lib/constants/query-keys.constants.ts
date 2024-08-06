@@ -14,6 +14,8 @@ const queryKeys = {
   LIKE: 'like',
   COMMENTS: 'comments',
   ADD_COMMENT: 'add-comment',
+  SAVED_PRODUCTS: 'saved-products',
+  DELETE_SAVED_PRODUCT: 'delete-saved-product',
 };
 
 export default queryKeys;

@@ -5,8 +5,8 @@ type EditEmailModeType = 'enter email' | 'enter code';
 type UseDashboardModalsStoreType = {
   isLogoutModalOpen: boolean;
   setIsLogoutModalOpen: (open: boolean) => void;
-  isDeleteSavedProductModalOpen: boolean;
-  setIsDeleteSavedProductModalOpen: (open: boolean) => void;
+  isDeleteSavedProductModalOpen?: string;
+  setIsDeleteSavedProductModalOpen: (open?: string) => void;
 
   //   edit email
   editEmailModalMode: EditEmailModeType;
@@ -25,7 +25,6 @@ export const useDashboardModalsStore = create<UseDashboardModalsStoreType>()(
     setIsLogoutModalOpen(open) {
       set({ isLogoutModalOpen: open });
     },
-    isDeleteSavedProductModalOpen: false,
     setIsDeleteSavedProductModalOpen(open) {
       set({ isDeleteSavedProductModalOpen: open });
     },

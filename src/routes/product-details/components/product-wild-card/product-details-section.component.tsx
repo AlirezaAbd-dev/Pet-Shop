@@ -15,7 +15,6 @@ import {
   AccordionTrigger1,
 } from '@/components/ui/accordion-1';
 import { Button } from '@/components/ui/button';
-import useWishlistQuery from '@/hooks/react-query/queries/wishlist.query';
 import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/store/auth.store';
 import { useCartStore } from '@/store/cart.store';
@@ -42,8 +41,6 @@ const WEIGHTS = [
 type ProductDetailsSectionProps = ProductWildCardProps;
 
 const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
-  const { data: wishlist, isPending: isWishlistPending } = useWishlistQuery();
-
   const profile = useAuthStore((s) => s.profile);
   const isProfileLoading = useAuthStore((s) => s.isLoading);
 
@@ -75,10 +72,6 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
     });
     toast.success(`${props.title} successfully added to cart`);
   }
-
-  const isLiked = !isWishlistPending
-    ? wishlist?.products.includes(props.id)
-    : undefined;
 
   return (
     <section className="flex flex-col mt-6 md:mt-0 md:w-full md:col-span-6">

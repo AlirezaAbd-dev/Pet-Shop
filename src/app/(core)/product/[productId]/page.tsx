@@ -38,7 +38,7 @@ const page = async (props: { params: { productId: string } }) => {
 async function getSingleProduct(productId: string) {
   const res = await fetch(
     process.env.NEXT_PUBLIC_BASE_URL + `/shop/api/v1/products/${productId}`,
-    { method: 'GET' },
+    { method: 'GET', next: { revalidate: 0 } },
   );
 
   if (!res.ok) {

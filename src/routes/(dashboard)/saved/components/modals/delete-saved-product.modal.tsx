@@ -9,6 +9,8 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { useDashboardModalsStore } from '@/routes/(dashboard)/_store/dashboard-modals.store';
 
+import useDeleteSavedProduct from './delete-saved-product.mutation';
+
 const DeleteSavedProductModal = () => {
   const isModalOpen = useDashboardModalsStore(
     (s) => s.isDeleteSavedProductModalOpen,
@@ -17,8 +19,15 @@ const DeleteSavedProductModal = () => {
     (s) => s.setIsDeleteSavedProductModalOpen,
   );
 
+  const { mutate, isPending } = useDeleteSavedProduct();
+
   return (
-    <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+    <Dialog
+      open={!!isModalOpen}
+      onOpenChange={() => {
+        setIsModalOpen(undefined);
+      }}
+    >
       <DialogContent
         aria-describedby="delete saved products"
         className="w-[90%] md:max-w-[352px] bg-white p-4 flex flex-col items-center"
@@ -33,12 +42,20 @@ const DeleteSavedProductModal = () => {
         <div className="w-full flex gap-4 mt-6">
           <Button
             variant={'outline-gray'}
-            onClick={() => setIsModalOpen(false)}
+            onClick={() => setIsModalOpen(undefined)}
             className="w-full rounded-xl font-normal md:font-normal text-sm md:text-base md:h-11"
           >
             No
           </Button>
-          <Button className="w-full rounded-xl text-sm md:text-base md:h-11">
+          <Button
+            onClick={() => {
+              if (isModalOpen) mutate({ id: isModalOpen });
+            }}
+            disabled={isPending}
+            isLoading={isPending}
+            variant={isPending ? 'disabled' : 'default'}
+            className="w-full rounded-xl text-sm md:text-base md:h-11"
+          >
             Yes
           </Button>
         </div>

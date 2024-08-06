@@ -1,17 +1,20 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import SvgLogout from '@/assets/svg/login-logout-red-20.svg';
 import SvgPenEditDesktop from '@/assets/svg/pen-edit-desktop.svg';
 import { cn } from '@/lib/utils';
+import { useAuthStore } from '@/store/auth.store';
 
 import { DASHBOARD_ROUTES } from '../../_constants/dashboard-routes.constants';
 import { useDashboardModalsStore } from '../../_store/dashboard-modals.store';
 
 const DashboardSidebarLayout = () => {
+  const router = useRouter();
   const pathname = usePathname();
+  const profile = useAuthStore((s) => s.profile);
 
   const setIsLogoutModalOpen = useDashboardModalsStore(
     (s) => s.setIsLogoutModalOpen,
@@ -22,10 +25,17 @@ const DashboardSidebarLayout = () => {
       <div>
         <div className="flex justify-between items-center px-6">
           <div>
-            <p className="font-nunito font-bold text-lg">Milad saeedi</p>
-            <p className="mt-2">milad138001@gmail.com</p>
+            <p className="font-nunito font-bold text-lg">
+              {profile?.full_name}
+            </p>
+            <p className="mt-2">{profile?.email}</p>
           </div>
-          <SvgPenEditDesktop />
+          <SvgPenEditDesktop
+            className="cursor-pointer"
+            onClick={() => {
+              router.push('/dashboard/profile');
+            }}
+          />
         </div>
         <div className="mt-6 w-full border-t border-nature-800"></div>
 
