@@ -1,4 +1,4 @@
-import { CommentStatus } from './admin-comments.query';
+import { CommentStatus } from './queries/admin-comments.query';
 
 export const ADMIN_COMMENT_TABS: {
   name: string;
