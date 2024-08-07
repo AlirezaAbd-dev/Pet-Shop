@@ -1,7 +1,9 @@
 import React from 'react';
 
+import AdminDashboard from '@/routes/admin/dashboard';
+
 const page = () => {
-  return <div>page</div>;
+  return <AdminDashboard />;
 };
 
 export default page;
