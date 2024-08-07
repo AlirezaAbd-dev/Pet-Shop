@@ -1,4 +1,6 @@
-import Image from 'next/image';
+'use client';
+
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import SvgOurPromiseDesktop from '@/assets/svg/our-promise-to-you-desktop.svg';
@@ -7,6 +9,8 @@ import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
 
 const HomeOurPromise = () => {
+  const router = useRouter();
+
   return (
     <div className="flex flex-col md:flex-row md:justify-between items-center mt-16 px-5 md:px-20">
       <div className="flex flex-col items-center">
@@ -24,8 +28,13 @@ const HomeOurPromise = () => {
           elit. Ut Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut
           scing elit. Ut
         </p>
-        <Button className="mt-4 md:mt-10 font-nunito font-black md:text-xl w-[225px] h-[48px] md:h-[64px] shadow-color-md md:shadow-color-xl">
-          Show more
+        <Button
+          onClick={() => {
+            router.push('about-us');
+          }}
+          className="mt-4 md:mt-10 font-nunito font-black md:text-xl w-[225px] h-[48px] md:h-[64px] shadow-color-md md:shadow-color-xl"
+        >
+          About us
         </Button>
       </div>
       <div className="flex gap-3 md:gap-6 mt-4 items-center">

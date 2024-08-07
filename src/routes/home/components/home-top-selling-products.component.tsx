@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -19,6 +20,8 @@ type HomeTopSellingProductsProps = {
 };
 
 const HomeTopSellingProducts = (props: HomeTopSellingProductsProps) => {
+  const router = useRouter();
+
   return (
     <main className="md:px-20">
       <section className="relative flex flex-col md:flex-row-reverse md:gap-6 items-center md:items-start w-full pt-6 md:px-6 md:py-8 mt-16 md:mt-24 bg-secondary-500 md:rounded-[36px] md:overflow-hidden  pb-[152px] md:pb-8">
@@ -69,7 +72,12 @@ const HomeTopSellingProducts = (props: HomeTopSellingProductsProps) => {
             Our Best Selling <br />
             Products
           </p>
-          <Button className="mt-6 md:mt-4 p-1 pl-4 w-[210px] h-[48px] md:w-[225px] md:h-[64px] flex justify-between font-nunito font-black md:text-xl rounded-full">
+          <Button
+            onClick={() => {
+              router.push('/shop');
+            }}
+            className="mt-6 md:mt-4 p-1 pl-4 w-[210px] h-[48px] md:w-[225px] md:h-[64px] flex justify-between font-nunito font-black md:text-xl rounded-full"
+          >
             Show store
             <Icon>
               <SvgCatFoot className="md:hidden" />

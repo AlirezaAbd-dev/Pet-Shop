@@ -1,6 +1,7 @@
 'use client';
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 import React, { useRef } from 'react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -82,12 +83,14 @@ const HomeSuperSale = (props: HomeSuperSaleProps) => {
         {/* mobile */}
         <div className="md:hidden w-[315px] h-[314px] relative">
           <div className="w-[315px] h-[211px] px-4 pt-[147px] pb-4 left-0 top-[103px] absolute bg-primary-500 justify-center items-center inline-flex">
-            <Button
-              variant={'secondary'}
-              className="w-full h-12 rounded-none font-extrabold"
-            >
-              Show more
-            </Button>
+            <Link href={'/shop'} className="w-full">
+              <Button
+                variant={'secondary'}
+                className="w-full h-12 rounded-none font-extrabold"
+              >
+                Show more
+              </Button>
+            </Link>
           </div>
           <img
             className="w-44 h-[250px] left-[70px] top-0 absolute"
@@ -100,12 +103,14 @@ const HomeSuperSale = (props: HomeSuperSaleProps) => {
           <div className="w-[301px] h-[365px] left-0 top-[96px] absolute bg-primary-500" />
           <div className="w-[276px] left-[12px] top-[-18px] absolute flex-col justify-center items-center inline-flex">
             <img className="w-[276px] h-[409px]" src="/static/super-sale.png" />
-            <Button
-              variant={'secondary'}
-              className="w-full h-[54px] rounded-none md:text-xl font-extrabold"
-            >
-              Show more
-            </Button>
+            <Link href={'/shop'} className="w-full">
+              <Button
+                variant={'secondary'}
+                className="w-full h-[54px] rounded-none md:text-xl font-extrabold"
+              >
+                Show more
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

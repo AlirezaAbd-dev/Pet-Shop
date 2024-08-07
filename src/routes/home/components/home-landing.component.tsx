@@ -1,8 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import React from 'react';
-import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 import SvgCurvedArrowDesktop from '@/assets/svg/curved-arrow-desktop.svg';
 import SvgCurvedArrowMobile from '@/assets/svg/curved-arrow-mobile.svg';
@@ -14,6 +13,8 @@ import ShopSpecifications from '@/components/shared/shop-specifications.componen
 import { Button } from '@/components/ui/button';
 
 const HomeLanding = () => {
+  const router = useRouter();
+
   return (
     <main className="px-5 md:px-20 pt-6 md:pt-4">
       <div className="flex flex-col items-center">
@@ -36,7 +37,12 @@ const HomeLanding = () => {
               for pets.
             </div>
             <div className="flex gap-7 md:gap-8 mt-1 md:mt-4">
-              <Button className="mt-5 md:mt-4 font-black font-nunito md:text-xl w-[158px] md:w-[225px] h-12 md:h-16 gap-1 md:gap-2 shadow-color-md md:shadow-color-xl">
+              <Button
+                onClick={() => {
+                  router.push('/shop');
+                }}
+                className="mt-5 md:mt-4 font-black font-nunito md:text-xl w-[158px] md:w-[225px] h-12 md:h-16 gap-1 md:gap-2 shadow-color-md md:shadow-color-xl"
+              >
                 <Icon>
                   <SvgPetFingersMobile />
                 </Icon>
