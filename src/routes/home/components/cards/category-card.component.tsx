@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import { Category } from '@/app/(core)/shop/page';
@@ -10,10 +11,15 @@ type CategoryCardProps = {
 };
 
 const CategoryCard = (props: CategoryCardProps) => {
+  const router = useRouter();
+
   return (
     <div
+      onClick={() => {
+        router.push(`/shop?category=${props.category.id}`);
+      }}
       className={cn(
-        'flex flex-col items-center gap-3',
+        'flex flex-col items-center gap-3 md:gap-6 cursor-pointer',
         props.totalLength - 1 === props.index && props.totalLength % 2 !== 0
           ? 'col-span-2'
           : '',
@@ -22,7 +28,7 @@ const CategoryCard = (props: CategoryCardProps) => {
       <div className="rectangle flex items-center w-[111px] h-[107px] md:w-[158px] md:h-[153px] p-5 bg-nature-700">
         <img src={props.category.image} alt={props.category.name} />
       </div>
-      <p className="text-sm font-bold">{props.category.name}</p>
+      <p className="text-sm md:text-xl font-bold">{props.category.name}</p>
     </div>
   );
 };

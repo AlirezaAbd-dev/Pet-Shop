@@ -3,6 +3,8 @@ import { Brand, Category } from '@/app/(core)/shop/page';
 import { axiosInstance } from '@/lib/constants/axios';
 
 import Footer from '../../components/shared/footer.component';
+import Banners1 from './components/banners-1.component';
+import Banners2 from './components/banners-2.component';
 import HomeAchievements from './components/home-achievements.componen';
 import HomeBrandsWeLove from './components/home-brands-we-love.component';
 import HomeCategories from './components/home-categories.component';
@@ -26,10 +28,12 @@ const Home = async () => {
       <HomeLanding />
       <HomeTopCategories products={topCategories} />
       <HomePets pets={pets} />
-      <HomeOurPromise />
+      <Banners1 />
       <HomeSuperSale products={onSales} />
       <HomeCategories categories={categories} />
       <HomeTopSellingProducts products={bestSelling} />
+      <Banners2 />
+      <HomeOurPromise />
       <HomeBrandsWeLove brands={brands} />
       <HomeFAQ />
       <HomeTips />

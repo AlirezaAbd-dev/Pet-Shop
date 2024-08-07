@@ -1,7 +1,9 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useState } from 'react';
 
+import { Category } from '@/app/(core)/shop/page';
 import Icon from '@/components/icon';
 import {
   HoverCard,
@@ -12,7 +14,11 @@ import { cn } from '@/lib/utils';
 
 import SvgArrow from '@icons/arrow.1.svg';
 
-const ShopHover = () => {
+type Props = {
+  categories?: Category[];
+};
+
+const ShopHover = (props: Props) => {
   const [isHoverOpen, setIsHoverOpen] = useState(false);
 
   return (
@@ -38,36 +44,18 @@ const ShopHover = () => {
           </li>
         </HoverCardTrigger>
         <HoverCardContent className="flex flex-col bg-white md:ml-10 md:mt-5 rounded-xl border-none w-[208px] p-3 overflow-hidden">
-          <div className="flex gap-1 items-center rounded-lg cursor-pointer p-1 hover:bg-nature-200">
-            <span className="rectangle flex items-center w-[39px] h-[39px] p-[6px] bg-nature-700">
-              <img src="/static/categories/toys.png" />
-            </span>
-            <p className="font-semibold text-sm">Toys</p>
-          </div>
-          <div className="flex gap-1 items-center rounded-lg cursor-pointer p-1 hover:bg-nature-200">
-            <span className="rectangle flex items-center w-[39px] h-[39px] p-[6px] bg-nature-700">
-              <img src="/static/categories/resting-place.png" />
-            </span>
-            <p className="font-semibold text-sm">Resting places</p>
-          </div>
-          <div className="flex gap-1 items-center rounded-lg cursor-pointer p-1 hover:bg-nature-200">
-            <span className="rectangle flex items-center w-[39px] h-[39px] p-[6px] bg-nature-700">
-              <img src="/static/categories/at-home.png" />
-            </span>
-            <p className="font-semibold text-sm">At home</p>
-          </div>
-          <div className="flex gap-1 items-center rounded-lg cursor-pointer p-1 hover:bg-nature-200">
-            <span className="rectangle flex items-center w-[39px] h-[39px] p-[6px] bg-nature-700">
-              <img src="/static/categories/food.png" />
-            </span>
-            <p className="font-semibold text-sm">Food</p>
-          </div>
-          <div className="flex gap-1 items-center rounded-lg cursor-pointer p-1 hover:bg-nature-200">
-            <span className="rectangle flex items-center w-[39px] h-[39px] p-[6px] bg-nature-700">
-              <img src="/static/categories/training-and-sport.png" />
-            </span>
-            <p className="font-semibold text-sm">Training and sport</p>
-          </div>
+          {props.categories?.map((item) => (
+            <Link
+              key={item.id}
+              href={`/shop?category=${item.id}`}
+              className="flex gap-1 items-center rounded-lg cursor-pointer p-1 hover:bg-nature-200"
+            >
+              <span className="rectangle flex items-center w-[39px] h-[39px] p-[6px] bg-nature-700">
+                <img src={item.image} className="w-full" />
+              </span>
+              <p className="font-semibold text-sm">{item.name}</p>
+            </Link>
+          ))}
         </HoverCardContent>
       </HoverCard>
     </>

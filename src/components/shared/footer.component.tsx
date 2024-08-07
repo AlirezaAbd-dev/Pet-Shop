@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import SvgPhoneCallMobile from '@/assets/svg/Phone-Call.svg';
 import SvgWhatsupDesktop from '@/assets/svg/Whatsup-desktop.svg';
 import SvgWhatsup from '@/assets/svg/Whatsup.svg';
@@ -34,22 +36,36 @@ const Footer = () => {
         </p>
 
         <ul className="flex flex-col md:flex-row gap-4 md:gap-6 mt-6 md:mt-0 text-white text-sm md:text-base font-nunito">
-          <li className="flex items-center gap-2 cursor-pointer">
-            <span className="md:hidden w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-            Shop
-          </li>
-          <li className="flex items-center gap-2 cursor-pointer">
-            <span className="md:hidden w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-            About us
-          </li>
-          <li className="flex items-center gap-2 cursor-pointer">
-            <span className="md:hidden w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-            Contact us
-          </li>
-          <li className="flex items-center gap-2 cursor-pointer">
-            <span className="md:hidden w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-            Privacy
-          </li>
+          <Link href={'/shop'}>
+            <li className="flex items-center gap-2 cursor-pointer">
+              <span className="md:hidden w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+              Shop
+            </li>
+          </Link>
+          <Link href={'/about-us'}>
+            <li className="flex items-center gap-2 cursor-pointer">
+              <span className="md:hidden w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+              About us
+            </li>
+          </Link>
+          <Link href={'/contact-us'}>
+            <li className="flex items-center gap-2 cursor-pointer">
+              <span className="md:hidden w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+              Contact us
+            </li>
+          </Link>
+          <Link href={'/blog'}>
+            <li className="flex items-center gap-2 cursor-pointer">
+              <span className="md:hidden w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+              Blog
+            </li>
+          </Link>
+          <Link href={'#'}>
+            <li className="flex items-center gap-2 cursor-pointer">
+              <span className="md:hidden w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+              Privacy
+            </li>
+          </Link>
         </ul>
       </div>
 

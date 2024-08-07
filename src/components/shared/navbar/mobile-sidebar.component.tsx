@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+import { Category } from '@/app/(core)/shop/page';
 import SvgMobileSidebarLogo from '@/assets/svg/mobile-sidebar-logo.svg';
 import Icon from '@/components/icon';
 import {
@@ -20,7 +21,11 @@ import { cn } from '@/lib/utils';
 import SvgMenuBurger from '@icons/menu-burger-square.1.svg';
 import SvgSearch from '@icons/search-loupe-custom-mobile.svg';
 
-const MobileSidebar = () => {
+type Props = {
+  categories?: Category[];
+};
+
+const MobileSidebar = (props: Props) => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const pathname = usePathname();
@@ -32,6 +37,10 @@ const MobileSidebar = () => {
       setIsSheetOpen(false);
     }
   }, [width]);
+
+  useEffect(() => {
+    setIsSheetOpen(false);
+  }, [pathname]);
 
   return (
     <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
@@ -71,36 +80,18 @@ const MobileSidebar = () => {
                 <li className={cn('text-sm font-normal')}>Shop</li>
               </AccordionTriggerFilter>
               <AccordionContentFilter className="py-1">
-                <div className="flex gap-1 items-center rounded-lg cursor-pointer p-1 hover:bg-nature-200">
-                  <span className="rectangle flex items-center w-[39px] h-[39px] p-[6px] bg-nature-700">
-                    <img src="/static/categories/toys.png" />
-                  </span>
-                  <p className="font-normal text-xs">Toys</p>
-                </div>
-                <div className="flex gap-1 items-center rounded-lg cursor-pointer p-1 hover:bg-nature-200">
-                  <span className="rectangle flex items-center w-[39px] h-[39px] p-[6px] bg-nature-700">
-                    <img src="/static/categories/resting-place.png" />
-                  </span>
-                  <p className="font-normal text-xs">Resting places</p>
-                </div>
-                <div className="flex gap-1 items-center rounded-lg cursor-pointer p-1 hover:bg-nature-200">
-                  <span className="rectangle flex items-center w-[39px] h-[39px] p-[6px] bg-nature-700">
-                    <img src="/static/categories/at-home.png" />
-                  </span>
-                  <p className="font-normal text-xs">At home</p>
-                </div>
-                <div className="flex gap-1 items-center rounded-lg cursor-pointer p-1 hover:bg-nature-200">
-                  <span className="rectangle flex items-center w-[39px] h-[39px] p-[6px] bg-nature-700">
-                    <img src="/static/categories/food.png" />
-                  </span>
-                  <p className="font-normal text-xs">Food</p>
-                </div>
-                <div className="flex gap-1 items-center rounded-lg cursor-pointer p-1 hover:bg-nature-200">
-                  <span className="rectangle flex items-center w-[39px] h-[39px] p-[6px] bg-nature-700">
-                    <img src="/static/categories/training-and-sport.png" />
-                  </span>
-                  <p className="font-normal text-xs">Training and sport</p>
-                </div>
+                {props.categories?.map((item) => (
+                  <Link
+                    key={item.id}
+                    href={`/shop?category=${item.id}`}
+                    className="flex gap-1 items-center rounded-lg cursor-pointer p-1 hover:bg-nature-200"
+                  >
+                    <span className="rectangle flex items-center w-[39px] h-[39px] p-[6px] bg-nature-700">
+                      <img src={item.image} className="w-full" />
+                    </span>
+                    <p className="font-normal text-xs">{item.name}</p>
+                  </Link>
+                ))}
               </AccordionContentFilter>
             </AccordionItemFilter>
           </AccordionFilter>
@@ -122,6 +113,16 @@ const MobileSidebar = () => {
               )}
             >
               Contact us
+            </li>
+          </Link>
+          <Link href="/blog">
+            <li
+              className={cn(
+                'text-sm',
+                pathname === '/blog' ? 'font-bold text-primary-500' : '',
+              )}
+            >
+              Blog
             </li>
           </Link>
         </ul>

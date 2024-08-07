@@ -18,6 +18,7 @@ import SvgSearch from '@icons/search-loupe-custom.svg';
 import SvgSingleUserDesktop from '@icons/single-user-desktop.svg';
 import SvgSingleUser from '@icons/single-user.svg';
 
+import useCategoriesQuery from './categories.query';
 import CartButton from './mini-cart/cart-hover.component';
 import MobileSidebar from './mobile-sidebar.component';
 import ShopHover from './shop-hover.component';
@@ -25,6 +26,8 @@ import ShopHover from './shop-hover.component';
 const Navbar = () => {
   useProfileQuery();
   useSyncCartQuery();
+
+  const { data } = useCategoriesQuery();
 
   const pathname = usePathname();
   const router = useRouter();
@@ -35,7 +38,7 @@ const Navbar = () => {
     <nav className="flex justify-between md:items-center px-5 md:px-20 py-3 md:py-5 border-b border-nature-800">
       <div className="flex gap-3">
         {/* Drawer */}
-        <MobileSidebar />
+        <MobileSidebar categories={data} />
         {/* End Drawer */}
         <Link href={'/'}>
           <SvgLogoMobile className="md:hidden mt-1" />
@@ -53,7 +56,7 @@ const Navbar = () => {
             </li>
           </Link>
           {/* Shop hover card */}
-          <ShopHover />
+          <ShopHover categories={data} />
           {/* End Shop hover card */}
           <Link href={'/about-us'}>
             <li
@@ -77,6 +80,18 @@ const Navbar = () => {
               )}
             >
               Contact us
+            </li>
+          </Link>
+          <Link href={'/blog'}>
+            <li
+              className={cn(
+                'flex items-center gap-1 cursor-pointer  text-lg',
+                pathname === '/blog'
+                  ? 'font-bold text-primary-500 active-dot'
+                  : '',
+              )}
+            >
+              Blog
             </li>
           </Link>
         </ul>

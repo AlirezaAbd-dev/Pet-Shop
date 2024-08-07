@@ -22,7 +22,7 @@ type HomeTopCategoriesProps = {
 };
 
 const HomeTopCategories = (props: HomeTopCategoriesProps) => {
-  const [categoryValue, setCategoryValue] = useState<CategoiesListType>('All');
+  // const [categoryValue, setCategoryValue] = useState<CategoiesListType>('All');
 
   return (
     <>
@@ -30,7 +30,7 @@ const HomeTopCategories = (props: HomeTopCategoriesProps) => {
         <h3 className="text-xl md:text-4xl font-nunito font-black text-center">
           Top Categories & Food products
         </h3>
-        <ul className="flex justify-center mt-5 md:mt-8 gap-4">
+        {/* <ul className="flex justify-center mt-5 md:mt-8 gap-4">
           {CATEGORIES_LIST.map((item) => (
             <li
               key={item.name}
@@ -65,7 +65,7 @@ const HomeTopCategories = (props: HomeTopCategoriesProps) => {
               {item.name}
             </li>
           ))}
-        </ul>
+        </ul> */}
       </section>
       <Swiper
         className="hidden md:block px-20 mt-10"

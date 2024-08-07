@@ -1,5 +1,6 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
 import React, { useEffect } from 'react';
 
 import { Brand, Category } from '@/app/(core)/shop/page';
@@ -17,11 +18,21 @@ type ShopProps = {
 };
 
 const Shop = (props: ShopProps) => {
+  const searchParams = useSearchParams();
+
+  const category = searchParams.get('category');
+
   const setFilters = useFiltersStore((s) => s.setFilters);
+  const setCategory = useFiltersStore((s) => s.setCategory);
+  const resetFilter = useFiltersStore((s) => s.resetFilter);
 
   useEffect(() => {
     setFilters(props);
-  }, []);
+    if (category && typeof +category == 'number') {
+      resetFilter();
+      setCategory(Number(category));
+    }
+  }, [category]);
 
   return (
     <>

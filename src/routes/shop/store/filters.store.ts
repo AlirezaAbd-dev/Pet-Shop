@@ -20,6 +20,8 @@ type UseFilterStore = {
   setBrand: (brand: number) => void;
   available: boolean;
   setAvailable: (available: boolean) => void;
+  discounted: boolean;
+  setDiscounted: (available: boolean) => void;
   search: string;
   setSearch: (search: string) => void;
   sortBy?: string;
@@ -81,6 +83,10 @@ export const useFiltersStore = create<UseFilterStore>()((set, get) => ({
   available: false,
   setAvailable(available) {
     set({ available });
+  },
+  discounted: false,
+  setDiscounted(discounted) {
+    set({ discounted });
   },
   search: '',
   setSearch(search) {
