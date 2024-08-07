@@ -9,6 +9,7 @@ import HomeCategories from './components/home-categories.component';
 import HomeFAQ from './components/home-faq.component';
 import HomeLanding from './components/home-landing.component';
 import HomeOurPromise from './components/home-our-promise.component';
+import HomePets from './components/home-pets.component';
 import HomeSuperSale from './components/home-super-sale.component';
 import HomeTips from './components/home-tips.component';
 import HomeTopCategories from './components/home-top-categories.component';
@@ -24,6 +25,7 @@ const Home = async () => {
     <>
       <HomeLanding />
       <HomeTopCategories products={topCategories} />
+      <HomePets pets={pets} />
       <HomeOurPromise />
       <HomeSuperSale products={onSales} />
       <HomeCategories categories={categories} />
@@ -40,7 +42,7 @@ const Home = async () => {
 export type Pet = {
   id: number;
   species: string;
-  image: string | null;
+  image: string;
 };
 
 async function getHomePageData() {
