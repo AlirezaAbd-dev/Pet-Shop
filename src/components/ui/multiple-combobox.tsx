@@ -10,41 +10,30 @@ import { cn } from '@/lib/utils';
 import { Button } from './button';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
-type ComboboxProps<TValue extends string, TLiteral extends boolean> = Prettify<
-  {
-    name: string;
-    placeholder?: string;
-    emptyMessage?: string;
-    lang?: 'en' | 'fa';
-    data: { value: TValue; label: string }[];
-    required?: boolean;
-    buttonClassName?: string;
-    containerClassName?: string;
-    placeholderClassName?: string;
-    isLiteral?: TLiteral;
-    value?: TLiteral extends true ? NoInfer<TValue> : string;
-    onSelect?: (
-      name: string,
-      value: TLiteral extends true ? NoInfer<TValue> : string,
-    ) => void;
-    onBlur?: () => void;
-  } & (
-    | {
-        noneEmpty?: true;
-        defaultValue: TLiteral extends true ? NoInfer<TValue> : string;
-      }
-    | {
-        noneEmpty?: false;
-        defaultValue?: TLiteral extends true ? NoInfer<TValue> : string;
-      }
-  )
->;
+type ComboboxProps<TValue extends string, TLiteral extends boolean> = Prettify<{
+  name: string;
+  placeholder?: string;
+  emptyMessage?: string;
+  lang?: 'en' | 'fa';
+  data: { value: TValue; label: string }[];
+  required?: boolean;
+  buttonClassName?: string;
+  containerClassName?: string;
+  placeholderClassName?: string;
+  isLiteral?: TLiteral;
+  value?: TLiteral extends true ? NoInfer<TValue[]> : string[];
+  onSelect?: (
+    name: string,
+    value: TLiteral extends true ? NoInfer<TValue[]> : string[],
+  ) => void;
+  onBlur?: () => void;
+  defaultValue?: NoInfer<TValue[]>;
+}>;
 
-export function Combobox<
+export function MultipleCombobox<
   TValue extends string,
   TLiteral extends boolean = true,
 >({
-  noneEmpty = false,
   emptyMessage = '',
   placeholder = '',
   lang = 'en',
@@ -52,17 +41,15 @@ export function Combobox<
   ...props
 }: ComboboxProps<TValue, TLiteral>) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState<TValue | string>(
-    props.defaultValue || '',
-  );
+  const [value, setValue] = React.useState<TValue[]>(props.defaultValue || []);
   const [searchValue, setSearchValue] = React.useState('');
 
   React.useEffect(() => {
-    props.onSelect?.(props.name, value as TValue);
-  }, [value, props.name]);
+    props.onSelect?.(props.name, value as TValue[]);
+  }, [value, value.length, props.name]);
 
   React.useEffect(() => {
-    if (props.value != null) setValue(props.value);
+    if (props.value != null) setValue(props.value as TValue[]);
   }, [props.value]);
 
   const items = props.data.filter((item) => {
@@ -88,8 +75,12 @@ export function Combobox<
             props.buttonClassName,
           )}
         >
-          {value ? (
-            props.data.find((d) => d.value === value)?.label
+          {value.length > 0 ? (
+            props.data
+              .filter((d) => value.includes(d.value))
+              .slice(0, 3)
+              ?.map((v) => v.label)
+              .join(', ')
           ) : placeholder ? (
             <p className={props.placeholderClassName}>
               {placeholder + `${props.required ? '*' : ''}`}
@@ -115,11 +106,18 @@ export function Combobox<
               key={item.value}
               className="flex justify-between items-center p-2 cursor-pointer rounded-lg hover:bg-nature-200"
               onClick={() => {
-                if (!noneEmpty) {
-                  setValue(item.value === value ? '' : item.value);
-                } else {
-                  setValue(item.value);
-                }
+                setValue((prevValue) => {
+                  const valueIndex = prevValue.findIndex(
+                    (v) => v === item.value,
+                  );
+                  if (valueIndex !== -1) {
+                    prevValue.splice(valueIndex, 1);
+                    return prevValue;
+                  } else {
+                    prevValue.push(item.value as TValue);
+                    return prevValue;
+                  }
+                });
                 setOpen(false);
                 onBlur?.();
               }}
@@ -128,7 +126,7 @@ export function Combobox<
               <Check
                 className={cn(
                   'mr-2 h-4 w-4',
-                  value === item.value ? 'opacity-100' : 'opacity-0',
+                  value.includes(item.value) ? 'opacity-100' : 'opacity-0',
                 )}
               />
             </li>
