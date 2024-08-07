@@ -43,8 +43,8 @@ const CartTotals = () => {
           else router.push('/login');
         }}
         isLoading={isPending}
-        disabled={isPending}
-        variant={isPending ? 'disabled' : 'default'}
+        disabled={isPending || cart.length === 0}
+        variant={isPending || cart.length === 0 ? 'disabled' : 'default'}
         className="mt-4 md:mt-6 font-bold text-sm rounded-lg md:rounded-2xl md:h-[56px]"
       >
         Proceed to checkout

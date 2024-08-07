@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { Category } from '@/app/(core)/shop/page';
-import SvgMobileSidebarLogo from '@/assets/svg/mobile-sidebar-logo.svg';
+import SvgMobileSidebarLogo from '@/assets/svg/logo-title-mobile.svg';
 import Icon from '@/components/icon';
 import {
   AccordionContentFilter,
@@ -13,13 +13,13 @@ import {
   AccordionItemFilter,
   AccordionTriggerFilter,
 } from '@/components/ui/accordion-filter';
-import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import UseWindowSize from '@/hooks/use-window-size.hook';
 import { cn } from '@/lib/utils';
 
 import SvgMenuBurger from '@icons/menu-burger-square.1.svg';
-import SvgSearch from '@icons/search-loupe-custom-mobile.svg';
+
+import MobileSearch from './mobile-search.component';
 
 type Props = {
   categories?: Category[];
@@ -52,15 +52,8 @@ const MobileSidebar = (props: Props) => {
       <SheetContent className="flex flex-col gap-0 p-4 bg-white overflow-y-auto">
         <SvgMobileSidebarLogo />
 
-        <div className="flex items-center w-full h-[44px] bg-nature-600 rounded-xl px-3 mt-[30px]">
-          <Icon className="text-text-200">
-            <SvgSearch />
-          </Icon>
-          <Input
-            placeholder="Search product..."
-            autoFocus={false}
-            className="bg-transparent placeholder:text-text-200 font-nunito border-none text-xs pl-1"
-          />
+        <div className="pt-[30px]">
+          <MobileSearch />
         </div>
 
         <ul className="flex flex-col gap-3 mt-6">

@@ -4,6 +4,7 @@ import SvgHeartRed20 from '@/assets/svg/heart-red-20.svg';
 import SvgHeartRed28 from '@/assets/svg/heart-red-28.svg';
 import Icon from '@/components/icon';
 import useWishlistQuery from '@/hooks/react-query/queries/wishlist.query';
+import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/store/auth.store';
 
 import SvgHeartDesktop from '@icons/heart-desktop.svg';
@@ -20,20 +21,22 @@ const Like = (props: LikeProps) => {
 
   const { data: wishlist, isPending: isWishlistPending } = useWishlistQuery();
 
-  const { mutate } = useLikeMutation();
+  const { mutate, isPending } = useLikeMutation();
 
-  const isLiked = !isWishlistPending
-    ? !!wishlist?.products.find((p) => p.id === props.productId)
-    : undefined;
+  const findProduct = wishlist?.products.find((p) => p.id === props.productId);
+  const isLiked = !isWishlistPending ? !!findProduct : undefined;
 
   return (
     <Icon
       onClick={() => {
-        if (profile) {
+        if (profile && !isPending) {
           mutate({ id: props.productId, mode: isLiked ? 'unlike' : 'like' });
         }
       }}
-      className="p-1.5 md:p-[10px] bg-nature-700 rounded-lg cursor-pointer"
+      className={cn(
+        'p-1.5 md:p-[10px] bg-nature-700 rounded-lg cursor-pointer',
+        isPending ? 'animate-ping' : '',
+      )}
     >
       {!isLiked ? (
         <>

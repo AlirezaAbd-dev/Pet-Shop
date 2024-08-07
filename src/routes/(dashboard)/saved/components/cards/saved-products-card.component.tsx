@@ -56,7 +56,7 @@ const SavedProductCard = (props: Props) => {
         >
           <SvgDeleteRed24 />
         </Icon>
-        <img src={props.image} alt={props.name} className="w-[78px]" />
+        <img src={props.image} alt={props.name} className="h-[132px]" />
       </div>
       <div className="mt-4 flex items-start justify-between">
         <p className="font-bold font-nunito md:text-xl max-w-[152px]">

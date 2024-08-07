@@ -1,7 +1,7 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-import React, { useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
 import SvgCopyPaste from '@/assets/svg/copy-paste-select-add-plus-red.svg';
 import SvgOrderCompletePetDesktop from '@/assets/svg/order-complete-pet-desktop.svg';
@@ -11,7 +11,10 @@ import { Button } from '@/components/ui/button';
 import { useCartStore } from '@/store/cart.store';
 
 const OrderCompleteDetails = () => {
+  const router = useRouter();
   const searchParams = useSearchParams();
+
+  const [isCopied, setIsCopied] = useState(false);
 
   const clearCart = useCartStore((s) => s.clearCart);
 
@@ -35,13 +38,35 @@ const OrderCompleteDetails = () => {
       </h1>
 
       <div className="flex flex-col md:flex-row gap-4 w-full mt-6 md:mt-8 md:w-[593px]">
-        <Button className="w-full">Order status</Button>
+        <Button
+          className="w-full"
+          onClick={() => {
+            router.push(`/dashboard/orders/${orderId}`);
+          }}
+        >
+          Order status
+        </Button>
         <Button
           variant={'text'}
+          onClick={() => {
+            if (orderId) {
+              navigator.clipboard.writeText(orderId);
+              setIsCopied(true);
+            }
+          }}
           className="md:w-full flex bg-primary-50/5 text-primary-500 gap-2 hover:bg-opacity-10 hover:text-primary-500"
         >
-          <SvgCopyPaste />
-          Order ID: #{orderId}
+          {isCopied ? (
+            <>
+              <SvgCopyPaste />
+              Copied: #{orderId}
+            </>
+          ) : (
+            <>
+              <SvgCopyPaste />
+              Order ID: #{orderId}
+            </>
+          )}
         </Button>
       </div>
     </section>

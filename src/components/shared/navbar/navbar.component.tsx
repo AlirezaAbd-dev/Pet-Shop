@@ -8,19 +8,18 @@ import SvgArrowWhite24 from '@/assets/svg/Arrow-white-24.svg';
 import SvgLogoDesktop from '@/assets/svg/logo-title-desktop.svg';
 import SvgLogoMobile from '@/assets/svg/logo-title-mobile.svg';
 import Icon from '@/components/icon';
-import { Input } from '@/components/ui/input';
 import useProfileQuery from '@/hooks/react-query/queries/profile.query';
 import useSyncCartQuery from '@/hooks/react-query/queries/sync-cart.query';
 import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/store/auth.store';
 
-import SvgSearch from '@icons/search-loupe-custom.svg';
 import SvgSingleUserDesktop from '@icons/single-user-desktop.svg';
 import SvgSingleUser from '@icons/single-user.svg';
 
 import useCategoriesQuery from './categories.query';
 import CartButton from './mini-cart/cart-hover.component';
-import MobileSidebar from './mobile-sidebar.component';
+import MobileSidebar from './mobile-sidebar/mobile-sidebar.component';
+import NavbarSearch from './search/navbar-search.component';
 import ShopHover from './shop-hover.component';
 
 const Navbar = () => {
@@ -97,15 +96,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex gap-2 md:gap-4">
-        <div className="hidden md:flex items-center w-[291px] h-[54px] bg-nature-600 rounded-2xl px-3">
-          <Icon className="text-text-200">
-            <SvgSearch className="w-8 h-8" />
-          </Icon>
-          <Input
-            placeholder="Search product..."
-            className="bg-transparent placeholder:text-text-200 font-nunito border-none text-base"
-          />
-        </div>
+        <NavbarSearch />
         <Icon
           onClick={() => {
             if (profile) {
