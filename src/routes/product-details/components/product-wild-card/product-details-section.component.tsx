@@ -158,29 +158,18 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
       <Accordion1 type="single" collapsible className="w-full mt-8 md:mt-3">
         <AccordionItem1 value="details">
           <AccordionTrigger1>Details</AccordionTrigger1>
-          <AccordionContent1>
-            Lorem ipsum dolor sit amet, consec tetur adipi s Lorem ipsum dolor
-            sit amet, consec tetur adipi scing elit. Ut scing elit Lorem ipsum
-            dolor sit amet, consec tetur adipi scing elit. Ut scing elitcing
-            elit. Ut scing elit
-          </AccordionContent1>
+          <AccordionContent1>{props.description}</AccordionContent1>
         </AccordionItem1>
         <AccordionItem1 value="detaiIngredients & Analysisls">
           <AccordionTrigger1>Ingredients & Analysis</AccordionTrigger1>
           <AccordionContent1>
-            Lorem ipsum dolor sit amet, consec tetur adipi s Lorem ipsum dolor
-            sit amet, consec tetur adipi scing elit. Ut scing elit Lorem ipsum
-            dolor sit amet, consec tetur adipi scing elit. Ut scing elitcing
-            elit. Ut scing elit
+            {props.IngredientsAnalysis || 'Nothing to show'}
           </AccordionContent1>
         </AccordionItem1>
         <AccordionItem1 className="border-none" value="Shipping & Returns">
           <AccordionTrigger1>Shipping & Returns</AccordionTrigger1>
           <AccordionContent1>
-            Lorem ipsum dolor sit amet, consec tetur adipi s Lorem ipsum dolor
-            sit amet, consec tetur adipi scing elit. Ut scing elit Lorem ipsum
-            dolor sit amet, consec tetur adipi scing elit. Ut scing elitcing
-            elit. Ut scing elit
+            {props.ShippingReturns || 'Nothing to show'}
           </AccordionContent1>
         </AccordionItem1>
       </Accordion1>

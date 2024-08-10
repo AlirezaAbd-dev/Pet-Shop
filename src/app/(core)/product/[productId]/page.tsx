@@ -25,6 +25,8 @@ export type Product = {
   total_discount: number;
   image_urls: string[];
   weight: number;
+  IngredientsAnalysis?: string;
+  ShippingReturns?: string;
 };
 
 export const dynamic = 'force-dynamic';
