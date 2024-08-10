@@ -22,6 +22,7 @@ export type ProfileType = {
 const useProfileQuery = (action?: string) => {
   const router = useRouter();
 
+  const accessToken = useAuthStore((s) => s.accesstoken);
   const setIsLoading = useAuthStore((s) => s.setIsLoading);
   const setProfile = useAuthStore((s) => s.setProfile);
 

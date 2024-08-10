@@ -46,7 +46,6 @@ const OrderDetailsUploadImage = (props: Props) => {
             <a download={`order-factor-#${props.id}`} href={props.receipt}>
               <SvgEye32 className="cursor-pointer" />
             </a>
-            <SvgDelete32 className="cursor-pointer" />
           </div>
         </section>
       )}

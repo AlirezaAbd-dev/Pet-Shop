@@ -77,7 +77,7 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
     <section className="flex flex-col mt-6 md:mt-0 md:w-full md:col-span-6">
       {!!props.activePromotions && (
         <div className="hidden md:block">
-          <OfferCard />
+          <OfferCard activePromotions={props.activePromotions} />
         </div>
       )}
       <h1 className="font-nunito font-black text-lg md:text-[32px] md:leading-9 md:mt-6">

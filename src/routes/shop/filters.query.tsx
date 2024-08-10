@@ -16,7 +16,7 @@ const useFiltersQuery = () => {
   const price = useFiltersStore((s) => s.price);
   const sortBy = useFiltersStore((s) => s.sortBy);
 
-  const queryParams = `?price_min=${price.min}&price_max=${price.max}${sortBy ? `&ordering=${sortBy}` : ''}${!!search ? `&search=${search}` : ''}${available ? `&available=${available}` : ''}${discounted ? `&discounted=${discounted}` : ''}${category.length > 0 ? `&category=${category.join(',')}` : ''}${brand.length > 0 ? `&brand=${brand.join(',')}` : ''}`;
+  const queryParams = `?price_min=${price.min}&price_max=${price.max}${sortBy ? `&ordering=${sortBy}` : ''}${!!search ? `&search=${search}` : ''}${available ? `&available=${available}` : ''}${discounted ? `&discount=${discounted}` : ''}${category.length > 0 ? `&category=${category.join(',')}` : ''}${brand.length > 0 ? `&brand=${brand.join(',')}` : ''}`;
 
   const query = useQuery({
     queryKey: [queryKeys.FILTERS, queryParams],

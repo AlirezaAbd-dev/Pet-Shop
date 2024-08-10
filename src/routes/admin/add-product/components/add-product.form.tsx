@@ -1,9 +1,10 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Controller, useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 
 import { Brand, Category } from '@/app/(core)/shop/page';
 import SvgDelete32 from '@/assets/svg/Trash, Delete, Bin32.svg';
@@ -16,6 +17,7 @@ import { MultipleCombobox } from '@/components/ui/multiple-combobox';
 import { Textarea } from '@/components/ui/textarea';
 import { Pet } from '@/routes/home';
 
+import useAddProductMutation from '../add-product.mutation';
 import {
   AddProductValidationType,
   addProductValidation,
@@ -30,7 +32,7 @@ type Props = {
 const AddProductForm = (props: Props) => {
   const [files, setFiles] = useState<File[]>([]);
 
-  const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     accept: {
       'image/*': [],
     },
@@ -39,12 +41,41 @@ const AddProductForm = (props: Props) => {
     },
   });
 
-  const { control, handleSubmit } = useForm<AddProductValidationType>({
-    resolver: zodResolver(addProductValidation),
-  });
+  const { mutate, isPending } = useAddProductMutation();
 
+  const { control, handleSubmit, formState } =
+    useForm<AddProductValidationType>({
+      resolver: zodResolver(addProductValidation),
+    });
+  console.log(formState.errors);
   const submitHandler = (values: AddProductValidationType) => {
-    console.log(values);
+    console.log('triggered');
+    if (files.length <= 4 && files.length > 0) {
+      const formData = new FormData();
+      formData.append('name', values.name);
+      formData.append('description', values.description);
+      formData.append('brand', values.brand);
+      formData.append('price', values.price.toString());
+      formData.append('weight', values.weight.toString());
+      formData.append('inventory', values.inventory.toString());
+      formData.append('published_date', new Date().toISOString());
+      if (values.discount)
+        formData.append('discount', values.discount?.toString());
+
+      values.pets.forEach((item) => {
+        formData.append('pets', item.toString());
+      });
+      values.categories.forEach((item) => {
+        formData.append('categories', item.toString());
+      });
+      files.forEach((item) => {
+        formData.append('images', item.toString());
+      });
+
+      mutate(formData);
+    } else {
+      toast.error('Please upload an image for product');
+    }
   };
 
   return (
@@ -68,7 +99,7 @@ const AddProductForm = (props: Props) => {
           <p>Weight*</p>
           <Controller
             control={control}
-            name="name"
+            name="weight"
             render={({ field, fieldState }) => (
               <Input
                 {...field}
@@ -86,7 +117,7 @@ const AddProductForm = (props: Props) => {
           <p>Price*</p>
           <Controller
             control={control}
-            name="name"
+            name="price"
             render={({ field, fieldState }) => (
               <Input
                 {...field}
@@ -102,7 +133,7 @@ const AddProductForm = (props: Props) => {
           <p>inventory*</p>
           <Controller
             control={control}
-            name="name"
+            name="inventory"
             render={({ field, fieldState }) => (
               <Input
                 {...field}
@@ -120,7 +151,7 @@ const AddProductForm = (props: Props) => {
           <p>Discount</p>
           <Controller
             control={control}
-            name="name"
+            name="discount"
             render={({ field, fieldState }) => (
               <Input
                 {...field}
@@ -146,7 +177,7 @@ const AddProductForm = (props: Props) => {
                     value: c.id.toString(),
                   }))}
                   onSelect={(_, value) => {
-                    field.onChange(value);
+                    field.onChange(value.map((item) => +item));
                   }}
                   buttonClassName="mt-4 md:h-12 border-none bg-nature-600"
                   containerClassName="w-[400px]"
@@ -180,7 +211,7 @@ const AddProductForm = (props: Props) => {
           <p>Category*</p>
           <Controller
             control={control}
-            name="pets"
+            name="categories"
             render={({ field, fieldState }) => (
               <>
                 <MultipleCombobox
@@ -192,7 +223,7 @@ const AddProductForm = (props: Props) => {
                   buttonClassName="mt-4 md:h-12 border-none bg-nature-600"
                   containerClassName="w-[400px]"
                   onSelect={(_, value) => {
-                    field.onChange(value);
+                    field.onChange(value.map((item) => +item));
                   }}
                 />
                 <p className="mt-1 text-sm text-error-500">
@@ -355,7 +386,13 @@ const AddProductForm = (props: Props) => {
         />
       </div>
 
-      <Button className="md:text-base w-full rounded-xl mt-12">
+      <Button
+        isLoading={isPending}
+        disabled={isPending}
+        variant={isPending ? 'disabled' : 'default'}
+        type="submit"
+        className="md:text-base w-full rounded-xl mt-12"
+      >
         Confirmation
       </Button>
     </form>

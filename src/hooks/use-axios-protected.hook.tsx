@@ -45,7 +45,7 @@ const useAxiosProtected = () => {
       axiosProtected.interceptors.request.eject(requestIntercept);
       axiosProtected.interceptors.response.eject(responseIntercept);
     };
-  }, []);
+  }, [accessToken]);
 
   return axiosProtected;
 };

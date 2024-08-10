@@ -30,7 +30,7 @@ const ProductWildCard = (props: ProductWildCardProps) => {
       <main className="mt-6 md:mt-8 mx-5 md:mx-20 flex flex-col md:grid md:grid-cols-12 md:gap-14">
         {props.activePromotions && (
           <div className="md:hidden">
-            <OfferCard />
+            <OfferCard activePromotions={props.activePromotions} />
           </div>
         )}
         <ImagesShowcase

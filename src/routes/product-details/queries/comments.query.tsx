@@ -24,7 +24,9 @@ const useCommentsQuery = () => {
     queryKey: [queryKeys.COMMENTS, params?.productId],
     queryFn: () =>
       axiosInstance
-        .get<Comment[]>(`/shop/api/v1/products/${params?.productId}/reviews/`)
+        .get<
+          Comment[]
+        >(`/shop/api/v1/products/${params?.productId}/reviews/accepted/`)
         .then((res) => res.data),
     enabled: !!params?.productId,
   });

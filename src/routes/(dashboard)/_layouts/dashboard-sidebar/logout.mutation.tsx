@@ -20,7 +20,10 @@ const useLogout = () => {
 
   const mutation = useMutation({
     mutationKey: [queryKeys.LOGOUT],
-    mutationFn: () => axiosProtected.post('/accounts/auth/logout/'),
+    mutationFn: () =>
+      axiosProtected.post('/accounts/auth/logout/', {
+        refresh: localStorage.getItem('refresh-token'),
+      }),
     async onSuccess() {
       setAccessToken(undefined);
       localStorage.removeItem('refresh-token');
