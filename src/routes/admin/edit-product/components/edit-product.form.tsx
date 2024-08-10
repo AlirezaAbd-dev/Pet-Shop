@@ -6,6 +6,7 @@ import { useDropzone } from 'react-dropzone';
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
+import { Product } from '@/app/(core)/product/[productId]/page';
 import { Brand, Category } from '@/app/(core)/shop/page';
 import SvgDelete32 from '@/assets/svg/Trash, Delete, Bin32.svg';
 import SvgEye32 from '@/assets/svg/eye32.svg';
@@ -17,19 +18,20 @@ import { MultipleCombobox } from '@/components/ui/multiple-combobox';
 import { Textarea } from '@/components/ui/textarea';
 import { Pet } from '@/routes/home';
 
-import useAddProductMutation from '../add-product.mutation';
 import {
   AddProductValidationType,
   addProductValidation,
-} from '../add-product.validation';
+} from '../../add-product/add-product.validation';
+import useEditProductMutation from '../queries/edit-product.mutation';
 
 type Props = {
   categories: Category[];
   brands: Brand[];
   pets: Pet[];
+  product: Product;
 };
 
-const AddProductForm = (props: Props) => {
+const EditProductForm = (props: Props) => {
   const [files, setFiles] = useState<File[]>([]);
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -37,19 +39,38 @@ const AddProductForm = (props: Props) => {
       'image/*': [],
     },
     onDrop(acceptedFiles) {
+      // const reader = new FileReader();
+      // reader.onload = () => {
+      //   console.log(reader.result);
+      // };
+      // reader.readAsArrayBuffer(acceptedFiles[0]);
+
       setFiles(acceptedFiles);
     },
   });
 
-  const { mutate, isPending } = useAddProductMutation();
+  const { mutate, isPending } = useEditProductMutation();
 
   const { control, handleSubmit, formState } =
     useForm<AddProductValidationType>({
       resolver: zodResolver(addProductValidation),
+      defaultValues: {
+        brand: props.product.brand.toString(),
+        categories: props.product.categories,
+        description: props.product.description,
+        discount: props.product.total_discount,
+        ingredients: props.product.IngredientsAnalysis,
+        inventory: props.product.inventory,
+        name: props.product.name,
+        pets: props.product.pets,
+        price: props.product.price,
+        shipping: props.product.ShippingReturns,
+        weight: props.product.weight,
+      },
     });
   console.log(formState.errors);
   const submitHandler = (values: AddProductValidationType) => {
-    if (files.length <= 4 && files.length > 0) {
+    if (files.length <= 4) {
       const formData = new FormData();
       formData.append('name', values.name);
       formData.append('description', values.description);
@@ -73,9 +94,8 @@ const AddProductForm = (props: Props) => {
       files.forEach((item) => {
         formData.append('images', item);
       });
+
       mutate(formData);
-    } else {
-      toast.error('Please upload an image for product');
     }
   };
 
@@ -173,6 +193,7 @@ const AddProductForm = (props: Props) => {
               <>
                 <MultipleCombobox
                   name="pet"
+                  defaultValue={props.product.pets.map((item) => String(item))}
                   data={props.pets.map((c) => ({
                     label: c.species,
                     value: c.id.toString(),
@@ -217,6 +238,9 @@ const AddProductForm = (props: Props) => {
               <>
                 <MultipleCombobox
                   name="category"
+                  defaultValue={props.product.categories.map((item) =>
+                    String(item),
+                  )}
                   data={props.categories.map((c) => ({
                     label: c.name,
                     value: c.id.toString(),
@@ -243,6 +267,7 @@ const AddProductForm = (props: Props) => {
               <>
                 <Combobox
                   name="brand"
+                  defaultValue={props.product.brand.toString()}
                   data={props.brands.map((c) => ({
                     label: c.name,
                     value: c.id.toString(),
@@ -295,6 +320,21 @@ const AddProductForm = (props: Props) => {
             Maximum 4 images are allowed to upload
           </p>
         )}
+        {files.length === 0 &&
+          props.product.image_urls.length > 0 &&
+          props.product.image_urls.map((item) => (
+            <li key={item} className="mt-4 flex justify-between items-center">
+              <p className="font-semibold text-lg">{item}</p>
+              <Icon className="flex gap-3 items-center">
+                <SvgEye32
+                  className="cursor-pointer"
+                  onClick={() => {
+                    window.open(item);
+                  }}
+                />
+              </Icon>
+            </li>
+          ))}
         {files.map((item) => (
           <li
             key={item.name}
@@ -400,4 +440,4 @@ const AddProductForm = (props: Props) => {
   );
 };
 
-export default AddProductForm;
+export default EditProductForm;

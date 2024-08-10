@@ -7,7 +7,7 @@ import { Product } from '@/app/(core)/product/[productId]/page';
 import { axiosInstance } from '@/lib/constants/axios';
 import queryKeys from '@/lib/constants/query-keys.constants';
 
-const useSingleProductQuery = (initialData: Product) => {
+const useSingleProductQuery = (initialData?: Product) => {
   const params = useParams<{ productId: string }>();
 
   const query = useQuery<Product, AxiosError>({

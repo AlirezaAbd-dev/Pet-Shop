@@ -13,6 +13,8 @@ export const adminQueryKeys = {
   DELETE_CATEGORY: 'admin-delete-category',
   PRODUCTS: 'admin-products',
   ADD_PRODUCT: 'admin-add-product',
+  EDIT_PRODUCT: 'admin-edit-product',
+  DELETE_PRODUCT: 'admin-delete-product',
   BRANDS: 'admin-brands',
   PETS: 'admin-pets',
 };

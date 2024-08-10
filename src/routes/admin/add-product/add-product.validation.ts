@@ -10,6 +10,8 @@ export const addProductValidation = z.object({
   pets: z.array(z.number()).min(1),
   categories: z.array(z.number()).min(1),
   discount: z.coerce.number().optional(),
+  ingredients: z.string().optional(),
+  shipping: z.string().optional(),
 });
 
 export type AddProductValidationType = z.infer<typeof addProductValidation>;
