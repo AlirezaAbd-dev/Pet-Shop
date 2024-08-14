@@ -92,8 +92,8 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
           <li
             key={item.weight}
             onClick={() => {
-              if (+item.weight / props.weight <= props.inventory)
-                setCounterValue(+item.weight / props.weight);
+              if (Math.ceil(+item.weight / props.weight) <= props.inventory)
+                setCounterValue(Math.ceil(+item.weight / props.weight));
               else toast.error('Insufficient inventory');
             }}
             className={cn(

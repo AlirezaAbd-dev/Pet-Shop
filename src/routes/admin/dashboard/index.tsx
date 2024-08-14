@@ -4,9 +4,7 @@ import {
   ArcElement,
   BarElement,
   CategoryScale,
-  ChartData,
   Chart as ChartJS,
-  ChartOptions,
   Legend,
   LineElement,
   LinearScale,
@@ -14,9 +12,7 @@ import {
   Title,
   Tooltip,
 } from 'chart.js';
-import { useMemo } from 'react';
 
-import { chartFontFamily } from './chart-options.constant';
 import AdminCategoryChart from './components/admin-categories.chart.component';
 import AdminCustomerChart from './components/admin-customer.chart.component';
 import AdminDashboardSummary from './components/admin-dashboard-summary.component';

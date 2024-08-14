@@ -42,13 +42,13 @@ export const useFiltersStore = create<UseFilterStore>()((set, get) => ({
       available: false,
       brand: [],
       category: [],
-      price: { max: 1000, min: 1 },
+      price: { max: 10000, min: 1 },
       search: '',
       sortBy: undefined,
     });
   },
 
-  price: { min: 1, max: 1000 },
+  price: { min: 1, max: 10000 },
   setPrice(price) {
     set({ price });
   },

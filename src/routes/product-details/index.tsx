@@ -16,28 +16,29 @@ import useSingleProductQuery from './queries/single-product.query';
 const ProductDetails = (props: { product: Product }) => {
   const { data } = useSingleProductQuery(props.product);
 
-  return (
-    <>
-      <AddCommentModal />
-      <ProductBreadcrumb />
-      <ProductWildCard
-        title={data.name}
-        description={data.description}
-        id={data.id}
-        inventory={data.inventory}
-        price={data.price}
-        priceWithDiscount={data.price_after_promotion}
-        images={data.image_urls}
-        weight={data.weight}
-        totalDiscount={data.total_discount}
-        activePromotions={data.active_promotions}
-      />
-      <ShopSpecifications className="mt-10 md:mt-24 px-5 md:px-20" />
-      <ProductComments />
-      <RelatedProducts />
-      <Footer />
-    </>
-  );
+  if (data)
+    return (
+      <>
+        <AddCommentModal />
+        <ProductBreadcrumb />
+        <ProductWildCard
+          title={data.name}
+          description={data.description}
+          id={data.id}
+          inventory={data.inventory}
+          price={data.price}
+          priceWithDiscount={data.price_after_promotion}
+          images={data.image_urls}
+          weight={data.weight}
+          totalDiscount={data.total_discount}
+          activePromotions={data.active_promotions}
+        />
+        <ShopSpecifications className="mt-10 md:mt-24 px-5 md:px-20" />
+        <ProductComments />
+        <RelatedProducts />
+        <Footer />
+      </>
+    );
 };
 
 export default ProductDetails;

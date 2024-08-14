@@ -39,7 +39,7 @@ const AdminCustomerChart = () => {
           bodyFont: { size: 14, family: chartFontFamily },
         },
         legend: {
-          position: 'top' as const,
+          position: 'bottom' as const,
           labels: { font: { family: chartFontFamily } },
         },
       },

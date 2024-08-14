@@ -39,12 +39,6 @@ const EditProductForm = (props: Props) => {
       'image/*': [],
     },
     onDrop(acceptedFiles) {
-      // const reader = new FileReader();
-      // reader.onload = () => {
-      //   console.log(reader.result);
-      // };
-      // reader.readAsArrayBuffer(acceptedFiles[0]);
-
       setFiles(acceptedFiles);
     },
   });
@@ -59,12 +53,12 @@ const EditProductForm = (props: Props) => {
         categories: props.product.categories,
         description: props.product.description,
         discount: props.product.total_discount,
-        ingredients: props.product.IngredientsAnalysis,
+        ingredients: props.product.IngredientsAnalysis || '',
         inventory: props.product.inventory,
         name: props.product.name,
         pets: props.product.pets,
         price: props.product.price,
-        shipping: props.product.ShippingReturns,
+        shipping: props.product.ShippingReturns || '',
         weight: props.product.weight,
       },
     });

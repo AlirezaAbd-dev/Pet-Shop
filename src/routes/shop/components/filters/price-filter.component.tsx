@@ -32,7 +32,7 @@ const PriceFilter = () => {
       <AccordionContentFilter>
         <SliderDoubleRange
           min={1}
-          max={1000}
+          max={10000}
           value={[minPrice, maxPrice]}
           onValueChange={(values) => {
             setMinPrice(values[0]);
