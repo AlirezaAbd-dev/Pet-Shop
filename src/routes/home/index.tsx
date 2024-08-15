@@ -20,19 +20,26 @@ import HomeTopSellingProducts from './components/home-top-selling-products.compo
 export const dynamic = 'force-dynamic';
 
 const Home = async () => {
-  const [bestSelling, brands, categories, onSales, topCategories, pets] =
-    await getHomePageData();
+  const [
+    bestSelling,
+    brands,
+    categories,
+    onSales,
+    topCategories,
+    pets,
+    banners,
+  ] = await getHomePageData();
 
   return (
     <>
       <HomeLanding />
       <HomeTopCategories products={topCategories} />
       <HomePets pets={pets} />
-      <Banners1 />
+      <Banners1 banners={banners} />
       <HomeSuperSale products={onSales} />
       <HomeCategories categories={categories} />
       <HomeTopSellingProducts products={bestSelling} />
-      <Banners2 />
+      <Banners2 banners={banners} />
       <HomeOurPromise />
       <HomeBrandsWeLove brands={brands} />
       <HomeFAQ />
@@ -47,6 +54,16 @@ export type Pet = {
   id: number;
   species: string;
   image: string;
+};
+
+export type Banner = {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  created_at: string;
+  updated_at: string;
 };
 
 async function getHomePageData() {
@@ -67,6 +84,9 @@ async function getHomePageData() {
       .get<Product[]>('/shop/api/v1/homepage/top-products/')
       .then((res) => res.data),
     axiosInstance.get<Pet[]>('/shop/api/v1/pets/').then((res) => res.data),
+    axiosInstance
+      .get<Banner[]>('/shop/api/v1/homepage/banners/')
+      .then((res) => res.data),
   ]);
 
   const rejectedIndex = results.findIndex((r) => r.status === 'rejected');
@@ -85,7 +105,8 @@ async function getHomePageData() {
     fulfilledResults[3].value,
     fulfilledResults[4].value,
     fulfilledResults[5].value,
-  ] as [Product[], Brand[], Category[], Product[], Product[], Pet[]];
+    fulfilledResults[6].value,
+  ] as [Product[], Brand[], Category[], Product[], Product[], Pet[], Banner[]];
 }
 
 export default Home;
