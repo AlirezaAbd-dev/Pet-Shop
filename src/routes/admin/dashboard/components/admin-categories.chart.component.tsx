@@ -2,18 +2,34 @@ import { ChartData, ChartOptions } from 'chart.js';
 import React, { useMemo } from 'react';
 import { Pie } from 'react-chartjs-2';
 
+import { TimeBaseChartData } from '../admin-dashboard.query';
 import { chartFontFamily } from '../chart-options.constant';
 
-const AdminCategoryChart = () => {
+type Props = { ordersByCategory: TimeBaseChartData };
+
+const AdminCategoryChart = (props: Props) => {
+  const totalOrders = props.ordersByCategory.data.reduce(
+    (acc, item) => acc + item,
+    0,
+  );
+
   const pieData: ChartData<'pie'> = {
     datasets: [
       {
-        data: [-30, 20, 10], // data and labels length should be equal
-        backgroundColor: ['#F765A3', '#A155B9', '#16BFD6'],
-        label: 'Fish', // equality of this field with "labels" field is not important
+        data: props.ordersByCategory.data, // data and labels length should be equal
+        backgroundColor: [
+          '#F765A3',
+          '#A155B9',
+          '#16BFD6',
+          '#162FA6',
+          '#A6BAD6',
+          '#1A92DA',
+          '#A7F5A3',
+        ],
+        label: 'Orders', // equality of this field with "labels" field is not important
       },
     ],
-    labels: ['Fish', 'Dog', 'Cat'],
+    labels: props.ordersByCategory.labels,
   };
 
   const pieOptions: ChartOptions<'pie'> = useMemo(
@@ -47,9 +63,8 @@ const AdminCategoryChart = () => {
   return (
     <section className="w-full bg-white border border-nature-800 mt-8 rounded-xl">
       <div className="py-7 px-14 border-b border-nature-900">
-        <p className="font-semibold text-[#828282]">PRIMARY TEXT</p>
-        <p className="font-medium text-[40px] mt-1">5.987,37</p>
-        <p className="text-[#828282] text-sm mt-1">Secondary text</p>
+        <p className="font-semibold text-[#828282]">ORDERS BY CATEGORY</p>
+        <p className="font-medium text-[40px] mt-1">{totalOrders}</p>
       </div>
       <div className="mt-7 h-[300px] px-8 pb-8">
         <Pie width={400} height={400} options={pieOptions} data={pieData} />

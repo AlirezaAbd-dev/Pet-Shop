@@ -12,6 +12,7 @@ export interface Orders {
   order_note: string;
   order_address: OrderAddress;
   order_items: OrderItem[];
+  receipt: null | string;
 }
 
 export interface OrderAddress {

@@ -5,12 +5,10 @@ import { Pie } from 'react-chartjs-2';
 import { TimeBaseChartData } from '../admin-dashboard.query';
 import { chartFontFamily } from '../chart-options.constant';
 
-type Props = {
-  ordersByProduct: TimeBaseChartData;
-};
+type Props = { ordersByPet: TimeBaseChartData };
 
-const AdminPetsChart = (props: Props) => {
-  const totalOrders = props.ordersByProduct.data.reduce(
+const AdminOrdersByPetChart = (props: Props) => {
+  const totalOrders = props.ordersByPet.data.reduce(
     (acc, item) => acc + item,
     0,
   );
@@ -18,7 +16,7 @@ const AdminPetsChart = (props: Props) => {
   const pieData: ChartData<'pie'> = {
     datasets: [
       {
-        data: props.ordersByProduct.data, // data and labels length should be equal
+        data: props.ordersByPet.data, // data and labels length should be equal
         backgroundColor: [
           '#F765A3',
           '#A155B9',
@@ -31,7 +29,7 @@ const AdminPetsChart = (props: Props) => {
         label: 'Orders', // equality of this field with "labels" field is not important
       },
     ],
-    labels: props.ordersByProduct.labels,
+    labels: props.ordersByPet.labels,
   };
 
   const pieOptions: ChartOptions<'pie'> = useMemo(
@@ -62,11 +60,10 @@ const AdminPetsChart = (props: Props) => {
     }),
     [],
   );
-
   return (
-    <section className="w-full bg-white border border-nature-800 mt-8 rounded-xl">
+    <section className="w-full bg-white border border-nature-800 rounded-xl">
       <div className="py-7 px-14 border-b border-nature-900">
-        <p className="font-semibold text-[#828282]">ORDERS BY PRODUCT</p>
+        <p className="font-semibold text-[#828282]">ORDERS BY PET</p>
         <p className="font-medium text-[40px] mt-1">{totalOrders}</p>
       </div>
       <div className="mt-7 h-[300px] px-8 pb-8">
@@ -76,4 +73,4 @@ const AdminPetsChart = (props: Props) => {
   );
 };
 
-export default AdminPetsChart;
+export default AdminOrdersByPetChart;

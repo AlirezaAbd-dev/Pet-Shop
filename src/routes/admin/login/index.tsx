@@ -1,9 +1,5 @@
-import React from 'react';
-
 import SvgLogoDesktop from '@/assets/svg/logo-signup-desktop.svg';
 import Icon from '@/components/icon';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 
 import AdminLoginForm from './admin-login.form';
 

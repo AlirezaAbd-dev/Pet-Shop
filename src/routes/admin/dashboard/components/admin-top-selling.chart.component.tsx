@@ -1,26 +1,33 @@
 import { ChartData, ChartOptions } from 'chart.js';
-import React, { useMemo } from 'react';
-import { Bar } from 'react-chartjs-2';
+import { useMemo } from 'react';
+import { Line } from 'react-chartjs-2';
 
+import { TimeBaseChartData } from '../admin-dashboard.query';
 import { chartFontFamily } from '../chart-options.constant';
 
-const AdminTopSellingChart = () => {
-  const barData: ChartData<'bar'> = {
+type Props = {
+  pendingOrders: TimeBaseChartData;
+};
+
+const AdminTopSellingChart = (props: Props) => {
+  const totalOrders = props.pendingOrders.data.reduce(
+    (acc, item) => acc + item,
+    0,
+  );
+
+  const lineData: ChartData<'line'> = {
     datasets: [
       {
-        data: [-30, -20, -10, 0, 10, 20], // data and labels length should be equal
+        data: props.pendingOrders.data, // data and labels length should be equal
         borderColor: '#165BAA',
         backgroundColor: '#63ABFD',
-        borderRadius: 12,
-        borderWidth: 2,
-        borderSkipped: false,
-        label: 'Fish', // equality of this field with "labels" field is not important
+        label: 'pending orders', // equality of this field with "labels" field is not important
       },
     ],
-    labels: ['Fish', 'Dog', 'Cat', 'Bird', 'Ar Home', 'Toys'],
+    labels: props.pendingOrders.labels,
   };
 
-  const barOptions: ChartOptions<'bar'> = useMemo(
+  const lineOptions: ChartOptions<'line'> = useMemo(
     () => ({
       responsive: true,
       font: { family: chartFontFamily },
@@ -48,16 +55,14 @@ const AdminTopSellingChart = () => {
     }),
     [],
   );
-
   return (
     <section className="bg-white border border-nature-800 mt-8 rounded-xl">
       <div className="py-7 px-14 border-b border-nature-900">
-        <p className="font-semibold text-[#828282]">PRIMARY TEXT</p>
-        <p className="font-medium text-[40px] mt-1">5.987,37</p>
-        <p className="text-[#828282] text-sm mt-1">Secondary text</p>
+        <p className="font-semibold text-[#828282]">PENDING ORDERS</p>
+        <p className="font-medium text-[40px] mt-1">{totalOrders}</p>
       </div>
       <div className="mt-7 h-[300px] px-8 pb-8">
-        <Bar options={barOptions} data={barData} />
+        <Line options={lineOptions} data={lineData} />
       </div>
     </section>
   );
