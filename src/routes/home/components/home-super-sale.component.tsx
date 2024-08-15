@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper/types';
@@ -10,7 +10,6 @@ import type { Swiper as SwiperType } from 'swiper/types';
 import { Product } from '@/app/(core)/product/[productId]/page';
 import { Button } from '@/components/ui/button';
 
-import { FAKE_PRODUCTS } from '../constants/fake-products.constants';
 import StandardProductCard from './cards/standard-product-card.component';
 
 type HomeSuperSaleProps = {

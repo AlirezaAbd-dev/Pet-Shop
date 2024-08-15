@@ -1,20 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useState } from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Product } from '@/app/(core)/product/[productId]/page';
-import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 
-import { FAKE_PRODUCTS } from '../constants/fake-products.constants';
-import {
-  CATEGORIES_LIST,
-  CategoiesListType,
-} from '../constants/home.constants';
 import StandardProductCard from './cards/standard-product-card.component';
 
 type HomeTopCategoriesProps = {
