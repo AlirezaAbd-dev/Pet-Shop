@@ -21,7 +21,7 @@ const AdminTopSellingChart = (props: Props) => {
         data: props.pendingOrders.data, // data and labels length should be equal
         borderColor: '#165BAA',
         backgroundColor: '#63ABFD',
-        label: 'pending orders', // equality of this field with "labels" field is not important
+        label: 'Dollors', // equality of this field with "labels" field is not important
       },
     ],
     labels: props.pendingOrders.labels,
@@ -59,7 +59,7 @@ const AdminTopSellingChart = (props: Props) => {
     <section className="bg-white border border-nature-800 mt-8 rounded-xl">
       <div className="py-7 px-14 border-b border-nature-900">
         <p className="font-semibold text-[#828282]">PENDING ORDERS</p>
-        <p className="font-medium text-[40px] mt-1">{totalOrders}</p>
+        <p className="font-medium text-[40px] mt-1">${totalOrders}</p>
       </div>
       <div className="mt-7 h-[300px] px-8 pb-8">
         <Line options={lineOptions} data={lineData} />
