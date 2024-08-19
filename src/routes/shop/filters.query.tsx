@@ -10,13 +10,14 @@ import { useFiltersStore } from './store/filters.store';
 const useFiltersQuery = () => {
   const search = useFiltersStore((s) => s.search);
   const category = useFiltersStore((s) => s.category);
+  const pet = useFiltersStore((s) => s.pet);
   const brand = useFiltersStore((s) => s.brand);
   const available = useFiltersStore((s) => s.available);
   const discounted = useFiltersStore((s) => s.discounted);
   const price = useFiltersStore((s) => s.price);
   const sortBy = useFiltersStore((s) => s.sortBy);
 
-  const queryParams = `?price_min=${price.min}&price_max=${price.max}${sortBy ? `&ordering=${sortBy}` : ''}${!!search ? `&search=${search}` : ''}${available ? `&available=${available}` : ''}${discounted ? `&discount=${discounted}` : ''}${category.length > 0 ? `&category=${category.join(',')}` : ''}${brand.length > 0 ? `&brand=${brand.join(',')}` : ''}`;
+  const queryParams = `?price_min=${price.min}&price_max=${price.max}${sortBy ? `&ordering=${sortBy}` : ''}${!!search ? `&search=${search}` : ''}${available ? `&available=${available}` : ''}${discounted ? `&discount=${discounted}` : ''}${category.length > 0 ? `&category=${category.join(',')}` : ''}${pet.length > 0 ? `&pet=${pet.join(',')}` : ''}${brand.length > 0 ? `&brand=${brand.join(',')}` : ''}`;
 
   const query = useQuery({
     queryKey: [queryKeys.FILTERS, queryParams],

@@ -6,6 +6,7 @@ import React, { useEffect } from 'react';
 import { Brand, Category } from '@/app/(core)/shop/page';
 import Footer from '@/components/shared/footer.component';
 
+import { Pet } from '../home';
 import FilterModal from './components/modals/filter';
 import ShopBreadcrumb from './components/shop-breadcrumb.component';
 import ShopFilter from './components/shop-filter.component';
@@ -15,24 +16,31 @@ import { useFiltersStore } from './store/filters.store';
 type ShopProps = {
   brands: Brand[];
   categories: Category[];
+  pets: Pet[];
 };
 
 const Shop = (props: ShopProps) => {
   const searchParams = useSearchParams();
-
   const category = searchParams.get('category');
+  const pet = searchParams.get('pet');
 
   const setFilters = useFiltersStore((s) => s.setFilters);
   const setCategory = useFiltersStore((s) => s.setCategory);
+  const setPet = useFiltersStore((s) => s.setPet);
   const resetFilter = useFiltersStore((s) => s.resetFilter);
 
   useEffect(() => {
     setFilters(props);
-    if (category && typeof +category == 'number') {
+    if (category || pet) {
       resetFilter();
-      setCategory(Number(category));
+      if (category && typeof +category == 'number') {
+        setCategory(Number(category));
+      }
+      if (pet && typeof +pet == 'number') {
+        setPet(Number(pet));
+      }
     }
-  }, [category]);
+  }, [category, pet]);
 
   return (
     <>

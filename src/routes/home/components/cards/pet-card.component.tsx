@@ -17,8 +17,11 @@ const PetCard = (props: Props) => {
 
   return (
     <div
+      onClick={() => {
+        router.push(`/shop?pet=${props.pet.id}`);
+      }}
       className={cn(
-        'flex flex-col items-center gap-3 md:gap-6',
+        'flex flex-col items-center gap-3 md:gap-6 cursor-pointer',
         props.totalLength - 1 === props.index && props.totalLength % 2 !== 0
           ? 'col-span-2'
           : '',

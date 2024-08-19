@@ -4,6 +4,7 @@ import AvailableFilter from './available-filter.component';
 import BrandFilter from './brand-filter.component';
 import CategoryFilter from './category-filter.component';
 import DiscountedFilter from './discounted-filter.component';
+import PetFilter from './pet-filter.component';
 import PriceFilter from './price-filter.component';
 
 const Filters = () => {
@@ -11,6 +12,7 @@ const Filters = () => {
     <AccordionFilter type="multiple" className="mt-3 md:mt-1">
       <PriceFilter />
       <CategoryFilter />
+      <PetFilter />
       <BrandFilter />
       <DiscountedFilter />
       <AvailableFilter />

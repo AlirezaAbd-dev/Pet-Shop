@@ -1,10 +1,12 @@
 import { create } from 'zustand';
 
 import { Brand, Category } from '@/app/(core)/shop/page';
+import { Pet } from '@/routes/home';
 
 type Filter = {
   brands: Brand[];
   categories: Category[];
+  pets: Pet[];
 };
 
 type PriceFilter = { min: number; max: number };
@@ -16,6 +18,8 @@ type UseFilterStore = {
   setPrice: (price?: PriceFilter) => void;
   category: number[];
   setCategory: (category: number) => void;
+  pet: number[];
+  setPet: (pet: number) => void;
   brand: number[];
   setBrand: (brand: number) => void;
   available: boolean;
@@ -31,7 +35,7 @@ type UseFilterStore = {
 };
 
 export const useFiltersStore = create<UseFilterStore>()((set, get) => ({
-  filters: { brands: [], categories: [] },
+  filters: { brands: [], categories: [], pets: [] },
   setFilters(filters) {
     set({ filters });
   },
@@ -42,6 +46,7 @@ export const useFiltersStore = create<UseFilterStore>()((set, get) => ({
       available: false,
       brand: [],
       category: [],
+      pet: [],
       price: { max: 10000, min: 1 },
       search: '',
       sortBy: undefined,
@@ -65,6 +70,20 @@ export const useFiltersStore = create<UseFilterStore>()((set, get) => ({
 
     categories.splice(categoryIndex, 1);
     set({ category: categories });
+  },
+  pet: [],
+  setPet(pet) {
+    const pets = [...get().pet];
+
+    const petIndex = pets.findIndex((c) => c === pet);
+
+    if (petIndex === -1) {
+      pets.push(pet);
+      return set({ pet: pets });
+    }
+
+    pets.splice(petIndex, 1);
+    set({ pet: pets });
   },
   brand: [],
   setBrand(brand) {

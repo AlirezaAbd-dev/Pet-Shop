@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { axiosInstance } from '@/lib/constants/axios';
+import { Pet } from '@/routes/home';
 import Shop from '@/routes/shop';
 
 export type Brand = {
@@ -16,9 +17,9 @@ export type Category = {
 };
 
 const page = async () => {
-  const { brands, categories } = await getFilterData();
+  const { brands, categories, pets } = await getFilterData();
 
-  return <Shop brands={brands} categories={categories} />;
+  return <Shop brands={brands} categories={categories} pets={pets} />;
 };
 
 async function getFilterData() {
@@ -27,6 +28,7 @@ async function getFilterData() {
     axiosInstance
       .get<Category[]>(`/shop/api/v1/categories/`)
       .then((res) => res.data),
+    axiosInstance.get<Pet[]>(`/shop/api/v1/pets/`).then((res) => res.data),
   ]);
 
   const rejected = results.filter((r) => r.status === 'rejected');
@@ -38,9 +40,14 @@ async function getFilterData() {
   const data = results.filter((s) => s.status === 'fulfilled') as [
     PromiseFulfilledResult<Brand[]>,
     PromiseFulfilledResult<Category[]>,
+    PromiseFulfilledResult<Pet[]>,
   ];
 
-  return { brands: data[0].value, categories: data[1].value };
+  return {
+    brands: data[0].value,
+    categories: data[1].value,
+    pets: data[2].value,
+  };
 }
 
 export default page;
