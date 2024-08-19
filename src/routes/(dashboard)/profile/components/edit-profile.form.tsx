@@ -108,7 +108,7 @@ const EditProfileForm = (props: EditProfileFormProps) => {
         <div>
           <label className="text-sm md:text-base">Email</label>
           <div className="flex items-center mt-3 gap-3 rounded-xl bg-nature-600 pr-4">
-            <Input readOnly disabled value={'milad138001@gmail.com'} />
+            <Input readOnly disabled value={props.profile.email} />
             {/* <PenBox
               onClick={() => setIsEditEmailModalOpen(true)}
               className="text-secondary-300 w-5 h-5 cursor-pointer"

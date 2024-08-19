@@ -1,3 +1,4 @@
+import { axiosInstance } from '@/lib/constants/axios';
 import ProductDetails from '@/routes/product-details';
 
 export type Product = {
@@ -31,6 +32,7 @@ export type Product = {
 };
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const page = async (props: { params: { productId: string } }) => {
   const data = await getSingleProduct(props.params.productId);
@@ -39,16 +41,14 @@ const page = async (props: { params: { productId: string } }) => {
 };
 
 async function getSingleProduct(productId: string) {
-  const res = await fetch(
-    process.env.NEXT_PUBLIC_BASE_URL + `/shop/api/v1/products/${productId}`,
-    { method: 'GET', next: { revalidate: 0 } },
-  );
+  const res = await axiosInstance
+    .get<Product>(`/shop/api/v1/products/${productId}`)
+    .then((res) => res.data)
+    .catch(() => {
+      throw new Error('error');
+    });
 
-  if (!res.ok) {
-    throw new Error('error');
-  }
-
-  return (await res.json()) as Product;
+  return res;
 }
 
 export default page;

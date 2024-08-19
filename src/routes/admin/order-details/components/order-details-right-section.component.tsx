@@ -41,6 +41,7 @@ const OrderDetailsRightSection = (props: Props) => {
           setSeleectedStatus(value);
         }}
         data={[
+          { label: 'shipped', value: 'shipped' },
           { label: 'delivered', value: 'delivered' },
           { label: 'cancelled', value: 'cancelled' },
         ]}

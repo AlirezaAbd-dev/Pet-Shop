@@ -6,6 +6,7 @@ import CategoryFilter from './category-filter.component';
 import DiscountedFilter from './discounted-filter.component';
 import PetFilter from './pet-filter.component';
 import PriceFilter from './price-filter.component';
+import PromotionFilter from './promotion-filter.component';
 
 const Filters = () => {
   return (
@@ -15,6 +16,7 @@ const Filters = () => {
       <PetFilter />
       <BrandFilter />
       <DiscountedFilter />
+      <PromotionFilter />
       <AvailableFilter />
     </AccordionFilter>
   );

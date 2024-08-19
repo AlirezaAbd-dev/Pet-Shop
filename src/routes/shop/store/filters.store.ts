@@ -26,11 +26,12 @@ type UseFilterStore = {
   setAvailable: (available: boolean) => void;
   discounted: boolean;
   setDiscounted: (available: boolean) => void;
+  promotion: boolean;
+  setPromotion: (available: boolean) => void;
   search: string;
   setSearch: (search: string) => void;
   sortBy?: string;
   setSortBy: (sortBy?: string) => void;
-
   resetFilter: () => void;
 };
 
@@ -44,6 +45,8 @@ export const useFiltersStore = create<UseFilterStore>()((set, get) => ({
   resetFilter() {
     set({
       available: false,
+      discounted: false,
+      promotion: false,
       brand: [],
       category: [],
       pet: [],
@@ -106,6 +109,10 @@ export const useFiltersStore = create<UseFilterStore>()((set, get) => ({
   discounted: false,
   setDiscounted(discounted) {
     set({ discounted });
+  },
+  promotion: false,
+  setPromotion(promotion) {
+    set({ promotion });
   },
   search: '',
   setSearch(search) {
