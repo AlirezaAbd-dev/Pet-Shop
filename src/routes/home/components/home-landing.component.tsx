@@ -11,9 +11,11 @@ import SvgPetFingersMobile from '@/assets/svg/pet-fingers-mobile.svg';
 import Icon from '@/components/icon';
 import ShopSpecifications from '@/components/shared/shop-specifications.component';
 import { Button } from '@/components/ui/button';
+import UseWindowSize from '@/hooks/use-window-size.hook';
 
 const HomeLanding = () => {
   const router = useRouter();
+  const { width } = UseWindowSize();
 
   return (
     <main className="px-5 md:px-20 pt-6 md:pt-4">
@@ -33,8 +35,7 @@ const HomeLanding = () => {
                 <SvgMiniPetMobile className="inline md:hidden -mt-2 md:mt-0 " />
                 <SvgMiniPetDesktop className="hidden md:inline" />
               </Icon>{' '}
-              best products <br />
-              for pets.
+              best products {width && width > 1550 && <br />} for pets.
             </div>
             <div className="flex gap-7 md:gap-8 mt-1 md:mt-4">
               <Button
