@@ -10,7 +10,7 @@ type TopSellingProductCardProps = Pick<
 
 const TopSellingProductCard = (props: TopSellingProductCardProps) => {
   return (
-    <div className="flex flex-col items-center rounded-xl md:rounded-3xl bg-[#FAFAFA] p-4 md:p-6 md:min-w-[285px]">
+    <div className="flex flex-col items-center rounded-xl md:rounded-3xl bg-[#FAFAFA] p-4 md:p-6 md:h-full md:min-w-[285px]">
       <img
         src={props.image_urls[0]}
         alt={props.name}

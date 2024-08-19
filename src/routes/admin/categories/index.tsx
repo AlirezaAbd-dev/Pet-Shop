@@ -20,7 +20,7 @@ const AdminCategories = () => {
         <DeleteCategoryModal />
         <section className="bg-white border border-nature-800 rounded-2xl p-6">
           <p className="text-black font-bold text-xl">
-            {categoryEditMode ? 'Edit acategory' : 'Create a new category'}
+            {categoryEditMode ? 'Edit category' : 'Create a new category'}
           </p>
           <AddCategoryForm />
         </section>

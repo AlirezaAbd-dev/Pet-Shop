@@ -17,5 +17,8 @@ export const adminQueryKeys = {
   DELETE_PRODUCT: 'admin-delete-product',
   BRANDS: 'admin-brands',
   PETS: 'admin-pets',
+  ADD_PET: 'admin-add-pet',
+  EDIT_PET: 'admin-edit-pet',
+  DELETE_PET: 'admin-delete-pet',
   DASHBOARD: 'admin-dashboard',
 };

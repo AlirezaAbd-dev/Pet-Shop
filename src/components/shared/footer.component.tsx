@@ -30,9 +30,10 @@ const Footer = () => {
 
       <div className="md:flex md:justify-between md:mt-8">
         <p className="font-nunito text-sm md:text-base text-white mt-6 md:mt-0 md:max-w-[590px]">
-          Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut scing
-          elit. Ut Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut
-          scing elit. Ut{' '}
+          At US Pet Supplies, we&apos;re dedicated to providing quality products
+          and supplies for your furry, feathered, and scaly friends. From
+          nutrition to toys, we have everything you need to keep your pets happy
+          and healthy
         </p>
 
         <ul className="flex flex-col md:flex-row gap-4 md:gap-6 mt-6 md:mt-0 text-white text-sm md:text-base font-nunito">
@@ -93,7 +94,7 @@ const HowToContact = () => {
           <SvgPhoneCallDesktop className="hidden md:block" />
         </Icon>
         <p className="hidden md:inline text-white font-nunito font-bold">
-          +1-245-234-211
+          +971 52 369 3866
         </p>
       </span>
       <span className="flex justify-center items-center w-12 h-12 md:w-[67px] md:h-[67px] border border-white rounded-full">

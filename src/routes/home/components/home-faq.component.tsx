@@ -31,46 +31,45 @@ const HomeFAQ = () => {
         >
           <AccordionItem value="1">
             <AccordionTrigger>
-              What time can I drop off and pick up my dog?
+              What types of products do you offer for pets?
             </AccordionTrigger>
             <AccordionContent>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&aposs standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book
+              We offer a wide variety of pet products, ranging from high-quality
+              pet foods and treats to toys, grooming supplies, bedding, and
+              accessories. Whether you’re looking for nutritious meals, fun
+              toys, or essential care items, we have everything your pet needs
+              under one roof.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="2">
             <AccordionTrigger>
-              What time can I drop off and pick up my dog?
+              Do you offer discounts for bulk purchases?
             </AccordionTrigger>
             <AccordionContent>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&aposs standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book
+              Yes, we provide discounts for bulk purchases! If you&apos;re
+              buying in large quantities, please ask our staff about current
+              bulk pricing and discounts.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="3">
             <AccordionTrigger>
-              What time can I drop off and pick up my dog?
+              Can I order products online and pick them up in-store?
             </AccordionTrigger>
             <AccordionContent>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&aposs standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book
+              Absolutely! You can order any product online and choose the
+              in-store pickup option at checkout. We’ll have your items ready
+              for pickup within two hours during regular business hours.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="4">
             <AccordionTrigger>
-              What time can I drop off and pick
+              What brands of pet food do you carry?
             </AccordionTrigger>
             <AccordionContent>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&aposs standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book
+              We carry a wide range of high-quality pet food brands, including
+              Royal Canin, Hill&apos;s Science Diet, Blue Buffalo, and more. If
+              you’re looking for a specific brand, feel free to ask, and we’ll
+              help you find it.
             </AccordionContent>
           </AccordionItem>
         </Accordion>

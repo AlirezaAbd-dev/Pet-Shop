@@ -32,18 +32,19 @@ const AboutusFounder = () => {
         </div>
         <div className="w-full border-t border-nature-900 mt-4 md:mt-6"></div>
         <p className="text-sm mt-4 md:mt-6 md:text-base leading-6 md:leading-7">
-          Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut scing
-          elit. Ut Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut
-          scing elit. Lorem ipsum dolor sit amet, consec tetur adipi scing elit.
-          Ut scing elit. Ut Lorem ipsum dolor sit amet, consec tetur adipi scing
-          elit. Ut scing elit. Lorem ipsum dolor sit amet, consec tetur adipi
-          scing elit. Ut scing elit. Ut Lorem ipsum dolor sit amet, consec tetur
-          adipi scing elit. Ut scing elit.{' '}
+          In 1999, Dr. Pejman Sedghani, while he was a veterinary doctorate
+          student and an intern at a veterinary clinic, noticed the need for
+          pets in food and related products, and decided to import pet products
+          with the help of his father, who owned a trading company. He became
+          the first importer of these products and expanded this industry in
+          this country .Over the years, by obtaining dozens of representatives
+          from all over the world, including China, Holland, Germany, etc., it
+          was able to have a large share of the market in the country.
         </p>
       </section>
       <img
         src="/static/milad.png"
-        alt="milad"
+        alt="pet-shop founder"
         className="rounded-b-lg md:rounded-l-2xl md:rounded-br-none md:h-[333px]"
       />
     </main>

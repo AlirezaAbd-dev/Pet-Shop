@@ -61,7 +61,7 @@ const HomeTopSellingProducts = (props: HomeTopSellingProductsProps) => {
           slidesPerView={3}
         >
           {props.products.map((p) => (
-            <SwiperSlide key={p.id}>
+            <SwiperSlide key={p.id} className="h-[358px]">
               <TopSellingProductCard {...p} />
             </SwiperSlide>
           ))}

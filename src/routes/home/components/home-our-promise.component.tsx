@@ -24,9 +24,11 @@ const HomeOurPromise = () => {
           <span className="text-primary-500"> humans</span>
         </p>
         <p className="mx-2 text-sm text-center mt-3 md:mt-6 mmd:font-nunito md:text-xl md:max-w-[469px]">
-          Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut scing
-          elit. Ut Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut
-          scing elit. Ut
+          At uspetsupplies, we believe in the power of happiness—both for your
+          pets and for you. That&apos;s why we commit to offering only the
+          highest quality products, crafted with care and backed by years of
+          expertise. Our mission is to ensure that every interaction with us
+          leaves you and your furry companions with a smile.
         </p>
         <Button
           onClick={() => {
