@@ -18,6 +18,7 @@ import HomeTopCategories from './components/home-top-categories.component';
 import HomeTopSellingProducts from './components/home-top-selling-products.component';
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const Home = async () => {
   const [
