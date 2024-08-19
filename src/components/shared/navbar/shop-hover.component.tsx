@@ -43,7 +43,7 @@ const ShopHover = (props: Props) => {
             </Icon>
           </li>
         </HoverCardTrigger>
-        <HoverCardContent className="flex flex-col bg-white md:ml-10 md:mt-5 rounded-xl border-none w-[208px] p-3 overflow-hidden">
+        <HoverCardContent className="flex flex-col bg-white md:ml-10 md:mt-5 rounded-xl border-none w-[208px] max-h-[280px] p-3 overflow-hidden overflow-y-auto no-scrollbar">
           {props.categories?.map((item) => (
             <Link
               key={item.id}

@@ -1,9 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { Combobox } from '@/components/ui/combobox';
 import LoadingSpinner from '@/components/ui/loading-spinner';
-import { Slider } from '@/components/ui/slider';
 import { OrderStatus } from '@/routes/(dashboard)/orders/constants/orders.constants';
 
 import OrderDetailsBreadcrumb from './components/order-details-breadcrumb.component';
