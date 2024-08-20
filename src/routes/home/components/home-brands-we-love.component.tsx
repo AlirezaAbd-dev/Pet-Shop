@@ -8,8 +8,12 @@ import { Brand } from '@/app/(core)/shop/page';
 
 const Slide = (props: { url: string }) => {
   return (
-    <div className="flex items-center justify-center h-[50px] md:h-[83] max-h-[50px] md:max-h-[83px]">
-      <img src={props.url} alt={props.url} className="h-full" />
+    <div className="flex items-center justify-center h-full">
+      <img
+        src={props.url}
+        alt={props.url}
+        className="max-h-[50px] md:max-h-full"
+      />
     </div>
   );
 };
@@ -24,7 +28,7 @@ const HomeBrandsWeLove = (props: HomeBrandsWeLoveProps) => {
       </p>
       <Swiper
         modules={[Autoplay, FreeMode]}
-        className="mt-5 md:hidden"
+        className="mt-5 px-5 md:hidden"
         autoplay={{ delay: 2000 }}
         loop
         freeMode
@@ -38,7 +42,7 @@ const HomeBrandsWeLove = (props: HomeBrandsWeLoveProps) => {
         ))}
       </Swiper>
 
-      <div className="hidden md:flex gap-20 justify-between px-20 mt-8">
+      <div className="hidden md:flex gap-20 justify-between items-center px-20 mt-8">
         {props.brands.map((item) => (
           <Slide key={item.id} url={item.logo} />
         ))}
