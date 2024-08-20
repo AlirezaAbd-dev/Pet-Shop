@@ -3,7 +3,7 @@ import React from 'react';
 
 import ResetPassword from '@/routes/(registeration)/reset-password';
 
-export const metadate: Metadata = {
+export const metadata: Metadata = {
   title: 'USpet - reset password',
 };
 const page = () => {

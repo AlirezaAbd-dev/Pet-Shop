@@ -3,7 +3,7 @@ import React from 'react';
 
 import EmailVerification from '@/routes/(registeration)/email-verification';
 
-export const metadate: Metadata = {
+export const metadata: Metadata = {
   title: 'USpet - Email verification',
 };
 
