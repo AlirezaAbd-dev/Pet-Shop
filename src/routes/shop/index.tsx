@@ -23,15 +23,17 @@ const Shop = (props: ShopProps) => {
   const searchParams = useSearchParams();
   const category = searchParams.get('category');
   const pet = searchParams.get('pet');
+  const promotion = searchParams.get('promotion');
 
   const setFilters = useFiltersStore((s) => s.setFilters);
   const setCategory = useFiltersStore((s) => s.setCategory);
   const setPet = useFiltersStore((s) => s.setPet);
+  const setPromotion = useFiltersStore((s) => s.setPromotion);
   const resetFilter = useFiltersStore((s) => s.resetFilter);
 
   useEffect(() => {
     setFilters(props);
-    if (category || pet) {
+    if (category || pet || promotion) {
       resetFilter();
       if (category && typeof +category == 'number') {
         setCategory(Number(category));
@@ -39,8 +41,11 @@ const Shop = (props: ShopProps) => {
       if (pet && typeof +pet == 'number') {
         setPet(Number(pet));
       }
+      if (promotion) {
+        if (promotion === 'true') setPromotion(Boolean(promotion));
+      }
     }
-  }, [category, pet]);
+  }, [category, pet, promotion]);
 
   return (
     <>

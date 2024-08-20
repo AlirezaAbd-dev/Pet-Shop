@@ -23,7 +23,7 @@ const PetCard = (props: Props) => {
       className={cn(
         'flex flex-col items-center gap-3 md:gap-6 cursor-pointer',
         props.totalLength - 1 === props.index && props.totalLength % 2 !== 0
-          ? 'col-span-2'
+          ? 'col-span-2 md:col-span-1'
           : '',
       )}
     >

@@ -1,8 +1,5 @@
 'use client';
 
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
 import { Pet } from '..';
 import PetCard from './cards/pet-card.component';
 
@@ -16,18 +13,7 @@ const HomePets = (props: Props) => {
       <p className="font-nunito font-black text-xl md:text-4xl text-center">
         Shop by Animal
       </p>
-      <Swiper
-        className="pt-5 md:pt-14 hidden md:flex"
-        spaceBetween={32}
-        slidesPerView={5}
-      >
-        {props.pets.map((c, index) => (
-          <SwiperSlide key={c.id}>
-            <PetCard pet={c} index={index} totalLength={props.pets.length} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <section className="mt-8 grid grid-cols-2 md:hidden justify-items-center gap-y-8">
+      <section className="mt-8 grid grid-cols-2 md:grid-cols-5 md:pt-14 justify-items-center gap-y-8 md:gap-y-24">
         {props.pets.map((c, index) => (
           <PetCard
             key={c.id}

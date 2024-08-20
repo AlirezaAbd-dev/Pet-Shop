@@ -1,10 +1,6 @@
 'use client';
 
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
 import { Category } from '@/app/(core)/shop/page';
-import { cn } from '@/lib/utils';
 
 import CategoryCard from './cards/category-card.component';
 
@@ -18,22 +14,8 @@ const HomeCategories = (props: HomeCategoriesProps) => {
       <p className="font-nunito font-black text-xl md:text-4xl text-center">
         Category
       </p>
-      <Swiper
-        className="mt-5 md:mt-8 hidden md:flex"
-        spaceBetween={32}
-        slidesPerView={5}
-      >
-        {props.categories.map((c, index) => (
-          <SwiperSlide key={c.id}>
-            <CategoryCard
-              category={c}
-              index={index}
-              totalLength={props.categories.length}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <section className="mt-5 grid grid-cols-2 md:hidden justify-items-center gap-y-8">
+
+      <section className="mt-5 md:mt-8 grid grid-cols-2 md:grid-cols-5 justify-items-center gap-y-8 md:gap-y-24">
         {props.categories.map((c, index) => (
           <CategoryCard
             key={c.id}
