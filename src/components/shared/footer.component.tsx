@@ -61,12 +61,6 @@ const Footer = () => {
               Blog
             </li>
           </Link>
-          <Link href={'#'}>
-            <li className="flex items-center gap-2 cursor-pointer">
-              <span className="md:hidden w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-              Privacy
-            </li>
-          </Link>
         </ul>
       </div>
 
@@ -88,7 +82,10 @@ const Footer = () => {
 const HowToContact = () => {
   return (
     <>
-      <span className="flex justify-center items-center md:gap-2 w-12 h-12 md:w-[213px] md:h-[67px] border border-white rounded-full">
+      <a
+        href="Tel:971-52-369-3866"
+        className="flex justify-center items-center md:gap-2 w-12 h-12 md:w-[213px] md:h-[67px] border border-white rounded-full"
+      >
         <Icon>
           <SvgPhoneCallMobile className="md:hidden" />
           <SvgPhoneCallDesktop className="hidden md:block" />
@@ -96,25 +93,34 @@ const HowToContact = () => {
         <p className="hidden md:inline text-white font-nunito font-bold">
           +971 52 369 3866
         </p>
-      </span>
-      <span className="flex justify-center items-center w-12 h-12 md:w-[67px] md:h-[67px] border border-white rounded-full">
+      </a>
+      <a
+        href="https://wa.me/+989121249686"
+        className="flex justify-center items-center w-12 h-12 md:w-[67px] md:h-[67px] border border-white rounded-full"
+      >
         <Icon>
           <SvgWhatsup className="md:hidden" />
           <SvgWhatsupDesktop className="hidden md:block" />
         </Icon>
-      </span>
-      <span className="flex justify-center items-center w-12 h-12 md:w-[67px] md:h-[67px] border border-white rounded-full">
+      </a>
+      <a
+        href="https://t.me/+989121249686"
+        className="flex justify-center items-center w-12 h-12 md:w-[67px] md:h-[67px] border border-white rounded-full"
+      >
         <span>
           <SvgTelegram className="md:hidden" />
           <SvgTelegramDesktop className="hidden md:block" />
         </span>
-      </span>
-      <span className="flex justify-center items-center w-12 h-12 md:w-[67px] md:h-[67px] border border-white rounded-full">
+      </a>
+      <a
+        href="mailto:supplies@gmail.com"
+        className="flex justify-center items-center w-12 h-12 md:w-[67px] md:h-[67px] border border-white rounded-full"
+      >
         <Icon>
           <SvgEmail className="md:hidden" />
           <SvgEmailDesktop className="hidden md:block" />
         </Icon>
-      </span>
+      </a>
     </>
   );
 };

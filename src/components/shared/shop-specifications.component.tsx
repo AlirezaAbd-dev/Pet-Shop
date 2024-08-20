@@ -1,15 +1,11 @@
-import React from 'react';
-
+import SvgMedal36 from '@/assets/svg/medal-36.svg';
+import SvgMoney36 from '@/assets/svg/money-36.svg';
+import SvgShield36 from '@/assets/svg/shield-36.svg';
+import SvgStarOutlined36 from '@/assets/svg/start-outlined-36.svg';
 import { cn } from '@/lib/utils';
 
 import SvgPhoneCall from '@icons/Phone, Call.svg';
-import SvgStarDesktop from '@icons/Star-desktop.svg';
-import SvgDeliveryTruckDesktop from '@icons/delivery-truck-fast-desktop.svg';
 import SvgDeliveryTruck from '@icons/delivery-truck-fast.svg';
-import SvgMessageChatMoreDesktop from '@icons/message-chat-more-dots_2-desktop.svg';
-import SvgMessageChatMore from '@icons/message-chat-more-dots_2.svg';
-import SvgPhoneCallDesktop from '@icons/phone-call-desktop.svg';
-import SvgShopDesktop from '@icons/shop-desktop.svg';
 import SvgShop from '@icons/shop.svg';
 import SvgStar from '@icons/star.svg';
 
@@ -27,68 +23,56 @@ const ShopSpecifications = (props: ShopSecificationsProps) => {
         props.className,
       )}
     >
-      <li className="flex gap-3 md:items-center">
+      <li className="flex md:flex-col gap-3 md:items-center">
         <Icon>
-          <SvgDeliveryTruck className="md:hidden w-8 h-8" />
-          <SvgDeliveryTruckDesktop className="hidden md:block w-9 h-9" />
+          <SvgMedal36 className="md:hidden" />
+          <SvgMedal36 className="hidden md:block" />
         </Icon>
         <div className="flex flex-col gap-2">
-          <p className="text-sm md:text-base">Same day delivery</p>
-          <p className="text-sm md:text-base font-semibold">
-            for order beore 11:00h!
+          <p className="text-sm md:text-base md:text-center">Experience</p>
+          <p className="text-sm md:text-base font-semibold md:text-center">
+            25+ years in pet supplies
           </p>
         </div>
       </li>
       <div className="hidden md:block border-l border-secondary-100 h-[31px]"></div>
-      <li className="flex gap-3 md:items-center">
+      <li className="flex gap-3 md:flex-col md:items-center">
         <Icon>
-          <SvgShop className="md:hidden w-8 h-8" />
-          <SvgShopDesktop className="hidden md:block w-9 h-9" />
+          <SvgShield36 className="md:hidden" />
+          <SvgShield36 className="hidden md:block" />
         </Icon>
         <div className="flex flex-col gap-2">
-          <p className="text-sm md:text-base">Free pick up from</p>
-          <p className="text-sm md:text-base font-semibold">
-            1000S 8th Avenue, NY!
-          </p>
-        </div>
-      </li>
-      <div className="hidden md:block border-l border-secondary-100 h-[31px]"></div>
-
-      <li className="flex gap-3 md:items-center">
-        <Icon>
-          <SvgStar className="md:hidden w-8 h-8" />
-          <SvgStarDesktop className="hidden md:block w-9 h-9" />
-        </Icon>
-        <div className="flex flex-col gap-2">
-          <p className="text-sm md:text-base">Rating 4.8/5!</p>
-          <p className="text-sm md:text-base font-semibold">
-            from verified users
+          <p className="text-sm md:text-base md:text-center">Materials</p>
+          <p className="text-sm md:text-base font-semibold md:text-center">
+            Top-tier materials only
           </p>
         </div>
       </li>
       <div className="hidden md:block border-l border-secondary-100 h-[31px]"></div>
 
-      <li className="flex gap-3 md:items-center">
+      <li className="flex gap-3 md:flex-col md:items-center">
         <Icon>
-          <SvgPhoneCall className="md:hidden w-8 h-8" />
-          <SvgPhoneCallDesktop className="hidden md:block w-9 h-9" />
+          <SvgMoney36 className="md:hidden" />
+          <SvgMoney36 className="hidden md:block" />
         </Icon>
         <div className="flex flex-col gap-2">
-          <p className="text-sm md:text-base">Call us in 09:00-16:00h</p>
-          <p className="text-sm md:text-base font-semibold">1-800-356-8933</p>
+          <p className="text-sm md:text-base md:text-center">Prices</p>
+          <p className="text-sm md:text-base font-semibold md:text-center">
+            Competitive prices, premium quality
+          </p>
         </div>
       </li>
       <div className="hidden md:block border-l border-secondary-100 h-[31px]"></div>
 
-      <li className="flex gap-3 md:items-center">
+      <li className="flex gap-3 md:flex-col md:items-center">
         <Icon>
-          <SvgMessageChatMore className="md:hidden w-8 h-8" />
-          <SvgMessageChatMoreDesktop className="hidden md:block w-9 h-9" />
+          <SvgStarOutlined36 className="md:hidden" />
+          <SvgStarOutlined36 className="hidden md:block" />
         </Icon>
         <div className="flex flex-col gap-2">
-          <p className="text-sm md:text-base">Message us,</p>
-          <p className="text-sm md:text-base font-semibold">
-            respond same day!
+          <p className="text-sm md:text-base md:text-center">Quality</p>
+          <p className="text-sm md:text-base font-semibold md:text-center">
+            Uncompromising quality assured
           </p>
         </div>
       </li>

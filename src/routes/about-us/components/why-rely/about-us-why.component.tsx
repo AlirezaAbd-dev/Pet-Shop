@@ -15,10 +15,12 @@ const AboutUsWhy = () => {
           Why rely
           <br className="hidden md:block" /> on us?
         </p>
-        <p className="mt-2 md:mt-4 text-sm md:max-w-[470px] md:text-xl">
-          Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut scing
-          elit. Ut Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut
-          scing elit. Ut
+        <p className="mt-2 md:mt-4 text-sm md:max-w-[580px] md:text-xl">
+          At USPetSupplies, we care about your pets as much as you do. We offer
+          a wide range of high-quality products, from healthy food to fun toys,
+          all chosen with your pets in mind. Our friendly and knowledgeable team
+          is here to help you find exactly what your pets need. Trust
+          USPetSupplies for everything your pets deserve.
         </p>
         <img
           src="/static/about-us-why-cat.png"

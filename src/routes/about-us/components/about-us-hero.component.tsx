@@ -8,9 +8,10 @@ const AboutUsHero = () => {
           About us
         </p>
         <p className="hidden md:block mt-2 text-lg leading-8 max-w-[893px] text-center">
-          Lorem ipsum dolor sit amet, consec Lorem ipsum dolor sit amet, consec
-          tetur adipi scing elit. Ut scing elittetur adipi scing elit. Ut scing
-          elit
+          At US Pet Supplies, we&apos;re dedicated to providing quality products
+          and supplies for your furry, feathered, and scaly friends. From
+          nutrition to toys, we have everything you need to keep your pets happy
+          and healthy
         </p>
       </div>
     </main>
