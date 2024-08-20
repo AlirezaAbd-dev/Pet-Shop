@@ -18,6 +18,7 @@ const queryKeys = {
   DELETE_SAVED_PRODUCT: 'delete-saved-product',
   CATEGORIES: 'categories',
   SEARCH: 'search',
+  CONTACT_US: 'contact-us',
 };
 
 export default queryKeys;
