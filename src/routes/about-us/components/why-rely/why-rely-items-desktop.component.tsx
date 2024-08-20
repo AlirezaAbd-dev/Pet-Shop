@@ -1,22 +1,13 @@
-import React from 'react';
-
-import SvgCatWhite24 from '@/assets/svg/cat-white-24.svg';
-import SvgCatWhite36 from '@/assets/svg/cat-white-36.svg';
-import SvgCheckmarkWhite24 from '@/assets/svg/checkmark-white-24.svg';
-import SvgCheckmarkWhite36 from '@/assets/svg/checkmark-white-36.svg';
-import SvgDeliveryWhite24 from '@/assets/svg/delivery-white-24.svg';
-import SvgDeliveryWhite36 from '@/assets/svg/delivery-white-36.svg';
-import SvgHomeWhite24 from '@/assets/svg/home-white-24.svg';
-import SvgHomeWhite36 from '@/assets/svg/home-white-36.svg';
-
 const WhyRelyItemsDesktop = () => {
   return (
     <section className="hidden md:flex gap-8">
       <div>
         <div className="bg-nature-600 rounded-xl p-4">
           <div className="flex justify-center items-center w-12 h-12 md:w-[61px] md:h-[61px] rounded-lg bg-[#058441]">
-            <SvgCheckmarkWhite24 className="md:hidden" />
-            <SvgCheckmarkWhite36 className="hidden md:block" />
+            <img
+              src="/static/achievements/professional-vets.png"
+              className="w-6 h-6 md:w-8 md:h-8 fill-white"
+            />
           </div>
           <p className="mt-4 font-black font-nunito md:text-lg">
             Ensuring the quality of
@@ -29,8 +20,10 @@ const WhyRelyItemsDesktop = () => {
         </div>
         <div className="bg-nature-600 rounded-xl p-4 mt-6">
           <div className="flex justify-center items-center w-12 h-12 md:w-[61px] md:h-[61px] rounded-lg bg-[#2CC0FE]">
-            <SvgDeliveryWhite24 className="md:hidden" />
-            <SvgDeliveryWhite36 className="hidden md:block" />
+            <img
+              src="/static/achievements/protection.png"
+              className="w-6 h-6 md:w-8 md:h-8 fill-white"
+            />
           </div>
           <p className="mt-4 font-black font-nunito md:text-lg">
             Fast delivery of
@@ -45,8 +38,10 @@ const WhyRelyItemsDesktop = () => {
       <div className="mt-9">
         <div className="bg-nature-600 rounded-xl p-4">
           <div className="flex justify-center items-center w-12 h-12 md:w-[61px] md:h-[61px] rounded-lg bg-[#FF8413]">
-            <SvgHomeWhite24 className="md:hidden" />
-            <SvgHomeWhite36 className="hidden md:block" />
+            <img
+              src="/static/achievements/awards-win.png"
+              className="w-6 h-6 md:w-8 md:h-8 fill-white"
+            />
           </div>
           <p className="mt-4 font-black font-nunito md:text-lg">
             Reasonable cost of
@@ -59,8 +54,10 @@ const WhyRelyItemsDesktop = () => {
         </div>
         <div className="bg-nature-600 rounded-xl p-4 mt-6">
           <div className="flex justify-center items-center w-12 h-12 md:w-[61px] md:h-[61px] rounded-lg bg-[#B9112B]">
-            <SvgCatWhite24 className="md:hidden" />
-            <SvgCatWhite36 className="hidden md:block" />
+            <img
+              src="/static/achievements/happy-clients.png"
+              className="w-6 h-6 md:w-8 md:h-8 fill-white"
+            />
           </div>
           <p className="mt-4 font-black font-nunito md:text-lg">
             Variety of products
