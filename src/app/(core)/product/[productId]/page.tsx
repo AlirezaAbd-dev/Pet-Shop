@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+
 import { axiosInstance } from '@/lib/constants/axios';
 import ProductDetails from '@/routes/product-details';
 
@@ -33,6 +35,18 @@ export type Product = {
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { productId: string };
+}): Promise<Metadata> => {
+  const data = await getSingleProduct(params.productId);
+
+  return {
+    title: `USpet - ${data.name}`,
+  };
+};
 
 const page = async (props: { params: { productId: string } }) => {
   const data = await getSingleProduct(props.params.productId);

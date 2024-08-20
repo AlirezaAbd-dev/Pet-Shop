@@ -1,11 +1,21 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import { Button } from '@/components/ui/button';
 
 const AboutUsWhatWeProvide = () => {
+  const router = useRouter();
+
   return (
     <main className="px-5 md:px-20 mt-16 md:mt-24 flex flex-col md:flex-row gap-6">
-      <section className="bg-[#FF782B] h-[337px] md:h-[261px] rounded-lg md:rounded-2xl w-full overflow-hidden">
+      <section
+        onClick={() => {
+          router.push('/shop');
+        }}
+        className="bg-[#FF782B] h-[337px] md:h-[261px] rounded-lg md:rounded-2xl w-full overflow-hidden cursor-pointer"
+      >
         <div className="relative h-full bg-about-us-paws-orange-mobile md:bg-about-us-paws-orange-desktop bg-cover">
           <div className="absolute bottom-0 md:right-0 w-full flex justify-center md:justify-end">
             <img
@@ -33,7 +43,12 @@ const AboutUsWhatWeProvide = () => {
           </div>
         </div>
       </section>
-      <section className="bg-[#774AD8] h-[337px] md:h-[261px] rounded-lg md:rounded-2xl w-full overflow-hidden">
+      <section
+        onClick={() => {
+          router.push('/shop');
+        }}
+        className="bg-[#774AD8] h-[337px] md:h-[261px] rounded-lg md:rounded-2xl w-full overflow-hidden cursor-pointer"
+      >
         <div className="relative h-full bg-about-us-paws-orange-mobile md:bg-about-us-paws-orange-desktop bg-cover">
           <div className="absolute bottom-0 md:right-6 w-full flex justify-center md:justify-end">
             <img

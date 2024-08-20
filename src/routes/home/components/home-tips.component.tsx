@@ -23,7 +23,7 @@ const HomeBlog = (props: Props) => {
         modules={[Pagination]}
         pagination={{
           clickable: true,
-          el: '.tips-pagination',
+          el: '.blog-pagination',
           type: 'bullets',
           bulletClass: 'swiper-pagination-bullet',
           bulletActiveClass: 'swiper-pagination-bullet-active',
@@ -37,7 +37,7 @@ const HomeBlog = (props: Props) => {
       </Swiper>
 
       <div className="md:hidden">
-        <div className="tips-pagination"></div>
+        <div className="blog-pagination"></div>
       </div>
 
       <div className="hidden md:grid md:grid-cols-3 gap-6 mt-8 px-20">

@@ -12,7 +12,7 @@ const AboutusFounder = () => {
         <div className="flex flex-col md:flex-row md:justify-between md:w-full">
           <div>
             <p className="text-lg md:text-[28px] font-black font-nunito">
-              Milad Saeedi
+              Dr. Pejman Sedghani
             </p>
             <p className="mt-2 md:text-2xl">
               Founder of{' '}
@@ -20,14 +20,20 @@ const AboutusFounder = () => {
             </p>
           </div>
           <div className="flex gap-2 md:gap-4 mt-4 md:mt-0">
-            <span className="w-9 h-9 md:w-[54px] md:h-[54px] md:rounded-lg rounded-[4px] bg-secondary-500 flex justify-center items-center">
+            <a
+              href="mailto:supplies@gmail.com"
+              className="w-9 h-9 md:w-[54px] md:h-[54px] md:rounded-lg rounded-[4px] bg-secondary-500 flex justify-center items-center"
+            >
               <SvgSms24 className="md:hidden" />
               <SvgSms40 className="hidden md:block" />
-            </span>
-            <span className="w-9 h-9 md:w-[54px] md:h-[54px] md:rounded-lg rounded-[4px] bg-secondary-500 flex justify-center items-center">
+            </a>
+            <a
+              href="https://www.linkedin.com/in/pejman-sedghani-73a754173?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Be5ea4wItTVOQp8eRm4r23Q%3D%3D"
+              className="w-9 h-9 md:w-[54px] md:h-[54px] md:rounded-lg rounded-[4px] bg-secondary-500 flex justify-center items-center"
+            >
               <SvgLinkedin24 className="md:hidden" />
               <SvgLinkedin40 className="hidden md:block" />
-            </span>
+            </a>
           </div>
         </div>
         <div className="w-full border-t border-nature-900 mt-4 md:mt-6"></div>
