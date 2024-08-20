@@ -35,14 +35,14 @@ const BlogItems = () => {
           ))}
         </ul>
       </section>
-      <section className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-y-9">
+      {/* <section className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-y-9">
         <BlogCard image="tip-cat3.png" />
         <BlogCard image="tip-cat2.png" />
         <BlogCard image="tip-cat.png" />
         <BlogCard image="tip-cat3.png" />
         <BlogCard image="tip-cat2.png" />
         <BlogCard image="tip-cat.png" />
-      </section>
+      </section> */}
     </main>
   );
 };
