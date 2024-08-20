@@ -6,16 +6,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Brand } from '@/app/(core)/shop/page';
 
-import { BRANDS_LIST } from '../constants/home.constants';
-
 const Slide = (props: { url: string }) => {
   return (
     <div className="flex items-center justify-center h-[50px] md:h-[83] max-h-[50px] md:max-h-[83px]">
-      <img
-        src={`/static/brands/${props.url}`}
-        alt={props.url}
-        className="h-full"
-      />
+      <img src={props.url} alt={props.url} className="h-full" />
     </div>
   );
 };

@@ -5,6 +5,8 @@ import { axiosInstance } from '@/lib/constants/axios';
 import { Pet } from '@/routes/home';
 import Shop from '@/routes/shop';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 export const metadata: Metadata = {
   title: 'USpet - Shop',
 };
