@@ -55,12 +55,12 @@ const Footer = () => {
               Contact us
             </li>
           </Link>
-          <Link href={'/blog'}>
+          <a href={process.env.NEXT_PUBLIC_BLOG_BASE_URL + '/blog'}>
             <li className="flex items-center gap-2 cursor-pointer">
               <span className="md:hidden w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
               Blog
             </li>
-          </Link>
+          </a>
         </ul>
       </div>
 

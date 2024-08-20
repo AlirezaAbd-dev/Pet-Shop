@@ -81,7 +81,7 @@ const Navbar = () => {
               Contact us
             </li>
           </Link>
-          <a href={process.env.NEXT_PUBLIC_BLOG_BASE_URL}>
+          <a href={process.env.NEXT_PUBLIC_BLOG_BASE_URL + '/blog'}>
             <li
               className={cn(
                 'flex items-center gap-1 cursor-pointer  text-lg',

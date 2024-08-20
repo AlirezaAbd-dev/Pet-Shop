@@ -29,7 +29,7 @@ const Home = async () => {
     topCategories,
     pets,
     banners,
-    // blog,
+    blog,
   ] = await getHomePageData();
 
   return (
@@ -45,7 +45,7 @@ const Home = async () => {
       <HomeOurPromise />
       <HomeBrandsWeLove brands={brands} />
       <HomeFAQ />
-      {/* <HomeBlog blog={blog} /> */}
+      <HomeBlog blog={blog} />
       <HomeAchievements />
       <Footer />
     </>
@@ -97,7 +97,9 @@ async function getHomePageData() {
     axiosInstance
       .get<Banner[]>('/shop/api/v1/homepage/banners/')
       .then((res) => res.data),
-    // axiosBlog.get<Blog[]>('/wp-json/uspet/v1/posts').then((res) => res.data),
+    axiosBlog
+      .get<Blog[]>('/blog/wp-json/uspet/v1/posts')
+      .then((res) => res.data),
   ]);
 
   const rejectedIndex = results.findIndex((r) => r.status === 'rejected');
@@ -117,7 +119,7 @@ async function getHomePageData() {
     fulfilledResults[4].value,
     fulfilledResults[5].value,
     fulfilledResults[6].value,
-    // fulfilledResults[7].value,
+    fulfilledResults[7].value,
   ] as [
     Product[],
     Brand[],
@@ -126,7 +128,7 @@ async function getHomePageData() {
     Product[],
     Pet[],
     Banner[],
-    // Blog[],
+    Blog[],
   ];
 }
 
