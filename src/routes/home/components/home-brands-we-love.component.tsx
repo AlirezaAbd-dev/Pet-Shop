@@ -42,7 +42,7 @@ const HomeBrandsWeLove = (props: HomeBrandsWeLoveProps) => {
         ))}
       </Swiper>
 
-      <div className="hidden md:flex gap-20 justify-between items-center px-20 mt-8">
+      <div className="hidden md:flex gap-20 justify-between items-center px-20 mt-8 flex-wrap">
         {props.brands.map((item) => (
           <Slide key={item.id} url={item.logo} />
         ))}
