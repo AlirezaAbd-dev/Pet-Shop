@@ -11,3 +11,7 @@ export const axiosInstance = axios.create({
   //   Accept: 'application/json',
   // },
 });
+
+export const axiosBlog = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_BLOG_BASE_URL,
+});

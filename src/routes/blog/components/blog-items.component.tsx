@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 import { cn } from '@/lib/utils';
-import TipsCard from '@/routes/home/components/cards/tips-card.component';
+import BlogCard from '@/routes/home/components/cards/tips-card.component';
 
 import { BLOG_TABS, BlogTabsType } from '../blog.constants';
 
@@ -36,12 +36,12 @@ const BlogItems = () => {
         </ul>
       </section>
       <section className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-y-9">
-        <TipsCard image="tip-cat3.png" />
-        <TipsCard image="tip-cat2.png" />
-        <TipsCard image="tip-cat.png" />
-        <TipsCard image="tip-cat3.png" />
-        <TipsCard image="tip-cat2.png" />
-        <TipsCard image="tip-cat.png" />
+        <BlogCard image="tip-cat3.png" />
+        <BlogCard image="tip-cat2.png" />
+        <BlogCard image="tip-cat.png" />
+        <BlogCard image="tip-cat3.png" />
+        <BlogCard image="tip-cat2.png" />
+        <BlogCard image="tip-cat.png" />
       </section>
     </main>
   );

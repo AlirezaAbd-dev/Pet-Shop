@@ -4,9 +4,14 @@ import React from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import TipsCard from './cards/tips-card.component';
+import { Blog } from '..';
+import BlogCard from './cards/tips-card.component';
 
-const HomeTips = () => {
+type Props = {
+  blog: Blog[];
+};
+
+const HomeBlog = (props: Props) => {
   return (
     <section className="mt-16 md:mt-24">
       <p className="font-black font-nunito text-xl md:text-4xl text-center">
@@ -24,15 +29,11 @@ const HomeTips = () => {
           bulletActiveClass: 'swiper-pagination-bullet-active',
         }}
       >
-        <SwiperSlide>
-          <TipsCard image="tip-cat3.png" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <TipsCard image="tip-cat2.png" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <TipsCard image="tip-cat.png" />
-        </SwiperSlide>
+        {props.blog.slice(0, 3).map((b) => (
+          <SwiperSlide key={b.title}>
+            <BlogCard {...b} />
+          </SwiperSlide>
+        ))}
       </Swiper>
 
       <div className="md:hidden">
@@ -40,12 +41,12 @@ const HomeTips = () => {
       </div>
 
       <div className="hidden md:grid md:grid-cols-3 gap-6 mt-8 px-20">
-        <TipsCard image="tip-cat3.png" />
-        <TipsCard image="tip-cat2.png" />
-        <TipsCard image="tip-cat.png" />
+        {props.blog.slice(0, 3).map((b) => (
+          <BlogCard key={b.title} {...b} />
+        ))}
       </div>
     </section>
   );
 };
 
-export default HomeTips;
+export default HomeBlog;

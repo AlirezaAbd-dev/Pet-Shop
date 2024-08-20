@@ -1,6 +1,6 @@
 import { Product } from '@/app/(core)/product/[productId]/page';
 import { Brand, Category } from '@/app/(core)/shop/page';
-import { axiosInstance } from '@/lib/constants/axios';
+import { axiosBlog, axiosInstance } from '@/lib/constants/axios';
 
 import Footer from '../../components/shared/footer.component';
 import Banners1 from './components/banners-1.component';
@@ -13,7 +13,7 @@ import HomeLanding from './components/home-landing.component';
 import HomeOurPromise from './components/home-our-promise.component';
 import HomePets from './components/home-pets.component';
 import HomeSuperSale from './components/home-super-sale.component';
-import HomeTips from './components/home-tips.component';
+import HomeBlog from './components/home-tips.component';
 import HomeTopCategories from './components/home-top-categories.component';
 import HomeTopSellingProducts from './components/home-top-selling-products.component';
 
@@ -29,6 +29,7 @@ const Home = async () => {
     topCategories,
     pets,
     banners,
+    blog,
   ] = await getHomePageData();
 
   return (
@@ -44,7 +45,7 @@ const Home = async () => {
       <HomeOurPromise />
       <HomeBrandsWeLove brands={brands} />
       <HomeFAQ />
-      <HomeTips />
+      <HomeBlog blog={blog} />
       <HomeAchievements />
       <Footer />
     </>
@@ -65,6 +66,14 @@ export type Banner = {
   link: string;
   created_at: string;
   updated_at: string;
+};
+
+export type Blog = {
+  title: string;
+  image: string;
+  description: string;
+  date: string;
+  link: string;
 };
 
 async function getHomePageData() {
@@ -88,6 +97,7 @@ async function getHomePageData() {
     axiosInstance
       .get<Banner[]>('/shop/api/v1/homepage/banners/')
       .then((res) => res.data),
+    axiosBlog.get<Blog[]>('/wp-json/uspet/v1/posts').then((res) => res.data),
   ]);
 
   const rejectedIndex = results.findIndex((r) => r.status === 'rejected');
@@ -107,7 +117,17 @@ async function getHomePageData() {
     fulfilledResults[4].value,
     fulfilledResults[5].value,
     fulfilledResults[6].value,
-  ] as [Product[], Brand[], Category[], Product[], Product[], Pet[], Banner[]];
+    fulfilledResults[7].value,
+  ] as [
+    Product[],
+    Brand[],
+    Category[],
+    Product[],
+    Product[],
+    Pet[],
+    Banner[],
+    Blog[],
+  ];
 }
 
 export default Home;
