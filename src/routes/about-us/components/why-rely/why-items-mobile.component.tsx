@@ -1,15 +1,5 @@
-import React from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-import SvgCatWhite24 from '@/assets/svg/cat-white-24.svg';
-import SvgCatWhite36 from '@/assets/svg/cat-white-36.svg';
-import SvgCheckmarkWhite24 from '@/assets/svg/checkmark-white-24.svg';
-import SvgCheckmarkWhite36 from '@/assets/svg/checkmark-white-36.svg';
-import SvgDeliveryWhite24 from '@/assets/svg/delivery-white-24.svg';
-import SvgDeliveryWhite36 from '@/assets/svg/delivery-white-36.svg';
-import SvgHomeWhite24 from '@/assets/svg/home-white-24.svg';
-import SvgHomeWhite36 from '@/assets/svg/home-white-36.svg';
 
 const WhyRelyItemsMobile = () => {
   return (

@@ -12,6 +12,10 @@ export const addProductValidation = z.object({
   discount: z.coerce.number().optional(),
   ingredients: z.string().optional(),
   shipping: z.string().optional(),
+  features: z.string().optional(),
+  isBestSelling: z.string(),
+  isTop: z.string(),
+  isOnSale: z.string(),
 });
 
 export type AddProductValidationType = z.infer<typeof addProductValidation>;

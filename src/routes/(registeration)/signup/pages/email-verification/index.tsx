@@ -52,7 +52,7 @@ const EmailVerification = () => {
         </h3>
         <p className="mt-2 md:mt-3 text-sm md:text-base text-center leading-7 md:leading-8">
           Please enter the 4-digit verification code that was sent to
-          milad138001@gmail.com
+          {email}
         </p>
 
         <EmailVerificationForm />

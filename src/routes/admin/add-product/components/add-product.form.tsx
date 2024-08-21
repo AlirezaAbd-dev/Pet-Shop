@@ -47,7 +47,7 @@ const AddProductForm = (props: Props) => {
     useForm<AddProductValidationType>({
       resolver: zodResolver(addProductValidation),
     });
-  console.log(formState.errors);
+
   const submitHandler = (values: AddProductValidationType) => {
     if (files.length <= 4 && files.length > 0) {
       const formData = new FormData();
@@ -58,12 +58,21 @@ const AddProductForm = (props: Props) => {
       formData.append('weight', values.weight.toString());
       formData.append('inventory', values.inventory.toString());
       formData.append('published_date', new Date().toISOString());
+      if (values.features) formData.append('features', values.features);
       if (values.ingredients)
         formData.append('IngredientsAnalysis', values.ingredients);
       if (values.shipping) formData.append('ShippingReturns', values.shipping);
       if (values.discount)
         formData.append('discount', values.discount?.toString());
-
+      formData.append(
+        'is_best_selling',
+        values.isBestSelling ? values.isBestSelling : 'false',
+      );
+      formData.append('is_top', values.isTop ? values.isTop : 'false');
+      formData.append(
+        'is_on_sale',
+        values.isOnSale ? values.isOnSale : 'false',
+      );
       values.pets.forEach((item) => {
         formData.append('pets', item.toString());
       });
@@ -92,21 +101,6 @@ const AddProductForm = (props: Props) => {
                 {...field}
                 errorText={fieldState.error?.message}
                 className="mt-4"
-              />
-            )}
-          />
-        </div>
-        <div className="w-full">
-          <p>Weight*</p>
-          <Controller
-            control={control}
-            name="weight"
-            render={({ field, fieldState }) => (
-              <Input
-                {...field}
-                errorText={fieldState.error?.message}
-                className="hide-arrows mt-4"
-                type="number"
               />
             )}
           />
@@ -261,6 +255,109 @@ const AddProductForm = (props: Props) => {
           />
         </div>
       </div>
+      <div className="flex gap-6 mt-8">
+        <div className="w-full">
+          <p>Weight*</p>
+          <Controller
+            control={control}
+            name="weight"
+            render={({ field, fieldState }) => (
+              <Input
+                {...field}
+                errorText={fieldState.error?.message}
+                className="hide-arrows mt-4"
+                type="number"
+              />
+            )}
+          />
+        </div>
+        <div className="w-full">
+          <p>Is best selling*</p>
+          <Controller
+            control={control}
+            name="isBestSelling"
+            render={({ field, fieldState }) => (
+              <>
+                <Combobox
+                  name="isBestSelling"
+                  data={[
+                    { label: 'Yes', value: 'true' },
+                    { label: 'No', value: 'false' },
+                  ]}
+                  noneEmpty
+                  defaultValue="false"
+                  onSelect={(_, value) => {
+                    field.onChange(value);
+                  }}
+                  buttonClassName="mt-4 md:h-12 border-none bg-nature-600"
+                  containerClassName="w-[400px]"
+                />
+                <p className="mt-1 text-sm text-error-500">
+                  {fieldState.error?.message}
+                </p>
+              </>
+            )}
+          />
+        </div>
+      </div>
+      <div className="flex gap-6 mt-8">
+        <div className="w-full">
+          <p>Is top*</p>
+          <Controller
+            control={control}
+            name="isTop"
+            render={({ field, fieldState }) => (
+              <>
+                <Combobox
+                  name="isTop"
+                  data={[
+                    { label: 'Yes', value: 'true' },
+                    { label: 'No', value: 'false' },
+                  ]}
+                  noneEmpty
+                  defaultValue="false"
+                  buttonClassName="mt-4 md:h-12 border-none bg-nature-600"
+                  containerClassName="w-[400px]"
+                  onSelect={(_, value) => {
+                    field.onChange(value);
+                  }}
+                />
+                <p className="mt-1 text-sm text-error-500">
+                  {fieldState.error?.message}
+                </p>
+              </>
+            )}
+          />
+        </div>
+        <div className="w-full">
+          <p>Is on sale*</p>
+          <Controller
+            control={control}
+            name="isOnSale"
+            render={({ field, fieldState }) => (
+              <>
+                <Combobox
+                  name="isOnSale"
+                  data={[
+                    { label: 'Yes', value: 'true' },
+                    { label: 'No', value: 'false' },
+                  ]}
+                  noneEmpty
+                  defaultValue="false"
+                  onSelect={(_, value) => {
+                    field.onChange(value);
+                  }}
+                  buttonClassName="mt-4 md:h-12 border-none bg-nature-600"
+                  containerClassName="w-[400px]"
+                />
+                <p className="mt-1 text-sm text-error-500">
+                  {fieldState.error?.message}
+                </p>
+              </>
+            )}
+          />
+        </div>
+      </div>
 
       <div className="mt-8">
         <p>Information*</p>
@@ -339,7 +436,7 @@ const AddProductForm = (props: Props) => {
         <p>Details*</p>
         <Controller
           control={control}
-          name="description"
+          name="features"
           render={({ field, fieldState }) => (
             <>
               <Textarea {...field} className="mt-4 h-[121px]" />

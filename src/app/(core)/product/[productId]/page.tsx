@@ -31,6 +31,9 @@ export type Product = {
   weight: number;
   IngredientsAnalysis?: string;
   ShippingReturns?: string;
+  is_best_selling: boolean;
+  is_top: boolean;
+  is_on_sale: boolean;
 };
 
 export const dynamic = 'force-dynamic';
