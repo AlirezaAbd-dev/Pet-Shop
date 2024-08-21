@@ -108,7 +108,7 @@ const MobileSidebar = (props: Props) => {
               Contact us
             </li>
           </Link>
-          <Link href="/blog">
+          <a href={process.env.NEXT_PUBLIC_BLOG_BASE_URL + '/blog'}>
             <li
               className={cn(
                 'text-sm',
@@ -117,7 +117,7 @@ const MobileSidebar = (props: Props) => {
             >
               Blog
             </li>
-          </Link>
+          </a>
         </ul>
       </SheetContent>
     </Sheet>
