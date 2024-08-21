@@ -14,6 +14,7 @@ export type ProductWildCardProps = {
   images: string[];
   weight: number;
   totalDiscount: number;
+  features?: string;
   IngredientsAnalysis?: string;
   ShippingReturns?: string;
   activePromotions:

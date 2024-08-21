@@ -32,6 +32,7 @@ const ProductDetails = (props: { product: Product }) => {
           weight={data.weight}
           totalDiscount={data.total_discount}
           activePromotions={data.active_promotions}
+          features={data.features}
         />
         <ShopSpecifications className="mt-10 md:mt-24 px-5 md:px-20" />
         <ProductComments />

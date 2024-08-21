@@ -158,7 +158,9 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
       <Accordion1 type="single" collapsible className="w-full mt-8 md:mt-3">
         <AccordionItem1 value="details">
           <AccordionTrigger1>Details</AccordionTrigger1>
-          <AccordionContent1>{props.description}</AccordionContent1>
+          <AccordionContent1>
+            {props.features || 'Nothing to show'}
+          </AccordionContent1>
         </AccordionItem1>
         <AccordionItem1 value="detaiIngredients & Analysisls">
           <AccordionTrigger1>Ingredients & Analysis</AccordionTrigger1>
