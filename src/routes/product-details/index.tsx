@@ -33,6 +33,8 @@ const ProductDetails = (props: { product: Product }) => {
           totalDiscount={data.total_discount}
           activePromotions={data.active_promotions}
           features={data.features}
+          IngredientsAnalysis={data.IngredientsAnalysis}
+          ShippingReturns={data.ShippingReturns}
         />
         <ShopSpecifications className="mt-10 md:mt-24 px-5 md:px-20" />
         <ProductComments />
