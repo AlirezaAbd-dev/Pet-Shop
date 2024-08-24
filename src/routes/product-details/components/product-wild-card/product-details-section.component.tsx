@@ -159,19 +159,25 @@ const ProductDetailsSection = (props: ProductDetailsSectionProps) => {
         <AccordionItem1 value="details">
           <AccordionTrigger1>Details</AccordionTrigger1>
           <AccordionContent1>
-            {props.features || 'Nothing to show'}
+            <p className="whitespace-pre-line font-opensans">
+              {props.features || 'Nothing to show'}
+            </p>
           </AccordionContent1>
         </AccordionItem1>
         <AccordionItem1 value="detaiIngredients & Analysisls">
           <AccordionTrigger1>Ingredients & Analysis</AccordionTrigger1>
           <AccordionContent1>
-            {props.IngredientsAnalysis || 'Nothing to show'}
+            <p className="whitespace-pre-line font-opensans">
+              {props.IngredientsAnalysis || 'Nothing to show'}
+            </p>
           </AccordionContent1>
         </AccordionItem1>
         <AccordionItem1 className="border-none" value="Shipping & Returns">
           <AccordionTrigger1>Shipping & Returns</AccordionTrigger1>
           <AccordionContent1>
-            {props.ShippingReturns || 'Nothing to show'}
+            <p className="whitespace-pre-line font-opensans">
+              {props.ShippingReturns || 'Nothing to show'}
+            </p>
           </AccordionContent1>
         </AccordionItem1>
       </Accordion1>

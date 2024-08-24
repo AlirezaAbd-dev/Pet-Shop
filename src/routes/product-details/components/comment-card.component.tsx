@@ -20,7 +20,9 @@ const CommentCard = (props: Props) => {
           <p className="text-xs md:text-base">Website user</p>
         </div>
       </div>
-      <p className="mt-6 text-sm leading-7 md:pl-[99px]">{props.comment}</p>
+      <p className="mt-6 text-sm leading-7 md:pl-[99px] whitespace-pre-line">
+        {props.comment}
+      </p>
       {props.response && (
         <>
           <div className="flex gap-3 md:gap-5 md:pl-[331px] md:mt-8 mt-6">
@@ -34,7 +36,7 @@ const CommentCard = (props: Props) => {
               <p className="text-xs md:text-base">Website admin</p>
             </div>
           </div>
-          <p className="mt-6 text-sm leading-7 md:pl-[430px]">
+          <p className="mt-6 text-sm leading-7 md:pl-[430px] whitespace-pre-line">
             {props.response}
           </p>
         </>

@@ -1,16 +1,20 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 import { Product } from '@/app/(core)/product/[productId]/page';
 
 type TopSellingProductCardProps = Pick<
   Product,
-  'name' | 'price_after_promotion' | 'description' | 'image_urls'
+  'name' | 'price_after_promotion' | 'description' | 'image_urls' | 'id'
 >;
 
 const TopSellingProductCard = (props: TopSellingProductCardProps) => {
   return (
-    <div className="flex flex-col items-center rounded-xl md:rounded-3xl bg-[#FAFAFA] p-4 md:p-6 md:h-full md:min-w-[285px]">
+    <Link
+      href={`/product/${props.id}`}
+      className="flex flex-col items-center rounded-xl md:rounded-3xl bg-[#FAFAFA] p-4 md:p-6 md:h-full md:min-w-[285px]"
+    >
       <img
         src={props.image_urls[0]}
         alt={props.name}
@@ -22,7 +26,7 @@ const TopSellingProductCard = (props: TopSellingProductCardProps) => {
       <p className="font-extrabold text-primary-500 md:text-xl md:mt-3">
         ${props.price_after_promotion}
       </p>
-    </div>
+    </Link>
   );
 };
 
