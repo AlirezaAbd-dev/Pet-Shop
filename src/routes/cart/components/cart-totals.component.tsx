@@ -29,7 +29,7 @@ const CartTotals = () => {
       <div className="flex justify-between mt-2 md:mt-4 text-sm md:text-base">
         <p>Discount:</p>
         <p className="text-error-500">
-          $ {totalDiscount.toFixed(2)} ({discountPercent}%)
+          $ {totalDiscount.toFixed(2)} ({discountPercent.toFixed(2)}%)
         </p>
       </div>
       <div className="mt-4 border-t border-nature-900 w-full"></div>

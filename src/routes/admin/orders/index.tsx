@@ -31,10 +31,13 @@ const AdminOrders = () => {
 
   if (!isPending && data) {
     const filteredOrders = data.filter((d) => {
-      if (statusFilter)
+      if (statusFilter || search)
         return (
-          d.user_full_name?.includes(search) &&
-          d.status === statusFilter.toLowerCase()
+          (search
+            ? d.user_full_name?.includes(search) ||
+              d.id.toString().includes(search)
+            : true) &&
+          (statusFilter ? d.status === statusFilter?.toLowerCase() : true)
         );
       else {
         return true;

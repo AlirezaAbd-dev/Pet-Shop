@@ -28,7 +28,7 @@ const CartHoverContent = () => {
       <div className="flex justify-between mt-4 md:mt-6 text-sm md:text-base md:px-4 px-5">
         <p>Discount:</p>
         <p className="text-error-500">
-          $ {totalDiscount.toFixed(2)} ({discountPercent}%)
+          $ {totalDiscount.toFixed(2)} ({discountPercent.toFixed(2)}%)
         </p>
       </div>
       <div className="flex justify-between mt-2 md:mt-4 text-sm md:text-base md:px-4 px-5">

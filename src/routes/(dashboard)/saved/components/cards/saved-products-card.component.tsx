@@ -60,7 +60,9 @@ const SavedProductCard = (props: Props) => {
       </div>
       <div className="mt-4 flex items-start justify-between">
         <p className="font-bold font-nunito md:text-xl max-w-[152px]">
-          {props.name}
+          {props.name.length > 14
+            ? props.name.slice(0, 14) + '...'
+            : props.name}
         </p>
         <Icon className="flex md:items-center gap-1 text-sm md:text-base font-bold">
           <SvgWeight className="md:hidden w-5 h-5" />
@@ -69,7 +71,9 @@ const SavedProductCard = (props: Props) => {
         </Icon>
       </div>
       <p className="text-sm md:text-base mt-3 leading-[26px] md:leading-7">
-        {props.description}
+        {props.description.length > 30
+          ? props.description.slice(0, 30) + '...'
+          : props.description}
       </p>
       <div className="flex gap-2 items-center mt-4 md:mt-4">
         <p className="font-bold text-xl text-primary-500">

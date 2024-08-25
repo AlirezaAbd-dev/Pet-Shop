@@ -44,7 +44,7 @@ const OrderDetails = (props: OrderDetailsProps) => {
               </p>
             </div>
             <p className="text-sm md:text-base">
-              ${item.priceWithDiscount * item.count}
+              ${(item.priceWithDiscount * item.count).toFixed(2)}
             </p>
           </li>
         ))}
@@ -56,7 +56,7 @@ const OrderDetails = (props: OrderDetailsProps) => {
       <div className="flex justify-between mt-3 md:mt-4">
         <p className="font-nunito text-sm md:text-base">Discount:</p>
         <p className="text-sm md:text-base text-error-500">
-          $ {totalDiscount} ({discountPercent}%)
+          $ {totalDiscount.toFixed(2)} ({discountPercent.toFixed(2)}%)
         </p>
       </div>
       <div className="flex justify-between mt-3 md:mt-4">

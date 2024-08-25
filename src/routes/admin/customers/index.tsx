@@ -19,7 +19,10 @@ const AdminCustomers = () => {
 
   if (!isPending && data) {
     const users = data.filter(
-      (d) => d.full_name?.includes(search) || d.email.includes(search),
+      (d) =>
+        d.full_name?.includes(search) ||
+        d.email.includes(search) ||
+        d.phone_number?.toString().includes(search),
     );
 
     return (

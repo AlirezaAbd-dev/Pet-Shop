@@ -48,8 +48,10 @@ const ShopProductCard = (props: ShopProductCardProps) => {
       </div>
       <div className="w-full">
         <div className="mt-0 md:mt-4 flex justify-between items-start">
-          <p className="font-bold font-nunito text-sm md:text-xl max-w-[150px]">
-            {props.name}
+          <p className="font-bold font-nunito text-sm md:text-xl">
+            {props.name.length > 14
+              ? props.name.slice(0, 14) + '...'
+              : props.name}
           </p>
           <Icon className="flex md:items-center gap-1 text-xs md:text-base md:font-bold">
             <SvgWeight className="md:hidden w-5 h-5" />
@@ -57,7 +59,11 @@ const ShopProductCard = (props: ShopProductCardProps) => {
             {props.weight}KG
           </Icon>
         </div>
-        <p className="text-xs md:text-base mt-2 md:mt-3">{props.description}</p>
+        <p className="text-xs md:text-base mt-2 md:mt-3">
+          {props.description.length > 30
+            ? props.description.slice(0, 30) + '...'
+            : props.description}
+        </p>
 
         <div className="flex gap-2 items-center mt-3 md:mt-4">
           <p className="font-bold text-sm md:text-xl text-primary-500">

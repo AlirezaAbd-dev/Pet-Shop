@@ -75,7 +75,7 @@ const AdminCustomerDetails = () => {
               orderId: o.id,
               price: o.total_price,
               state: o.status,
-              username: o.user_full_name,
+              username: data.profile.full_name,
             }))}
           />
         </section>
