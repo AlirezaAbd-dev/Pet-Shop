@@ -21,4 +21,8 @@ export const adminQueryKeys = {
   EDIT_PET: 'admin-edit-pet',
   DELETE_PET: 'admin-delete-pet',
   DASHBOARD: 'admin-dashboard',
+  SUB_CATEGORIES: 'admin-sub-categories',
+  ADD_SUB_CATEGORY: 'admin-add-sub-category',
+  EDIT_SUB_CATEGORY: 'admin-edit-sub-category',
+  DELETE_SUB_CATEGORIES: 'admin-delete-sub-categories',
 };
