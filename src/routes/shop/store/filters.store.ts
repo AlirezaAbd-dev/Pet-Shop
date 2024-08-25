@@ -1,12 +1,14 @@
 import { create } from 'zustand';
 
 import { Brand, Category } from '@/app/(core)/shop/page';
+import { SubCategory } from '@/routes/admin/sub-categories/queries/admin-sub-categories.query';
 import { Pet } from '@/routes/home';
 
 type Filter = {
   brands: Brand[];
   categories: Category[];
   pets: Pet[];
+  subCategories: SubCategory[];
 };
 
 type PriceFilter = { min: number; max: number };
@@ -18,6 +20,10 @@ type UseFilterStore = {
   setPrice: (price?: PriceFilter) => void;
   category: number[];
   setCategory: (category: number) => void;
+  subCategory: number[];
+  setSubCategory: (subCategory: number) => void;
+  fillInstantSubCategories: (subCategory: number[]) => void;
+  clearInstantSubCategories: (subCategory: number[]) => void;
   pet: number[];
   setPet: (pet: number) => void;
   brand: number[];
@@ -36,7 +42,7 @@ type UseFilterStore = {
 };
 
 export const useFiltersStore = create<UseFilterStore>()((set, get) => ({
-  filters: { brands: [], categories: [], pets: [] },
+  filters: { brands: [], categories: [], pets: [], subCategories: [] },
   setFilters(filters) {
     set({ filters });
   },
@@ -50,6 +56,7 @@ export const useFiltersStore = create<UseFilterStore>()((set, get) => ({
       brand: [],
       category: [],
       pet: [],
+      subCategory: [],
       price: { max: 10000, min: 1 },
       search: '',
       sortBy: undefined,
@@ -73,6 +80,42 @@ export const useFiltersStore = create<UseFilterStore>()((set, get) => ({
 
     categories.splice(categoryIndex, 1);
     set({ category: categories });
+  },
+  subCategory: [],
+  setSubCategory(subCategory) {
+    const subCategories = [...get().subCategory];
+
+    const subCategoryIndex = subCategories.findIndex((c) => c === subCategory);
+
+    if (subCategoryIndex === -1) {
+      subCategories.push(subCategory);
+      return set({ subCategory: subCategories });
+    }
+
+    subCategories.splice(subCategoryIndex, 1);
+    set({ subCategory: subCategories });
+  },
+  fillInstantSubCategories(subCategory) {
+    const subCategories = [...get().subCategory];
+
+    subCategory.forEach((s) => {
+      if (!subCategories.includes(s)) subCategories.push(s);
+    });
+
+    set({ subCategory: subCategories });
+  },
+  clearInstantSubCategories(subCategory) {
+    const subCategories = [...get().subCategory];
+
+    subCategory.forEach((s) => {
+      const findIndex = subCategories.findIndex((item) => item === s);
+
+      if (findIndex !== -1) {
+        subCategories.splice(findIndex, 1);
+      }
+    });
+
+    set({ subCategory: subCategories });
   },
   pet: [],
   setPet(pet) {

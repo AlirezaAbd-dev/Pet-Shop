@@ -6,6 +6,7 @@ import React, { useEffect } from 'react';
 import { Brand, Category } from '@/app/(core)/shop/page';
 import Footer from '@/components/shared/footer.component';
 
+import { SubCategory } from '../admin/sub-categories/queries/admin-sub-categories.query';
 import { Pet } from '../home';
 import FilterModal from './components/modals/filter';
 import ShopBreadcrumb from './components/shop-breadcrumb.component';
@@ -17,6 +18,7 @@ type ShopProps = {
   brands: Brand[];
   categories: Category[];
   pets: Pet[];
+  subCategories: SubCategory[];
 };
 
 const Shop = (props: ShopProps) => {
@@ -30,6 +32,9 @@ const Shop = (props: ShopProps) => {
   const setPet = useFiltersStore((s) => s.setPet);
   const setPromotion = useFiltersStore((s) => s.setPromotion);
   const resetFilter = useFiltersStore((s) => s.resetFilter);
+  const fillInstantSubCategories = useFiltersStore(
+    (s) => s.fillInstantSubCategories,
+  );
 
   useEffect(() => {
     setFilters(props);
@@ -37,6 +42,11 @@ const Shop = (props: ShopProps) => {
       resetFilter();
       if (category && typeof +category == 'number') {
         setCategory(Number(category));
+        fillInstantSubCategories(
+          props.subCategories
+            .filter((s) => s.category === Number(category))
+            .map((s) => s.id),
+        );
       }
       if (pet && typeof +pet == 'number') {
         setPet(Number(pet));

@@ -31,9 +31,9 @@ const AdminSubCategoryCard = (props: Props) => {
       <div className="p-4 border border-nature-900 rounded-xl">
         <p className="textxl font-bold text-center">name</p>
         <p className="mt-1 text-base text-center">{props.subCategory.name}</p>
-        <p className="textxl font-bold text-center mt-3">Category ID</p>
+        <p className="textxl font-bold text-center mt-3">Category name</p>
         <p className="mt-1 text-base text-center">
-          {props.subCategory.category}
+          {props.subCategory.categoryName}
         </p>
       </div>
       <div

@@ -81,7 +81,7 @@ const EditProductForm = (props: Props) => {
       formData.append('weight', values.weight.toString());
       formData.append('inventory', values.inventory.toString());
       formData.append('published_date', new Date().toISOString());
-      formData.append('features', values.features);
+      if (values.features) formData.append('features', values.features);
       if (values.ingredients)
         formData.append('IngredientsAnalysis', values.ingredients);
       if (values.shipping) formData.append('ShippingReturns', values.shipping);
@@ -531,7 +531,7 @@ const EditProductForm = (props: Props) => {
       <div className="mt-9 border-t border-nature-900"></div>
 
       <div className="mt-8">
-        <p>Details*</p>
+        <p>Details</p>
         <Controller
           control={control}
           name="features"

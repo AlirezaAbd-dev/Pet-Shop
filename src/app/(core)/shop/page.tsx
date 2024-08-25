@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import React from 'react';
 
 import { axiosInstance } from '@/lib/constants/axios';
+import { SubCategory } from '@/routes/admin/sub-categories/queries/admin-sub-categories.query';
 import { Pet } from '@/routes/home';
 import Shop from '@/routes/shop';
 
@@ -24,9 +25,16 @@ export type Category = {
 };
 
 const page = async () => {
-  const { brands, categories, pets } = await getFilterData();
+  const { brands, categories, pets, subCategories } = await getFilterData();
 
-  return <Shop brands={brands} categories={categories} pets={pets} />;
+  return (
+    <Shop
+      brands={brands}
+      categories={categories}
+      pets={pets}
+      subCategories={subCategories}
+    />
+  );
 };
 
 async function getFilterData() {
@@ -36,6 +44,9 @@ async function getFilterData() {
       .get<Category[]>(`/shop/api/v1/categories/`)
       .then((res) => res.data),
     axiosInstance.get<Pet[]>(`/shop/api/v1/pets/`).then((res) => res.data),
+    axiosInstance
+      .get<SubCategory[]>(`/shop/api/v1/subcategories/`)
+      .then((res) => res.data),
   ]);
 
   const rejected = results.filter((r) => r.status === 'rejected');
@@ -48,12 +59,14 @@ async function getFilterData() {
     PromiseFulfilledResult<Brand[]>,
     PromiseFulfilledResult<Category[]>,
     PromiseFulfilledResult<Pet[]>,
+    PromiseFulfilledResult<SubCategory[]>,
   ];
 
   return {
     brands: data[0].value,
     categories: data[1].value,
     pets: data[2].value,
+    subCategories: data[3].value,
   };
 }
 

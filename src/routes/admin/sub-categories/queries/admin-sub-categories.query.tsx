@@ -8,6 +8,7 @@ export type SubCategory = {
   id: number;
   name: string;
   category: number;
+  categoryName: string;
 };
 
 const useAdminSubCategoriesQuery = () => {

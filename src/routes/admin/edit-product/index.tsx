@@ -28,7 +28,7 @@ const AdminEditProduct = () => {
   const setIsModalOpen = useAdminEditProductStore(
     (s) => s.setIsDeleteProductOpen,
   );
-  console.log(product);
+
   if (
     isCategoriesPending ||
     isBrandsPending ||
