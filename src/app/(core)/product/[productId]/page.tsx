@@ -13,10 +13,12 @@ export type Product = {
   features: string;
   pets: number[];
   categories: number[];
+  subcategories: number[];
   status: boolean;
   created_date: string;
   updated_date: string;
   published_date: string;
+  internal_price: number;
   active_promotions:
     | null
     | {

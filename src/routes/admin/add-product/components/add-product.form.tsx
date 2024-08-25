@@ -17,6 +17,7 @@ import { MultipleCombobox } from '@/components/ui/multiple-combobox';
 import { Textarea } from '@/components/ui/textarea';
 import { Pet } from '@/routes/home';
 
+import { SubCategory } from '../../sub-categories/queries/admin-sub-categories.query';
 import useAddProductMutation from '../add-product.mutation';
 import {
   AddProductValidationType,
@@ -27,6 +28,7 @@ type Props = {
   categories: Category[];
   brands: Brand[];
   pets: Pet[];
+  subCategories: SubCategory[];
 };
 
 const AddProductForm = (props: Props) => {
@@ -43,10 +45,9 @@ const AddProductForm = (props: Props) => {
 
   const { mutate, isPending } = useAddProductMutation();
 
-  const { control, handleSubmit, formState } =
-    useForm<AddProductValidationType>({
-      resolver: zodResolver(addProductValidation),
-    });
+  const { control, handleSubmit, watch } = useForm<AddProductValidationType>({
+    resolver: zodResolver(addProductValidation),
+  });
 
   const submitHandler = (values: AddProductValidationType) => {
     if (files.length <= 4 && files.length > 0) {
@@ -55,10 +56,11 @@ const AddProductForm = (props: Props) => {
       formData.append('description', values.description);
       formData.append('brand', values.brand);
       formData.append('price', values.price.toString());
+      formData.append('internal_price', values.internalPrice.toString());
       formData.append('weight', values.weight.toString());
       formData.append('inventory', values.inventory.toString());
       formData.append('published_date', new Date().toISOString());
-      if (values.features) formData.append('features', values.features);
+      formData.append('features', values.features);
       if (values.ingredients)
         formData.append('IngredientsAnalysis', values.ingredients);
       if (values.shipping) formData.append('ShippingReturns', values.shipping);
@@ -79,6 +81,9 @@ const AddProductForm = (props: Props) => {
       values.categories.forEach((item) => {
         formData.append('categories', item.toString());
       });
+      values?.subCategories?.forEach((item) => {
+        formData.append('subcategories', item.toString());
+      });
       files.forEach((item) => {
         formData.append('images', item);
       });
@@ -87,6 +92,8 @@ const AddProductForm = (props: Props) => {
       toast.error('Please upload an image for product');
     }
   };
+
+  const categoriesSelected = watch('categories');
 
   return (
     <form onSubmit={handleSubmit(submitHandler)} className="mt-8">
@@ -102,6 +109,51 @@ const AddProductForm = (props: Props) => {
                 errorText={fieldState.error?.message}
                 className="mt-4"
               />
+            )}
+          />
+        </div>
+      </div>
+
+      <div className="flex gap-6 mt-8">
+        <div className="w-full">
+          <p>Internal price*</p>
+          <Controller
+            control={control}
+            name="internalPrice"
+            render={({ field, fieldState }) => (
+              <Input
+                {...field}
+                errorText={fieldState.error?.message}
+                className="hide-arrows mt-4 placeholder:text-text-500"
+                type="number"
+                placeholder="$"
+              />
+            )}
+          />
+        </div>
+        <div className="w-full">
+          <p>Brand*</p>
+          <Controller
+            control={control}
+            name="brand"
+            render={({ field, fieldState }) => (
+              <>
+                <Combobox
+                  name="brand"
+                  data={props.brands.map((c) => ({
+                    label: c.name,
+                    value: c.id.toString(),
+                  }))}
+                  onSelect={(_, value) => {
+                    field.onChange(value.toString());
+                  }}
+                  buttonClassName="mt-4 md:h-12 border-none bg-nature-600"
+                  containerClassName="w-[400px]"
+                />
+                <p className="mt-1 text-sm text-error-500">
+                  {fieldState.error?.message}
+                </p>
+              </>
             )}
           />
         </div>
@@ -229,23 +281,25 @@ const AddProductForm = (props: Props) => {
           />
         </div>
         <div className="w-full">
-          <p>Brand*</p>
+          <p>Sub-category</p>
           <Controller
             control={control}
-            name="brand"
+            name="subCategories"
             render={({ field, fieldState }) => (
               <>
-                <Combobox
-                  name="brand"
-                  data={props.brands.map((c) => ({
-                    label: c.name,
-                    value: c.id.toString(),
-                  }))}
-                  onSelect={(_, value) => {
-                    field.onChange(value.toString());
-                  }}
+                <MultipleCombobox
+                  name="sub-categroy"
+                  data={props.subCategories
+                    .filter((c) => categoriesSelected.includes(c.category))
+                    .map((c) => ({
+                      label: c.name,
+                      value: c.id.toString(),
+                    }))}
                   buttonClassName="mt-4 md:h-12 border-none bg-nature-600"
                   containerClassName="w-[400px]"
+                  onSelect={(_, value) => {
+                    field.onChange(value.map((item) => +item));
+                  }}
                 />
                 <p className="mt-1 text-sm text-error-500">
                   {fieldState.error?.message}

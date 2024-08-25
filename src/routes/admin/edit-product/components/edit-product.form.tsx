@@ -22,6 +22,7 @@ import {
   AddProductValidationType,
   addProductValidation,
 } from '../../add-product/add-product.validation';
+import { SubCategory } from '../../sub-categories/queries/admin-sub-categories.query';
 import useEditProductMutation from '../queries/edit-product.mutation';
 
 type Props = {
@@ -29,6 +30,7 @@ type Props = {
   brands: Brand[];
   pets: Pet[];
   product: Product;
+  subCategories: SubCategory[];
 };
 
 const EditProductForm = (props: Props) => {
@@ -45,11 +47,13 @@ const EditProductForm = (props: Props) => {
 
   const { mutate, isPending } = useEditProductMutation();
 
-  const { control, handleSubmit } = useForm<AddProductValidationType>({
+  const { control, handleSubmit, watch } = useForm<AddProductValidationType>({
     resolver: zodResolver(addProductValidation),
     defaultValues: {
       brand: props.product.brand.toString(),
       categories: props.product.categories,
+      subCategories: props.product.subcategories,
+      internalPrice: props.product.internal_price,
       description: props.product.description,
       discount: props.product.total_discount,
       ingredients: props.product.IngredientsAnalysis || '',
@@ -73,10 +77,11 @@ const EditProductForm = (props: Props) => {
       formData.append('description', values.description);
       formData.append('brand', values.brand);
       formData.append('price', values.price.toString());
+      formData.append('internal_price', values.internalPrice.toString());
       formData.append('weight', values.weight.toString());
       formData.append('inventory', values.inventory.toString());
       formData.append('published_date', new Date().toISOString());
-      if (values.features) formData.append('features', values.features);
+      formData.append('features', values.features);
       if (values.ingredients)
         formData.append('IngredientsAnalysis', values.ingredients);
       if (values.shipping) formData.append('ShippingReturns', values.shipping);
@@ -97,6 +102,9 @@ const EditProductForm = (props: Props) => {
       values.categories.forEach((item) => {
         formData.append('categories', item.toString());
       });
+      values?.subCategories?.forEach((item) => {
+        formData.append('subcategories', item.toString());
+      });
       files.forEach((item) => {
         formData.append('images', item);
       });
@@ -104,6 +112,8 @@ const EditProductForm = (props: Props) => {
       mutate(formData);
     }
   };
+
+  const categoriesSelected = watch('categories');
 
   return (
     <form onSubmit={handleSubmit(submitHandler)} className="mt-8">
@@ -119,6 +129,52 @@ const EditProductForm = (props: Props) => {
                 errorText={fieldState.error?.message}
                 className="mt-4"
               />
+            )}
+          />
+        </div>
+      </div>
+
+      <div className="flex gap-6 mt-8">
+        <div className="w-full">
+          <p>Internal price*</p>
+          <Controller
+            control={control}
+            name="internalPrice"
+            render={({ field, fieldState }) => (
+              <Input
+                {...field}
+                errorText={fieldState.error?.message}
+                className="hide-arrows mt-4 placeholder:text-text-500"
+                type="number"
+                placeholder="$"
+              />
+            )}
+          />
+        </div>
+        <div className="w-full">
+          <p>Brand*</p>
+          <Controller
+            control={control}
+            name="brand"
+            render={({ field, fieldState }) => (
+              <>
+                <Combobox
+                  name="brand"
+                  data={props.brands.map((c) => ({
+                    label: c.name,
+                    value: c.id.toString(),
+                  }))}
+                  defaultValue={props.product.brand.toString()}
+                  onSelect={(_, value) => {
+                    field.onChange(value.toString());
+                  }}
+                  buttonClassName="mt-4 md:h-12 border-none bg-nature-600"
+                  containerClassName="w-[400px]"
+                />
+                <p className="mt-1 text-sm text-error-500">
+                  {fieldState.error?.message}
+                </p>
+              </>
             )}
           />
         </div>
@@ -250,24 +306,28 @@ const EditProductForm = (props: Props) => {
           />
         </div>
         <div className="w-full">
-          <p>Brand*</p>
+          <p>Sub-category</p>
           <Controller
             control={control}
-            name="brand"
+            name="subCategories"
             render={({ field, fieldState }) => (
               <>
-                <Combobox
-                  name="brand"
-                  defaultValue={props.product.brand.toString()}
-                  data={props.brands.map((c) => ({
-                    label: c.name,
-                    value: c.id.toString(),
-                  }))}
-                  onSelect={(_, value) => {
-                    field.onChange(value.toString());
-                  }}
+                <MultipleCombobox
+                  name="sub-category"
+                  data={props.subCategories
+                    .filter((c) => categoriesSelected.includes(c.category))
+                    .map((c) => ({
+                      label: c.name,
+                      value: c.id.toString(),
+                    }))}
+                  defaultValue={props.product.subcategories.map((item) =>
+                    String(item),
+                  )}
                   buttonClassName="mt-4 md:h-12 border-none bg-nature-600"
                   containerClassName="w-[400px]"
+                  onSelect={(_, value) => {
+                    field.onChange(value.map((item) => +item));
+                  }}
                 />
                 <p className="mt-1 text-sm text-error-500">
                   {fieldState.error?.message}

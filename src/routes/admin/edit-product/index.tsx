@@ -9,6 +9,7 @@ import useSingleProductQuery from '@/routes/product-details/queries/single-produ
 import useAdminBrandsQuery from '../add-product/queries/admin-brands.query';
 import useAdminPetsQuery from '../add-product/queries/admin-pets.query';
 import useAdminCategoriesQuery from '../categories/queries/admin-categories.query';
+import useAdminSubCategoriesQuery from '../sub-categories/queries/admin-sub-categories.query';
 import { useAdminEditProductStore } from './admin-edit-product.store';
 import DeleteProductModal from './components/delete-product.modal';
 import EditProductBreadcrumb from './components/edit-product-breadcrumb.component';
@@ -21,20 +22,23 @@ const AdminEditProduct = () => {
   const { data: pets, isPending: isPetsPending } = useAdminPetsQuery();
   const { data: product, isPending: isProductPending } =
     useSingleProductQuery();
+  const { data: subCategories, isPending: isSubCategoriesPending } =
+    useAdminSubCategoriesQuery();
 
   const setIsModalOpen = useAdminEditProductStore(
     (s) => s.setIsDeleteProductOpen,
   );
-
+  console.log(product);
   if (
     isCategoriesPending ||
     isBrandsPending ||
     isPetsPending ||
-    isProductPending
+    isProductPending ||
+    isSubCategoriesPending
   )
     return <LoadingSpinner className="mt-20" />;
 
-  if (categories && brands && pets && product)
+  if (categories && brands && pets && product && subCategories)
     return (
       <>
         <DeleteProductModal />
@@ -58,6 +62,7 @@ const AdminEditProduct = () => {
               categories={categories}
               pets={pets}
               product={product}
+              subCategories={subCategories}
             />
           </section>
         </main>
