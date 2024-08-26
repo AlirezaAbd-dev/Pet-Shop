@@ -22,22 +22,22 @@ const Login = () => {
           Sign in to your account
         </h3>
         <p className="mt-2 md:mt-3 text-sm md:text-lg">welcome back!</p>
-
+        {/* 
         <Button className="w-full flex gap-2 bg-transparent border border-nature-800 mt-6 md:mt-8 py-[11px] rounded-lg text-sm md:text-base font-normal md:font-normal text-text-500 hover:bg-transparent">
           <Icon>
             <SvgGoogleMobile className="md:hidden" />
             <SvgGoogleDesktop className="hidden md:block" />
           </Icon>
           Continue with Google
-        </Button>
+        </Button> */}
 
-        <div className="w-full flex gap-3 justify-between items-center mt-6 md:mt-8">
+        {/* <div className="w-full flex gap-3 justify-between items-center mt-6 md:mt-8">
           <div className="w-full border-t border-nature-800"></div>
           <p className="text-sm md:text-base whitespace-nowrap">
             or continue with email
           </p>
           <div className="w-full border-t border-nature-800"></div>
-        </div>
+        </div> */}
 
         <LoginForm />
         <p className="mt-4 md:mt-6 text-sm md:text-base">
