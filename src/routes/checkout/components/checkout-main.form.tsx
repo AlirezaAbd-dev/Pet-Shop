@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
+import { useCartStore } from '@/store/cart.store';
+
 import {
   CheckoutValidationType,
   checkoutValidation,
@@ -25,6 +27,8 @@ const CheckoutMainForm = (props: CheckoutMainFormProps) => {
 
   const { mutateAsync: editAddress } = useEditAddressMutation();
   const { mutateAsync: createOrder } = useCreateOrderMutation();
+
+  const clearCart = useCartStore((s) => s.clearCart);
 
   const { control, handleSubmit } = useForm<CheckoutValidationType>({
     resolver: zodResolver(checkoutValidation),
@@ -59,6 +63,8 @@ const CheckoutMainForm = (props: CheckoutMainFormProps) => {
         address_id: editAddressResponse.data.id,
         order_note: values.notes,
       });
+
+      clearCart();
 
       router.push(
         `/cart/order-complete?order-id=${createOrderResponse.data.id}`,

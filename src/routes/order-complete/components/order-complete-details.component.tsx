@@ -8,7 +8,6 @@ import SvgOrderCompletePetDesktop from '@/assets/svg/order-complete-pet-desktop.
 import SvgOrderCompletePetMobile from '@/assets/svg/order-complete-pet-mobile.svg';
 import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
-import { useCartStore } from '@/store/cart.store';
 
 const OrderCompleteDetails = () => {
   const router = useRouter();
@@ -16,13 +15,7 @@ const OrderCompleteDetails = () => {
 
   const [isCopied, setIsCopied] = useState(false);
 
-  const clearCart = useCartStore((s) => s.clearCart);
-
   const orderId = searchParams.get('order-id');
-
-  useEffect(() => {
-    clearCart();
-  }, []);
 
   return (
     <section className="flex flex-col items-center mt-10 md:mt-16 px-5">

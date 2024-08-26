@@ -12,14 +12,7 @@ type OrderDetailsProps = {
 };
 
 const OrderDetails = (props: OrderDetailsProps) => {
-  const router = useRouter();
   const cart = useCartStore((s) => s.cart);
-
-  useEffect(() => {
-    if (cart.length === 0 || !cart) {
-      router.replace('/cart');
-    }
-  }, [cart]);
 
   const { discountPercent, finalPrice, totalDiscount, totalPrice } =
     calculatePrice(cart);
@@ -32,7 +25,7 @@ const OrderDetails = (props: OrderDetailsProps) => {
         Products ({cart.length})
       </p>
       <ul className="flex flex-col">
-        {cart.map((item) => (
+        {cart?.map((item) => (
           <li
             key={item.id}
             className="flex justify-between py-3 md:py-4 border-b border-nature-900"
@@ -67,8 +60,8 @@ const OrderDetails = (props: OrderDetailsProps) => {
       </div>
       <Button
         type="submit"
-        variant={props.isLoading ? 'disabled' : 'default'}
-        disabled={props.isLoading}
+        variant={cart.length === 0 || props.isLoading ? 'disabled' : 'default'}
+        disabled={cart.length === 0 || props.isLoading}
         isLoading={props.isLoading}
         className="mt-6 rounded-lg md:rounded-2xl md:text-base"
       >
