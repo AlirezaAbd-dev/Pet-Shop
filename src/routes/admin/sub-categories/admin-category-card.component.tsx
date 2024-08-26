@@ -1,7 +1,5 @@
 import { X } from 'lucide-react';
-import React from 'react';
 
-import { Category } from '@/app/(core)/shop/page';
 import SvgEdit32 from '@/assets/svg/Pen, Edit-orange-32.svg';
 import SvgDeleteRed32 from '@/assets/svg/Trash, Delete, Bin-red32.svg';
 import { cn } from '@/lib/utils';

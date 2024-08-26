@@ -26,7 +26,11 @@ const ContactUsForm = () => {
   });
 
   function submitHandler(values: ContactUsValidationType) {
-    mutate(values);
+    mutate({
+      email: values.email,
+      full_name: values.fullname,
+      message: values.message,
+    });
   }
 
   return (

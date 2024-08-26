@@ -11,7 +11,8 @@ const useContactUsMutation = () => {
 
   const mutation = useMutation({
     mutationKey: [queryKeys.CONTACT_US],
-    mutationFn: (data: any) => axiosInstance.post('/', data),
+    mutationFn: (data: { full_name: string; email: string; message: string }) =>
+      axiosInstance.post('/contactus/', data),
     onSuccess() {
       toast.success('Thank you for contacting us :)');
       router.refresh();
