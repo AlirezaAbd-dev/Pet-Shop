@@ -49,7 +49,7 @@ export const generateMetadata = async ({
   const data = await getSingleProduct(params.productId);
 
   return {
-    title: `USpet - ${data.name}`,
+    title: `uspetinc - ${data.name}`,
   };
 };
 

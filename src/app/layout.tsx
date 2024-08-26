@@ -9,7 +9,7 @@ import './globals.css';
 import { Providers } from './providers';
 
 export const metadata: Metadata = {
-  title: 'USpet',
+  title: 'uspetinc',
   description:
     "At US Pet Supplies, we're dedicated to providing quality products and supplies for your furry, feathered, and scaly friends. From nutrition to toys, we have everything you need to keep your pets happy and healthy",
 };

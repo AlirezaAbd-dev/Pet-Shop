@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import DashboardLayout from '@/components/shared/dashboard.layout';
 
 export const metadata: Metadata = {
-  title: 'USpet - User dashboard',
+  title: 'uspetinc - User dashboard',
 };
 
 const Layout = ({ children }: { children: ReactNode }) => {

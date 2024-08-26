@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Login from '@/routes/(registeration)/login';
 
 export const metadata: Metadata = {
-  title: 'USpet - login',
+  title: 'uspetinc - login',
 };
 const page = () => {
   return <Login />;

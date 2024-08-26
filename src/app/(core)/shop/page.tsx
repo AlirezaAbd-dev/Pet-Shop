@@ -9,7 +9,7 @@ import Shop from '@/routes/shop';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 export const metadata: Metadata = {
-  title: 'USpet - Shop',
+  title: 'uspetinc - Shop',
 };
 
 export type Brand = {

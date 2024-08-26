@@ -4,7 +4,7 @@ import React from 'react';
 import AboutUs from '@/routes/about-us';
 
 export const metadata: Metadata = {
-  title: 'USpet - about us',
+  title: 'uspetinc - about us',
 };
 
 const page = () => {

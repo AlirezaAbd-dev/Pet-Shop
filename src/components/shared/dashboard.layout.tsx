@@ -11,7 +11,7 @@ import DashboardLogoutModal from '@/routes/(dashboard)/_components/modals/dashbo
 import DashboardSidebarLayout from '@/routes/(dashboard)/_layouts/dashboard-sidebar/dashboard-sidebar.layout';
 
 export const metadata: Metadata = {
-  title: 'USpet - User dashboard',
+  title: 'uspetinc - User dashboard',
 };
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {

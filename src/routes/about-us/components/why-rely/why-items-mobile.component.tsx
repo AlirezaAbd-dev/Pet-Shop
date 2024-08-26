@@ -26,12 +26,7 @@ const WhyRelyItemsMobile = () => {
               />
             </div>
             <p className="mt-4 font-black font-nunito md:text-lg">
-              Variety of products
-              <br /> for pets
-            </p>
-            <p className="mt-2 text-sm md:mt-3 md:text-base">
-              Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut
-              scing elit. Ut{' '}
+              Uncompromising quality assured
             </p>
           </div>
         </SwiperSlide>
@@ -44,12 +39,7 @@ const WhyRelyItemsMobile = () => {
               />
             </div>
             <p className="mt-4 font-black font-nunito md:text-lg">
-              Ensuring the quality of
-              <br /> products
-            </p>
-            <p className="mt-2 text-sm md:mt-3 md:text-base">
-              Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut
-              scing elit. Ut{' '}
+              Competitive prices, premium quality
             </p>
           </div>
         </SwiperSlide>
@@ -62,12 +52,7 @@ const WhyRelyItemsMobile = () => {
               />
             </div>
             <p className="mt-4 font-black font-nunito md:text-lg">
-              Fast delivery of
-              <br /> products
-            </p>
-            <p className="mt-2 text-sm md:mt-3 md:text-base">
-              Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut
-              scing elit. Ut{' '}
+              25+ years in pet supplies
             </p>
           </div>
         </SwiperSlide>
@@ -80,12 +65,7 @@ const WhyRelyItemsMobile = () => {
               />
             </div>
             <p className="mt-4 font-black font-nunito md:text-lg">
-              Reasonable cost of
-              <br /> products
-            </p>
-            <p className="mt-2 text-sm md:mt-3 md:text-base">
-              Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Ut
-              scing elit. Ut{' '}
+              Top-tier materials only
             </p>
           </div>
         </SwiperSlide>

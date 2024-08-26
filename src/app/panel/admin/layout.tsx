@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import AdminDashboardLayout from '@/routes/admin/_layout/admin-dashboard.layout';
 
 export const metadata: Metadata = {
-  title: 'USpet - panel admin',
+  title: 'uspetinc - panel admin',
 };
 
 const layout = (props: { children: ReactNode }) => {

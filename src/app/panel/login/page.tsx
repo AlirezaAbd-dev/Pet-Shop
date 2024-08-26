@@ -4,7 +4,7 @@ import React from 'react';
 import AdminLogin from '@/routes/admin/login';
 
 export const metadata: Metadata = {
-  title: 'USpet - panel login',
+  title: 'uspetinc - panel login',
 };
 
 const page = () => {

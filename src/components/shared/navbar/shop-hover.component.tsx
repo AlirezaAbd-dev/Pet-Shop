@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 import { Category } from '@/app/(core)/shop/page';
@@ -19,6 +20,8 @@ type Props = {
 };
 
 const ShopHover = (props: Props) => {
+  const router = useRouter();
+
   const [isHoverOpen, setIsHoverOpen] = useState(false);
 
   return (
@@ -36,7 +39,12 @@ const ShopHover = (props: Props) => {
         onOpenChange={setIsHoverOpen}
       >
         <HoverCardTrigger>
-          <li className="flex items-center gap-1 cursor-pointer text-lg">
+          <li
+            className="flex items-center gap-1 cursor-pointer text-lg"
+            onClick={() => {
+              router.push('/shop');
+            }}
+          >
             Shop{' '}
             <Icon>
               <SvgArrow className="w-5 h-5 rotate-180" />
