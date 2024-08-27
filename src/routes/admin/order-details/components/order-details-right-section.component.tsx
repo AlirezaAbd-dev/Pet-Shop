@@ -37,14 +37,34 @@ const OrderDetailsRightSection = (props: Props) => {
       <Combobox
         name="status"
         buttonClassName="mt-3"
+        containerClassName="w-[300px]"
         onSelect={(_, value) => {
           setSeleectedStatus(value);
         }}
-        data={[
-          { label: 'shipped', value: 'shipped' },
-          { label: 'delivered', value: 'delivered' },
-          { label: 'cancelled', value: 'cancelled' },
-        ]}
+        data={
+          [
+            {
+              label: 'salesperson confirmation',
+              value: 'salesperson_confirmation',
+            },
+            {
+              label: 'salesperson pre factored',
+              value: 'salesperson_pre_factored',
+            },
+            {
+              label: 'inventory reservations',
+              value: 'inventory_reservations',
+            },
+            { label: 'pre factored paid', value: 'pre_factored_paid' },
+            {
+              label: 'inventory confirmation',
+              value: 'inventory_confirmation',
+            },
+            { label: 'shipped', value: 'shipped' },
+            { label: 'delivered', value: 'delivered' },
+            { label: 'cancelled', value: 'cancelled' },
+          ] as { label: string; value: OrderStatus }[]
+        }
       />
       <Button
         isLoading={isPending}

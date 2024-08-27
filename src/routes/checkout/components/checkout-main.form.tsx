@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
+import { queryClient } from '@/app/providers';
+import queryKeys from '@/lib/constants/query-keys.constants';
 import { useCartStore } from '@/store/cart.store';
 
 import {
@@ -65,6 +67,7 @@ const CheckoutMainForm = (props: CheckoutMainFormProps) => {
       });
 
       clearCart();
+      queryClient.clear();
 
       router.push(
         `/cart/order-complete?order-id=${createOrderResponse.data.id}`,

@@ -30,19 +30,21 @@ const AdminOrders = () => {
   if (isPending) return <LoadingSpinner className="mt-20" />;
 
   if (!isPending && data) {
-    const filteredOrders = data.filter((d) => {
-      if (statusFilter || search)
-        return (
-          (search
-            ? d.user_full_name?.includes(search) ||
-              d.id.toString().includes(search)
-            : true) &&
-          (statusFilter ? d.status === statusFilter?.toLowerCase() : true)
-        );
-      else {
-        return true;
-      }
-    });
+    const filteredOrders = data
+      .filter((d) => {
+        if (statusFilter || search)
+          return (
+            (search
+              ? d.user_full_name?.includes(search) ||
+                d.id.toString().includes(search)
+              : true) &&
+            (statusFilter ? d.status === statusFilter?.toLowerCase() : true)
+          );
+        else {
+          return true;
+        }
+      })
+      .toReversed();
 
     return (
       <main className="mt-8">
@@ -60,10 +62,11 @@ const AdminOrders = () => {
               placeholder="Type to Search"
             />
           </div>
-          <div className="w-[173px]">
+          <div className="w-[300px]">
             <Combobox
               data={STATUSES}
               defaultValue={statusFilter}
+              containerClassName="w-[300px]"
               onSelect={(_name, value) => {
                 setStatusFilter(value);
               }}

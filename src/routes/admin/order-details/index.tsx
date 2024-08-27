@@ -23,12 +23,37 @@ const STATUS_SLIDER: { status: OrderStatus; color: string; value: number }[] = [
   {
     status: 'pending',
     color: 'bg-success-500',
-    value: 30,
+    value: 12.5,
   },
   {
     status: 'shipped',
     color: 'bg-warning-500',
-    value: 60,
+    value: 87.5,
+  },
+  {
+    status: 'inventory_confirmation',
+    color: 'bg-link',
+    value: 75,
+  },
+  {
+    status: 'inventory_reservations',
+    color: 'bg-link',
+    value: 50,
+  },
+  {
+    status: 'pre_factored_paid',
+    color: 'bg-link',
+    value: 62.5,
+  },
+  {
+    status: 'salesperson_pre_factored',
+    color: 'bg-link',
+    value: 37.5,
+  },
+  {
+    status: 'salesperson_confirmation',
+    color: 'bg-link',
+    value: 25,
   },
 ];
 

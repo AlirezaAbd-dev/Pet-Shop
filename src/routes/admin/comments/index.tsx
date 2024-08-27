@@ -21,13 +21,16 @@ const AdminComments = () => {
   if (isPending) return <LoadingSpinner className="mt-20" />;
 
   if (!isPending && data) {
-    const comments = data.filter((c) => {
-      // if (tabsValue === 'all') return c.status !== 'decline';
-      if (tabsValue === 'all') return true;
-      else {
-        return c.status === tabsValue;
-      }
-    });
+    const comments = data
+      .filter((c) => {
+        // if (tabsValue === 'all') return c.status !== 'decline';
+        if (tabsValue === 'all') return true;
+        else {
+          return c.status === tabsValue;
+        }
+      })
+      .toReversed();
+
     return (
       <main className="mt-9">
         <section className="flex gap-4">

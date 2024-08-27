@@ -67,13 +67,16 @@ const AdminDashboard = () => {
         </main>
         <section className="mt-8 bg-white border border-nature-800 rounded-lg overflow-hidden">
           <OrdersTable
-            orders={data.orders.slice(0, 20).map((o) => ({
-              date: o.created_at,
-              orderId: o.id,
-              price: o.total_price,
-              state: o.status,
-              username: o.user_full_name,
-            }))}
+            orders={data.orders
+              .toReversed()
+              .slice(0, 20)
+              .map((o) => ({
+                date: o.created_at,
+                orderId: o.id,
+                price: o.total_price,
+                state: o.status,
+                username: o.user_full_name,
+              }))}
           />
         </section>
       </>

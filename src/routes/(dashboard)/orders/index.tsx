@@ -44,7 +44,7 @@ const Orders = () => {
             </Icon>
             Order history
           </div>
-          <ul className="flex w-full mt-7 md:mt-11 gap-4 md:gap-10 overflow-x-auto no-scrollbar border-b border-nature-900 px-4 md:px-6">
+          <ul className="flex w-full mt-7 md:mt-11 gap-4 md:gap-10 overflow-x-scroll border-b border-nature-900 px-4 md:px-6">
             {ORDER_STATUS_TABS.map((item) => {
               const orderCount = data.filter(
                 (o) => o.status === item.name.toLowerCase(),

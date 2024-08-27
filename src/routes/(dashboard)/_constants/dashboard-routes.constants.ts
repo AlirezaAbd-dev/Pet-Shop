@@ -63,4 +63,29 @@ export const STATUSES: {
     colorClassName: 'text-link',
     bgClassName: 'bg-link/5',
   },
+  {
+    name: 'Inventory_confirmation',
+    colorClassName: 'text-success-500',
+    bgClassName: 'bg-link/5',
+  },
+  {
+    name: 'Inventory_reservations',
+    colorClassName: 'text-warning-500',
+    bgClassName: 'bg-link/5',
+  },
+  {
+    name: 'Pre_factored_paid',
+    colorClassName: 'text-error-500',
+    bgClassName: 'bg-link/5',
+  },
+  {
+    name: 'Salesperson_confirmation',
+    colorClassName: 'text-success-500',
+    bgClassName: 'bg-link/5',
+  },
+  {
+    name: 'Salesperson_pre_factored',
+    colorClassName: 'text-link',
+    bgClassName: 'bg-link/5',
+  },
 ];

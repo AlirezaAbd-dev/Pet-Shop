@@ -18,12 +18,14 @@ const AdminCustomers = () => {
   if (isPending) return <LoadingSpinner className="mt-20" />;
 
   if (!isPending && data) {
-    const users = data.filter(
-      (d) =>
-        d.full_name?.includes(search) ||
-        d.email.includes(search) ||
-        d.phone_number?.toString().includes(search),
-    );
+    const users = data
+      .filter(
+        (d) =>
+          d.full_name?.includes(search) ||
+          d.email.includes(search) ||
+          d.phone_number?.toString().includes(search),
+      )
+      .toReversed();
 
     return (
       <main className="mt-8">

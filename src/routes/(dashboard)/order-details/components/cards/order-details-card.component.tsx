@@ -32,7 +32,7 @@ const OrderDetailsCard = (props: OrderDetailsCard) => {
           <Icon className="flex md:items-center gap-1 text-xs md:text-base">
             <SvgWeight className="md:hidden w-5 h-5" />
             <SvgWeightDesktop className="hidden md:block" />
-            {props.quantity * props.product.weight}KG
+            {(props.quantity * props.product.weight).toFixed(2)}KG
           </Icon>
         </div>
         <p className="text-xs md:text-base mt-1 md:mt-4 leading-[26px] md:leading-7">

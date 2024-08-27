@@ -56,7 +56,9 @@ const OrderDetails = (props: OrderDetailsProps) => {
         <p className="font-nunito text-sm md:text-base font-extrabold">
           Total:
         </p>
-        <p className="text-sm md:text-base font-extrabold">$ {finalPrice}</p>
+        <p className="text-sm md:text-base font-extrabold">
+          $ {finalPrice.toFixed(2)}
+        </p>
       </div>
       <Button
         type="submit"
