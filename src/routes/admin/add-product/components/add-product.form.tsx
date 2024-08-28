@@ -205,7 +205,7 @@ const AddProductForm = (props: Props) => {
                 errorText={fieldState.error?.message}
                 className="hide-arrows mt-4 placeholder:text-text-500"
                 type="number"
-                placeholder="$"
+                placeholder="%"
               />
             )}
           />
@@ -319,6 +319,7 @@ const AddProductForm = (props: Props) => {
               <Input
                 {...field}
                 errorText={fieldState.error?.message}
+                placeholder="KG"
                 className="hide-arrows mt-4"
                 type="number"
               />
@@ -414,7 +415,7 @@ const AddProductForm = (props: Props) => {
       </div>
 
       <div className="mt-8">
-        <p>Information*</p>
+        <p>Short description*</p>
         <Controller
           control={control}
           name="description"
