@@ -77,7 +77,7 @@ const HomeFAQ = () => {
       <div className="hidden md:block md:col-span-1"></div>
       <div className="flex justify-center pt-6 md:pt-0 md:col-span-5">
         <Image
-          src={'/static/kity-hurt.png'}
+          src={'/static/kity-hurt.webp'}
           alt="kity-hurt"
           width={598}
           height={547}

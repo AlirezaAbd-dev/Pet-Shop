@@ -1,11 +1,6 @@
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-import SvgGrayCatDesktop from '@/assets/svg/gray-cat-mini-cart-desktop.svg';
-import SvgGrayCatMobile from '@/assets/svg/gray-cat-mini-cart-mobile.svg';
-import SvgYellowDogDesktop from '@/assets/svg/yellow-dog-mini-cart-desktop.svg';
-import SvgYellowDogMobile from '@/assets/svg/yellow-dog-mini-cart-mobile.svg';
-import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
 
 const CartHoverEmptyContent = () => {
@@ -25,14 +20,16 @@ const CartHoverEmptyContent = () => {
           Shop
         </Button>
       </div>
-      <Icon className="absolute bottom-0 right-0">
-        <SvgGrayCatDesktop className="hidden md:block" />
-        <SvgGrayCatMobile className="md:hidden" />
-      </Icon>
-      <Icon className="absolute bottom-0 left-0">
-        <SvgYellowDogDesktop className="hidden md:block" />
-        <SvgYellowDogMobile className="md:hidden" />
-      </Icon>
+      <img
+        src="/static/gray-cat-mini-cart.png"
+        alt="gray-cat"
+        className="absolute bottom-0 right-0 w-[96px] md:w-auto"
+      />
+      <img
+        src="/static/yellow-dog-mini-cart.png"
+        alt="gray-cat"
+        className="absolute bottom-0 left-0 w-[100px] md:w-auto"
+      />
     </main>
   );
 };

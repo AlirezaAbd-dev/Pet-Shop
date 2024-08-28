@@ -22,42 +22,6 @@ const HomeTopCategories = (props: HomeTopCategoriesProps) => {
         <h3 className="text-xl md:text-4xl font-nunito font-black text-center">
           Top Categories & Food products
         </h3>
-        {/* <ul className="flex justify-center mt-5 md:mt-8 gap-4">
-          {CATEGORIES_LIST.map((item) => (
-            <li
-              key={item.name}
-              onClick={() => {
-                setCategoryValue(item.name);
-              }}
-              className={cn(
-                'flex items-center justify-center gap-2 px-4 md:px-6 py-3 md:py-4 w-[99px] md:w-[144px] rounded-full border border-nature-900 cursor-pointer',
-                item.name === categoryValue
-                  ? 'border-primary-500 font-extrabold text-primary-500'
-                  : '',
-              )}
-            >
-              <Icon
-                className={cn(
-                  'flex justify-center items-center rounded-full w-7 md:w-10 h-7 md:h-10 md:text-2xl bg-nature-800',
-                  item.name === categoryValue ? 'bg-primary-500' : '',
-                )}
-              >
-                {item.name === categoryValue ? (
-                  <>
-                    <item.activeIcon className="md:hidden w-5 h-5" />
-                    <item.activeDesktopIcon className="hidden md:block" />
-                  </>
-                ) : (
-                  <>
-                    <item.icon className="md:hidden w-5 h-5" />
-                    <item.desktopIcon className="hidden md:block" />
-                  </>
-                )}
-              </Icon>
-              {item.name}
-            </li>
-          ))}
-        </ul> */}
       </section>
       <Swiper
         className="hidden md:block px-20 mt-10"

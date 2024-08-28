@@ -1,14 +1,10 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
 import { Product } from '@/app/(core)/product/[productId]/page';
 import SvgPolygon56 from '@/assets/svg/polygon-56.svg';
 import Icon from '@/components/icon';
 import { cn } from '@/lib/utils';
 
-import SvgHeartDesktop from '@icons/heart-desktop.svg';
-import SvgHeart from '@icons/heart.svg';
 import SvgWeightDesktop from '@icons/weight-desktop.svg';
 import SvgWeight from '@icons/weight.svg';
 

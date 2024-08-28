@@ -56,14 +56,14 @@ const HomeLanding = () => {
             </div>
           </div>
           <Image
-            src={'/static/landing-pet.png'}
+            src={'/static/landing-pet.webp'}
             alt="landing-image"
             width={662}
             height={531}
             className="mt-4 md:mt-0 w-[248px] h-[199px] md:w-[662px] md:h-[531px] z-10 self-center"
           />
         </div>
-        <div className="bg-nature-600 rounded-3xl w-full -mt-[30px] md:-mt-[85px] md:rounded-tr-none mx-5 pt-9 pb-6 px-4 md:px-8 md:py-8">
+        <div className="bg-nature-600 rounded-3xl w-full -mt-[35px] md:-mt-[95px] md:rounded-tr-none mx-5 pt-9 pb-6 px-4 md:px-8 md:py-8">
           <p className="font-nunito font-black text-xl md:text-4xl">
             <span className="text-primary-500">Why </span>
             rely on us?

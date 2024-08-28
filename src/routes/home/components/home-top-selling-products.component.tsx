@@ -8,8 +8,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Product } from '@/app/(core)/product/[productId]/page';
 import SvgCatFootDesktop from '@/assets/svg/cat-foot-filled-desktop.svg';
 import SvgCatFoot from '@/assets/svg/cat-foot-filled.svg';
-import SvgPetImageDesktop from '@/assets/svg/pet-image-desktop.svg';
-import SvgPetImageMobile from '@/assets/svg/pet-image-mobile.svg';
 import Icon from '@/components/icon';
 import { Button } from '@/components/ui/button';
 
@@ -84,12 +82,11 @@ const HomeTopSellingProducts = (props: HomeTopSellingProductsProps) => {
               <SvgCatFootDesktop className="hidden md:block" />
             </Icon>
           </Button>
-          <Icon className="absolute md:hidden bottom-0 -left-5 ">
-            <SvgPetImageMobile />
-          </Icon>
-          <Icon className="absolute hidden md:block bottom-0 left-0 ">
-            <SvgPetImageDesktop />
-          </Icon>
+          <img
+            src="/static/pet 1.png"
+            alt="pet-looking-up"
+            className="absolute bottom-0 -left-5 w-[228px] md:w-auto"
+          />
         </div>
       </section>
     </main>

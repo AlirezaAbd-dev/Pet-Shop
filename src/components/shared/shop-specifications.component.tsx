@@ -4,11 +4,6 @@ import SvgShield36 from '@/assets/svg/shield-36.svg';
 import SvgStarOutlined36 from '@/assets/svg/start-outlined-36.svg';
 import { cn } from '@/lib/utils';
 
-import SvgPhoneCall from '@icons/Phone, Call.svg';
-import SvgDeliveryTruck from '@icons/delivery-truck-fast.svg';
-import SvgShop from '@icons/shop.svg';
-import SvgStar from '@icons/star.svg';
-
 import Icon from '../icon';
 
 type ShopSecificationsProps = {
