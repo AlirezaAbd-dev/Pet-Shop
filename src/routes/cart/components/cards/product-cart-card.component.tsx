@@ -52,7 +52,7 @@ const ProductCartCard = (props: ProductCartCardProps) => {
           <Icon className="flex gap-2 mt-2 text-text-300 text-sm md:text-lg">
             <SvgWeightMobile className="md:hidden" />
             <SvgWeightDesktop className="hidden md:block" />
-            {props.weight * props.count}KG
+            {(props.weight * props.count).toFixed(2)}KG
           </Icon>
         </div>
       </Link>
@@ -64,7 +64,10 @@ const ProductCartCard = (props: ProductCartCardProps) => {
                 ${props.price.toFixed(2)}
               </p>
               <span className="hidden md:inline font-semibold px-2 py-1 text-white text-base w-[49px] h-[30px] rounded-[50px] bg-error-500">
-                {calculatePercent(props.price, props.priceWithDiscount)}%
+                {calculatePercent(props.price, props.priceWithDiscount).toFixed(
+                  2,
+                )}
+                %
               </span>
             </div>
           )}
