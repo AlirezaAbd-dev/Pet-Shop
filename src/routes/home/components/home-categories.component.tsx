@@ -15,7 +15,7 @@ const HomeCategories = (props: HomeCategoriesProps) => {
         Category
       </p>
 
-      <section className="mt-5 md:mt-8 grid grid-cols-2 md:grid-cols-5 justify-items-center gap-y-8 md:gap-y-24">
+      <section className="mt-5 md:mt-8 grid grid-cols-1 md:grid-cols-3 justify-items-center gap-y-8 md:gap-y-16 md:gap-x-7">
         {props.categories.map((c, index) => (
           <CategoryCard
             key={c.id}

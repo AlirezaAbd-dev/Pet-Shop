@@ -19,13 +19,13 @@ const CategoryCard = (props: CategoryCardProps) => {
         router.push(`/shop?category=${props.category.id}`);
       }}
       className={cn(
-        'flex flex-col items-center gap-3 md:gap-6 cursor-pointer',
+        'flex flex-col items-center gap-3 md:gap-6 cursor-pointer w-full',
         props.totalLength - 1 === props.index && props.totalLength % 2 !== 0
-          ? 'col-span-2 md:col-span-1'
+          ? 'col-span-1'
           : '',
       )}
     >
-      <div className="flex items-center w-[111px] h-[70px] md:w-[158px] md:h-[90px] bg-nature-700 rounded-xl overflow-hidden">
+      <div className="flex items-center w-full md:w-full aspect-video bg-nature-700 rounded-xl overflow-hidden">
         <img
           src={props.category.image}
           alt={props.category.name}
