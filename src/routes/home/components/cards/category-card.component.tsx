@@ -25,10 +25,16 @@ const CategoryCard = (props: CategoryCardProps) => {
           : '',
       )}
     >
-      <div className="rectangle flex items-center w-[111px] h-[107px] md:w-[158px] md:h-[153px] p-5 bg-nature-700">
-        <img src={props.category.image} alt={props.category.name} />
+      <div className="flex items-center w-[111px] h-[70px] md:w-[158px] md:h-[90px] bg-nature-700 rounded-xl overflow-hidden">
+        <img
+          src={props.category.image}
+          alt={props.category.name}
+          className="w-full h-full object-fill"
+        />
       </div>
-      <p className="text-sm md:text-xl font-bold">{props.category.name}</p>
+      <p className="text-sm md:text-xl font-bold text-center">
+        {props.category.name}
+      </p>
     </div>
   );
 };

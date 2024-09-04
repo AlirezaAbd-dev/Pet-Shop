@@ -24,9 +24,12 @@ const AdminCategoryCard = (props: Props) => {
   const isEditMode = categoryEditMode?.id === props.category.id;
 
   return (
-    <li key={props.category.id} className="group">
-      <div className="rectangle w-[158px] h-[153px] bg-nature-700 flex items-center justify-center">
-        <img src={props.category.image} className="h-[110px]" />
+    <li
+      key={props.category.id}
+      className="group flex flex-col items-center w-[200px]"
+    >
+      <div className="w-[158px] h-[90px] bg-nature-700 flex items-center justify-center overflow-hidden rounded-lg">
+        <img src={props.category.image} className="w-full h-full object-fill" />
       </div>
       <p className="mt-6 font-bold text-xl text-center">
         {props.category.name}
