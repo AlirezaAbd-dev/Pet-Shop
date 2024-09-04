@@ -96,20 +96,22 @@ const AddPetForm = () => {
                   onClick={() => {
                     if (petImage) {
                       const url = URL.createObjectURL(petImage);
-                      window.location.href = url;
+                      window.open(url);
 
                       URL.revokeObjectURL(url);
                     }
                     if (petEditMode?.image) {
-                      window.location.href = petEditMode.image;
+                      window.open(petEditMode.image);
                     }
                   }}
                 />
-                <SvgDelete32
-                  onClick={() => {
-                    setPetImage(undefined);
-                  }}
-                />
+                {petImage && (
+                  <SvgDelete32
+                    onClick={() => {
+                      setPetImage(undefined);
+                    }}
+                  />
+                )}
               </Icon>
             </div>
           )}

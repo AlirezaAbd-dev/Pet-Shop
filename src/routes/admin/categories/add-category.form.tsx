@@ -100,20 +100,22 @@ const AddCategoryForm = () => {
                   onClick={() => {
                     if (categoryImage) {
                       const url = URL.createObjectURL(categoryImage);
-                      window.location.href = url;
+                      window.open(url);
 
                       URL.revokeObjectURL(url);
                     }
                     if (categoryEditMode?.image) {
-                      window.location.href = categoryEditMode.image;
+                      window.open(categoryEditMode.image);
                     }
                   }}
                 />
-                <SvgDelete32
-                  onClick={() => {
-                    setCategoryImage(undefined);
-                  }}
-                />
+                {categoryImage && (
+                  <SvgDelete32
+                    onClick={() => {
+                      setCategoryImage(undefined);
+                    }}
+                  />
+                )}
               </Icon>
             </div>
           )}
