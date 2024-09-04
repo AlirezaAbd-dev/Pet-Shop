@@ -25,11 +25,11 @@ const PetCard = (props: Props) => {
           : '',
       )}
     >
-      <div className="rectangle flex items-end w-[111px] h-[107px] md:w-[158px] md:h-[153px] bg-nature-700">
+      <div className="rectangle flex items-end w-[111px] h-[107px] md:w-[175px] md:h-[170px] bg-nature-700">
         <img
           src={props.pet.image}
           alt={props.pet.species}
-          className="h-[137px] md:h-[188px] w-auto"
+          className="h-[137px] md:h-[205px] w-auto"
         />
       </div>
       <p className="text-sm md:text-xl font-bold">{props.pet.species}</p>

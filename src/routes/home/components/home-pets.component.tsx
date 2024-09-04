@@ -13,7 +13,7 @@ const HomePets = (props: Props) => {
       <p className="font-nunito font-black text-xl md:text-4xl text-center">
         Shop by Animal
       </p>
-      <section className="mt-8 grid grid-cols-2 md:grid-cols-5 md:pt-14 justify-items-center gap-y-8 md:gap-y-24">
+      <section className="mt-8 grid grid-cols-2 md:grid-cols-4 md:pt-14 justify-items-center gap-y-8 md:gap-y-24">
         {props.pets.map((c, index) => (
           <PetCard
             key={c.id}
