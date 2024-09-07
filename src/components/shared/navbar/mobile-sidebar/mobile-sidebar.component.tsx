@@ -77,10 +77,10 @@ const MobileSidebar = (props: Props) => {
                   <Link
                     key={item.id}
                     href={`/shop?category=${item.id}`}
-                    className="flex gap-1 items-center rounded-lg cursor-pointer p-1 hover:bg-nature-200"
+                    className="flex gap-2 items-center rounded-lg cursor-pointer p-1 py-2 hover:bg-nature-200"
                   >
-                    <span className="rectangle flex items-center w-[39px] h-[39px] p-[6px] bg-nature-700">
-                      <img src={item.image} className="w-full" />
+                    <span className="flex items-center w-[39px] aspect-video rounded-md overflow-hidden bg-nature-700">
+                      <img src={item.image} className="w-full object-fill" />
                     </span>
                     <p className="font-normal text-xs">{item.name}</p>
                   </Link>

@@ -22,7 +22,6 @@ export type ProfileType = {
 const useProfileQuery = (action?: string) => {
   const router = useRouter();
 
-  const accessToken = useAuthStore((s) => s.accesstoken);
   const setIsLoading = useAuthStore((s) => s.setIsLoading);
   const setProfile = useAuthStore((s) => s.setProfile);
 
@@ -39,8 +38,11 @@ const useProfileQuery = (action?: string) => {
       setIsLoading(false);
       setProfile(query.data.data);
     } else if (!query.isPending && query.error) {
-      console.log(query.error);
-      if (action && query.error.response?.status === 401) {
+      if (
+        action &&
+        (query.error.response?.status === 401 ||
+          query.error.response?.status === 400)
+      ) {
         router.replace(action);
       }
       setIsLoading(false);

@@ -7,6 +7,8 @@ import SvgLogoDesktop from '@/assets/svg/logo-signup-desktop.svg';
 import Icon from '@/components/icon';
 import useProfileQuery from '@/hooks/react-query/queries/profile.query';
 import { cn } from '@/lib/utils';
+import DashboardLogoutModal from '@/routes/(dashboard)/_components/modals/dashboard-logout.modal';
+import { useDashboardModalsStore } from '@/routes/(dashboard)/_store/dashboard-modals.store';
 
 import { ADMIN_PAGES } from '../_constants/admin-pages.constants';
 
@@ -14,6 +16,7 @@ const AdminDashboardLayout = (props: { children: ReactNode }) => {
   const router = useRouter();
   const { data, isPending } = useProfileQuery('/panel/login');
   const pathname = usePathname();
+  const setIsModalOpen = useDashboardModalsStore((s) => s.setIsLogoutModalOpen);
 
   useEffect(() => {
     if (!isPending && data && data.data.role !== 'admin') {
@@ -23,6 +26,7 @@ const AdminDashboardLayout = (props: { children: ReactNode }) => {
 
   return (
     <main className="flex">
+      <DashboardLogoutModal />
       <section className="min-h-screen w-[336px] flex flex-col items-center border-r border-nature-800 px-6">
         <Icon className="mt-12">
           <SvgLogoDesktop />
@@ -44,6 +48,12 @@ const AdminDashboardLayout = (props: { children: ReactNode }) => {
               {item.name}
             </li>
           ))}
+          <li
+            className={cn('w-full pl-3 cursor-pointer text-error-500')}
+            onClick={() => setIsModalOpen(true)}
+          >
+            Logout
+          </li>
         </ul>
       </section>
       <section className="w-full bg-nature-100 p-6 flex flex-col">

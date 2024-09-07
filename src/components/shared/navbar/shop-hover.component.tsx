@@ -51,15 +51,15 @@ const ShopHover = (props: Props) => {
             </Icon>
           </li>
         </HoverCardTrigger>
-        <HoverCardContent className="flex flex-col bg-white md:ml-10 md:mt-5 rounded-xl border-none w-[208px] max-h-[80vh] p-3 overflow-hidden overflow-y-auto no-scrollbar">
+        <HoverCardContent className="flex flex-col bg-white md:ml-10 md:mt-5 rounded-xl border-none w-[350px] max-h-[80vh] p-3 overflow-hidden overflow-y-auto no-scrollbar">
           {props.categories?.map((item) => (
             <Link
               key={item.id}
               href={`/shop?category=${item.id}`}
-              className="flex gap-1 items-center rounded-lg cursor-pointer p-1 hover:bg-nature-200"
+              className="flex gap-2 items-center rounded-lg cursor-pointer p-1 py-2 hover:bg-nature-200"
             >
-              <span className="rectangle flex items-center w-[39px] h-[39px] p-[6px] bg-nature-700">
-                <img src={item.image} className="w-full" />
+              <span className="flex items-center w-[39px] aspect-video rounded-md bg-nature-700 overflow-hidden">
+                <img src={item.image} className="w-full object-fill" />
               </span>
               <p className="font-semibold text-sm">{item.name}</p>
             </Link>
